@@ -11,7 +11,9 @@ const isModal = modal('modal-key')
 isModal.value = true // or false
 
 // open and set props for global state
-open('modal-key', { name: 'Custom Name' })
+openModal('modal-key', { name: 'Custom Name' })
+
+// closeModal() can be used anywhere to close the modal
 
 // access the modalProps 
 modalProps.value.name
@@ -27,6 +29,9 @@ const user = usePageProp('user')
 
 // dot notation if you need to access deep variables
 const userName = usePageProp('user.name')
+
+// page url
+const url = usePageProp('page.url');
 
 ```
 
