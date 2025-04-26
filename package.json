@@ -2,10 +2,6 @@
   "name": "atlas-ui",
   "version": "1.0.0",
   "main": "src/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tmarois/atlas-ui.git"
-  },
   "scripts": {
     "eslint": "npx eslint \"src/**/*.{js,vue}\""
   },
