@@ -6,7 +6,7 @@ export function usePageProp(path, defaultValue = null) {
 
     const value = computed(() => {
         const keys = path.split('.');
-        let result = page.props.value;
+        let result = page.props;
 
         for (const key of keys) {
             if (result && Object.prototype.hasOwnProperty.call(result, key)) {
