@@ -3,7 +3,7 @@
 ## useModal
 
 ```js
-const { open, modal, modalProps } = useModal()
+const { openModal, closeModal, modal, modalProps } = useModal()
 
 const isModal = modal('modal-key')
 
