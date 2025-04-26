@@ -5,12 +5,12 @@ const modalProps = ref({})
 
 export function useModal() {
 
-    const open = (name, props = {}) => {
+    const openModal = (name, props = {}) => {
         modalName.value = name
         modalProps.value = props
     }
 
-    const close = () => {
+    const closeModal = () => {
         modalName.value = null
         modalProps.value = {}
     }
@@ -19,9 +19,9 @@ export function useModal() {
         get: () => modalName.value === name,
         set: (value) => {
             if (value) {
-                open(name)
+                openModal(name)
             } else if (modalName.value === name) {
-                close()
+                closeModal()
             }
         }
     })
@@ -29,8 +29,8 @@ export function useModal() {
     return {
         modalName,
         modalProps,
-        open,
-        close,
+        openModal,
+        closeModal,
         modal,
     }
 }
