@@ -19,9 +19,9 @@ export function useModal() {
         get: () => modalName.value === name,
         set: (value) => {
             if (value) {
-                modalName.value = name
+                open(name)
             } else if (modalName.value === name) {
-                modalName.value = null
+                close()
             }
         }
     })
