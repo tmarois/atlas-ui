@@ -1,27 +1,36 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
-const isOpen = ref(false)
 const modalName = ref(null)
 const modalProps = ref({})
 
 export function useModal() {
+
     const open = (name, props = {}) => {
         modalName.value = name
         modalProps.value = props
-        isOpen.value = true
     }
 
     const close = () => {
-        isOpen.value = false
         modalName.value = null
         modalProps.value = {}
     }
 
+    const modal = (name) => computed({
+        get: () => modalName.value === name,
+        set: (value) => {
+            if (value) {
+                modalName.value = name
+            } else if (modalName.value === name) {
+                modalName.value = null
+            }
+        }
+    })
+
     return {
-        isOpen,
         modalName,
         modalProps,
         open,
         close,
+        modal,
     }
 }
