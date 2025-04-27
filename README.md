@@ -22,7 +22,7 @@ openModal('modal-key', { name: 'Custom Name' })
 modalData.value.name
 ```
 
-## 📦 Utilities
+## 📦 Utilities (format)
 
 Importing via alias path
 
@@ -85,4 +85,30 @@ formatToValidURL('example.com'); // "https://example.com"
 formatToValidURL(' http://example.com'); // "http://example.com"
 formatToValidURL('http://example.com', true); // "https://example.com"
 formatToValidURL('HTTPS://example.com'); // "https://example.com"
+```
+
+## 📦 Utilities (validate)
+
+Importing via alias path
+
+```js
+import { isValidURL } from '@atlas/utils/validate';
+```
+
+### 👉 isValidURL
+
+`isValidURL(url)`
+
+```js
+isValidURL('https://example.com') // true
+isValidURL('www.example.com') // false
+```
+
+### 👉 isValidEmail
+
+`isValidEmail(str)`
+
+```js
+isValidEmail('test@example.com') // true
+isValidEmail('plainaddress.com') // false
 ```
