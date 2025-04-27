@@ -30,6 +30,8 @@ Importing via alias path
 import { formatNumber } from '@atlas/utils/format';
 ```
 
+------------------------------------------------
+
 ### 👉 formatNumber
 
 `formatNumber(n, decimals = 0)`
@@ -39,6 +41,8 @@ formatNumber(1000000) // "1,000,000"
 formatNumber(1020.2, 2) // "1,020.20"
 formatNumber(10000.4567, 2); // "10,000.46"
 ```
+
+------------------------------------------------
 
 ### 👉 formatToCurrency
 
@@ -52,6 +56,32 @@ formatToCurrency(1020.2) // "$1,020.20"
 formatToCurrency(5000, 0, 'EUR'); // "€5,000" 
 ```
 
+------------------------------------------------
+
+### 👉 formatPercentage
+
+`formatPercentage(value, decimals = 0)`
+
+```js
+formatPercentage(0.2); // "25%"
+formatPercentage(0.2567, 1) // 25.7%
+formatPercentage(1); // "100%"
+```
+
+------------------------------------------------
+
+### 👉 formatBytes
+
+`formatBytes(bytes, decimals = 2)`
+
+```js
+formatBytes(1024) // 1.00 KB
+formatBytes(1500, 1) // 1.50 KB
+formatBytes(1073741824) // 1.00 GB
+```
+
+------------------------------------------------
+
 ### 👉 formatToDate
 
 `formatToDate(utcDatetime, userTimezone = 'America/New_York', locale = 'en-US')`
@@ -59,6 +89,8 @@ formatToCurrency(5000, 0, 'EUR'); // "€5,000"
 ```js
 formatToDate('2024-05-01T14:30:00'); // "5/1/2024"
 ```
+
+------------------------------------------------
 
 ### 👉 formatToDatetime
 
@@ -68,6 +100,8 @@ formatToDate('2024-05-01T14:30:00'); // "5/1/2024"
 formatToDatetime('2024-05-01T14:30:00'); // "5/1/2024, 10:30 AM"
 ```
 
+------------------------------------------------
+
 ### 👉 formatToSlug
 
 `formatToSlug(str)`
@@ -75,6 +109,8 @@ formatToDatetime('2024-05-01T14:30:00'); // "5/1/2024, 10:30 AM"
 ```js
 formatToSlug('Hello    World!!') // "hello-world"
 ```
+
+------------------------------------------------
 
 ### 👉 formatToValidURL
 
@@ -87,6 +123,8 @@ formatToValidURL('http://example.com', true); // "https://example.com"
 formatToValidURL('HTTPS://example.com'); // "https://example.com"
 ```
 
+------------------------------------------------
+
 ## 📦 Utilities (validate)
 
 Importing via alias path
@@ -94,6 +132,8 @@ Importing via alias path
 ```js
 import { isValidURL } from '@atlas/utils/validate';
 ```
+
+------------------------------------------------
 
 ### 👉 isValidURL
 
@@ -104,6 +144,8 @@ isValidURL('https://example.com') // true
 isValidURL('www.example.com') // false
 ```
 
+------------------------------------------------
+
 ### 👉 isNumeric
 
 `isNumeric(value)`
@@ -113,6 +155,8 @@ isNumeric(5) // true
 isNumeric('5') // true
 isNumeric('test') // false
 ```
+
+------------------------------------------------
 
 ### 👉 isEmpty
 

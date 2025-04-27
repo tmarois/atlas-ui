@@ -1,4 +1,13 @@
-const { formatNumber, formatToCurrency, formatToDate, formatToDatetime, formatToSlug, formatToValidURL } = require('@/utils');
+const {
+    formatNumber,
+    formatToCurrency,
+    formatToDate,
+    formatToDatetime,
+    formatToSlug,
+    formatToValidURL,
+    formatPercentage,
+    formatBytes
+} = require('@/utils');
 
 
 describe('formatNumber', () => {
@@ -100,5 +109,44 @@ describe('formatToValidURL', () => {
         expect(formatToValidURL('')).toBe('');
         expect(formatToValidURL(null)).toBe('');
         expect(formatToValidURL(undefined)).toBe('');
+    });
+});
+
+describe('formatPercentage', () => {
+    it('formats decimal values to percentage without decimals', () => {
+        expect(formatPercentage(0.25)).toBe('25%');
+        expect(formatPercentage(1)).toBe('100%');
+        expect(formatPercentage(0)).toBe('0%');
+    });
+
+    it('formats decimal values to percentage with decimals', () => {
+        expect(formatPercentage(0.2567, 2)).toBe('25.67%');
+        expect(formatPercentage(0.1, 1)).toBe('10.0%');
+    });
+
+    it('returns empty string for non-numeric input', () => {
+        expect(formatPercentage('invalid')).toBe('');
+        expect(formatPercentage(null)).toBe('');
+        expect(formatPercentage(undefined)).toBe('');
+    });
+});
+
+describe('formatBytes', () => {
+    it('formats bytes to KB, MB, GB correctly', () => {
+        expect(formatBytes(1024)).toBe('1.00 KB');
+        expect(formatBytes(1048576)).toBe('1.00 MB');
+        expect(formatBytes(1073741824)).toBe('1.00 GB');
+        expect(formatBytes(1099511627776)).toBe('1.00 TB');
+    });
+
+    it('formats bytes with custom decimal precision', () => {
+        expect(formatBytes(1500, 1)).toBe('1.5 KB');
+        expect(formatBytes(10485760, 3)).toBe('10.000 MB');
+    });
+
+    it('returns empty string for invalid inputs', () => {
+        expect(formatBytes('invalid')).toBe('');
+        expect(formatBytes(null)).toBe('');
+        expect(formatBytes(undefined)).toBe('');
     });
 });

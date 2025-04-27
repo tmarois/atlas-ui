@@ -28,6 +28,33 @@ export const formatToCurrency = (n, decimals = 2, currency = 'USD', invalid = 'I
 };
 
 /**
+ * Formats a decimal value into a percentage string
+ * @param {Number} value
+ * @param {Number} decimals
+ * @returns {String}
+ */
+export const formatPercentage = (value, decimals = 0) => {
+    if (value === null || value === undefined || isNaN(value)) return '';
+    return `${(value * 100).toFixed(decimals)}%`;
+};
+
+/**
+ * Converts a byte value into a human-readable size (KB, MB, GB, etc.)
+ * @param {Number} bytes
+ * @param {Number} decimals
+ * @returns {String}
+ */
+export const formatBytes = (bytes, decimals = 2) => {
+    if (typeof bytes !== 'number' || isNaN(bytes)) return '';
+    if (bytes === 0) return '0 Bytes';
+
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return (bytes / Math.pow(k, i)).toFixed(decimals) + ' ' + sizes[i];
+};
+
+/**
  * Format a UTC timestamp into user's timezone (only date)
  * @param {String} utcDatetime
  * @param {String} userTimezone
