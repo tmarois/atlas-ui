@@ -22,7 +22,7 @@ openModal('modal-key', { name: 'Custom Name' })
 modalData.value.name
 ```
 
-## 📦 Utilities (format)
+## ✅ Format (Utils)
 
 Importing via alias path
 
@@ -125,7 +125,7 @@ formatToValidURL('HTTPS://example.com'); // "https://example.com"
 
 ------------------------------------------------
 
-## 📦 Utilities (validate)
+## ✅ Validate (Utils)
 
 Importing via alias path
 
