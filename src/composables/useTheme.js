@@ -1,9 +1,10 @@
 import { ref, computed, onMounted } from 'vue';
 
+const auto = ref(false);
+const dark = ref(false);
+const isDark = computed(() => dark.value);
+
 export function useTheme() {
-    const auto = ref(false);
-    const dark = ref(false);
-    const isDark = computed(() => dark.value);
 
     const checkSystemTheme = () => {
         if (typeof window === 'undefined') return false;
