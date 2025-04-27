@@ -49,7 +49,7 @@ formatToCurrency(1000000) // "$1,000,000.00"
 formatToCurrency(1000000,0) // "$1,000,000"
 formatToCurrency(1020.2) // "$1,020.20"
 
-formatToCurrency(5000, 0, 'EUR'); // "€5,000"
+formatToCurrency(5000, 0, 'EUR'); // "€5,000" 
 ```
 
 ### formatToDate
