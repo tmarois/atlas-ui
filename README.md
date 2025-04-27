@@ -1,6 +1,6 @@
 # Atlas
 
-## Composables
+## 🗄️ Composables
 
 ### useModal
 
