@@ -30,7 +30,7 @@ Importing via alias path
 import { formatNumber } from '@atlas/utils/format';
 ```
 
-### formatNumber
+### 👉 formatNumber
 
 `formatNumber(n, decimals = 0)`
 
@@ -40,7 +40,7 @@ formatNumber(1020.2, 2) // "1,020.20"
 formatNumber(10000.4567, 2); // "10,000.46"
 ```
 
-### formatToCurrency
+### 👉 formatToCurrency
 
 `formatToCurrency(n, decimals = 2, currency = 'USD', invalid = 'Invalid')`
 
@@ -52,7 +52,7 @@ formatToCurrency(1020.2) // "$1,020.20"
 formatToCurrency(5000, 0, 'EUR'); // "€5,000" 
 ```
 
-### formatToDate
+### 👉 formatToDate
 
 `formatToDate(utcDatetime, userTimezone = 'America/New_York', locale = 'en-US')`
 
@@ -60,7 +60,7 @@ formatToCurrency(5000, 0, 'EUR'); // "€5,000"
 formatToDate('2024-05-01T14:30:00'); // "5/1/2024"
 ```
 
-### formatToDatetime
+### 👉 formatToDatetime
 
 `formatToDatetime(utcDatetime, userTimezone = 'America/New_York', locale = 'en-US')`
 
@@ -68,7 +68,7 @@ formatToDate('2024-05-01T14:30:00'); // "5/1/2024"
 formatToDatetime('2024-05-01T14:30:00'); // "5/1/2024, 10:30 AM"
 ```
 
-### formatToSlug
+### 👉 formatToSlug
 
 `formatToSlug(str)`
 
@@ -76,7 +76,7 @@ formatToDatetime('2024-05-01T14:30:00'); // "5/1/2024, 10:30 AM"
 formatToSlug('Hello    World!!') // "hello-world"
 ```
 
-### formatToValidURL
+### 👉 formatToValidURL
 
 `formatToValidURL(url, https = false)`
 
