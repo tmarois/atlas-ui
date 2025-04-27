@@ -42,7 +42,7 @@ export const formatToDate = (utcDatetime, userTimezone = 'America/New_York', loc
 };
 
 /**
- * Format a UTC timestamp into user's timezone (date and time)
+ * Format a UTC timestamp into user's timezone (date and time, no seconds)
  * @param {String} utcDatetime
  * @param {String} userTimezone
  * @param {String} locale
@@ -52,7 +52,15 @@ export const formatToDatetime = (utcDatetime, userTimezone = 'America/New_York',
     if (!utcDatetime) return '';
     const utcDate = new Date(utcDatetime.endsWith('Z') ? utcDatetime : `${utcDatetime}Z`);
     if (isNaN(utcDate)) return 'Invalid date';
-    return utcDate.toLocaleString(locale, { timeZone: userTimezone });
+    return utcDate.toLocaleString(locale, {
+        timeZone: userTimezone,
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+    });
 };
 
 /**

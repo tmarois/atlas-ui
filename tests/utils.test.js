@@ -51,7 +51,9 @@ describe('formatToDate', () => {
 
 describe('formatToDatetime', () => {
     it('formats UTC datetime to date and time string in user timezone', () => {
-        expect(formatToDatetime('2024-05-01T14:30:00Z', 'America/New_York')).toContain('5/1/2024');
+        const result = formatToDatetime('2024-05-01T08:30:00Z', 'America/New_York');
+        expect(result).toContain('5/1/2024');
+        expect(result).toMatch(/4:30\s?AM/);
     });
 
     it('returns empty string for empty input', () => {
