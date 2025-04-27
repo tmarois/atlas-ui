@@ -1,5 +1,11 @@
 # 🪐 Atlas
 
+## Install
+
+```bash
+npm install github:tmarois/atlas-ui#semver:^1.0
+```
+
 ## 💾 Composables
 
 ### useModal
