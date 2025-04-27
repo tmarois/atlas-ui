@@ -1,4 +1,4 @@
-# Atlas
+# 🪐 Atlas
 
 ## 💾 Composables
 
@@ -18,7 +18,7 @@ isModal.value = true // or false
 // OR open and set props for global state
 openModal('modal-key', { name: 'Custom Name' })
 
-// access the modalProps 
+// access the modalData 
 modalData.value.name
 ```
 
