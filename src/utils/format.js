@@ -54,3 +54,37 @@ export const formatToDatetime = (utcDatetime, userTimezone = 'America/New_York',
     if (isNaN(utcDate)) return 'Invalid date';
     return utcDate.toLocaleString(locale, { timeZone: userTimezone });
 };
+
+/**
+ * Creates a safe slug for URL
+ * @param { String } str
+ * @returns a formatted string
+ */
+export const formatToSlug = (str) => {
+    return str
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-') // Allow only alphanumerics, replace everything else
+      .replace(/-+/g, '-') // Collapse multiple hyphens into one
+      .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+};
+
+/**
+ * Formats a string and ensures its a valid URL
+ * @param { String } url
+ * @param { Boolean } https - Force https protocol (default: false)
+ * @returns formatted URL string
+ */
+export const formatToValidURL = (url, https = false) => {
+    if (!url) return '';
+    url = url.trim().toLowerCase();
+
+    if (/^https?:\/\//.test(url)) {
+        if (https && url.startsWith('http://')) {
+            url = url.replace(/^http:\/\//, 'https://');
+        }
+    } else {
+        url = (https ? 'https://' : 'http://') + url;
+    }
+
+    return url;
+}

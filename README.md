@@ -5,6 +5,7 @@
 ### useModal
 
 ```js
+// Importing via alias path
 import { useModal } from '@atlas/composables';
 
 const { openModal, closeModal, modalActiveState, modalData } = useModal()
@@ -22,6 +23,12 @@ modalData.value.name
 ```
 
 ## 📦 Utilities
+
+Importing via alias path
+
+```js
+import { formatNumber } from '@atlas/utils/format';
+```
 
 ### formatNumber
 
@@ -59,4 +66,23 @@ formatToDate('2024-05-01T14:30:00'); // "5/1/2024"
 
 ```js
 formatToDatetime('2024-05-01T14:30:00'); // "5/1/2024, 10:30 AM"
+```
+
+### formatToSlug
+
+`formatToSlug(str)`
+
+```js
+formatToSlug('Hello    World!!') // "hello-world"
+```
+
+### formatToValidURL
+
+`formatToValidURL(url, https = false)`
+
+```js
+formatToValidURL('example.com'); // "https://example.com"
+formatToValidURL(' http://example.com'); // "http://example.com"
+formatToValidURL('http://example.com', true); // "https://example.com"
+formatToValidURL('HTTPS://example.com'); // "https://example.com"
 ```
