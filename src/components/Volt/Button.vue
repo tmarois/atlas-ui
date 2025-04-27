@@ -49,7 +49,7 @@ const theme = ref<ButtonPassThroughOptions>({
     loadingIcon: `animate-spin`,
     icon: `p-right:order-1 p-bottom:order-2`,
     label: `
-            font-medium p-icon-only:invisible p-icon-only:w-0
+            font-semibold p-icon-only:invisible p-icon-only:w-0
             p-small:text-sm
             p-large:text-base p-large:font-bold
         `,
