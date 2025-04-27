@@ -104,11 +104,22 @@ isValidURL('https://example.com') // true
 isValidURL('www.example.com') // false
 ```
 
-### 👉 isValidEmail
+### 👉 isNumeric
 
-`isValidEmail(str)`
+`isNumeric(value)`
 
 ```js
-isValidEmail('test@example.com') // true
-isValidEmail('plainaddress.com') // false
+isNumeric(5) // true
+isNumeric('5') // true
+isNumeric('test') // false
+```
+
+### 👉 isEmpty
+
+`isEmpty(value)`
+
+```js
+isEmpty(null) // true
+isEmpty([]) // true
+isEmpty([1, 2, 3]) // false
 ```

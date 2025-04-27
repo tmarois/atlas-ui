@@ -22,3 +22,24 @@ export const isValidEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
 };
+
+/**
+ * Checks if the given value is a number (integer or float)
+ * @param {String|Number} value
+ * @returns {Boolean}
+ */
+export const isNumeric = (value) => {
+    return !isNaN(value) && !isNaN(parseFloat(value));
+};
+
+/**
+ * Checks if a string, array, or object is empty
+ * @param {String|Array|Object|null|undefined} value
+ * @returns {Boolean}
+ */
+export const isEmpty = (value) => {
+    if (value == null) return true;
+    if (typeof value === 'string' || Array.isArray(value)) return value.length === 0;
+    if (typeof value === 'object') return Object.keys(value).length === 0;
+    return false;
+};
