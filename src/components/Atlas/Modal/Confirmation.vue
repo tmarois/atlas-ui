@@ -35,8 +35,6 @@
 </template>
 
 <script setup>
-import { defineEmits, defineProps } from 'vue'
-
 const props = defineProps({
     modelValue: {
         type: Boolean,
