@@ -19,19 +19,3 @@ openModal('modal-key', { name: 'Custom Name' })
 modalProps.value.name
 
 ```
-
-
-## usePageProp
-
-```js
-// computed reactive user from inertia page props
-const user = usePageProp('user')
-
-// dot notation if you need to access deep variables
-const userName = usePageProp('user.name')
-
-// page url
-const url = usePageProp('page.url');
-
-```
-
