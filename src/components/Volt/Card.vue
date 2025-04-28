@@ -21,14 +21,15 @@ interface Props extends /* @vue-ignore */ CardProps {}
 defineProps<Props>();
 
 const theme = ref<CardPassThroughOptions>({
-    root: `flex flex-col rounded-xl
-        bg-surface-0 dark:bg-surface-900 
+    root: `flex flex-col rounded
+        bg-surface-0 dark:bg-surface-900
         text-surface-700 dark:text-surface-0
-        shadow-md`,
+        border border-surface-200 dark:border-surface-700
+        shadow-sm`,
     header: ``,
-    body: `p-5 flex flex-col gap-2`,
+    body: `p-6 flex flex-col space-y-4`,
     caption: `flex flex-col gap-2`,
-    title: `font-medium text-xl`,
+    title: `font-semibold text-lg`,
     subtitle: `text-surface-500 dark:text-surface-400`,
     content: ``,
     footer: ``

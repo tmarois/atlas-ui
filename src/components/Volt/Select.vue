@@ -37,7 +37,7 @@ interface Props extends /* @vue-ignore */ SelectProps {}
 defineProps<Props>();
 
 const theme = ref<SelectPassThroughOptions>({
-    root: `inline-flex cursor-pointer relative select-none rounded-md p-fluid:flex
+    root: `inline-flex cursor-pointer relative select-none rounded p-fluid:flex
         bg-surface-0 dark:bg-surface-950
         border border-surface-300 hover:border-surface-400 dark:border-surface-700 dark:hover:border-surface-600
         p-focus:border-primary
@@ -47,7 +47,7 @@ const theme = ref<SelectPassThroughOptions>({
         shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]
         transition-colors duration-200`,
     label: `block whitespace-nowrap overflow-hidden flex-auto w-[1%]
-        py-2 px-3 overflow-ellipsis 
+        py-2 px-3 overflow-ellipsis
         p-clearable:pe-7 p-empty:overflow-hidden p-empty:opacity-0 p-editable:cursor-default
         text-surface-700 dark:text-surface-0 bg-transparent border-none outline-none
         p-placeholder:text-surface-500 dark:p-placeholder:text-surface-400
@@ -55,7 +55,7 @@ const theme = ref<SelectPassThroughOptions>({
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
         p-large:text-lg p-large:px-[0.875rem] p-large:py-[0.625rem]`,
     dropdown: `flex items-center justify-center shrink-0 bg-transparent
-        text-surface-400 w-10 rounded-e-md`,
+        text-surface-400 w-10 rounded-e`,
     overlay: `absolute top-0 left-0 rounded-md p-portal-self:min-w-full
         bg-surface-0 dark:bg-surface-900
         border border-surface-200 dark:border-surface-700

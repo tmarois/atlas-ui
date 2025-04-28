@@ -17,7 +17,7 @@ interface Props extends /* @vue-ignore */ InputMaskProps {}
 defineProps<Props>();
 
 const theme = ref<InputMaskPassThroughOptions>({
-    root: `appearance-none rounded-md outline-hidden
+    root: `appearance-none rounded outline-hidden
         bg-surface-0 dark:bg-surface-950
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
         text-surface-700 dark:text-surface-0
