@@ -35,10 +35,10 @@ const theme = ref<ToastPassThroughOptions>({
         p-error:bg-red-50/95 p-error:border-red-200 p-error:text-red-600 dark:p-error:bg-red-500/15 dark:p-error:border-red-700/35 dark:p-error:text-red-500
         p-secondary:bg-surface-100 p-secondary:border-surface-200 p-secondary:text-surface-600 dark:p-secondary:bg-surface-800 dark:p-secondary:border-surface-700 dark:p-secondary:text-surface-300
         p-contrast:bg-surface-900 p-contrast:border-surface-950 p-contrast:text-surface-50 dark:p-contrast:bg-surface-0 dark:p-contrast:border-surface-100 dark:p-contrast:text-surface-950 !border-0 !text-white !bg-slate-800`,
-    messageContent: `flex items-center py-2 px-4 gap-2`,
+    messageContent: `flex items-center py-4 px-6 gap-2`,
     messageIcon: `flex-shrink-0 text-lg w-[1.125rem] h-[1.125rem] mt-1 hidden`,
     messageText: `flex-auto flex flex-col gap-4`,
-    summary: `font-medium text-sm`,
+    summary: `font-medium text-base`,
     detail: `font-medium text-sm text-surface-700 dark:text-surface-0
         p-contrast:text-surface-0 dark:p-contrast:text-surface-950`,
     buttonContainer: ``,

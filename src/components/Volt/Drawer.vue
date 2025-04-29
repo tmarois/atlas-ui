@@ -30,11 +30,10 @@ interface Props extends /* @vue-ignore */ DrawerProps {}
 defineProps<Props>();
 
 const theme = ref<DrawerPassThroughOptions>({
-    root: `flex flex-col pointer-events-auto relative
+    root: `atlas_drawer_shadow flex flex-col pointer-events-auto relative
         border-surface-200 dark:border-surface-700
         bg-surface-0 dark:bg-surface-900
-        text-surface-700 dark:text-surface-0 
-        shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)]
+        text-surface-700 dark:text-surface-0
         p-left:w-80 p-left:h-full p-left:border-r
         p-right:w-80 p-right:h-full p-right:border-s
         p-top:h-40 p-top:w-full p-top:border-b
@@ -44,7 +43,7 @@ const theme = ref<DrawerPassThroughOptions>({
     title: `font-semibold text-2xl`,
     content: `overflow-y-auto flex-grow pt-0 pb-5 px-5`,
     footer: `p-5`,
-    mask: `p-modal:bg-black/50`,
+    mask: `p-modal:bg-black/30`,
     transition: {
         enterFromClass: `p-left:-translate-x-full p-right:translate-x-full p-top:-translate-y-full p-bottom:translate-y-full p-full-screen:opacity-0`,
         enterActiveClass: `transition-transform duration-400 ease-out p-full-screen:transition-opacity`,
@@ -53,3 +52,9 @@ const theme = ref<DrawerPassThroughOptions>({
     }
 });
 </script>
+
+<style>
+.atlas_drawer_shadow {
+    box-shadow: 0 8px 10px -5px rgba(0, 0, 0, .2), 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12) !important;
+}
+</style>
