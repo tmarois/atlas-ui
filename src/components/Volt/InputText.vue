@@ -17,10 +17,10 @@ interface Props extends /* @vue-ignore */ InputTextProps {}
 defineProps<Props>();
 
 const theme = ref<InputTextPassThroughOptions>({
-    root: `appearance-none rounded outline-hidden
+    root: `appearance-none rounded-md outline-hidden
         bg-surface-0 dark:bg-surface-950
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
-        text-surface-700 dark:text-surface-0
+        text-surface-900 dark:text-surface-0
         placeholder:text-surface-500 dark:placeholder:text-surface-400
         border border-surface-300 dark:border-surface-700
         enabled:hover:border-surface-400 dark:enabled:hover:border-surface-600

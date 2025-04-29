@@ -21,7 +21,7 @@ interface Props extends /* @vue-ignore */ ButtonGroupProps {}
 defineProps<Props>();
 
 const theme = ref<ButtonGroupPassThroughOptions>({
-    root: `*:rounded-none *:first:rounded-s *:last:rounded-e
+    root: `*:rounded-none *:first:rounded-s-md *:last:rounded-e-md
         *:focus-visible:relative *:focus-visible:z-10 *:not-last:border-r-0`
 });
 </script>

@@ -15,8 +15,14 @@
         <template #filtericon>
             <SearchIcon class="text-surface-400" />
         </template>
-        <template #clearicon>
-            <TimesIcon class="text-surface-400 absolute top-1/2 -mt-2 end-10" />
+        <template #clearicon="{ clearCallback }">
+            <button
+                type="button"
+                @click="clearCallback"
+                class="text-surface-400 dark:text-surface-300 hover:text-surface-500 absolute top-1/2 -mt-2 end-10 cursor-pointer"
+            >
+                <TimesIcon class="w-4 h-4" />
+            </button>
         </template>
         <template v-for="(_, slotName) in $slots" v-slot:[slotName]="slotProps">
             <slot :name="slotName" v-bind="slotProps ?? {}" />
@@ -37,7 +43,7 @@ interface Props extends /* @vue-ignore */ SelectProps {}
 defineProps<Props>();
 
 const theme = ref<SelectPassThroughOptions>({
-    root: `inline-flex cursor-pointer relative select-none rounded p-fluid:flex
+    root: `inline-flex cursor-pointer relative select-none rounded-md p-fluid:flex
         bg-surface-0 dark:bg-surface-950
         border border-surface-300 hover:border-surface-400 dark:border-surface-700 dark:hover:border-surface-600
         p-focus:border-primary
@@ -47,7 +53,7 @@ const theme = ref<SelectPassThroughOptions>({
         shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]
         transition-colors duration-200`,
     label: `block whitespace-nowrap overflow-hidden flex-auto w-[1%]
-        py-2 px-3 overflow-ellipsis
+        px-3 py-2.5 overflow-ellipsis
         p-clearable:pe-7 p-empty:overflow-hidden p-empty:opacity-0 p-editable:cursor-default
         text-surface-700 dark:text-surface-0 bg-transparent border-none outline-none
         p-placeholder:text-surface-500 dark:p-placeholder:text-surface-400
@@ -87,8 +93,8 @@ const theme = ref<SelectPassThroughOptions>({
     optionGroupLabel: ``,
     option: `cursor-pointer font-normal whitespace-nowrap relative overflow-hidden flex items-center
         px-3 py-2 border-none text-surface-700 dark:text-surface-0 bg-transparent rounded-sm
-        p-focus:bg-surface-100 dark:p-focus:bg-surface-800 p-focus:text-surface-800 dark:p-focus:text-surface-0
-        p-selected:bg-highlight p-focus:p-selected:bg-highlight-emphasis
+        p-focus:bg-surface-200 dark:p-focus:bg-surface-800 p-focus:text-surface-800 dark:p-focus:text-surface-0
+        p-selected:bg-primary-100 p-focus:p-selected:bg-primary-100
         transition-colors duration-200`,
     optionLabel: ``,
     optionCheckIcon: `relative -ms-[0.375rem] me-[0.375rem] text-surface-700 dark:text-surface-0`,
