@@ -18,7 +18,7 @@
         <template #clearicon="{ clearCallback }">
             <button
                 type="button"
-                @click="clearCallback"
+                @click.prevent.stop="clearCallback"
                 class="text-surface-400 dark:text-surface-300 hover:text-surface-500 absolute top-1/2 -mt-2 end-10 cursor-pointer"
             >
                 <TimesIcon class="w-4 h-4" />
