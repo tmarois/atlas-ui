@@ -1,35 +1,47 @@
-import { ref, computed } from 'vue'
+import { reactive, computed } from 'vue'
 
-const modalName = ref(null)
-const modalData = ref(null)
+const modals = reactive(new Map())
 
 export function useModal() {
     const openModal = (name, data = null) => {
-        modalName.value = name
-        modalData.value = data
+        modals.set(name, { open: true, data })
     }
 
-    const closeModal = () => {
-        modalName.value = null
-        modalData.value = null
+    const closeModal = (name) => {
+        if (modals.has(name)) {
+            modals.set(name, { ...modals.get(name), open: false })
+        }
+    }
+
+    const closeAllModals = () => {
+        for (const [name, modal] of modals.entries()) {
+            modals.set(name, { ...modal, open: false })
+        }
     }
 
     const modalActiveState = (name) => computed({
-        get: () => modalName.value === name,
+        get: () => modals.get(name)?.open === true,
         set: (value) => {
             if (value) openModal(name)
-            else if (modalName.value === name) closeModal()
+            else closeModal(name)
         }
     })
 
-    const isModalOpen = computed(() => modalName.value !== null)
+    const getModalData = (name) => computed(() => modals.get(name)?.data || null)
+
+    const isAnyModalOpen = computed(() => {
+        for (const modal of modals.values()) {
+            if (modal.open) return true
+        }
+        return false
+    })
 
     return {
-        modalName,
-        modalData,
         openModal,
         closeModal,
+        closeAllModals,
         modalActiveState,
-        isModalOpen,
+        getModalData,
+        isAnyModalOpen,
     }
 }

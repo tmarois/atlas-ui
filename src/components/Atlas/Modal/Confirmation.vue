@@ -5,7 +5,7 @@
         :header="title"
         :style="{ width: '25rem' }"
         :dissmissible="false"
-        :draggable="false"
+        :dismissable-mask="false"
         @update:visible="close"
     >
         <div class="relative text-center flex flex-col space-y-6">
