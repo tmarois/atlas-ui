@@ -14,18 +14,31 @@ npm install github:tmarois/atlas-ui#semver:^1.0
 // Importing via alias path
 import { useModal } from '@atlas/composables';
 
-const { openModal, closeModal, modalActiveState, modalData } = useModal()
+// ------------------------------------
 
-const isModal = modalActiveState('modal-key')
+const { open, close, activeState, data } = useModal();
 
-// open and close based on reactive bool
-isModal.value = true // or false
+const isModal = activeState('modal-key');
 
-// OR open and set props for global state
-openModal('modal-key', { name: 'Custom Name' })
+// Open or close modal reactively
+isModal.value = true;  // open
+isModal.value = false; // close
 
-// access the modalData 
-modalData.value.name
+// OR open and attach props/data
+open('modal-key', { name: 'Custom Name' });
+
+// Access the modal data reactively
+data('modal-key').value.name;
+
+// ------------------------------------
+
+onOpen('modal-key', (data) => {
+    console.log('Modal opened with data:', data);
+});
+
+onClose('modal-key', (data) => {
+    console.log('Modal closed. Last data was:', data);
+});
 ```
 
 ## ✅ Format (Utils)
