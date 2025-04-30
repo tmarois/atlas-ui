@@ -9,31 +9,31 @@
     >
         <template #paginatorcontainer="{ page, pageCount, pageLinks, changePageCallback, firstPageCallback, lastPageCallback, prevPageCallback, nextPageCallback }">
             <div class="flex flex-wrap gap-2 items-center justify-center">
-                <SecondaryButton text rounded @click="firstPageCallback" :disabled="page === 0">
+                <Button text rounded size="small" @click="firstPageCallback" :disabled="page === 0">
                     <template #icon>
                         <AngleDoubleLeftIcon />
                     </template>
-                </SecondaryButton>
-                <SecondaryButton text rounded @click="prevPageCallback" :disabled="page === 0">
+                </Button>
+                <Button text rounded size="small" @click="prevPageCallback" :disabled="page === 0">
                     <template #icon>
                         <AngleLeftIcon />
                     </template>
-                </SecondaryButton>
+                </Button>
                 <div class="items-center justify-center gap-2 hidden sm:flex">
-                    <SecondaryButton v-for="pageLink of pageLinks" :key="pageLink" :text="page + 1 !== pageLink" rounded @click="() => changePageCallback(pageLink - 1)" :class="['shrink-0 min-w-10 h-10', { 'bg-highlight!': page + 1 === pageLink }]"
+                    <Button outlined v-for="pageLink of pageLinks" :key="pageLink" :text="page + 1 !== pageLink" rounded size="small" @click="() => changePageCallback(pageLink - 1)" :class="['shrink-0 min-w-10 h-10']"
                         >{{ pageLink }}
-                    </SecondaryButton>
+                    </Button>
                 </div>
-                <SecondaryButton text rounded @click="nextPageCallback" :disabled="page === pageCount! - 1">
+                <Button text rounded size="small" @click="nextPageCallback" :disabled="page === pageCount! - 1">
                     <template #icon>
                         <AngleRightIcon />
                     </template>
-                </SecondaryButton>
-                <SecondaryButton text rounded @click="lastPageCallback" :disabled="page === pageCount! - 1">
+                </Button>
+                <Button text rounded size="small" @click="lastPageCallback" :disabled="page === pageCount! - 1">
                     <template #icon>
                         <AngleDoubleRightIcon />
                     </template>
-                </SecondaryButton>
+                </Button>
             </div>
         </template>
         <template #loadingicon>
@@ -53,14 +53,14 @@ import AngleRightIcon from '@primevue/icons/angleright';
 import SpinnerIcon from '@primevue/icons/spinner';
 import DataTable, { type DataTablePassThroughOptions, type DataTableProps } from 'primevue/datatable';
 import { ref } from 'vue';
-import SecondaryButton from './SecondaryButton.vue';
+import Button from './Button.vue';
 import { ptViewMerge } from './utils';
 
 interface Props extends /* @vue-ignore */ DataTableProps {}
 defineProps<Props>();
 
 const theme = ref<DataTablePassThroughOptions>({
-    root: `relative p-flex-scrollable:flex p-flex-scrollable:flex-col p-flex-scrollable:h-full`,
+    root: `relative p-flex-scrollable:flex p-flex-scrollable:flex-col p-flex-scrollable:h-full text-sm`,
     tableContainer: `p-scrollable:relative p-flex-scrollable:flex p-flex-scrollable:flex-col p-flex-scrollable:flex-1 p-flex-scrollable:h-full`,
     header: `py-3 px-4 border-b border-surface-200 dark:border-surface-700
         bg-surface-0 dark:bg-surface-900
@@ -69,7 +69,7 @@ const theme = ref<DataTablePassThroughOptions>({
     thead: `p-scrollable:bg-surface-0 dark:p-scrollable:bg-surface-900 p-scrollable:top-0 p-scrollable:z-10`,
     tbody: `p-hoverable:*:hover:bg-surface-100 p-hoverable:*:hover:text-surface-800 dark:p-hoverable:*:hover:bg-surface-800 dark:p-hoverable:*:hover:text-surface-0
         p-frozen:sticky p-frozen:z-10`,
-    bodyRow: `bg-surface-0 dark:bg-surface-900 text-surface-700 dark:text-surface-0 p-selectable:cursor-pointer p-selected:bg-highlight!`,
+    bodyRow: `bg-surface-0 dark:bg-surface-900 text-surface-700 dark:text-surface-0 p-selectable:cursor-pointer p-selected:bg-highlight! hover:bg-surface-100 dark:hover:bg-surface-800`,
     tfoot: `p-scrollable:bg-surface-0 dark:p-scrollable:bg-surface-900 p-scrollable:bottom-0 p-scrollable:z-10`,
     footer: `py-3 px-4 border-b border-surface-200 dark:border-surface-700
         bg-surface-0 dark:bg-surface-900
@@ -77,19 +77,19 @@ const theme = ref<DataTablePassThroughOptions>({
     mask: `bg-black/50 text-surface-200 absolute z-10 flex items-center justify-center w-full h-full backdrop-blu-`,
     column: {
         root: ``,
-        headerCell: `group py-3 px-4 font-normal text-start transition-colors duration-200
+        headerCell: `group py-2 px-3 font-normal text-start transition-colors duration-200
             border-b border-surface-200 dark:border-surface-700
-            bg-surface-0 dark:bg-surface-900
+            bg-surface-50 dark:bg-surface-900
             text-surface-700 dark:text-surface-0
             p-sortable:cursor-pointer p-sortable:select-none p-sortable:focus-visible:outline p-sortable:focus-visible:outline-1 p-sortable:focus-visible:-outline-offset-1 p-sortable:focus-visible:outline-primary
-            p-sortable:not-p-sorted:hover:bg-surface-100 p-sortable:not-p-sorted:hover:text-surface-800 
+            p-sortable:not-p-sorted:hover:bg-surface-100 p-sortable:not-p-sorted:hover:text-surface-800
             dark:p-sortable:not-p-sorted:hover:bg-surface-800 dark:p-sortable:not-p-sorted:hover:text-surface-0
-            p-sorted:bg-highlight
+            p-sorted:bg-highlight first:pl-6 last:pr-6
             p-frozen:sticky p-frozen:bg-surface-0 dark:p-frozen:bg-surface-900 p-frozen:z-10
         `,
         columnHeaderContent: `flex items-center gap-2`,
         columnTitle: `font-semibold`,
-        bodyCell: `text-start py-3 px-4 border-b border-surface-200 dark:border-surface-800
+        bodyCell: `text-start py-2 px-3 first:pl-6 last:pr-6 border-b border-surface-200 dark:border-surface-800
             p-frozen:sticky p-frozen:bg-surface-0 dark:p-frozen:bg-surface-900`,
         bodyCellContent: ``,
         footerCell: `text-start py-3 px-4 border-b border-surface-200 dark:border-surface-800
@@ -107,7 +107,7 @@ const theme = ref<DataTablePassThroughOptions>({
         },
         pcHeaderCheckbox: {
             root: `relative inline-flex select-none w-5 h-5 align-bottom`,
-            input: `peer cursor-pointer disabled:cursor-default appearance-none 
+            input: `peer cursor-pointer disabled:cursor-default appearance-none
                 absolute start-0 top-0 w-full h-full m-0 p-0 opacity-0 z-10
                 border border-transparent rounded-xs`,
             box: `flex justify-center items-center rounded-sm w-5 h-5
@@ -117,7 +117,7 @@ const theme = ref<DataTablePassThroughOptions>({
                 peer-enabled:peer-hover:border-surface-400 dark:peer-enabled:peer-hover:border-surface-600
                 p-checked:border-primary p-checked:bg-primary p-checked:text-primary-contrast
                 peer-enabled:peer-hover:p-checked:bg-primary-emphasis peer-enabled:peer-hover:p-checked:border-primary-emphasis
-                peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary peer-focus-visible:outline 
+                peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary peer-focus-visible:outline
                 p-disabled:bg-surface-200 dark:p-disabled:bg-surface-400 p-disabled:border-surface-300 dark:p-disabled:border-surface-700 p-disabled:text-surface-700 dark:p-disabled:text-surface-400
                 shadow-[0_1px_2px_0_rgba(18,18,23,0.05)] transition-colors duration-200`,
             icon: `text-sm w-[0.875rem] h-[0.875rem] transition-none`
@@ -132,7 +132,7 @@ const theme = ref<DataTablePassThroughOptions>({
                 peer-enabled:peer-hover:border-surface-400 dark:peer-enabled:peer-hover:border-surface-600
                 p-checked:border-primary p-checked:bg-primary
                 peer-enabled:peer-hover:p-checked:bg-primary-emphasis peer-enabled:peer-hover:p-checked:border-primary-emphasis
-                peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary peer-focus-visible:outline 
+                peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary peer-focus-visible:outline
                 p-filled:bg-surface-50 dark:p-filled:bg-surface-800
                 p-invalid:border-red-400 dark:p-invalid:border-red-300
                 p-disabled:bg-surface-200 dark:p-disabled:bg-surface-400 p-disabled:border-surface-300 dark:p-disabled:border-surface-700
@@ -145,7 +145,7 @@ const theme = ref<DataTablePassThroughOptions>({
         },
         pcRowCheckbox: {
             root: `relative inline-flex select-none w-5 h-5 align-bottom`,
-            input: `peer cursor-pointer disabled:cursor-default appearance-none 
+            input: `peer cursor-pointer disabled:cursor-default appearance-none
                 absolute start-0 top-0 w-full h-full m-0 p-0 opacity-0 z-10
                 border border-transparent rounded-xs`,
             box: `flex justify-center items-center rounded-sm w-5 h-5
@@ -155,7 +155,7 @@ const theme = ref<DataTablePassThroughOptions>({
                 peer-enabled:peer-hover:border-surface-400 dark:peer-enabled:peer-hover:border-surface-600
                 p-checked:border-primary p-checked:bg-primary p-checked:text-primary-contrast
                 peer-enabled:peer-hover:p-checked:bg-primary-emphasis peer-enabled:peer-hover:p-checked:border-primary-emphasis
-                peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary peer-focus-visible:outline 
+                peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary peer-focus-visible:outline
                 p-disabled:bg-surface-200 dark:p-disabled:bg-surface-400 p-disabled:border-surface-300 dark:p-disabled:border-surface-700 p-disabled:text-surface-700 dark:p-disabled:text-surface-400
                 shadow-[0_1px_2px_0_rgba(18,18,23,0.05)] transition-colors duration-200`,
             icon: `text-sm w-[0.875rem] h-[0.875rem] transition-none`
@@ -171,7 +171,7 @@ const theme = ref<DataTablePassThroughOptions>({
     },
     loadingIcon: ``,
     pcPaginator: {
-        paginatorContainer: `p-bottom:border-b border-surface-200 dark:border-surface-700`,
+        paginatorContainer: `p-bottom:border-t border-surface-200 dark:border-surface-700`,
         root: `flex items-center justify-center flex-wrap py-2 px-4 rounded-md gap-1
             bg-surface-0 dark:bg-surface-900 text-surface-700 dark:text-surface-0`
     },
