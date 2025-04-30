@@ -45,7 +45,7 @@ defineProps<Props>();
 const theme = ref<MultiSelectPassThroughOptions>({
     root: `inline-flex cursor-pointer relative select-none rounded-md p-fluid:flex
         bg-surface-0 dark:bg-surface-950
-        border border-surface-300 hover:border-surface-400 dark:border-surface-600 dark:hover:border-surface-700
+        border border-surface-300 hover:border-surface-400 dark:border-surface-600 dark:hover:border-surface-500
         p-focus:border-primary
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
         p-invalid:border-red-400 dark:p-invalid:border-red-300

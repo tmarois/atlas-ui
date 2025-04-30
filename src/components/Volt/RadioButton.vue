@@ -25,9 +25,9 @@ const theme = ref<RadioButtonPassThroughOptions>({
     box: `flex justify-center items-center rounded-full
         border border-surface-300 dark:border-surface-700
         bg-surface-0 dark:bg-surface-950
-        peer-enabled:peer-hover:border-surface-500 dark:peer-enabled:peer-hover:border-surface-600
-        p-checked:border-primary-500
-        peer-enabled:peer-hover:p-checked:bg-primary-200 peer-enabled:peer-hover:p-checked:border-primary-500
+        peer-enabled:peer-hover:border-surface-500 dark:peer-enabled:peer-hover:border-surface-500
+        p-checked:border-primary-600
+        peer-enabled:peer-hover:p-checked:border-primary-500
         peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary peer-focus-visible:outline
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
         p-invalid:border-red-400 dark:p-invalid:border-red-300
