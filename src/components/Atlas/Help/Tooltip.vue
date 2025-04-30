@@ -1,5 +1,5 @@
 <template>
-    <IconHelpCircle
+    <IconInfoSquareRoundedFilled
         v-tooltip.top="{
             value: text,
             pt: {
@@ -7,13 +7,13 @@
                 text: 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-700 rounded whitespace-pre-line'
             }
         }"
-        class="fill-surface-400 stroke-white hover:fill-surface-700 cursor-help inline dark:!fill-surface-300 dark:hover:!fill-surface-400 dark:stroke-surface-900"
+        class="cursor-help inline text-surface-500 dark:text-surface-400 hover:text-surface-800 dark:hover:text-surface-300"
         :class="iconClass"
     />
 </template>
 
 <script setup>
-import { IconHelpCircle } from '@tabler/icons-vue';
+import { IconInfoSquareRoundedFilled } from '@tabler/icons-vue';
 const { text, iconClass } = defineProps({
     text: {
         type: [String, null],
@@ -21,7 +21,7 @@ const { text, iconClass } = defineProps({
     },
     iconClass: {
         type: String,
-        default: 'size-6'
+        default: 'size-5'
     }
 });
 </script>

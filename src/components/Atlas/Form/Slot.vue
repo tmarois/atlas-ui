@@ -7,7 +7,7 @@
         >
             <span>{{ label }}</span>
             <span v-if="required" class="text-red-500">*</span>
-            <HelpTooltip v-if="tooltip" :text="tooltip" />
+            <HelpTooltip v-if="tooltip" :text="tooltip" class="ml-2" />
         </label>
         <div class="w-full">
             <slot />
