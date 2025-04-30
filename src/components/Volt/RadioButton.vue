@@ -39,7 +39,7 @@ const theme = ref<RadioButtonPassThroughOptions>({
     icon: `bg-transparent text-xs w-3 h-3 rounded-full
         transition-all duration-200 backface-hidden scale-[0.1]
         p-checked:bg-primary-500 p-checked:visible p-checked:scale-100
-        p-disabled:bg-surface-700 dark:p-disabled:bg-surface-400
+        p-disabled:bg-surface-500 dark:p-disabled:bg-surface-500
         p-small:w-2 p-small:h-2
         p-large:w-4 p-large:h-4`
 });

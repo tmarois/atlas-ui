@@ -5,10 +5,11 @@
             v-if="label"
             :for="attrs?.inputId"
             :class="[
-                'block text-sm hover:cursor-pointer transition-colors',
+                'block text-sm transition-colors',
+                attrs?.disabled ? 'cursor-default pointer-events-none' : 'cursor-pointer',
                 model === attrs.value
-                    ? 'text-black dark:text-white hover:text-primary-700 dark:hover:text-white'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-white'
+                    ? (attrs?.disabled ? 'text-gray-500 dark:text-gray-400' : 'text-black dark:text-white hover:text-primary-700 dark:hover:text-white')
+                    : (attrs?.disabled ? 'text-gray-400 dark:text-gray-400' : 'text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-white')
             ]"
         >
             {{ label }}
