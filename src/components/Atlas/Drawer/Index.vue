@@ -2,6 +2,7 @@
     <Drawer
         :visible="modelValue"
         position="right"
+        blockScroll
         :style="width ? `width: ${width}; max-width: 100%;` : ''"
         pt:root:class="p-right:lg:w-[60%] p-right:md:w-[80%] p-right:sm:w-[90%] p-right:w-full"
         pt:mask:class="p-modal:bg-black/30"
