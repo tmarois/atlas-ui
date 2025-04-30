@@ -50,7 +50,9 @@ const theme = ref<InputNumberPassThroughOptions>({
         transition-colors duration-200 shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]
         p-horizontal:order-2 p-horizontal:rounded-none
         p-vertical:order-2 p-vertical:rounded-none p-vertical:text-center
-        p-fluid:w-[1%] p-fluid:p-vertical:w-full`
+        p-fluid:w-[1%] p-fluid:p-vertical:w-full
+        disabled:opacity-70
+        `
     },
     buttonGroup: `p-stacked:flex p-stacked:flex-col p-stacked:absolute p-stacked:top-px p-stacked:end-px p-stacked:h-[calc(100%-2px)] p-stacked:z-10`,
     incrementButton: `flex items-center justify-center grow-0 shrink-0 basis-auto cursor-pointer w-10

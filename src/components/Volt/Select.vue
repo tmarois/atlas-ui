@@ -53,7 +53,7 @@ const theme = ref<SelectPassThroughOptions>({
         p-focus:border-primary
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
         p-invalid:border-red-400 dark:p-invalid:border-red-300
-        p-disabled:bg-surface-200 p-disabled:text-surface-500 dark:p-disabled:bg-surface-700 dark:p-disabled:text-surface-400 p-disabled:pointer-events-none
+        p-disabled:bg-surface-200 p-disabled:text-surface-500 dark:p-disabled:bg-surface-700 dark:p-disabled:text-surface-400 p-disabled:pointer-events-none p-disabled:opacity-70
         transition-colors duration-200 shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]`,
     label: `flex items-center px-3 py-[9px]
         leading-[1.25rem]
