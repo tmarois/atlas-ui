@@ -50,24 +50,25 @@ const theme = ref<MultiSelectPassThroughOptions>({
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
         p-invalid:border-red-400 dark:p-invalid:border-red-300
         p-disabled:bg-surface-200 p-disabled:text-surface-500 dark:p-disabled:bg-surface-700 dark:p-disabled:text-surface-400 p-disabled:pointer-events-none
-        shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]
-        transition-colors duration-200`,
+        transition-colors duration-200 shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]`,
     labelContainer: `overflow-hidden flex-auto`,
-    label: `flex items-center gap-1 whitespace-nowrap overflow-hidden text-ellipsis px-3 py-2.5 p-has-chip:py-1 p-has-chip:px-[0.375rem]
-        text-surface-700 dark:text-surface-0
+    label: `flex items-center gap-1 h-full
+        whitespace-nowrap overflow-hidden text-ellipsis px-3 py-[9px]
+        text-surface-700 dark:text-surface-0 leading-[1.25rem]
         p-placeholder:text-surface-500 dark:p-placeholder:text-surface-400
         p-disabled:text-surface-500 dark:p-disabled:text-surface-400
         p-empty:overflow-hidden p-empty:opacity-0
+        p-has-chip:px-1 p-has-chip:py-[4px] p-has-chip:gap-1
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
         p-large:text-lg p-large:px-[0.875rem] p-large:py-[0.625rem]`,
     chipItem: ``,
     pcChip: {
-        root: `inline-flex items-center gap-2 px-3 py-1 rounded-sm
-            bg-surface-100 dark:bg-surface-800
-            text-surface-800 dark:text-surface-0
+        root: `inline-flex items-center gap-2 px-3 py-[5px] rounded-sm
+            bg-primary-400 dark:bg-primary-600
+            text-white dark:text-surface-0
             has-[img]:pt-1 has-[img]:pb-1
             p-removable:pe-2`,
-        removeIcon: `cursor-pointer text-base w-4 h-4 rounded-full text-surface-800 dark:text-surface-0`
+        removeIcon: `cursor-pointer text-base w-4 h-4 rounded-full text-white dark:text-surface-0`
     },
     dropdown: `flex items-center justify-center shrink-0 bg-transparent
         text-surface-400 w-10 rounded-e-md`,

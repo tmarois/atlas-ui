@@ -35,7 +35,7 @@ const theme = ref<CheckboxPassThroughOptions>({
         bg-surface-0 dark:bg-surface-950
         text-surface-700 dark:text-surface-0
         peer-enabled:peer-hover:border-surface-500 dark:peer-enabled:peer-hover:border-surface-600
-        p-checked:border-primary-500 p-checked:bg-primary-500 p-checked:text-primary-contrast
+        p-checked:border-primary-400 p-checked:bg-primary-500 p-checked:text-primary-contrast
         peer-enabled:peer-hover:p-checked:bg-primary-500/70 peer-enabled:peer-hover:p-checked:border-primary-emphasis
         peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary peer-focus-visible:outline
         p-invalid:border-red-400 dark:p-invalid:border-red-300
