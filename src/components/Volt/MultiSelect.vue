@@ -19,7 +19,8 @@
             <button
                 type="button"
                 @click.prevent.stop="clearCallback"
-                class="text-surface-400 dark:text-surface-300 hover:text-surface-500 absolute top-1/2 -mt-2 end-10 cursor-pointer"
+                class="absolute top-1/2 -mt-2 end-10 cursor-pointer"
+                :class="attrs.disabled ? 'text-surface-300 dark:text-surface-700' : 'text-surface-400 dark:text-surface-300 hover:text-surface-500 '"
             >
                 <TimesIcon class="w-4 h-4" />
             </button>
@@ -38,6 +39,8 @@ import TimesIcon from '@primevue/icons/times';
 import MultiSelect, { type MultiSelectPassThroughOptions, type MultiSelectProps } from 'primevue/multiselect';
 import { ref } from 'vue';
 import { ptViewMerge } from './utils';
+
+const attrs = useAttrs();
 
 interface Props extends /* @vue-ignore */ MultiSelectProps {}
 defineProps<Props>();
@@ -60,7 +63,7 @@ const theme = ref<MultiSelectPassThroughOptions>({
         p-empty:overflow-hidden p-empty:opacity-0
         p-has-chip:px-1 p-has-chip:py-[4px] p-has-chip:gap-1
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
-        p-large:text-lg p-large:px-[0.875rem] p-large:py-[0.625rem]`,
+        p-large:text-lg p-large:px-[0.875rem] p-large:py-[0.625rem] p-disabled:opacity-50 p-disabled:pointer-events-none`,
     chipItem: ``,
     pcChip: {
         root: `inline-flex items-center gap-2 px-3 py-[5px] rounded-sm
