@@ -93,7 +93,7 @@ const theme = ref<SelectPassThroughOptions>({
     optionGroupLabel: ``,
     option: `cursor-pointer font-normal whitespace-nowrap relative overflow-hidden flex items-center
         px-3 py-2 border-none text-surface-700 dark:text-surface-0 bg-transparent rounded-sm
-        p-focus:bg-surface-200 dark:p-focus:bg-surface-800 p-focus:text-surface-800 dark:p-focus:text-surface-0
+        p-focus:bg-surface-100 dark:p-focus:bg-surface-800 p-focus:text-surface-800 dark:p-focus:text-surface-0
         p-selected:bg-primary-100 p-focus:p-selected:bg-primary-100
         transition-colors duration-200`,
     optionLabel: ``,

@@ -34,7 +34,7 @@ const theme = ref<ToastPassThroughOptions>({
         p-warn:bg-yellow-50/95 p-warn:border-yellow-200 p-warn:text-yellow-600 dark:p-warn:bg-yellow-500/15 dark:p-warn:border-yellow-700/35 dark:p-warn:text-yellow-500
         p-error:bg-red-50/95 p-error:border-red-200 p-error:text-red-600 dark:p-error:bg-red-500/15 dark:p-error:border-red-700/35 dark:p-error:text-red-500
         p-secondary:bg-surface-100 p-secondary:border-surface-200 p-secondary:text-surface-600 dark:p-secondary:bg-surface-800 dark:p-secondary:border-surface-700 dark:p-secondary:text-surface-300
-        p-contrast:bg-surface-900 p-contrast:border-surface-950 p-contrast:text-surface-50 dark:p-contrast:bg-surface-0 dark:p-contrast:border-surface-100 dark:p-contrast:text-surface-950 !border-0 !text-white !bg-slate-800`,
+        p-contrast:bg-surface-900 p-contrast:border-surface-950 p-contrast:text-surface-50 dark:p-contrast:bg-surface-0 dark:p-contrast:border-surface-100 dark:p-contrast:text-surface-950 !border-0 !text-white !bg-surface-800`,
     messageContent: `flex items-center py-4 px-6 gap-2`,
     messageIcon: `flex-shrink-0 text-lg w-[1.125rem] h-[1.125rem] mt-1 hidden`,
     messageText: `flex-auto flex flex-col gap-4`,

@@ -23,8 +23,8 @@ defineProps<Props>();
 const theme = ref<ButtonPassThroughOptions>({
     root: `inline-flex cursor-pointer select-none items-center justify-center overflow-hidden relative
         px-4 py-3 gap-2 rounded disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
-        bg-primary-500 enabled:hover:bg-primary-400 enabled:active:bg-primary-emphasis-alt text-white text-md font-semibold p-text:!font-medium
-        border border-primary-500 enabled:hover:border-primary-emphasis enabled:active:border-primary-emphasis-alt
+        bg-primary-500 enabled:hover:bg-primary-500/70 enabled:active:bg-primary-500/60 text-white text-md font-semibold p-text:!font-medium
+        border border-primary-500 enabled:hover:border-primary-500/70 enabled:active:border-primary-500/60
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
         p-vertical:flex-col p-fluid:w-full p-fluid:p-icon-only:w-10
         p-icon-only:w-10 p-icon-only:px-0 p-icon-only:gap-0
@@ -36,8 +36,8 @@ const theme = ref<ButtonPassThroughOptions>({
         p-outlined:border-primary-200 enabled:hover:p-outlined:border-primary-200 enabled:active:p-outlined:border-primary-200
         p-outlined:text-primary enabled:hover:p-outlined:text-primary enabled:active:p-outlined:text-primary
         dark:p-outlined:bg-transparent dark:enabled:hover:p-outlined:bg-primary/5 dark:enabled:active:p-outlined:bg-primary/15
-        dark:p-outlined:border-primary-400 dark:enabled:hover:p-outlined:border-primary-300 dark:enabled:active:p-outlined:border-primary-500
-        dark:p-outlined:text-primary dark:enabled:hover:p-outlined:text-primary dark:enabled:active:p-outlined:text-primary
+        dark:p-outlined:border-primary-300 dark:enabled:hover:p-outlined:border-primary-200 dark:enabled:active:p-outlined:border-primary-500
+        dark:p-outlined:text-primary-300 dark:enabled:hover:p-outlined:text-primary-200 dark:enabled:active:p-outlined:text-primary-200
         p-text:bg-transparent enabled:hover:p-text:bg-gray-100 enabled:active:p-text:bg-primary-100
         p-text:border-transparent enabled:hover:p-text:border-transparent enabled:active:p-text:border-transparent
         p-text:text-gray-700 enabled:hover:p-text:text-gray-700 enabled:active:p-text:text-gray-700
