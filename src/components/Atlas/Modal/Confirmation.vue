@@ -35,6 +35,9 @@
 </template>
 
 <script setup>
+import Dialog from '../../Volt/Dialog.vue';
+import Button from '../../Volt/Button.vue';
+
 const props = defineProps({
     modelValue: {
         type: Boolean,
