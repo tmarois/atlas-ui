@@ -13,7 +13,7 @@
     >
         <template #header>
             <slot name="header">
-                <div class="font-semibold text-black dark:text-gray-200 text-lg">
+                <div class="font-semibold text-black dark:text-gray-200 text-lg z-1">
                     {{ title }}
                 </div>
             </slot>
@@ -24,7 +24,15 @@
             </div>
         </div>
         <template #footer>
-            <slot name="footer" />
+            <slot name="footer">
+                <div class="w-full flex flex-col space-y-4">
+                    <AtlasErrors :errors="errors" />
+                    <div class="flex items-center space-x-4">
+                        <Button label="Save" :disabled="loading" :loading="loading" @click="emit('submit')" />
+                        <Button text label="Cancel" @click="close" />
+                    </div>
+                </div>
+            </slot>
         </template>
     </Drawer>
 </template>
@@ -46,10 +54,14 @@ const props = defineProps({
     width: {
         type: String,
         default: ''
+    },
+    errors: {
+        type: Object,
+        default: () => ({})
     }
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'submit'])
 
 const close = () => {
     emit('update:modelValue', false)
