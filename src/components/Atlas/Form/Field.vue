@@ -19,9 +19,7 @@
 </template>
 
 <script setup>
-
 import HelpTooltip from '../Help/Tooltip.vue';
-
 const props = defineProps({
     label: {
         type: String,
