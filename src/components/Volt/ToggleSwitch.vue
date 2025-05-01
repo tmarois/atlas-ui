@@ -38,7 +38,6 @@ const theme = ref<ToggleSwitchPassThroughOptions>({
         w-4 h-4 start-1 -mt-2 rounded-full
         transition-[background,color,left] duration-200
         p-checked:bg-surface-0 dark:p-checked:bg-surface-900 p-checked:text-primary p-checked:start-5
-        p-disabled:bg-surface-700 dark:p-disabled:bg-surface-900
-}`
+        p-disabled:bg-surface-700 dark:p-disabled:bg-surface-900`
 });
 </script>
