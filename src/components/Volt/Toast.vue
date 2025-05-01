@@ -7,7 +7,7 @@
         }"
     >
         <template #icon>
-            <IconCircleCheckFilled class="size-5 text-green-500 dark:text-green-400" />
+            <IconCircleCheckFilled class="size-6 text-green-500 dark:text-green-400" />
         </template>
         <template #closeicon>
             <TimesIcon />
