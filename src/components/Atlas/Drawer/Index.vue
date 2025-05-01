@@ -26,11 +26,14 @@
         <template #footer>
             <slot name="footer">
                 <div class="w-full flex flex-col space-y-4">
+                    <slot name="message" />
                     <AtlasErrors :errors="errors" />
-                    <div class="flex items-center space-x-4">
-                        <Button label="Save" :disabled="loading" :loading="loading" @click="emit('submit')" />
-                        <Button text label="Cancel" @click="close" />
-                    </div>
+                    <slot name="actions">
+                        <div class="flex items-center space-x-4">
+                            <Button label="Save" :disabled="loading" :loading="loading" @click="emit('submit')" />
+                            <Button text label="Cancel" @click="close" />
+                        </div>
+                    </slot>
                 </div>
             </slot>
         </template>
