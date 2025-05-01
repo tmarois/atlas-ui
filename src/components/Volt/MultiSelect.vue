@@ -37,7 +37,7 @@ import SearchIcon from '@primevue/icons/search';
 import SpinnerIcon from '@primevue/icons/spinner';
 import TimesIcon from '@primevue/icons/times';
 import MultiSelect, { type MultiSelectPassThroughOptions, type MultiSelectProps } from 'primevue/multiselect';
-import { ref } from 'vue';
+import { ref, useAttrs } from 'vue';
 import { ptViewMerge } from './utils';
 
 const attrs = useAttrs();
