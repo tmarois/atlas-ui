@@ -30,7 +30,7 @@ const theme = ref<RadioButtonPassThroughOptions>({
         peer-enabled:peer-hover:p-checked:border-primary-500
         peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary peer-focus-visible:outline
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
-        p-invalid:border-red-400 dark:p-invalid:border-red-300
+        p-invalid:border-red-400 dark:p-invalid:border-red-500
         p-disabled:bg-surface-200 dark:p-disabled:bg-surface-400 p-disabled:border-surface-300 dark:p-disabled:border-surface-700
         shadow-[0_1px_2px_0_rgba(18,18,23,0.05)] transition-colors duration-200
         w-5 h-5
