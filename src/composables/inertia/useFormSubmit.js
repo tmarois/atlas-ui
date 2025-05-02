@@ -33,7 +33,7 @@ export const useFormSubmit = () => {
             onSuccess: (response) => {
 
                 // ideally, this should be a failed response :(
-                if (response.url !== '/login') {
+                if (response?.url !== '/login') {
                     if (toastMessage) {
                         toast.add({ severity: 'success', summary: toastMessage, life: 6000 });
                     }
