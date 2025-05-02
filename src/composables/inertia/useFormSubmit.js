@@ -9,6 +9,10 @@ export const useFormSubmit = () => {
         {
             preserveScroll = true,
             preserveState = true,
+            data = {},
+            replace = false,
+            only = [],
+            except = [],
             onSuccess = () => {},
             onError = () => {},
             onFinish = () => {},
@@ -20,6 +24,10 @@ export const useFormSubmit = () => {
         const options = {
             preserveScroll,
             preserveState,
+            data,
+            replace,
+            only,
+            except,
             onSuccess: (response) => {
                 if (toastMessage) {
                     toast.add({ severity: 'success', summary: toastMessage, life: 6000 });
@@ -29,7 +37,7 @@ export const useFormSubmit = () => {
             onError,
             onFinish,
             onBefore,
-            onProgress
+            onProgress,
         };
 
         await form[method.toLowerCase()](routePath, options);
