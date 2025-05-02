@@ -1,6 +1,8 @@
 import { computed } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 
+// NEEDS WORK - DO NOT USE
+
 export function usePageProp(path, defaultValue = null) {
     const page = usePage();
 
