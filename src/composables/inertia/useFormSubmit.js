@@ -1,3 +1,5 @@
+// https://inertiajs.com/manual-visits
+
 import { useToast } from 'primevue/usetoast';
 
 export const useFormSubmit = () => {
