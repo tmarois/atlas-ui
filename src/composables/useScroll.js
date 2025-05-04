@@ -3,7 +3,7 @@ import { isClient } from '../utils';
 
 const scrollStates = reactive(new Map());
 
-export function useScrollTop(id) {
+export function useScroll(id) {
     if (!scrollStates.has(id)) {
         scrollStates.set(id, {
             isTop: true,

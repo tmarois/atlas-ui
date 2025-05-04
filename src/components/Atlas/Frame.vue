@@ -13,7 +13,7 @@
 
 <script setup>
 import { ref, watch, nextTick, onMounted, onBeforeUnmount } from 'vue';
-import { useScrollTop } from '../../composables/useScrollTop';
+import { useScroll } from '../../composables/useScroll';
 
 const props = defineProps({
     scrollKey: {
@@ -51,7 +51,7 @@ const {
     bindScrollHandler,
     lockScroll,
     unlockScroll
-} = useScrollTop(props.scrollKey!==null ? props.scrollKey : (props.page ? 'page' : Symbol()));
+} = useScroll(props.scrollKey!==null ? props.scrollKey : (props.page ? 'page' : Symbol()));
 
 const { add, remove } = bindScrollHandler(frame);
 
@@ -77,7 +77,6 @@ const calculateOffsets = () => {
 };
 
 onMounted(() => {
-    setTop(true);
     add();
     if (props.page && !props.allowBodyScroll) lockScroll();
     nextTick(() => {
@@ -86,7 +85,6 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-    setTop(true);
     remove();
     if (props.page && !props.allowBodyScroll) unlockScroll();
 });

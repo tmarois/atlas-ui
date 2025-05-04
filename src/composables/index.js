@@ -1,10 +1,10 @@
 
 import { useModal } from './useModal';
-import { useScrollTop } from './useScrollTop';
+import { useScroll } from './useScroll';
 import { useTheme } from './useTheme';
 
 export {
     useModal,
-    useScrollTop,
+    useScroll,
     useTheme
 }
