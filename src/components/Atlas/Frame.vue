@@ -46,8 +46,6 @@ const frame = ref(null);
 const dynamicHeight = ref('0px');
 
 const {
-    isTop,
-    setTop,
     bindScrollHandler,
     lockScroll,
     unlockScroll
