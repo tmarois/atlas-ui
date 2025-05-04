@@ -13,6 +13,7 @@
 
 <script setup>
 import { ref, watch, nextTick, onMounted, onBeforeUnmount } from 'vue';
+import { useScrollTop } from '../../composables/useScrollTop';
 
 const props = defineProps({
     scrollKey: {
