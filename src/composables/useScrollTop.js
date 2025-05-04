@@ -1,9 +1,9 @@
 import { reactive, computed } from 'vue';
+import { isClient } from '../utils/index.js'
 
 const scrollStates = reactive(new Map());
 
 export function useScrollTop(id) {
-
     if (!scrollStates.has(id)) {
         scrollStates.set(id, {
             isTop: true,
@@ -20,12 +20,14 @@ export function useScrollTop(id) {
     };
 
     const lockScroll = () => {
+        if (!isClient) return;
         state.lockScroll = true;
         document.documentElement.style.overflowY = 'hidden';
         document.body.style.overflowY = 'hidden';
     };
 
     const unlockScroll = () => {
+        if (!isClient) return;
         state.lockScroll = false;
         document.documentElement.style.overflowY = '';
         document.body.style.overflowY = '';
@@ -33,21 +35,19 @@ export function useScrollTop(id) {
 
     const bindScrollHandler = (elementRef) => {
         const handleScroll = () => {
-            if (!elementRef.value) return;
+            if (!isClient || !elementRef.value) return;
             setTop(elementRef.value.scrollTop <= 1);
         };
 
         const add = () => {
-            if (elementRef.value) {
-                elementRef.value.addEventListener('scroll', handleScroll);
-                handleScroll();
-            }
+            if (!isClient || !elementRef.value) return;
+            elementRef.value.addEventListener('scroll', handleScroll);
+            handleScroll();
         };
 
         const remove = () => {
-            if (elementRef.value) {
-                elementRef.value.removeEventListener('scroll', handleScroll);
-            }
+            if (!isClient || !elementRef.value) return;
+            elementRef.value.removeEventListener('scroll', handleScroll);
         };
 
         return { add, remove };
