@@ -51,7 +51,7 @@ const {
     bindScrollHandler,
     lockScroll,
     unlockScroll
-} = useScrollTop(props.scrollKey ? props.scrollKey : (props.page ? 'page' : Symbol()));
+} = useScrollTop(props.scrollKey!==null ? props.scrollKey : (props.page ? 'page' : Symbol()));
 
 const { add, remove } = bindScrollHandler(frame);
 

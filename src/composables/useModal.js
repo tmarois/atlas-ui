@@ -1,4 +1,4 @@
-import { reactive, computed } from 'vue'
+import { reactive, computed } from 'vue';
 
 const modals = reactive(new Map())
 const openListeners = new Map()
