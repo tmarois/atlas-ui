@@ -45,7 +45,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { IconAlertCircle, IconChevronDown } from '@tabler/icons-vue'
-import { isEmpty } from '../../utils/validate.js'
+import { isEmpty } from '@atlas/utils/validate.js'
 
 const props = defineProps({
     errors: {

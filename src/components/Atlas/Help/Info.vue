@@ -26,7 +26,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import Popover from '../../Volt/Popover.vue';
+import Popover from '@atlas/components/Volt/Popover.vue';
 
 const { iconClass } = defineProps({
     iconClass: {

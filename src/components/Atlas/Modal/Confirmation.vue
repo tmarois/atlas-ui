@@ -35,8 +35,8 @@
 </template>
 
 <script setup>
-import Dialog from '../../Volt/Dialog.vue';
-import Button from '../../Volt/Button.vue';
+import Dialog from '@atlas/components/Volt/Dialog.vue';
+import Button from '@atlas/components/Volt/Button.vue';
 
 const props = defineProps({
     modelValue: {

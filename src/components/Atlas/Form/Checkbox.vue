@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import Checkbox from '../../Volt/Checkbox.vue';
+import Checkbox from '@atlas/components/Volt/Checkbox.vue';
 import { useAttrs } from 'vue';
 
 const model = defineModel<any>();

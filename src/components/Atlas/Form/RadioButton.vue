@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import RadioButton from '../../Volt/RadioButton.vue';
+import RadioButton from '@atlas/components/Volt/RadioButton.vue';
 import { useAttrs } from 'vue';
 
 const model = defineModel<any>();

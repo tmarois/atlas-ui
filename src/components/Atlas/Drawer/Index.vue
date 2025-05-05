@@ -41,9 +41,9 @@
 </template>
 
 <script setup>
-import AtlasErrors from '../Errors.vue';
-import Drawer from '../../Volt/Drawer.vue';
-import Button from '../../Volt/Button.vue';
+import AtlasErrors from '@atlas/components/Errors.vue';
+import Drawer from '@atlas/components/Volt/Drawer.vue';
+import Button from '@atlas/components/Volt/Button.vue';
 const props = defineProps({
     modelValue: {
         type: Boolean,
