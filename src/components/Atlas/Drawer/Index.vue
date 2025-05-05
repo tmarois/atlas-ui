@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-import AtlasErrors from '@atlas/components/Errors.vue';
+import AtlasErrors from '@atlas/components/Atlas/Errors.vue';
 import Drawer from '@atlas/components/Volt/Drawer.vue';
 import Button from '@atlas/components/Volt/Button.vue';
 const props = defineProps({

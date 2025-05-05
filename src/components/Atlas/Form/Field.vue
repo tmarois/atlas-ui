@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import HelpTooltip from '@atlas/components/Help/Tooltip.vue';
+import HelpTooltip from '@atlas/components/Atlas/Help/Tooltip.vue';
 const props = defineProps({
     label: {
         type: String,
