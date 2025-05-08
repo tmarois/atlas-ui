@@ -8,5 +8,6 @@
  */
 export const isClient = typeof window !== 'undefined' && typeof document !== 'undefined';
 
-export * from './format'
-export * from './validate'
+export * from '@atlas/utils/format'
+export * from '@atlas/utils/validate'
+export * from '@atlas/utils/merge'

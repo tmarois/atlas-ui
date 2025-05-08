@@ -1,5 +1,5 @@
 import { reactive, computed } from 'vue';
-import { isClient } from '../utils';
+import { isClient } from '@atlas/utils';
 
 const scrollStates = reactive(new Map());
 

@@ -1,7 +1,7 @@
 
-import { useModal } from './useModal';
-import { useScroll } from './useScroll';
-import { useTheme } from './useTheme';
+import { useModal } from '@atlas/composables/useModal';
+import { useScroll } from '@atlas/composables/useScroll';
+import { useTheme } from '@atlas/composables/useTheme';
 
 export {
     useModal,
