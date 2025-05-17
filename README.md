@@ -20,6 +20,19 @@ Peer dependencies:
 "vue": "^3.4.0"
 ```
 
+If using tiptap editor, install these:
+
+```
+"@tiptap/extension-bold": "^2.11.7",
+"@tiptap/extension-bullet-list": "^2.11.7",
+"@tiptap/extension-hard-break": "^2.11.7",
+"@tiptap/extension-link": "^2.11.7",
+"@tiptap/extension-list-item": "^2.11.7",
+"@tiptap/extension-ordered-list": "^2.11.7",
+"@tiptap/starter-kit": "^2.11.7",
+"@tiptap/vue-3": "^2.11.7",
+```
+
 If using inertia composables make sure `@inertiajs/vue3` is installed.
 
 ## 💾 Composables
