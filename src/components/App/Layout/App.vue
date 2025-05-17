@@ -74,7 +74,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount, nextTick, useSlots } from 'vue';
 import PageHeader from '@atlas/components/App/Page/Header.vue';
 import PageFooter from '@atlas/components/App/Page/Footer.vue';
 import PageContent from '@atlas/components/App/Page/Content.vue';

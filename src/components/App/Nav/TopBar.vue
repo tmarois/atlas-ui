@@ -73,7 +73,7 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, useSlots } from 'vue';
 
 const slots = useSlots();
 

@@ -14,6 +14,7 @@ import { EditorContent, useEditor } from '@tiptap/vue-3';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
 import EditorToolbar from '@atlas/components/Editor/Toolbar.vue';
+import { watch } from 'vue';
 
 const emit = defineEmits(['save']);
 

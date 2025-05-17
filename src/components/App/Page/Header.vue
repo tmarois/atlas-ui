@@ -90,7 +90,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, useSlots } from 'vue';
 import { IconLock } from '@tabler/icons-vue';
 import { useScroll } from '@atlas/composables/useScroll';
 

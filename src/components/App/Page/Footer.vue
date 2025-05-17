@@ -18,6 +18,8 @@
 </template>
 
 <script setup>
+import { useSlots } from 'vue';
+
 const props = defineProps({
     leftOffset: {
         type: Number,
