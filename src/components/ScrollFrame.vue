@@ -3,7 +3,7 @@
         ref="frame"
         class="frame-scroll"
         :class="rootClass"
-        :style="{ height: `calc(100vh - ${dynamicHeight})` }"
+        :style="{ height: `calc(100vh - ${dynamicHeight} - ${addOffset}px)` }"
     >
         <div :class="containerClass">
             <slot />
@@ -32,6 +32,10 @@ const props = defineProps({
         type: Number,
         default: null,
     },
+    addOffset: {
+        type: Number,
+        default: 0,
+    },
     rootClass: {
         type: String,
         default: 'overflow-y-auto',
@@ -59,19 +63,11 @@ const updateHeight = () => {
 };
 
 const calculateOffsets = () => {
-    let totalOffset = 0;
     const frameElement = frame.value;
+    if (!frameElement) return 0;
 
-    if (frameElement?.parentElement) {
-        const siblings = Array.from(frameElement.parentElement.children);
-        for (const sibling of siblings) {
-            if (sibling !== frameElement) {
-                totalOffset += sibling.offsetHeight;
-            }
-        }
-    }
-
-    return totalOffset;
+    const { top } = frameElement.getBoundingClientRect();
+    return Math.round(top);
 };
 
 onMounted(() => {
