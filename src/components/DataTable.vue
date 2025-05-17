@@ -82,9 +82,9 @@ const theme = ref<DataTablePassThroughOptions>({
             bg-surface-50 dark:bg-surface-900
             text-surface-700 dark:text-surface-0
             p-sortable:cursor-pointer p-sortable:select-none p-sortable:focus-visible:outline p-sortable:focus-visible:outline-1 p-sortable:focus-visible:-outline-offset-1 p-sortable:focus-visible:outline-primary
-            p-sortable:not-p-sorted:hover:bg-surface-100 p-sortable:not-p-sorted:hover:text-surface-800
+            p-sortable:not-p-sorted:hover:bg-surface-200 p-sortable:not-p-sorted:hover:text-surface-800
             dark:p-sortable:not-p-sorted:hover:bg-surface-800 dark:p-sortable:not-p-sorted:hover:text-surface-0
-            p-sorted:bg-highlight first:pl-6 last:pr-6
+            p-sorted:bg-surface-200 dark:p-sorted:bg-surface-800 first:pl-6 last:pr-6
             p-frozen:sticky p-frozen:bg-surface-0 dark:p-frozen:bg-surface-900 p-frozen:z-10
         `,
         columnHeaderContent: `flex items-center gap-2`,
@@ -101,7 +101,7 @@ const theme = ref<DataTablePassThroughOptions>({
         sort: ``,
         sortIcon: `text-surface-500 dark:text-surface-400 transition-colors duration-200
             group-p-sortable:not-group-p-sorted:group-hover:text-surface-600 dark:group-p-sortable:not-group-p-sorted:group-hover:text-surface-300
-            group-p-sorted:bg-highlight`,
+            group-p-sorted:text-primary-500 dark:group-p-sorted:text-primary-400`,
         pcSortBadge: {
             root: `bg-primary text-primary-contrast rounded-full min-w-6 h-6 inline-flex items-center justify-center text-xs font-bold`
         },
