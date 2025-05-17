@@ -1,10 +1,26 @@
 # 🪐 Atlas
 
+Atlas UI kit is still under-construction and expect breaking changes. 
+
 ## Install
 
 ```bash
-npm install github:tmarois/atlas-ui#semver:^1.0
+npm install github:tmarois/atlas-ui#semver:^1.1
 ```
+
+Peer dependencies:
+
+```
+"@tabler/icons-vue": "^3.31.0",
+"primeicons": "^7.0.0",
+"primevue": "^4.0.0",
+"tailwind-merge": "^3.2.0",
+"tailwindcss": "^4.1.4",
+"tailwindcss-primeui": "^0.6.1",
+"vue": "^3.4.0"
+```
+
+If using inertia composables make sure `@inertiajs/vue3` is installed.
 
 ## 💾 Composables
 
