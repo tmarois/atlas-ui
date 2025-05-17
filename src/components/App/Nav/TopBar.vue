@@ -74,6 +74,7 @@
 
 <script setup>
 import { ref, reactive, useSlots } from 'vue';
+import { Menu } from '@atlas/components';
 
 const slots = useSlots();
 
