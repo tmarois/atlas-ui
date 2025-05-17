@@ -59,6 +59,7 @@ const save = () => {
 <style>
 .atlas-editor-content {
     font-size: 0.875rem; /* Tailwind's text-sm */
+    line-height: 1.625;  /* Tailwind's leading-relaxed */
 }
 .atlas-editor-content p:empty {
     height: 1rem;
