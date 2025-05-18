@@ -23,6 +23,16 @@
                 <template v-if="$slots[column.field]" #body="slotProps">
                     <slot :name="column.field" v-bind="slotProps" />
                 </template>
+                <template #sorticon="{ sorted, sortOrder }">
+                    <span
+                        class="inline-block transition-transform"
+                        :class="{
+                            'pi pi-sort': !sorted,
+                            'pi pi-sort-up': sortOrder === 1,
+                            'pi pi-sort-down': sortOrder === -1
+                        }"
+                    />
+                </template>
             </Column>
         </template>
     </DataTable>
