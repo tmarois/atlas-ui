@@ -10,9 +10,9 @@ These composables require InertiaJs.
 
 | Composable             | Link                                                 | Description                                              |
 |------------------------|------------------------------------------------------|----------------------------------------------------------|
-| `useDataTableOptions`  | [🔗](#-usedatatableoptions)                          | Reactive filters for server-driven pagination/sorting    |
-| `useFormSubmit`        | [🔗](#-useformsubmit)                                | Submits Inertia forms with hooks and toast support       |
-| `usePageProp`          | [🔗](#-usepageprop)                                  | Extracts a single Inertia prop with reactivity           |
+| `useDataTableOptions`  | [🔗](./src/composables/inertia/useDataTableOptions.js)                         | Reactive filters for server-driven pagination/sorting    |
+| `useFormSubmit`        | [🔗](./src/composables/inertia/useFormSubmit.js)                                | Submits Inertia forms with hooks and toast support       |
+| `usePageProp`          | [🔗](./src/composables/inertia/usePageProp.js)                                  | Extracts a single Inertia prop with reactivity           |
 
 ### 👉 Composable (Framework Agnostic)
 
@@ -21,8 +21,8 @@ These composables can be used within any Vue3 / PrimeVue / Tailwindcss project.
 | Composable             | Link                                                 | Description                                              |
 |------------------------|------------------------------------------------------|----------------------------------------------------------|
 | `useModal`             | [🔗](./src/composables/useModal.js)                                     | Reactive global modal manager                            |
-| `useScroll`            | [🔗](#-usescroll)                                    | Reactive scroll tracking utility                         |
-| `useTheme`             | [🔗](#-usetheme)                                     | Detects and manages light/dark mode                      |
+| `useScroll`            | [🔗](./src/composables/useScroll.js)                                    | Reactive scroll tracking utility                         |
+| `useTheme`             | [🔗](./src/composables/useTheme.js)                                     | Detects and manages light/dark mode                      |
 
 ## 📚 Utilities
 
@@ -32,14 +32,14 @@ Reusable format utilities available for any project.
 
 | Utility Function       | Link                                                 | Description                                              |
 |------------------------|------------------------------------------------------|----------------------------------------------------------|
-| `formatNumber`         | [🔗](#formatnumber)                                  | Format a number with commas and optional decimals        |
-| `formatToCurrency`     | [🔗](#formattocurrency)                              | Format number to currency (e.g. `$1,000`)                |
-| `formatPercentage`     | [🔗](#formatpercentage)                              | Convert a decimal to a percentage string                 |
-| `formatBytes`          | [🔗](#formatbytes)                                   | Convert byte count to KB/MB/GB string                    |
-| `formatToDate`         | [🔗](#formattodate)                                  | Format UTC to local date string                          |
-| `formatToDatetime`     | [🔗](#formattodatetime)                              | Format UTC to local date + time string                   |
-| `formatToSlug`         | [🔗](#formattoslug)                                  | Slugify a string for use in URLs                         |
-| `formatToValidURL`     | [🔗](#formattovalidurl)                              | Ensure a URL has http/https protocol                     |
+| `formatNumber`         | [🔗](./src/utils/format.js)                                  | Format a number with commas and optional decimals        |
+| `formatToCurrency`     | [🔗](./src/utils/format.js)                                    | Format number to currency (e.g. `$1,000`)                |
+| `formatPercentage`     | [🔗](./src/utils/format.js)                                  | Convert a decimal to a percentage string                 |
+| `formatBytes`          | [🔗](./src/utils/format.js)                                         | Convert byte count to KB/MB/GB string                    |
+| `formatToDate`         | [🔗](./src/utils/format.js)                                       | Format UTC to local date string                          |
+| `formatToDatetime`     | [🔗](./src/utils/format.js)                                    | Format UTC to local date + time string                   |
+| `formatToSlug`         | [🔗](./src/utils/format.js)                                       | Slugify a string for use in URLs                         |
+| `formatToValidURL`     | [🔗](./src/utils/format.js)                                 | Ensure a URL has http/https protocol                     |
 
 ### 👉 Utils (Validate)
 
@@ -47,10 +47,10 @@ Reusable validator utilities available for any project.
 
 | Utility Function       | Link                                                 | Description                                              |
 |------------------------|------------------------------------------------------|----------------------------------------------------------|
-| `isValidURL`           | [🔗](#isvalidurl)                                    | Validate a string as a valid HTTP/HTTPS URL              |
-| `isValidEmail`         | [🔗](#isvalidemail)                                  | Check if a string is a valid email                       |
-| `isNumeric`            | [🔗](#isnumeric)                                     | Returns true if the value is a valid number              |
-| `isEmpty`              | [🔗](#isempty)                                       | Checks if a value is empty (string, array, object)       |
+| `isValidURL`           | [🔗](./src/utils/validate.js)                                   | Validate a string as a valid HTTP/HTTPS URL              |
+| `isValidEmail`         | [🔗](./src/utils/validate.js)                                  | Check if a string is a valid email                       |
+| `isNumeric`            | [🔗](./src/utils/validate.js)                                     | Returns true if the value is a valid number              |
+| `isEmpty`              | [🔗](./src/utils/validate.js)                                      | Checks if a value is empty (string, array, object)       |
 
 
 ---
