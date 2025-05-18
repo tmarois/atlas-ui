@@ -2,7 +2,9 @@
 
 Atlas UI is a flexible, component-driven UI toolkit for Vue 3 projects, designed for clean integration with PrimeVue (Unstyled), TailwindCSS, Inertia.js, and composable architecture.
 
-## 📚 Composable Index (Inertia)
+## 📚 Composables
+
+### 👉 Composable (Inertia)
 
 These composables require InertiaJs.
 
@@ -12,7 +14,7 @@ These composables require InertiaJs.
 | `useFormSubmit`        | [🔗](#-useformsubmit)                                | Submits Inertia forms with hooks and toast support       |
 | `usePageProp`          | [🔗](#-usepageprop)                                  | Extracts a single Inertia prop with reactivity           |
 
-## 📚 Composable Index (Framework Agnostic)
+### 👉 Composable (Framework Agnostic)
 
 THese composables can be used within any Vue3 / PrimeVue / Tailwindcss project.
 
@@ -22,7 +24,9 @@ THese composables can be used within any Vue3 / PrimeVue / Tailwindcss project.
 | `useScroll`            | [🔗](#-usescroll)                                    | Reactive scroll tracking utility                         |
 | `useTheme`             | [🔗](#-usetheme)                                     | Detects and manages light/dark mode                      |
 
-## 📚 Utils Index – `format.js`
+## 📚 Utilities
+
+### 👉 Utils (Format)
 
 Reusable format utilities available for any project.
 
@@ -37,7 +41,7 @@ Reusable format utilities available for any project.
 | `formatToSlug`         | [🔗](#formattoslug)                                  | Slugify a string for use in URLs                         |
 | `formatToValidURL`     | [🔗](#formattovalidurl)                              | Ensure a URL has http/https protocol                     |
 
-## 📚 Utils Index – `validate.js`
+### 👉 Utils (Validate)
 
 Reusable validator utilities available for any project.
 
