@@ -16,7 +16,7 @@ These composables require InertiaJs.
 
 ### 👉 Composable (Framework Agnostic)
 
-THese composables can be used within any Vue3 / PrimeVue / Tailwindcss project.
+These composables can be used within any Vue3 / PrimeVue / Tailwindcss project.
 
 | Composable             | Link                                                 | Description                                              |
 |------------------------|------------------------------------------------------|----------------------------------------------------------|
