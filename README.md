@@ -14,7 +14,7 @@ These composables can be used within any Vue3 / PrimeVue / Tailwindcss project.
 | `useScroll`            | [🔗](./src/composables/useScroll.js)                                    | Reactive scroll tracking utility                         |
 | `useTheme`             | [🔗](./src/composables/useTheme.js)                                     | Detects and manages light/dark mode                      |
 
-### 👉 Composable (Inertia-only)
+### 👉 Composables (Inertia-only)
 
 These composables require InertiaJs.
 
