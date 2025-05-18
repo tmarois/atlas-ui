@@ -4,17 +4,7 @@ Atlas UI is a flexible, component-driven UI toolkit for Vue 3 projects, designed
 
 ## 📚 Composables
 
-### 👉 Composable (Inertia)
-
-These composables require InertiaJs.
-
-| Composable             | Link                                                 | Description                                              |
-|------------------------|------------------------------------------------------|----------------------------------------------------------|
-| `useDataTableOptions`  | [🔗](./src/composables/inertia/useDataTableOptions.js)                         | Reactive filters for server-driven pagination/sorting    |
-| `useFormSubmit`        | [🔗](./src/composables/inertia/useFormSubmit.js)                                | Submits Inertia forms with hooks and toast support       |
-| `usePageProp`          | [🔗](./src/composables/inertia/usePageProp.js)                                  | Extracts a single Inertia prop with reactivity           |
-
-### 👉 Composable (Framework Agnostic)
+### 👉 Composables
 
 These composables can be used within any Vue3 / PrimeVue / Tailwindcss project.
 
@@ -23,6 +13,16 @@ These composables can be used within any Vue3 / PrimeVue / Tailwindcss project.
 | `useModal`             | [🔗](./src/composables/useModal.js)                                     | Reactive global modal manager                            |
 | `useScroll`            | [🔗](./src/composables/useScroll.js)                                    | Reactive scroll tracking utility                         |
 | `useTheme`             | [🔗](./src/composables/useTheme.js)                                     | Detects and manages light/dark mode                      |
+
+### 👉 Composable (Inertia-only)
+
+These composables require InertiaJs.
+
+| Composable             | Link                                                 | Description                                              |
+|------------------------|------------------------------------------------------|----------------------------------------------------------|
+| `useDataTableOptions`  | [🔗](./src/composables/inertia/useDataTableOptions.js)                         | Reactive filters for server-driven pagination/sorting    |
+| `useFormSubmit`        | [🔗](./src/composables/inertia/useFormSubmit.js)                                | Submits Inertia forms with hooks and toast support       |
+| `usePageProp`          | [🔗](./src/composables/inertia/usePageProp.js)                                  | Extracts a single Inertia prop with reactivity           |
 
 ## 📚 Utilities
 
