@@ -1,8 +1,10 @@
 # 🪐 Atlas
 
-Atlas UI is a flexible, component-driven UI toolkit for Vue 3 projects, designed for clean integration with TailwindCSS, Inertia.js, and composable architecture.
+Atlas UI is a flexible, component-driven UI toolkit for Vue 3 projects, designed for clean integration with PrimeVue (Unstyled), TailwindCSS, Inertia.js, and composable architecture.
 
 ## 📚 Composable Index (Inertia)
+
+These composables require InertiaJs.
 
 | Composable             | Link                                                 | Description                                              |
 |------------------------|------------------------------------------------------|----------------------------------------------------------|
@@ -10,9 +12,9 @@ Atlas UI is a flexible, component-driven UI toolkit for Vue 3 projects, designed
 | `useFormSubmit`        | [🔗](#-useformsubmit)                                | Submits Inertia forms with hooks and toast support       |
 | `usePageProp`          | [🔗](#-usepageprop)                                  | Extracts a single Inertia prop with reactivity           |
 
----
-
 ## 📚 Composable Index (Framework Agnostic)
+
+THese composables can be used within any Vue3 / PrimeVue / Tailwindcss project.
 
 | Composable             | Link                                                 | Description                                              |
 |------------------------|------------------------------------------------------|----------------------------------------------------------|
@@ -20,9 +22,9 @@ Atlas UI is a flexible, component-driven UI toolkit for Vue 3 projects, designed
 | `useScroll`            | [🔗](#-usescroll)                                    | Reactive scroll tracking utility                         |
 | `useTheme`             | [🔗](#-usetheme)                                     | Detects and manages light/dark mode                      |
 
----
-
 ## 📚 Utils Index – `format.js`
+
+Reusable format utilities available for any project.
 
 | Utility Function       | Link                                                 | Description                                              |
 |------------------------|------------------------------------------------------|----------------------------------------------------------|
@@ -35,9 +37,9 @@ Atlas UI is a flexible, component-driven UI toolkit for Vue 3 projects, designed
 | `formatToSlug`         | [🔗](#formattoslug)                                  | Slugify a string for use in URLs                         |
 | `formatToValidURL`     | [🔗](#formattovalidurl)                              | Ensure a URL has http/https protocol                     |
 
----
-
 ## 📚 Utils Index – `validate.js`
+
+Reusable validator utilities available for any project.
 
 | Utility Function       | Link                                                 | Description                                              |
 |------------------------|------------------------------------------------------|----------------------------------------------------------|
