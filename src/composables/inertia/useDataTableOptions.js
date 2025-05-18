@@ -2,7 +2,7 @@ import { ref, reactive, watch } from 'vue';
 import debounce from 'lodash/debounce';
 import { router } from '@inertiajs/vue3';
 
-export function useDataTableOptions(routeName, initial = {}, options = {}) {
+export function useDataTableOptions(routeName, initialOptions = {}, options = {}) {
     const {
         only = ['users'],
         preserveState = true,
@@ -11,11 +11,11 @@ export function useDataTableOptions(routeName, initial = {}, options = {}) {
         extraParams = {},
     } = options;
 
-    const search = ref(initial.search ?? '');
-    const perPage = ref(initial.perPage ?? 15);
-    const sortField = ref(initial.sortField ?? 'name');
-    const sortOrder = ref(initial.sortOrder ?? 1);
-    const filters = reactive({ ...(initial.filters || {}) });
+    const search = ref(initialOptions.search ?? '');
+    const perPage = ref(initialOptions.perPage ?? 15);
+    const sortField = ref(initialOptions.sortField ?? 'name');
+    const sortOrder = ref(initialOptions.sortOrder ?? 1);
+    const filters = reactive({ ...(initialOptions.filters || {}) });
 
     const update = () => {
         router.get(route(routeName), {
