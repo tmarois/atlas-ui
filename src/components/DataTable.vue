@@ -64,12 +64,12 @@ const theme = ref<DataTablePassThroughOptions>({
     tableContainer: `p-scrollable:relative p-flex-scrollable:flex p-flex-scrollable:flex-col p-flex-scrollable:flex-1 p-flex-scrollable:h-full`,
     header: `py-3 px-4 border-b border-surface-200 dark:border-surface-700
         bg-surface-0 dark:bg-surface-900
-        text-surface-700 dark:text-surface-0`,
+        text-surface-900 dark:text-surface-0`,
     table: `border-spacing-0 w-full border-separate`,
     thead: `p-scrollable:bg-surface-0 dark:p-scrollable:bg-surface-900 p-scrollable:top-0 p-scrollable:z-10`,
     tbody: `p-hoverable:*:hover:bg-surface-100 p-hoverable:*:hover:text-surface-800 dark:p-hoverable:*:hover:bg-surface-800 dark:p-hoverable:*:hover:text-surface-0
         p-frozen:sticky p-frozen:z-10`,
-    bodyRow: `bg-surface-0 dark:bg-surface-900 text-surface-700 dark:text-surface-0 p-selectable:cursor-pointer p-selected:bg-highlight! hover:bg-surface-100 dark:hover:bg-surface-800`,
+    bodyRow: `bg-surface-0 dark:bg-surface-900 text-surface-900 dark:text-surface-0 p-selectable:cursor-pointer p-selected:bg-highlight! hover:bg-surface-100 dark:hover:bg-surface-800`,
     tfoot: `p-scrollable:bg-surface-0 dark:p-scrollable:bg-surface-900 p-scrollable:bottom-0 p-scrollable:z-10`,
     footer: `py-3 px-4 border-b border-surface-200 dark:border-surface-700
         bg-surface-0 dark:bg-surface-900
