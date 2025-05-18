@@ -26,7 +26,7 @@ These composables require InertiaJs.
 
 ## 📚 Utilities
 
-### 👉 Utils (Format)
+### 👉 Format
 
 Reusable format utilities available for any project.
 
@@ -41,7 +41,7 @@ Reusable format utilities available for any project.
 | `formatToSlug`         | [🔗](./src/utils/format.js)                                       | Slugify a string for use in URLs                         |
 | `formatToValidURL`     | [🔗](./src/utils/format.js)                                 | Ensure a URL has http/https protocol                     |
 
-### 👉 Utils (Validate)
+### 👉 Validate
 
 Reusable validator utilities available for any project.
 
