@@ -20,7 +20,7 @@ These composables can be used within any Vue3 / PrimeVue / Tailwindcss project.
 
 | Composable             | Link                                                 | Description                                              |
 |------------------------|------------------------------------------------------|----------------------------------------------------------|
-| `useModal`             | [🔗](#-usemodal)                                     | Reactive global modal manager                            |
+| `useModal`             | [🔗](./src/composables/useModal.js)                                     | Reactive global modal manager                            |
 | `useScroll`            | [🔗](#-usescroll)                                    | Reactive scroll tracking utility                         |
 | `useTheme`             | [🔗](#-usetheme)                                     | Detects and manages light/dark mode                      |
 
