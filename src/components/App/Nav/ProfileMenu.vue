@@ -76,6 +76,9 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { IconArrowUpRight } from '@tabler/icons-vue'
+import Avatar from '@atlas/components/Avatar.vue'
+import Badge from '@atlas/components/Badge.vue'
+import Menu from '@atlas/components/Menu.vue';
 
 const props = defineProps({
     avatarOnly: {
