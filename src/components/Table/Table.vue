@@ -43,6 +43,11 @@
                 </template>
             </Column>
         </template>
+        <template #empty>
+            <slot name="empty">
+                <div class="text-center p-4">{{  emptyLabel  }}</div>
+            </slot>
+        </template>
     </DataTable>
 </template>
 
@@ -78,6 +83,10 @@ const props = defineProps({
         type: String,
         default: 'id',
     },
+    emptyLabel : {
+        type: String,
+        default: 'No results'
+    }
 });
 
 const $attrs = useAttrs();
