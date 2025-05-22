@@ -66,7 +66,7 @@
                                                     ? 'text-gray-400 cursor-not-allowed pointer-events-none select-none border-transparent'
                                                     : [
                                                         'text-gray-500 hover:text-gray-600 hover:border-surface-300 dark:hover:border-surface-400 dark:hover:text-gray-300 dark:text-gray-300',
-                                                        pageUrl === tab.href
+                                                        isActiveTab(tab.href)
                                                             ? 'text-gray-900 !border-surface-600 dark:!border-surface-300 dark:!text-gray-100'
                                                             : 'border-transparent'
                                                     ]
@@ -122,6 +122,16 @@ const props = defineProps({
         default: 'a',
     },
 });
+
+const isActiveTab = (href) => {
+    try {
+        const currentPath = new URL(props.pageUrl, window?.location?.origin).pathname;
+        const tabPath = new URL(href, window?.location?.origin).pathname;
+        return currentPath === tabPath;
+    } catch {
+        return false;
+    }
+};
 
 const hasAction = computed(() => !!slots.action);
 const { isTop } = useScroll('page');
