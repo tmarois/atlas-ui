@@ -69,30 +69,29 @@ const theme = ref<DataTablePassThroughOptions>({
     thead: `p-scrollable:bg-surface-0 dark:p-scrollable:bg-surface-900 p-scrollable:top-0 p-scrollable:z-10`,
     tbody: `p-hoverable:*:hover:bg-surface-100 p-hoverable:*:hover:text-surface-800 dark:p-hoverable:*:hover:bg-surface-800 dark:p-hoverable:*:hover:text-surface-0
         p-frozen:sticky p-frozen:z-10`,
-    bodyRow: `bg-surface-0 dark:bg-surface-900 text-surface-900 dark:text-surface-0
+    bodyRow: `text-surface-900 dark:text-surface-0
         p-selectable:cursor-pointer
         p-selected:bg-yellow-100 dark:p-selected:bg-yellow-500/30
         hover:bg-surface-100 dark:hover:bg-surface-800
         p-selected:hover:!bg-yellow-200 dark:p-selected:hover:!bg-yellow-500/40`,
     tfoot: `p-scrollable:bg-surface-0 dark:p-scrollable:bg-surface-900 p-scrollable:bottom-0 p-scrollable:z-10`,
     footer: `py-3 px-4 border-b border-surface-200 dark:border-surface-700
-        bg-surface-0 dark:bg-surface-900
         text-surface-700 dark:text-surface-0`,
     mask: `bg-black/50 text-surface-200 absolute z-10 flex items-center justify-center w-full h-full backdrop-blu-`,
     column: {
         root: ``,
         headerCell: `group py-2 px-3 font-normal text-start transition-colors duration-200
-            border-b border-surface-200 dark:border-surface-700
-            bg-surface-50 dark:bg-surface-900
-            text-surface-700 dark:text-surface-0
+            border-b border-surface-200 dark:border-surface-700 first:border-l-0 last:border-r-0 border-r
+            bg-surface-50/50 dark:bg-surface-900
+            text-surface-900 dark:text-surface-0 text-xs
             p-sortable:cursor-pointer p-sortable:select-none p-sortable:focus-visible:outline p-sortable:focus-visible:outline-1 p-sortable:focus-visible:-outline-offset-1 p-sortable:focus-visible:outline-primary
-            p-sortable:not-p-sorted:hover:bg-surface-200 p-sortable:not-p-sorted:hover:text-surface-800
+            p-sortable:not-p-sorted:hover:bg-surface-100 p-sortable:not-p-sorted:hover:text-surface-800
             dark:p-sortable:not-p-sorted:hover:bg-surface-800 dark:p-sortable:not-p-sorted:hover:text-surface-0
-            p-sorted:bg-surface-200 dark:p-sorted:bg-surface-800 first:pl-6 last:pr-6
+            p-sorted:bg-surface-100 dark:p-sorted:bg-surface-800
             p-frozen:sticky p-frozen:bg-surface-0 dark:p-frozen:bg-surface-900 p-frozen:z-10`,
         columnHeaderContent: `flex items-center gap-2`,
         columnTitle: `font-semibold`,
-        bodyCell: `text-start py-2 px-3 first:pl-6 last:pr-6 border-b border-surface-200 dark:border-surface-800
+        bodyCell: `text-start py-2 px-3 border-b first:border-l-0 last:border-r-0 border-r border-surface-200 dark:border-surface-800
             p-frozen:sticky p-frozen:bg-surface-0 dark:p-frozen:bg-surface-900`,
         bodyCellContent: ``,
         footerCell: `text-start py-3 px-4 border-b border-surface-200 dark:border-surface-800

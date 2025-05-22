@@ -21,7 +21,7 @@
                     @click="actionClick(item)"
                 >
                     <span v-if="item.icon" :class="item.icon" />
-                    <span class="ml-4 text-sm">{{ item.label }}</span>
+                    <span class="ml-2 text-sm">{{ item.label }}</span>
                 </div>
             </template>
         </Menu>
