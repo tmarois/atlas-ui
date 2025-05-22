@@ -87,11 +87,11 @@ const theme = ref<DataTablePassThroughOptions>({
             p-sortable:cursor-pointer p-sortable:select-none p-sortable:focus-visible:outline p-sortable:focus-visible:outline-1 p-sortable:focus-visible:-outline-offset-1 p-sortable:focus-visible:outline-primary
             p-sortable:not-p-sorted:hover:bg-surface-100 p-sortable:not-p-sorted:hover:text-surface-800
             dark:p-sortable:not-p-sorted:hover:bg-surface-800 dark:p-sortable:not-p-sorted:hover:text-surface-0
-            p-sorted:bg-surface-100 dark:p-sorted:bg-surface-800
+            p-sorted:bg-surface-100 dark:p-sorted:bg-surface-800 first:pl-6 last:pr-6
             p-frozen:sticky p-frozen:bg-surface-0 dark:p-frozen:bg-surface-900 p-frozen:z-10`,
         columnHeaderContent: `flex items-center gap-2`,
         columnTitle: `font-semibold`,
-        bodyCell: `text-start py-2 px-3 border-b first:border-l-0 last:border-r-0 border-r border-surface-200 dark:border-surface-800
+        bodyCell: `text-start py-2 px-3 border-b first:pl-6 last:pr-6 first:border-l-0 last:border-r-0 border-r border-surface-200 dark:border-surface-800
             p-frozen:sticky p-frozen:bg-surface-0 dark:p-frozen:bg-surface-900`,
         bodyCellContent: ``,
         footerCell: `text-start py-3 px-4 border-b border-surface-200 dark:border-surface-800
