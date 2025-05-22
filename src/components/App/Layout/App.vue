@@ -14,6 +14,9 @@
                     :items="sideBarItems"
                     :linkComponent="linkComponent"
                 >
+                    <template #logo>
+                        <slot name="navLogo" />
+                    </template>
                     <template #actions>
                         <slot name="navActions" />
                     </template>
@@ -23,6 +26,9 @@
                     :items="topBarItems"
                     :linkComponent="linkComponent"
                 >
+                    <template #logo>
+                        <slot name="navLogo" />
+                    </template>
                     <template #actions>
                         <slot name="navActions" />
                     </template>
