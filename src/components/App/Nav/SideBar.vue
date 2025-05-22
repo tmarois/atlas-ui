@@ -43,8 +43,8 @@
                     </div>
                 </template>
             </div>
-            <div v-if="slots.profile" class="w-full mb-2 h-12">
-                <slot name="profile" />
+            <div v-if="slots.actions" class="w-full mb-2 flex flex-col items-center space-y-2">
+                <slot name="actions" />
             </div>
         </div>
     </div>

@@ -64,8 +64,8 @@
                         </template>
                     </div>
                 </div>
-                <div v-if="slots.profile" class="relative flex space-x-2 items-center">
-                    <slot name="profile" />
+                <div v-if="slots.actions" class="relative flex space-x-2 items-center">
+                    <slot name="actions" />
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, useSlots } from 'vue';
+import { reactive, useSlots } from 'vue';
 import Menu from '@atlas/components/Menu.vue';
 
 const slots = useSlots();

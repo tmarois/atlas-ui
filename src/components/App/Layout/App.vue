@@ -14,8 +14,8 @@
                     :items="sideBarItems"
                     :linkComponent="linkComponent"
                 >
-                    <template #profile>
-                        <slot name="navProfile" />
+                    <template #actions>
+                        <slot name="navActions" />
                     </template>
                 </NavSideBar>
                 <NavTopBar v-else
@@ -23,8 +23,8 @@
                     :items="topBarItems"
                     :linkComponent="linkComponent"
                 >
-                    <template #profile>
-                        <slot name="navProfile" />
+                    <template #actions>
+                        <slot name="navActions" />
                     </template>
                 </NavTopBar>
             </slot>
