@@ -8,7 +8,6 @@
             @click="toggle"
         />
         <Menu
-            id="overlay_menu"
             ref="menu"
             size="small"
             :model="items"
@@ -29,6 +28,10 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+import Button from '@atlas/components/Button.vue';
+import Menu from '@atlas/components/Menu.vue';
+
 const emit = defineEmits(['action']);
 const props = defineProps({
     items: {
@@ -45,7 +48,7 @@ const props = defineProps({
     }
 });
 
-const menu = ref();
+const menu = ref(null);
 
 const toggle = (event) => {
     menu.value.toggle(event);
