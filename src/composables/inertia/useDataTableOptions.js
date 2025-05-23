@@ -4,12 +4,14 @@ import { router } from '@inertiajs/vue3';
 
 export function useDataTableOptions(routeName, initialOptions = {}, options = {}) {
     const {
-        only = ['users'],
+        only = [],
         preserveState = true,
         replace = true,
         debounceMs = 250,
         extraParams = {},
     } = options;
+
+    const mergedOnly = only.includes('options') ? only : ['options', ...only];
 
     const search = ref(initialOptions.search ?? '');
     const perPage = ref(initialOptions.perPage ?? 15);
@@ -26,7 +28,7 @@ export function useDataTableOptions(routeName, initialOptions = {}, options = {}
             filters: filters,
             ...extraParams,
         }, {
-            only,
+            only: mergedOnly,
             preserveState,
             replace,
         });
