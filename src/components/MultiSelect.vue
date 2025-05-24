@@ -143,7 +143,7 @@ const theme = ref<MultiSelectPassThroughOptions>({
             shadow-[0_1px_2px_0_rgba(18,18,23,0.05)] transition-colors duration-200`,
         icon: `text-sm w-[0.875rem] h-[0.875rem] transition-none text-white`
     },
-    emptyMessage: `px-3 py-2`,
+    emptyMessage: `px-3 py-2.5`,
     transition: {
         enterFromClass: 'opacity-0 scale-y-75',
         enterActiveClass: 'transition duration-120 ease-[cubic-bezier(0,0,0.2,1)]',
