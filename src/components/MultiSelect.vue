@@ -121,10 +121,10 @@ const theme = ref<MultiSelectPassThroughOptions>({
     virtualScroller: ``,
     list: `m-0 p-1 list-none gap-[2px] flex flex-col`,
     optionGroup: `m-0 px-3 py-2 bg-transparent text-surface-500 dark:text-surface-400 font-semibold`,
-    option: `cursor-pointer font-normal whitespace-nowrap relative overflow-hidden flex items-center gap-2 px-3 py-2
+    option: `cursor-pointer font-normal whitespace-nowrap relative overflow-hidden flex items-center gap-2 px-3 py-1.5
         rounded-sm text-surface-700 dark:text-surface-0 bg-transparent border-none
         p-focus:bg-surface-100 dark:p-focus:bg-surface-800 p-focus:text-surface-800 dark:p-focus:text-surface-0
-        transition-colors duration-200`,
+        transition-colors duration-200 text-sm`,
     optionLabel: ``,
     pcOptionCheckbox: {
         root: `relative inline-flex select-none w-5 h-5 align-bottom`,
