@@ -66,7 +66,7 @@
                                                     ? 'text-gray-400 cursor-not-allowed pointer-events-none select-none border-transparent'
                                                     : [
                                                         'text-gray-500 hover:text-gray-600 hover:border-surface-300 dark:hover:border-surface-400 dark:hover:text-gray-300 dark:text-gray-300',
-                                                        isActiveTab(tab.href)
+                                                        isActiveTab(tab)
                                                             ? 'text-gray-900 !border-surface-600 dark:!border-surface-300 dark:!text-gray-100'
                                                             : 'border-transparent'
                                                     ]
@@ -123,11 +123,15 @@ const props = defineProps({
     },
 });
 
-const isActiveTab = (href) => {
+const isActiveTab = (tab) => {
     try {
         const currentPath = new URL(props.pageUrl, window?.location?.origin).pathname;
-        const tabPath = new URL(href, window?.location?.origin).pathname;
-        return currentPath === tabPath;
+        const hrefPath = new URL(tab.href, window?.location?.origin).pathname;
+        const parentPath = tab.parent
+            ? new URL(tab.parent, window?.location?.origin).pathname
+            : null;
+
+        return currentPath === hrefPath || (parentPath && currentPath.startsWith(parentPath));
     } catch {
         return false;
     }
