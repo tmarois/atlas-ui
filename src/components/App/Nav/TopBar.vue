@@ -25,7 +25,7 @@
                                 :href="item.href"
                                 class="rounded-md px-3 py-2 text-sm font-medium"
                                 :class="[
-                                    isActive(item.href)
+                                    isActive(item)
                                         ? 'bg-surface-900 text-white'
                                         : 'text-gray-300 hover:bg-gray-700 hover:text-white'
                                 ]"
@@ -35,7 +35,7 @@
                             <div
                                 v-else
                                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white cursor-pointer"
-                                :class="{ 'bg-surface-900 text-white': isActive(item.href) }"
+                                :class="{ 'bg-surface-900 text-white': isActive(item) }"
                                 @click="toggleMenu(item.href, $event)"
                             >
                                 {{ item.label }}
@@ -52,7 +52,7 @@
                                             :href="item.href"
                                             class="flex items-center w-full px-2 py-1 text-sm rounded"
                                             :class="{
-                                                'bg-surface-200 dark:bg-surface-800 dark:text-white': pageUrl === item.href
+                                                'bg-surface-200 dark:bg-surface-800 dark:text-white': isActive(item)
                                             }"
                                         >
                                             <span :class="item.icon" />
@@ -108,10 +108,13 @@ const toggleMenu = (key, event) => {
     if (menu) menu.toggle(event);
 };
 
-const isActive = (href) => {
-    if (href === '/') {
+const isActive = (item) => {
+    if (item.parent) {
+        return props.pageUrl.startsWith(item.parent);
+    }
+    if (item.href === '/') {
         return props.pageUrl === '/';
     }
-    return props.pageUrl.startsWith(href);
+    return props.pageUrl.startsWith(item.href);
 };
 </script>

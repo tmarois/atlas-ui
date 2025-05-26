@@ -28,7 +28,7 @@
                                 v-tooltip.right="child.name"
                                 class="relative flex items-center justify-center w-full h-12 mt-2 rounded hover:bg-surface-600 text-white"
                                 :href="child.href"
-                                :class="{ 'bg-surface-500/80': isActive(child.href) }"
+                                :class="{ 'bg-surface-500/80': isActive(child) }"
                             >
                                 <component :is="getIcon(child)" />
                                 <div
@@ -72,16 +72,19 @@ const props = defineProps({
         type: [String, Object],
         default: 'a'
     }
-})
+});
 
-const isActive = (href) => {
-    if (href === '/') {
+const isActive = (item) => {
+    if (item.parent) {
+        return props.pageUrl.startsWith(item.parent);
+    }
+    if (item.href === '/') {
         return props.pageUrl === '/';
     }
-    return props.pageUrl.startsWith(href);
+    return props.pageUrl.startsWith(item.href);
 };
 
 const getIcon = (item) => {
-    return isActive(item.href) && item.activeIcon ? item.activeIcon : item.icon
-}
+    return isActive(item) && item.activeIcon ? item.activeIcon : item.icon;
+};
 </script>
