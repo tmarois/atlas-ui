@@ -50,6 +50,7 @@
                     :tabs="pageTabs"
                     :pageUrl="pageUrl"
                     :linkComponent="linkComponent"
+                    :breadcrumbs="breadcrumbs"
                 >
                     <template #action>
                         <slot name="headerAction" />
@@ -125,6 +126,10 @@ const props = defineProps({
     linkComponent: {
         type: [String, Object],
         default: 'a'
+    },
+    breadcrumbs : {
+        type: Array,
+        default: () => []
     }
 });
 
