@@ -2,7 +2,7 @@ import { ref, reactive, watch } from 'vue';
 import debounce from 'lodash/debounce';
 import { router } from '@inertiajs/vue3';
 
-export function useDataTableOptions(routeName, initialOptions = {}, options = {}) {
+export function useDataTableOptions(routeConfig, initialOptions = {}, options = {}) {
     const {
         only = [],
         preserveState = true,
@@ -19,8 +19,24 @@ export function useDataTableOptions(routeName, initialOptions = {}, options = {}
     const sortOrder = ref(initialOptions.sortOrder ?? 1);
     const filters = reactive({ ...(initialOptions.filters || {}) });
 
+    const resolveRoute = () => {
+        if (typeof routeConfig === 'string') {
+            // Either a route name or a pre-resolved URL
+            if (routeConfig.startsWith('http') || routeConfig.startsWith('/')) {
+                return routeConfig;
+            }
+            return route(routeConfig);
+        }
+
+        if (typeof routeConfig === 'object' && routeConfig.name) {
+            return route(routeConfig.name, routeConfig.params || {});
+        }
+
+        throw new Error('Invalid route configuration provided to useDataTableOptions.');
+    };
+
     const update = () => {
-        router.get(route(routeName), {
+        router.get(resolveRoute(), {
             search: search.value,
             perPage: perPage.value,
             sortField: sortField.value,
