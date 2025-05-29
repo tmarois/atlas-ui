@@ -3,7 +3,7 @@
         page
         :offset="offset"
         :addOffset="footerHeight"
-        :containerClass="[widthClass, containerClass]"
+        :containerClass="containerClass"
     >
         <slot />
     </ScrollFrame>
@@ -29,4 +29,6 @@ const props = defineProps({
         default: 'mx-auto p-4',
     }
 });
+
+const containerClass = computed(() => props.widthClass + ' ' + props.containerClass);
 </script>
