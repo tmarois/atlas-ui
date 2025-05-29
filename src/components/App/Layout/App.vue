@@ -54,6 +54,9 @@
                     :breadcrumbs="breadcrumbs"
                     :widthClass="widthClass"
                 >
+                    <template #title>
+                        <slot name="headerTitle" />
+                    </template>
                     <template #action>
                         <slot name="headerAction" />
                     </template>
