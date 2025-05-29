@@ -10,6 +10,7 @@
 </template>
 
 <script setup>
+import { computed, useSlots } from 'vue';
 import ScrollFrame from '@atlas/components/ScrollFrame.vue';
 
 const slots = useSlots();
@@ -34,11 +35,4 @@ const props = defineProps({
 });
 
 const containerClass = computed(() => props.widthClass + ' ' + props.containerClass);
-
-const hasPageSide = computed(() =>
-    !!(Array.isArray(slots.side?.()) &&
-        slots.side()[0]?.children &&
-        slots.side()[0].children.length > 0)
-);
-
 </script>
