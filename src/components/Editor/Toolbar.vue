@@ -126,19 +126,23 @@
             </Button>
             <Popover ref="linkPopover">
                 <div class="flex items-center space-x-2 w-[320px]">
-                    <InputText
-                        v-model.trim="linkText"
-                        fluid
-                        type="text"
-                        placeholder="https://example.com"
-                        @keyup.enter="toggleLink"
-                    />
-                    <Button
-                        size="small"
-                        icon="pi pi-check"
-                        :disabled="!isValidUrl"
-                        @click="toggleLink"
-                    />
+                    <div class="flex-1">
+                        <InputText
+                            v-model.trim="linkText"
+                            fluid
+                            type="text"
+                            placeholder="https://example.com"
+                            @keyup.enter="toggleLink"
+                        />
+                    </div>
+                    <div>
+                        <Button
+                            size="small"
+                            icon="pi pi-check"
+                            :disabled="!isValidUrl"
+                            @click="toggleLink"
+                        />
+                    </div>
                 </div>
             </Popover>
             <Button
@@ -166,7 +170,6 @@
 <script setup>
 import Popover from '@atlas/components/Popover.vue';
 import Button from '@atlas/components/Button.vue';
-import InputGroup from '@atlas/components/InputGroup.vue';
 import InputText from '@atlas/components/InputText.vue';
 import { computed, ref } from 'vue';
 
