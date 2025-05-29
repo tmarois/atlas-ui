@@ -66,6 +66,9 @@
                     :containerClass="containerClass"
                     :widthClass="widthClass"
                 >
+                    <template #side>
+                        <slot name="pageSideContent" />
+                    </template>
                     <template #default>
                         <slot />
                     </template>
