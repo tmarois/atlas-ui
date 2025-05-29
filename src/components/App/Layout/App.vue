@@ -61,31 +61,42 @@
                         <slot name="headerAction" />
                     </template>
                 </PageHeader>
-                <PageContent
-                    :footerHeight="footerHeight"
-                    :containerClass="containerClass"
-                    :widthClass="widthClass"
-                >
-                    <template #side>
-                        <slot name="pageSideContent" />
-                    </template>
-                    <template #default>
-                        <slot />
-                    </template>
-                </PageContent>
-                <PageFooter
-                    v-if="hasPageFooter"
-                    ref="footerRef"
-                    :leftOffset="footerLeftOffset"
-                    :widthClass="widthClass"
-                >
-                    <template #default>
-                        <slot name="footer" />
-                    </template>
-                    <template #action>
-                        <slot name="footerAction" />
-                    </template>
-                </PageFooter>
+                <div class="w-full flex h-screen overflow-hidden">
+                    <div v-if="hasPageSideContent" ref="sideContentRef" class="flex-none border-r border-gray-300 h-full bg-white dark:bg-surface-800 dark:border-surface-700 min-w-64 shadow-sm z-[99]">
+                        <PageSideContent>
+                            <template #default>
+                                <slot name="pageSideContent" />
+                            </template>
+                        </PageSideContent>
+                    </div>
+                    <div class="flex-grow">
+                        <PageContent
+                            :footerHeight="footerHeight"
+                            :containerClass="containerClass"
+                            :widthClass="widthClass"
+                        >
+                            <template #side>
+                                <slot name="pageSideContent" />
+                            </template>
+                            <template #default>
+                                <slot />
+                            </template>
+                        </PageContent>
+                        <PageFooter
+                            v-if="hasPageFooter"
+                            ref="footerRef"
+                            :leftOffset="footerLeftOffset"
+                            :widthClass="widthClass"
+                        >
+                            <template #default>
+                                <slot name="footer" />
+                            </template>
+                            <template #action>
+                                <slot name="footerAction" />
+                            </template>
+                        </PageFooter>
+                    </div>
+                </div>
             </div>
         </div>
         <Toast v-if="hasToast" position="bottom-left" />
@@ -99,6 +110,7 @@ import PageHeader from '@atlas/components/App/Page/Header.vue';
 import PageFooter from '@atlas/components/App/Page/Footer.vue';
 import PageContent from '@atlas/components/App/Page/Content.vue';
 import PageSideNav from '@atlas/components/App/Page/SideNav.vue';
+import PageSideContent from '@atlas/components/App/Page/SideContent.vue';
 import NavSideBar from '@atlas/components/App/Nav/SideBar.vue';
 import NavTopBar from '@atlas/components/App/Nav/TopBar.vue';
 import Toast from '@atlas/components/Toast.vue';
@@ -159,6 +171,7 @@ const slots = useSlots();
 const sideNavRef = ref(null);
 const pageSideNavRef = ref(null);
 const footerRef = ref(null);
+const sideContentRef = ref(null);
 
 const footerHeight = ref(0);
 const footerLeftOffset = ref(0);
@@ -166,9 +179,10 @@ const footerLeftOffset = ref(0);
 const calculateFooterMetrics = () => {
     const sideNavWidth = sideNavRef.value?.$el?.offsetWidth || 0;
     const pageSideNavWidth = pageSideNavRef.value?.$el?.offsetWidth || 0;
+    const sideContentWidth = sideContentRef.value?.offsetWidth || 0;
     const footerEl = footerRef.value?.$el;
 
-    footerLeftOffset.value = sideNavWidth + pageSideNavWidth;
+    footerLeftOffset.value = sideNavWidth + pageSideNavWidth + sideContentWidth;
     footerHeight.value = footerEl?.offsetHeight || 0;
 };
 
@@ -188,6 +202,12 @@ const hasPageFooter = computed(() =>
     !!(Array.isArray(slots.footerAction?.()) &&
         slots.footerAction()[0]?.children &&
         slots.footerAction()[0].children.length > 0)
+);
+
+const hasPageSideContent = computed(() =>
+    !!(Array.isArray(slots.pageSideContent?.()) &&
+        slots.pageSideContent()[0]?.children &&
+        slots.pageSideContent()[0].children.length > 0)
 );
 
 onMounted(() => {
