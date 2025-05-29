@@ -63,6 +63,7 @@
                 </PageHeader>
                 <PageContent
                     :footerHeight="footerHeight"
+                    :containerClass="containerClass"
                     :widthClass="widthClass"
                 >
                     <template #default>
@@ -143,6 +144,10 @@ const props = defineProps({
     widthClass: {
         type: String,
         default: 'max-w-screen-2xl',
+    },
+    containerClass: {
+        type: String,
+        default: 'mx-auto p-4',
     }
 });
 
