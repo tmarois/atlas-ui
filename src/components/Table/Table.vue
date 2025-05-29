@@ -6,6 +6,7 @@
             selection: selection,
             dataKey: selection ? dataKey : undefined,
             rowHover: true,
+            showGridlines: true,
             size,
             tableStyle,
             ...$attrs

@@ -84,6 +84,7 @@
                                 :footerHeight="footerHeight"
                                 :containerClass="containerClass"
                                 :widthClass="widthClass"
+                                :rootClass="noScroll ? 'overflow-hidden' : 'overflow-y-auto'"
                             >
                                 <template #side>
                                     <slot name="pageSideContent" />
@@ -176,6 +177,10 @@ const props = defineProps({
     containerClass: {
         type: String,
         default: 'mx-auto p-4',
+    },
+    noScroll: {
+        type: Boolean,
+        default: false
     }
 });
 

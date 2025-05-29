@@ -1,16 +1,20 @@
 <template>
     <ScrollFrame
-        page
-        :offset="offset"
-        :addOffset="footerHeight"
-        :containerClass="containerClass"
+        v-bind="{
+            page: true,
+            offset: offset,
+            addOffset: footerHeight,
+            ...$attrs
+        }"
     >
-        <slot />
+        <div :class="containerClassInternal">
+            <slot />
+        </div>
     </ScrollFrame>
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, useAttrs } from 'vue';
 import ScrollFrame from '@atlas/components/ScrollFrame.vue';
 
 const props = defineProps({
@@ -32,5 +36,7 @@ const props = defineProps({
     }
 });
 
-const containerClass = computed(() => props.widthClass + ' ' + props.containerClass);
+const $attrs = useAttrs();
+
+const containerClassInternal = computed(() => props.widthClass + ' ' + props.containerClass);
 </script>

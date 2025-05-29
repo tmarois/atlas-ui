@@ -5,9 +5,7 @@
         :class="rootClass"
         :style="{ height: `calc(100vh - ${dynamicHeight} - ${addOffset}px)` }"
     >
-        <div :class="containerClass">
-            <slot />
-        </div>
+        <slot />
     </div>
 </template>
 
@@ -39,10 +37,6 @@ const props = defineProps({
     rootClass: {
         type: String,
         default: 'overflow-y-auto',
-    },
-    containerClass: {
-        type: String,
-        default: '',
     }
 });
 
