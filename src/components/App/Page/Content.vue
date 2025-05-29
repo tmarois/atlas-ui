@@ -1,5 +1,10 @@
 <template>
-    <ScrollFrame page :offset="offset" :addOffset="footerHeight">
+    <ScrollFrame
+        page
+        :offset="offset"
+        :addOffset="footerHeight"
+        :containerClass="[widthClass, containerClass]"
+    >
         <slot />
     </ScrollFrame>
 </template>
@@ -15,5 +20,13 @@ const props = defineProps({
         type: Number,
         default: 0,
     },
+    widthClass: {
+        type: String,
+        default: 'max-w-screen-2xl',
+    },
+    containerClass: {
+        type: String,
+        default: 'mx-auto p-4',
+    }
 });
 </script>

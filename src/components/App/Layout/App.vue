@@ -25,6 +25,7 @@
                     :pageUrl="pageUrl"
                     :items="topBarItems"
                     :linkComponent="linkComponent"
+                    :widthClass="widthClass"
                 >
                     <template #logo>
                         <slot name="navLogo" />
@@ -51,12 +52,16 @@
                     :pageUrl="pageUrl"
                     :linkComponent="linkComponent"
                     :breadcrumbs="breadcrumbs"
+                    :widthClass="widthClass"
                 >
                     <template #action>
                         <slot name="headerAction" />
                     </template>
                 </PageHeader>
-                <PageContent :footerHeight="footerHeight">
+                <PageContent
+                    :footerHeight="footerHeight"
+                    :widthClass="widthClass"
+                >
                     <template #default>
                         <slot />
                     </template>
@@ -65,6 +70,7 @@
                     v-if="hasPageFooter"
                     ref="footerRef"
                     :leftOffset="footerLeftOffset"
+                    :widthClass="widthClass"
                 >
                     <template #default>
                         <slot name="footer" />
@@ -130,6 +136,10 @@ const props = defineProps({
     breadcrumbs : {
         type: Array,
         default: () => []
+    },
+    widthClass: {
+        type: String,
+        default: 'max-w-screen-2xl',
     }
 });
 

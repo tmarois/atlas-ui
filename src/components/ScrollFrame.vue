@@ -42,7 +42,7 @@ const props = defineProps({
     },
     containerClass: {
         type: String,
-        default: 'mx-auto max-w-screen-2xl p-4',
+        default: '',
     }
 });
 

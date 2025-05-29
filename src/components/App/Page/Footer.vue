@@ -6,7 +6,7 @@
             width: `calc(100% - ${leftOffset}px)`
         }"
     >
-        <div class="max-w-screen-2xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="mx-auto px-4 py-3 flex justify-between items-center" :class="widthClass">
             <div>
                 <slot />
             </div>
@@ -24,6 +24,10 @@ const props = defineProps({
     leftOffset: {
         type: Number,
         default: 0
+    },
+    widthClass: {
+        type: String,
+        default: 'max-w-screen-2xl',
     }
 });
 const slots = useSlots();

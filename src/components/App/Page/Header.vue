@@ -6,7 +6,7 @@
         }"
     >
         <div class="flex justify-center w-full">
-            <div class="w-full max-w-screen-2xl">
+            <div class="w-full" :class="widthClass">
                 <div class="flex justify-center items-center w-full px-4">
                     <div class="grow">
                         <div v-if="!props.hideTitle" class="flex items-center">
@@ -121,6 +121,10 @@ const props = defineProps({
         type: [String, Object],
         default: 'a',
     },
+    widthClass: {
+        type: String,
+        default: 'max-w-screen-2xl',
+    }
 });
 
 const isActiveTab = (tab) => {
