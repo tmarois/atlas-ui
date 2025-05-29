@@ -37,7 +37,7 @@
                                                 </svg>
                                             </div>
                                         </li>
-                                        <li class="font-semibold">
+                                        <li class="text-gray-900 dark:text-gray-100 font-semibold">
                                             {{ props.title }}
                                         </li>
                                     </ul>
@@ -67,9 +67,9 @@
                                                 tab?.disabled
                                                     ? 'text-gray-400 cursor-not-allowed pointer-events-none select-none border-transparent'
                                                     : [
-                                                        'text-gray-500 hover:text-gray-600 hover:border-surface-300 dark:hover:border-surface-400 dark:hover:text-gray-300 dark:text-gray-300',
+                                                        'text-gray-800 hover:text-black hover:border-surface-300 dark:hover:border-surface-400 dark:hover:text-gray-300 dark:text-gray-300',
                                                         isActiveTab(tab)
-                                                            ? 'text-gray-900 !border-surface-600 dark:!border-surface-300 dark:!text-gray-100'
+                                                            ? 'text-black !border-surface-600 dark:!border-surface-300 dark:!text-gray-100'
                                                             : 'border-transparent'
                                                     ]
                                             ]"
