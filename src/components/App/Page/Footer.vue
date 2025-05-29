@@ -6,11 +6,11 @@
             width: `calc(100% - ${leftOffset}px)`
         }"
     >
-        <div class="mx-auto px-4 py-3 flex justify-between items-center" :class="widthClass">
-            <div>
+        <div class="mx-auto px-4 py-1.5 flex justify-between items-center" :class="widthClass">
+            <div class="grow">
                 <slot />
             </div>
-            <div v-if="slots.action">
+            <div v-if="hasAction">
                 <slot name="action" />
             </div>
         </div>
@@ -19,6 +19,7 @@
 
 <script setup>
 import { useSlots } from 'vue';
+import { hasSlotContent } from '@atlas/utils';
 
 const props = defineProps({
     leftOffset: {
@@ -31,4 +32,6 @@ const props = defineProps({
     }
 });
 const slots = useSlots();
+
+const hasAction = computed(() => hasSlotContent(slots.action));
 </script>

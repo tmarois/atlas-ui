@@ -10,10 +10,8 @@
 </template>
 
 <script setup>
-import { computed, useSlots } from 'vue';
+import { computed } from 'vue';
 import ScrollFrame from '@atlas/components/ScrollFrame.vue';
-
-const slots = useSlots();
 
 const props = defineProps({
     offset: {

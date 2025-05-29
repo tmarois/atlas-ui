@@ -117,6 +117,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, nextTick, useSlots } from 'vue';
+import { hasSlotContent } from '@atlas/utils';
 import PageHeader from '@atlas/components/App/Page/Header.vue';
 import PageFooter from '@atlas/components/App/Page/Footer.vue';
 import PageContent from '@atlas/components/App/Page/Content.vue';
@@ -198,35 +199,14 @@ const calculateFooterMetrics = () => {
     footerHeight.value = footerEl?.offsetHeight || 0;
 };
 
+const hasAppTopBar = computed(() => hasSlotContent(slots.appTopBar));
+const hasPageSideContent = computed(() => hasSlotContent(slots.pageSideContent));
+
 const hasPageHeader = computed(() =>
-    !!props.pageTitle ||
-    (Array.isArray(props.pageTabs) && props.pageTabs.length > 0) ||
-    !!slots.headerAction ||
-    !!(Array.isArray(slots.headerAction?.()) &&
-        slots.headerAction()[0]?.children &&
-        slots.headerAction()[0].children.length > 0)
+    !!props.pageTitle || (Array.isArray(props.pageTabs) && props.pageTabs.length > 0) || hasSlotContent(slots.headerAction)
 );
 
-const hasPageFooter = computed(() =>
-    !!(Array.isArray(slots.footer?.()) &&
-        slots.footer()[0]?.children &&
-        slots.footer()[0].children.length > 0) ||
-    !!(Array.isArray(slots.footerAction?.()) &&
-        slots.footerAction()[0]?.children &&
-        slots.footerAction()[0].children.length > 0)
-);
-
-const hasPageSideContent = computed(() =>
-    !!(Array.isArray(slots.pageSideContent?.()) &&
-        slots.pageSideContent()[0]?.children &&
-        slots.pageSideContent()[0].children.length > 0)
-);
-
-const hasAppTopBar = computed(() =>
-    !!(Array.isArray(slots.appTopBar?.()) &&
-        slots.appTopBar()[0]?.children &&
-        slots.appTopBar()[0].children.length > 0)
-);
+const hasPageFooter = computed(() => hasSlotContent(slots.footer) || hasSlotContent(slots.footerAction));
 
 onMounted(() => {
     nextTick(() => {

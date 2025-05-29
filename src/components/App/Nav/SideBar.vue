@@ -49,7 +49,7 @@
                     </div>
                 </template>
             </div>
-            <div v-if="slots.actions" class="w-full mb-2 flex flex-col items-center space-y-2">
+            <div v-if="hasActions" class="w-full mb-2 flex flex-col items-center space-y-2">
                 <slot name="actions" />
             </div>
         </div>
@@ -57,7 +57,8 @@
 </template>
 
 <script setup>
-import { useSlots } from 'vue';
+import { computed, useSlots } from 'vue';
+import { hasSlotContent } from '@atlas/utils';
 
 const slots = useSlots();
 
@@ -93,4 +94,6 @@ const isActive = (item) => {
 const getIcon = (item) => {
     return isActive(item) && item.activeIcon ? item.activeIcon : item.icon;
 };
+
+const hasActions = computed(() => hasSlotContent(slots.actions));
 </script>

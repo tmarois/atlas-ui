@@ -10,4 +10,4 @@ export const isClient = typeof window !== 'undefined' && typeof document !== 'un
 
 export * from '@atlas/utils/format'
 export * from '@atlas/utils/validate'
-export * from '@atlas/utils/merge'
+export * from '@atlas/utils/vue'

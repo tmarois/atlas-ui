@@ -64,7 +64,7 @@
                         </template>
                     </div>
                 </div>
-                <div v-if="slots.actions" class="relative flex space-x-2 items-center">
+                <div v-if="hasActions" class="relative flex space-x-2 items-center">
                     <slot name="actions" />
                 </div>
             </div>
@@ -74,6 +74,7 @@
 
 <script setup>
 import { reactive, useSlots } from 'vue';
+import { hasSlotContent } from '@atlas/utils';
 import Menu from '@atlas/components/Menu.vue';
 
 const slots = useSlots();
@@ -121,4 +122,6 @@ const isActive = (item) => {
     }
     return props.pageUrl.startsWith(item.href);
 };
+
+const hasActions = computed(() => hasSlotContent(slots.actions));
 </script>

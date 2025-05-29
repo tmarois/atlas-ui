@@ -95,6 +95,7 @@
 import { computed, useSlots } from 'vue';
 import { IconLock } from '@tabler/icons-vue';
 import { useScroll } from '@atlas/composables/useScroll';
+import { hasSlotContent } from '@atlas/utils';
 
 const slots = useSlots();
 
@@ -139,7 +140,7 @@ const isActiveTab = (tab) => {
     }
 };
 
-const hasAction = computed(() => !!slots.action);
-const hasTitle = computed(() => !!slots.title || !!props.title);
+const hasAction = computed(() => hasSlotContent(slots.action));
+const hasTitle = computed(() => hasSlotContent(slots.title) || props.title);
 const { isTop } = useScroll('page');
 </script>
