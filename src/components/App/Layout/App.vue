@@ -36,7 +36,7 @@
                 </NavTopBar>
             </slot>
         </div>
-        <div class="w-full flex flex-col">
+        <div class="flex-1 min-w-0 flex flex-col">
             <AppTopBar v-if="hasAppTopBar">
                 <template #default>
                     <slot name="appTopBar" />
@@ -79,7 +79,7 @@
                                 </template>
                             </PageSideContent>
                         </div>
-                        <div class="flex-grow">
+                        <div class="flex-grow min-w-0">
                             <PageContent
                                 :footerHeight="footerHeight"
                                 :containerClass="containerClass"

@@ -60,8 +60,8 @@ interface Props extends /* @vue-ignore */ DataTableProps {}
 defineProps<Props>();
 
 const theme = ref<DataTablePassThroughOptions>({
-    root: `relative p-flex-scrollable:flex p-flex-scrollable:flex-col p-flex-scrollable:h-full text-sm`,
-    tableContainer: `p-scrollable:relative p-flex-scrollable:flex p-flex-scrollable:flex-col p-flex-scrollable:flex-1 p-flex-scrollable:h-full`,
+    root: `relative p-flex-scrollable:flex p-flex-scrollable:flex-col p-flex-scrollable:h-full text-sm `,
+    tableContainer: `p-scrollable:relative p-flex-scrollable:flex p-flex-scrollable:flex-col p-flex-scrollable:flex-1 p-flex-scrollable:h-full max-w-full`,
     header: `py-3 px-4 border-b border-surface-200 dark:border-surface-700
         bg-surface-0 dark:bg-surface-900
         text-surface-900 dark:text-surface-0`,
@@ -92,7 +92,7 @@ const theme = ref<DataTablePassThroughOptions>({
         columnHeaderContent: `flex items-center gap-2`,
         columnTitle: `font-semibold`,
         bodyCell: `text-start py-2 px-3 border-b first:pl-6 last:pr-6 first:border-l-0 last:border-r-0 border-r border-surface-200 dark:border-surface-800
-            p-frozen:sticky p-frozen:bg-surface-0 dark:p-frozen:bg-surface-900`,
+            p-frozen:sticky p-frozen:bg-surface-50 dark:p-frozen:bg-surface-900`,
         bodyCellContent: ``,
         footerCell: `text-start py-3 px-4 border-b border-surface-200 dark:border-surface-800
             bg-surface-0 dark:bg-surface-900

@@ -27,6 +27,7 @@
                 :class="column.class"
                 :body-class="column.bodyClass"
                 :sortable="column.sortable ?? false"
+                :frozen="column.frozen ?? false"
                 v-bind="column.props"
             >
                 <template v-if="$slots[column.field]" #body="slotProps">
