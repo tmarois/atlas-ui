@@ -76,6 +76,7 @@ Peer dependencies:
 If using tiptap editor, install these:
 
 ```
+"@tiptap/extension-placeholder": "^2.12.0",
 "@tiptap/extension-bold": "^2.11.7",
 "@tiptap/extension-bullet-list": "^2.11.7",
 "@tiptap/extension-hard-break": "^2.11.7",

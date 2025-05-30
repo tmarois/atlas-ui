@@ -1,11 +1,7 @@
 <template>
     <div class="atlas-editor-content flex flex-col w-full h-full">
-        <div>
-            <EditorToolbar :editor="editorInstance" />
-        </div>
-        <div>
-            <EditorContent :editor="editorInstance" />
-        </div>
+        <EditorToolbar v-if="toolbar" :editor="editorInstance" />
+        <EditorContent :editor="editorInstance" />
     </div>
 </template>
 
@@ -13,8 +9,9 @@
 import { EditorContent, useEditor } from '@tiptap/vue-3';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
+import Placeholder from '@tiptap/extension-placeholder';
 import EditorToolbar from '@atlas/components/Editor/Toolbar.vue';
-import { watch } from 'vue';
+import { watch, defineExpose } from 'vue';
 
 const emit = defineEmits(['save']);
 
@@ -22,13 +19,25 @@ const props = defineProps({
     content: {
         type: String,
         default: '',
+    },
+    placeholder: {
+        type: String,
+        default: '',
+    },
+    editorClass: {
+        type: String,
+        default: 'p-4 w-full h-full focus:outline-none text-black text-sm dark:text-white',
+    },
+    toolbar: {
+        type: Boolean,
+        default: true,
     }
 });
 
 const editorInstance = useEditor({
     editorProps: {
         attributes: {
-            class: 'p-4 w-full h-full focus:outline-none text-black text-sm dark:text-white',
+            class: props.editorClass,
         },
     },
     content: props.content,
@@ -39,10 +48,17 @@ const editorInstance = useEditor({
             openOnClick: false,
             defaultProtocol: 'https',
         }),
+        Placeholder.configure({
+            placeholder: props.placeholder,
+        }),
     ],
     onUpdate: () => {
         save();
     },
+});
+
+defineExpose({
+    editorInstance
 });
 
 watch(() => props.content, (v) => {
@@ -58,6 +74,13 @@ const save = () => {
 </script>
 
 <style>
+.ProseMirror p.is-empty::before {
+    content: attr(data-placeholder);
+    color: #9ca3af; /* Tailwind's text-gray-400 */
+    float: left;
+    height: 0;
+    pointer-events: none;
+}
 .atlas-editor-content {
     font-size: 0.875rem; /* Tailwind's text-sm */
     line-height: 1.625;  /* Tailwind's leading-relaxed */
