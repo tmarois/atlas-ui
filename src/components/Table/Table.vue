@@ -16,6 +16,7 @@
     >
         <Column
             v-if="selection"
+            frozen
             selectionMode="multiple"
             headerStyle="width: 3rem"
         />

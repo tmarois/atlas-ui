@@ -62,17 +62,17 @@ defineProps<Props>();
 const theme = ref<DataTablePassThroughOptions>({
     root: `relative p-flex-scrollable:flex p-flex-scrollable:flex-col p-flex-scrollable:h-full text-sm `,
     tableContainer: `p-scrollable:relative p-flex-scrollable:flex p-flex-scrollable:flex-col p-flex-scrollable:flex-1 p-flex-scrollable:h-full max-w-full`,
-    header: `py-3 px-4 border-b border-surface-200 dark:border-surface-700
+    header: `py-3 px-4 border-b border-surface-300 dark:border-surface-700
         bg-surface-0 dark:bg-surface-900
         text-surface-900 dark:text-surface-0`,
     table: `border-spacing-0 w-full border-separate`,
-    thead: `p-scrollable:bg-surface-0 dark:p-scrollable:bg-surface-900 p-scrollable:top-0 p-scrollable:z-10`,
+    thead: `p-scrollable:bg-surface-0 dark:p-scrollable:bg-surface-900 p-scrollable:top-0 p-scrollable:z-10 p-scrollable:shadow-sm`,
     tbody: `p-hoverable:*:hover:bg-surface-100 p-hoverable:*:hover:text-surface-800 dark:p-hoverable:*:hover:bg-surface-800 dark:p-hoverable:*:hover:text-surface-0
         p-frozen:sticky p-frozen:z-10`,
-    bodyRow: `text-surface-900 dark:text-surface-0
+    bodyRow: `bg-white text-surface-900 dark:text-surface-0
         p-selectable:cursor-pointer
-        p-selected:bg-yellow-100 dark:p-selected:bg-yellow-500/30
-        hover:bg-surface-100 dark:hover:bg-surface-800
+        p-selected:!bg-yellow-100 dark:p-selected:!bg-yellow-500/30
+        hover:!bg-surface-100 dark:hover:!bg-surface-800
         p-selected:hover:!bg-yellow-200 dark:p-selected:hover:!bg-yellow-500/40`,
     tfoot: `p-scrollable:bg-surface-0 dark:p-scrollable:bg-surface-900 p-scrollable:bottom-0 p-scrollable:z-10`,
     footer: `py-3 px-4 border-b border-surface-200 dark:border-surface-700
@@ -81,18 +81,17 @@ const theme = ref<DataTablePassThroughOptions>({
     column: {
         root: ``,
         headerCell: `group py-2 px-3 font-normal text-start transition-colors duration-200
-            border-b border-surface-200 dark:border-surface-700 first:border-l-0 last:border-r-0 border-r
+            border-b border-surface-300 dark:border-surface-700 first:border-l-0 last:border-r-0 border-r
             bg-surface-50/50 dark:bg-surface-900
             text-surface-900 dark:text-surface-0 text-xs
             p-sortable:cursor-pointer p-sortable:select-none p-sortable:focus-visible:outline p-sortable:focus-visible:outline-1 p-sortable:focus-visible:-outline-offset-1 p-sortable:focus-visible:outline-primary
-            p-sortable:not-p-sorted:hover:bg-surface-100 p-sortable:not-p-sorted:hover:text-surface-800
-            dark:p-sortable:not-p-sorted:hover:bg-surface-800 dark:p-sortable:not-p-sorted:hover:text-surface-0
+            p-sortable:not-p-sorted:hover:!bg-surface-100 p-sortable:not-p-sorted:hover:text-surface-800
+            dark:p-sortable:not-p-sorted:hover:!bg-surface-800 dark:p-sortable:not-p-sorted:hover:text-surface-0
             p-sorted:bg-surface-100 dark:p-sorted:bg-surface-800 first:pl-6 last:pr-6
             p-frozen:sticky p-frozen:bg-surface-0 dark:p-frozen:bg-surface-900 p-frozen:z-10`,
-        columnHeaderContent: `flex items-center gap-2`,
+        columnHeaderContent: `flex justify-between items-center w-full`,
         columnTitle: `font-semibold`,
-        bodyCell: `text-start py-2 px-3 border-b first:pl-6 last:pr-6 first:border-l-0 last:border-r-0 border-r border-surface-200 dark:border-surface-800
-            p-frozen:sticky p-frozen:bg-surface-50 dark:p-frozen:bg-surface-900`,
+        bodyCell: `text-start py-2 px-3 border-b first:pl-6 last:pr-6 first:border-l-0 last:border-r-0 border-r border-surface-200 dark:border-surface-800 p-frozen:sticky p-frozen:bg-inherit p-selected:!bg-inherit`,
         bodyCellContent: ``,
         footerCell: `text-start py-3 px-4 border-b border-surface-200 dark:border-surface-800
             bg-surface-0 dark:bg-surface-900
