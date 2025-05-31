@@ -47,6 +47,8 @@
 </template>
 
 <script setup>
+import ScrollFrame from '@atlas/components/ScrollFrame.vue';
+
 const props = defineProps({
     pageUrl: {
         type: String,
