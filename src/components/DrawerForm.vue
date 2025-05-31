@@ -6,7 +6,7 @@
         :style="width ? `width: ${width}; max-width: 100%;` : ''"
         pt:root:class="p-right:lg:w-[60%] p-right:md:w-[80%] p-right:sm:w-[90%] p-right:w-full"
         pt:mask:class="p-modal:bg-black/30"
-        pt:header:class="p-0 border-b border-surface-400/60 dark:border-surface-700 dark:bg-surface-800 shadow"
+        pt:header:class="p-0 border-b border-surface-300 dark:border-surface-700 dark:bg-surface-800 shadow"
         pt:content:class="p-0 bg-surface-100 dark:bg-surface-900"
         pt:footer:class="py-4 px-6 flex items-center space-x-4 border-t border-surface-300 dark:border-surface-700 bg-white dark:bg-surface-700 shadow-[0_-2px_4px_1px_rgba(0,0,0,0.05)] dark:shadow-[0_-2px_6px_rgba(0,0,0,0.3)]"
         @update:visible="close"
@@ -17,18 +17,18 @@
                     <div class="font-semibold text-black dark:text-gray-200 text-lg z-1">
                         {{ title }}
                     </div>
-                    <div v-if="tabs?.length" class="flex flex-wrap -mb-px border-b border-surface-300 dark:border-surface-600 pt-2">
+                    <div v-if="tabs?.length" class="flex flex-wrap -mb-[2px] border-b border-surface-300 dark:border-surface-600 pt-2">
                         <ul class="flex flex-wrap -mb-px">
                             <li v-for="(tab, i) in tabs" :key="i" class="mr-2">
                                 <button
-                                    class="inline-flex items-center gap-1 py-2 px-4 border-b-2 rounded-t-lg text-base transition-colors cursor-pointer"
+                                    class="inline-flex items-center gap-1 py-2 px-4 border-b-4 rounded-t-lg text-base transition-colors cursor-pointer"
                                     :disabled="tab?.disabled"
                                     :class="[
                                         tab?.disabled
                                             ? 'text-gray-400 cursor-not-allowed pointer-events-none border-transparent'
                                             : activeTab === i
                                                 ? 'text-gray-900 dark:text-gray-100 border-surface-600 dark:border-surface-300 font-medium'
-                                                : 'text-gray-500 hover:text-gray-600 hover:border-surface-300 dark:hover:border-surface-400 dark:hover:text-gray-300 dark:text-gray-300 border-transparent'
+                                                : 'text-gray-500 hover:text-gray-600 hover:border-surface-500 dark:hover:border-surface-400 dark:hover:text-gray-300 dark:text-gray-300 border-transparent'
                                     ]"
                                     @click="() => { if (!tab?.disabled) activeTab = i }"
                                 >

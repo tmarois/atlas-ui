@@ -53,7 +53,7 @@
                             :class="{ 'pt-2': props.hideTitle }"
                         >
                             <div class="grow">
-                                <ul class="flex flex-wrap -mb-px">
+                                <ul class="flex flex-wrap -mb-[0px]">
                                     <li
                                         v-for="tab in props.tabs"
                                         :key="tab.href"
@@ -62,7 +62,7 @@
                                         <component
                                             :is="linkComponent"
                                             :href="tab.href"
-                                            class="text-base inline-flex items-center gap-1 py-2 px-4 border-b-4 rounded-t-lg"
+                                            class="text-base inline-flex items-center gap-1 py-2 px-4 border-b-4"
                                             :class="[
                                                 tab?.disabled
                                                     ? 'text-gray-400 cursor-not-allowed pointer-events-none select-none border-transparent'
