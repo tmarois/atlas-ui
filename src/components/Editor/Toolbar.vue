@@ -8,6 +8,7 @@
             <OrderedListTool :editor="editor" />
             <LinkTool :editor="editor" />
             <ClearFormattingTool :editor="editor" />
+            <slot :editor="editor" />
         </div>
     </div>
 </template>

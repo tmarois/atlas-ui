@@ -1,6 +1,10 @@
 <template>
     <div class="atlas-editor-content flex flex-col w-full h-full">
-        <EditorToolbar v-if="toolbar && !textOnly" :editor="editorInstance" />
+        <EditorToolbar v-if="toolbar && !textOnly" :editor="editorInstance">
+            <template #default="{ editor }">
+                <slot name="toolbar" :editor="editor" />
+            </template>
+        </EditorToolbar>
         <EditorContent :editor="editorInstance" />
     </div>
 </template>
@@ -101,11 +105,11 @@ defineExpose({
 
 watch(() => props.modelValue, (newValue) => {
     if (editorInstance.value && ((!props.textOnly && newValue !== editorInstance.value.getHTML()) || (props.textOnly && newValue !== editorInstance.value.getText()))) {
-        editorInstance.value.commands.setContent(newValue, false, {preserveWhitespace: 'full',});
+        editorInstance.value.commands.setContent(newValue, false, { preserveWhitespace: 'full' });
     }
 });
-
 </script>
+
 
 <style>
 .ProseMirror p.is-empty::before {
