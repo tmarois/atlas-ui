@@ -24,7 +24,7 @@ import Document from '@tiptap/extension-document';
 import Paragraph from '@tiptap/extension-paragraph';
 import Text from '@tiptap/extension-text';
 import EditorToolbar from '@atlas/components/Editor/Toolbar.vue';
-import { watch, defineExpose } from 'vue';
+import { watch } from 'vue';
 
 const emit = defineEmits(['update:modelValue']);
 
