@@ -4,6 +4,7 @@
             v-if="toolbar && !textOnly"
             :editor="editorInstance"
             :rootClass="toolbarClass"
+            :options="toolbarOptions"
         >
             <template #default="{ editor }">
                 <slot name="toolbar" :editor="editor" />
@@ -47,6 +48,10 @@ const props = defineProps({
     toolbar: {
         type: Boolean,
         default: true,
+    },
+    toolbarOptions: {
+        type: Array,
+        default: () => ['bold', 'italic', 'strike', 'bullet', 'ordered', 'link', 'clear'],
     },
     textOnly: {
         type: Boolean,
@@ -93,7 +98,6 @@ const editorInstance = useEditor({
           ]
         : [
               StarterKit,
-              HardBreak,
               Link.configure({
                   openOnClick: false,
                   defaultProtocol: 'https',
