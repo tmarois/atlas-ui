@@ -13,6 +13,7 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
 import BoldTool from '@atlas/components/Editor/Tools/BoldTool.vue';
 import ItalicTool from '@atlas/components/Editor/Tools/ItalicTool.vue';
 import StrikeTool from '@atlas/components/Editor/Tools/StrikeTool.vue';
