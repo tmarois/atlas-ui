@@ -1,6 +1,10 @@
 <template>
     <div class="atlas-editor-content flex flex-col w-full h-full">
-        <EditorToolbar v-if="toolbar && !textOnly" :editor="editorInstance">
+        <EditorToolbar
+            v-if="toolbar && !textOnly"
+            :editor="editorInstance"
+            :rootClass="toolbarClass"
+        >
             <template #default="{ editor }">
                 <slot name="toolbar" :editor="editor" />
             </template>
@@ -34,7 +38,7 @@ const props = defineProps({
     },
     editorClass: {
         type: String,
-        default: 'p-4 w-full h-full focus:outline-none text-black text-sm dark:text-white',
+        default: 'p-4 text-black text-sm dark:text-white',
     },
     autofocus: {
         type: Boolean,
@@ -48,6 +52,10 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    toolbarClass: {
+        type: String,
+        default: 'border-b border-surface-300 dark:border-surface-700',
+    }
 });
 
 const editorInstance = useEditor({
@@ -56,7 +64,7 @@ const editorInstance = useEditor({
     },
     editorProps: {
         attributes: {
-            class: props.editorClass,
+            class: 'w-full h-full focus:outline-none ' + props.editorClass,
         },
         handleKeyDown(view, event) {
             if (event.key === 'Enter' && !event.shiftKey && props.textOnly) {

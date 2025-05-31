@@ -6,6 +6,7 @@
         size="small"
         class="!px-2"
         :class="{
+            'hover:!bg-surface-200/50': true,
             '!bg-surface-300/50 text-black': editor?.isActive('bold')
         }"
         @click="editor?.chain().focus().toggleBold().run()"

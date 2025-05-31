@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center justify-between p-2 py-1 border-b border-surface-300 dark:border-surface-700">
+    <div class="flex items-center justify-between p-2 py-1" :class="rootClass">
         <div class="flex items-center space-x-1">
             <BoldTool :editor="editor" />
             <ItalicTool :editor="editor" />
@@ -23,6 +23,13 @@ import LinkTool from '@atlas/components/Editor/Tools/LinkTool.vue';
 import ClearFormattingTool from '@atlas/components/Editor/Tools/ClearFormattingTool.vue';
 
 const props = defineProps({
-    editor: Object
+    editor: {
+        type: Object,
+        required: true
+    },
+    rootClass: {
+        type: String,
+        default: ''
+    }
 });
 </script>

@@ -5,7 +5,10 @@
         text
         size="small"
         class="!px-2"
-        :class="{ '!bg-surface-300/50 text-black': editor?.isActive('orderedList') }"
+        :class="{
+            'hover:!bg-surface-200/50': true,
+            '!bg-surface-300/50 text-black': editor?.isActive('orderedList')
+        }"
         @click="editor?.chain().focus().toggleOrderedList().run()"
     >
         <div class="flex items-center text-black dark:text-white">

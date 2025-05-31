@@ -5,7 +5,10 @@
         text
         size="small"
         class="!px-2"
-        :class="{ '!bg-surface-300/50 text-black': editor?.isActive('bulletList') }"
+        :class="{
+            'hover:!bg-surface-200/50': true,
+            '!bg-surface-300/50 text-black': editor?.isActive('bulletList')
+        }"
         @click="editor?.chain().focus().toggleBulletList().run()"
     >
         <div class="flex items-center text-black dark:text-white">

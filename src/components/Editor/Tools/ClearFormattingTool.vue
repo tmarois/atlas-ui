@@ -4,7 +4,7 @@
         icon
         text
         size="small"
-        class="!px-2"
+        class="!px-2 hover:!bg-surface-200/50"
         @click="editor?.chain().focus().unsetAllMarks().clearNodes().run()"
     >
         <div class="flex items-center text-black dark:text-white">
