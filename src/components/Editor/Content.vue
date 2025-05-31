@@ -1,5 +1,5 @@
 <template>
-    <div class="atlas-editor-content text-black dark:text-white" v-html="content" />
+    <div class="atlas-editor-content text-black dark:text-white" v-html="parseContent" />
 </template>
 
 <script setup>
@@ -9,12 +9,18 @@ const { content } = defineProps({
         required: true
     }
 });
+
+const parseContent = computed(() => {
+    if (content === null) return '';
+    return content.replace(/\n/g, '<br>');
+});
+
 </script>
 
-<style>
+<style scoped>
 .atlas-editor-content {
     font-size: 0.875rem; /* Tailwind's text-sm */
-    line-height: 1.625;  /* Tailwind's leading-relaxed */
+    line-height: 1.425;  /* Tailwind's leading-relaxed */
 }
 .atlas-editor-content p:empty {
     height: 1rem;

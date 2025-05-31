@@ -1,6 +1,6 @@
 <template>
     <div class="atlas-editor-content flex flex-col w-full h-full">
-        <EditorToolbar v-if="toolbar" :editor="editorInstance" />
+        <EditorToolbar v-if="toolbar && !textOnly" :editor="editorInstance" />
         <EditorContent :editor="editorInstance" />
     </div>
 </template>
@@ -10,15 +10,19 @@ import { EditorContent, useEditor } from '@tiptap/vue-3';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
 import Placeholder from '@tiptap/extension-placeholder';
+import HardBreak from '@tiptap/extension-hard-break';
+import Document from '@tiptap/extension-document';
+import Paragraph from '@tiptap/extension-paragraph';
+import Text from '@tiptap/extension-text';
 import EditorToolbar from '@atlas/components/Editor/Toolbar.vue';
 import { watch, defineExpose } from 'vue';
 
-const emit = defineEmits(['save']);
+const emit = defineEmits(['update:modelValue']);
 
 const props = defineProps({
-    content: {
-        type: String,
-        default: '',
+    modelValue: {
+        type: [String, null],
+        required: true,
     },
     placeholder: {
         type: String,
@@ -28,32 +32,66 @@ const props = defineProps({
         type: String,
         default: 'p-4 w-full h-full focus:outline-none text-black text-sm dark:text-white',
     },
+    autofocus: {
+        type: Boolean,
+        default: false,
+    },
     toolbar: {
         type: Boolean,
         default: true,
-    }
+    },
+    textOnly: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const editorInstance = useEditor({
+    parseOptions: {
+        preserveWhitespace: 'full',
+    },
     editorProps: {
         attributes: {
             class: props.editorClass,
         },
+        handleKeyDown(view, event) {
+            if (event.key === 'Enter' && !event.shiftKey && props.textOnly) {
+                event.preventDefault();
+                view.dispatch(
+                    view.state.tr.replaceSelectionWith(
+                        view.state.schema.nodes.hardBreak.create()
+                    )
+                );
+                return true;
+            }
+            return false;
+        },
     },
-    content: props.content,
-    autofocus: false,
-    extensions: [
-        StarterKit,
-        Link.configure({
-            openOnClick: false,
-            defaultProtocol: 'https',
-        }),
-        Placeholder.configure({
-            placeholder: props.placeholder,
-        }),
-    ],
-    onUpdate: () => {
-        save();
+    content: props.modelValue,
+    autofocus: props.autofocus,
+    extensions: props.textOnly
+        ? [
+              Document,
+              Paragraph,
+              Text,
+              HardBreak,
+              Placeholder.configure({
+                  placeholder: props.placeholder,
+              }),
+          ]
+        : [
+              StarterKit,
+              HardBreak,
+              Link.configure({
+                  openOnClick: false,
+                  defaultProtocol: 'https',
+              }),
+              Placeholder.configure({
+                  placeholder: props.placeholder,
+              }),
+          ],
+    onUpdate: ({ editor }) => {
+        emit('update:modelValue', props.textOnly ? editor.getText() : editor.getHTML());
     },
 });
 
@@ -61,16 +99,12 @@ defineExpose({
     editorInstance
 });
 
-watch(() => props.content, (v) => {
-    if (!v) {
-        editorInstance.value.commands.setContent('');
-        return;
+watch(() => props.modelValue, (newValue) => {
+    if (editorInstance.value && ((!props.textOnly && newValue !== editorInstance.value.getHTML()) || (props.textOnly && newValue !== editorInstance.value.getText()))) {
+        editorInstance.value.commands.setContent(newValue, false, {preserveWhitespace: 'full',});
     }
 });
 
-const save = () => {
-    emit('save', editorInstance.value.getHTML());
-};
 </script>
 
 <style>
@@ -83,7 +117,7 @@ const save = () => {
 }
 .atlas-editor-content {
     font-size: 0.875rem; /* Tailwind's text-sm */
-    line-height: 1.625;  /* Tailwind's leading-relaxed */
+    line-height: 1.425;  /* Tailwind's leading-relaxed */
 }
 .atlas-editor-content p:empty {
     height: 1rem;
