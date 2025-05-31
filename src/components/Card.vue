@@ -27,7 +27,7 @@ const theme = ref<CardPassThroughOptions>({
         border border-surface-300 dark:border-surface-700
         w-full h-full shadow-[0_1px_2px_0_rgba(0,0,0,0.07)] overflow-hidden`,
     header: `p-6 py-4 border-b border-surface-300 dark:border-surface-700`,
-    body: `flex flex-col space-y-4`,
+    body: `flex flex-col`,
     caption: `flex flex-col gap-2`,
     title: `font-semibold text-lg`,
     subtitle: `text-surface-500 dark:text-surface-400`,
