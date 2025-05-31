@@ -1,6 +1,6 @@
 {
   "name": "atlas-ui",
-  "version": "1.1.15",
+  "version": "1.1.16",
   "main": "src/index.js",
   "scripts": {
     "eslint": "npx eslint \"src/**/*.{js,vue}\"",
