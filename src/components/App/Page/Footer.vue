@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { useSlots } from 'vue';
+import { useSlots, computed } from 'vue';
 import { hasSlotContent } from '@atlas/utils';
 
 const props = defineProps({
