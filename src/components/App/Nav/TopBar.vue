@@ -73,7 +73,7 @@
 </template>
 
 <script setup>
-import { reactive, useSlots } from 'vue';
+import { reactive, useSlots, computed } from 'vue';
 import { hasSlotContent } from '@atlas/utils';
 import Menu from '@atlas/components/Menu.vue';
 
