@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-primary-500 text-white px-6 rounded-full shadow">
+    <div class="bg-primary-500 text-white px-4 rounded-full shadow">
         <div class="grow flex items-center">
             <div class="text-sm font-semibold px-3 py-2" :class="{ 'pr-6': menuItems?.length }">
                 Selected: <span class="font-bold">{{ formatNumber(selectCount) }}</span>
