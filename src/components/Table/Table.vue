@@ -3,8 +3,8 @@
         lazy
         v-bind="{
             value: items,
-            selection: selection,
-            dataKey: selection ? dataKey : undefined,
+            selection: selectedItems,
+            dataKey: hasSelection ? dataKey : undefined,
             rowHover: true,
             showGridlines: true,
             size,
@@ -12,14 +12,24 @@
             ...$attrs
         }"
         @sort="handleSort"
-        @update:selection="emit('update:selection', $event)"
+        @update:selection="emit('update:selected', $event)"
+        @row-select-all="emit('update:selectAll', false)"
+        @row-unselect-all="emit('update:selectAll', false)"
+        @row-select=""
+        @row-unselect="selectAll ? resetSelection() : () => {}"
     >
         <Column
-            v-if="selection"
-            frozen
+            v-if="hasSelection"
             selectionMode="multiple"
-            headerStyle="width: 3rem"
-        />
+            class="text-center"
+            header-style="width: 2rem;text-align:center;"
+            :class="{ 'hide-select': hasSelectAll }"
+            frozen
+        >
+            <template v-if="hasSelectAll" #header>
+                <ButtonMenu :items="selectOptions" :onHover="true" />
+            </template>
+        </Column>
         <template v-for="column in columns" :key="column.field">
             <Column
                 :field="column.field"
@@ -58,13 +68,28 @@
 import { useAttrs } from 'vue';
 import DataTable from '@atlas/components/DataTable.vue';
 import Column from 'primevue/column';
+import ButtonMenu from '@atlas/components/ButtonMenu.vue';
+import { computed } from 'vue';
+import { formatNumber } from '@atlas/utils';
 
-const emit = defineEmits(['sort', 'update:selection']);
+const emit = defineEmits(['sort', 'update:selected', 'update:selectAll']);
 
 const props = defineProps({
     items: {
         type: Array,
         required: true,
+    },
+    itemTotal: {
+        type: Number,
+        default: 0
+    },
+    selected: {
+        type: Array,
+        default: undefined,
+    },
+    selectAll: {
+        type: Boolean,
+        default: false,
     },
     columns: {
         type: Array,
@@ -78,10 +103,6 @@ const props = defineProps({
         type: String,
         default: 'min-width: 50rem',
     },
-    selection: {
-        type: Array,
-        default: undefined,
-    },
     dataKey: {
         type: String,
         default: 'id',
@@ -89,10 +110,20 @@ const props = defineProps({
     emptyLabel : {
         type: String,
         default: 'No results'
+    },
+    hasSelectAll: {
+        type: Boolean,
+        default: true
+    },
+    hasSelection: {
+        type: Boolean,
+        default: false
     }
 });
 
 const $attrs = useAttrs();
+
+const selectedItems = computed(() => props.selectAll ? props.items : props.selected);
 
 const handleSort = (event) => {
     emit('sort', {
@@ -100,4 +131,38 @@ const handleSort = (event) => {
         order: event.sortOrder,
     });
 };
+
+const resetSelection = () => {
+    emit('update:selectAll', false);
+    emit('update:selected', [])
+};
+
+const selectOptions = computed(() => [
+    {
+        label: `Select All (${formatNumber(props.itemTotal)})`,
+        click: () => {
+            emit('update:selectAll', true);
+            emit('update:selected', []);
+        }
+    },
+    {
+        label: 'Select Visible',
+        click: () => {
+            emit('update:selectAll', false);
+            emit('update:selected', props.items);
+        }
+    },
+    {
+        label: 'Select None',
+        click: () => {
+            resetSelection();
+        }
+    },
+]);
 </script>
+
+<style>
+.hide-select [data-pc-name="pcheadercheckbox"] {
+    display: none ! important;
+}
+</style>

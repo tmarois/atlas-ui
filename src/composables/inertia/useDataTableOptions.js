@@ -18,6 +18,8 @@ export function useDataTableOptions(routeConfig, initialOptions = {}, options = 
     const sortField = ref(initialOptions.sortField ?? 'name');
     const sortOrder = ref(initialOptions.sortOrder ?? 1);
     const filters = reactive({ ...(initialOptions.filters || {}) });
+    const selectAll = ref(false);
+    const selected = ref([]);
 
     const resolveRoute = () => {
         if (typeof routeConfig === 'string') {
@@ -62,6 +64,8 @@ export function useDataTableOptions(routeConfig, initialOptions = {}, options = 
         sortField,
         sortOrder,
         filters,
+        selectAll,
+        selected,
         update,
     };
 }
