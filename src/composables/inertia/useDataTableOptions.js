@@ -2,17 +2,10 @@ import { reactive, toRefs, watch, onBeforeUnmount } from 'vue';
 import debounce from 'lodash/debounce';
 import { router, useForm, usePage } from '@inertiajs/vue3';
 
-const tableStateMap = new Map();
-
-const getInternalOptions = (routeKey) => {
-    if (!tableStateMap.has(routeKey)) {
-        tableStateMap.set(routeKey, reactive({
-            selectAll: false,
-            selected: [],
-        }));
-    }
-    return tableStateMap.get(routeKey);
-};
+const internalOptions = reactive({
+    selectAll: false,
+    selected: [],
+});
 
 const resetSelectionOnPathChange = (state) => {
     const page = usePage();
@@ -68,8 +61,6 @@ export function useDataTableOptions(routeConfig, options = {}, config = {}) {
         filters: {},
         ...options
     });
-
-    const internalOptions = getInternalOptions(resolveRoute(routeConfig)?.name);
 
     const fetchData = () => {
         const url = resolveRoute(routeConfig);
