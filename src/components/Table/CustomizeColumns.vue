@@ -114,7 +114,7 @@
 
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue';
-import draggable from 'vuedraggable';
+import { VueDraggableNext as draggable } from 'vuedraggable';
 import Popover from '@atlas/components/Popover.vue';
 import Button from '@atlas/components/Button.vue';
 import InputText from '@atlas/components/InputText.vue';
