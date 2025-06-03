@@ -13,10 +13,12 @@ export const formatNumber = (n, decimals = 0) => {
 /**
  * Formats a string or number into a currency
  * like: 1000000 into $1,000,000
- * @param { String|Number } v
+ * @param {String|Number} n
+ * @param {Number} decimals
  * @param { String<USD>} currency
- * @returns
- */
+ * @param {String} invalid
+ * @returns {String}
+*/
 export const formatToCurrency = (n, decimals = 2, currency = 'USD', invalid = 'Invalid') => {
     if (isNaN(n)) return invalid;
     return new Intl.NumberFormat('en-US', {
