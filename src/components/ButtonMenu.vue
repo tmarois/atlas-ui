@@ -30,6 +30,8 @@
             :popup="true"
             @show="onMenuShow"
             @hide="onMenuHide"
+            @mouseenter="onMenuEnter"
+            @mouseleave="onMenuLeave"
         >
             <template #item="{ item, props }">
                 <div
@@ -46,7 +48,7 @@
 </template>
 
 <script setup>
-import { ref, nextTick, onBeforeUnmount } from 'vue';
+import { ref, nextTick } from 'vue';
 import Button from '@atlas/components/Button.vue';
 import Menu from '@atlas/components/Menu.vue';
 import { IconChevronDown } from '@tabler/icons-vue';
@@ -72,7 +74,6 @@ const props = defineProps({
 const trigger = ref(null);
 const menu = ref(null);
 const isMenuOpen = ref(false);
-let menuEl = ref(null);
 let closeTimeout = ref(null);
 
 const getTriggerEl = () => trigger.value?.$el || trigger.value?.$refs?.button || trigger.value;
@@ -91,7 +92,7 @@ const onTriggerLeave = () => {
     if (!props.onHover) return;
     closeTimeout.value = setTimeout(() => {
         if (isMenuOpen.value) {
-            // menu.value.hide();
+            menu.value.hide();
         }
     }, 100);
 };
@@ -105,21 +106,10 @@ const toggleMenu = async () => {
 
 const onMenuShow = () => {
     isMenuOpen.value = true;
-    setTimeout(() => {
-        menuEl.value = document.querySelector('.p-menu.p-component.p-menu-overlay');
-        if (!menuEl.value) return;
-        menuEl.value.addEventListener('mouseenter', onMenuEnter);
-        menuEl.value.addEventListener('mouseleave', onMenuLeave);
-    }, 0);
 };
 
 const onMenuHide = () => {
     isMenuOpen.value = false;
-    if (menuEl.value) {
-        menuEl.value.removeEventListener('mouseenter', onMenuEnter);
-        menuEl.value.removeEventListener('mouseleave', onMenuLeave);
-        menuEl.value = null;
-    }
 };
 
 const onMenuEnter = () => {
@@ -135,12 +125,7 @@ const onMenuLeave = () => {
     }, 100);
 };
 
-onBeforeUnmount(() => {
-    if (menuEl.value) {
-        menuEl.value.removeEventListener('mouseenter', onMenuEnter);
-        menuEl.value.removeEventListener('mouseleave', onMenuLeave);
-    }
-});
+
 
 const actionClick = (item) => {
     if (item?.disabled) return;
