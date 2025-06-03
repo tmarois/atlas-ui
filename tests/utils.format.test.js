@@ -144,6 +144,10 @@ describe('formatBytes', () => {
         expect(formatBytes(10485760, 3)).toBe('10.000 MB');
     });
 
+    it('returns "0 Bytes" for zero input', () => {
+        expect(formatBytes(0)).toBe('0 Bytes');
+    });
+
     it('returns empty string for invalid inputs', () => {
         expect(formatBytes('invalid')).toBe('');
         expect(formatBytes(null)).toBe('');
