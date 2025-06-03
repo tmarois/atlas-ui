@@ -1,71 +1,121 @@
-import { ref, reactive, watch } from 'vue';
+import { reactive, toRefs, watch, onBeforeUnmount } from 'vue';
 import debounce from 'lodash/debounce';
-import { router } from '@inertiajs/vue3';
+import { router, useForm, usePage } from '@inertiajs/vue3';
 
-export function useDataTableOptions(routeConfig, initialOptions = {}, options = {}) {
+const tableStateMap = new Map();
+
+const getInternalOptions = (routeKey) => {
+    if (!tableStateMap.has(routeKey)) {
+        tableStateMap.set(routeKey, reactive({
+            selectAll: false,
+            selected: [],
+        }));
+    }
+    return tableStateMap.get(routeKey);
+};
+
+const resetSelectionOnPathChange = (state) => {
+    const page = usePage();
+    const currentPath = new URL(page.url, window.location.origin).pathname;
+    let nextPath = null;
+
+    router.on('before', (event) => {
+        nextPath = new URL(event.detail.visit.url, window.location.origin).pathname;
+    });
+
+    onBeforeUnmount(() => {
+        if (nextPath && nextPath !== currentPath) {
+            state.selectAll = false;
+            state.selected = [];
+        }
+    });
+};
+
+const resolveRoute = (routeConfig) => {
+    if (typeof routeConfig === 'string') {
+        if (routeConfig.startsWith('http') || routeConfig.startsWith('/')) {
+            return routeConfig;
+        }
+        return route(routeConfig);
+    }
+
+    if (typeof routeConfig === 'object' && routeConfig.name) {
+        return route(routeConfig.name, routeConfig.params || {});
+    }
+
+    throw new Error('Invalid route configuration provided to useDataTableOptions.');
+};
+
+export function useDataTableOptions(routeConfig, options = {}, config = {}) {
+
     const {
         only = [],
         preserveState = true,
-        replace = true,
+        preserveScroll = false,
+        replace = false,
         debounceMs = 250,
-        extraParams = {},
-    } = options;
+        formOptions = {},
+        method = 'get',
+    } = config;
 
     const mergedOnly = only.includes('options') ? only : ['options', ...only];
 
-    const search = ref(initialOptions.search ?? '');
-    const perPage = ref(initialOptions.perPage ?? 15);
-    const sortField = ref(initialOptions.sortField ?? 'name');
-    const sortOrder = ref(initialOptions.sortOrder ?? 1);
-    const filters = reactive({ ...(initialOptions.filters || {}) });
-    const selectAll = ref(false);
-    const selected = ref([]);
+    const form = useForm({
+        search: '',
+        perPage: 15,
+        sortField: 'name',
+        sortOrder: 1,
+        filters: {},
+        ...options
+    });
 
-    const resolveRoute = () => {
-        if (typeof routeConfig === 'string') {
-            // Either a route name or a pre-resolved URL
-            if (routeConfig.startsWith('http') || routeConfig.startsWith('/')) {
-                return routeConfig;
-            }
-            return route(routeConfig);
+    const internalOptions = getInternalOptions(resolveRoute(routeConfig)?.name);
+
+    const fetchData = () => {
+        const url = resolveRoute(routeConfig);
+        if (method === 'post') {
+            form.post(url, {
+                only: mergedOnly,
+                preserveScroll,
+                preserveState,
+                replace,
+                ...formOptions
+            });
+        } else {
+            router.get(url, {
+                search: form.search,
+                perPage: form.perPage,
+                sortField: form.sortField,
+                sortOrder: form.sortOrder,
+                filters: form.filters,
+                ...formOptions,
+            }, {
+                only: mergedOnly,
+                preserveScroll,
+                preserveState,
+                replace,
+            });
         }
-
-        if (typeof routeConfig === 'object' && routeConfig.name) {
-            return route(routeConfig.name, routeConfig.params || {});
-        }
-
-        throw new Error('Invalid route configuration provided to useDataTableOptions.');
     };
 
-    const update = () => {
-        router.get(resolveRoute(), {
-            search: search.value,
-            perPage: perPage.value,
-            sortField: sortField.value,
-            sortOrder: sortOrder.value,
-            filters: filters,
-            ...extraParams,
-        }, {
-            only: mergedOnly,
-            preserveState,
-            replace,
-        });
+    const debouncedUpdate = debounce(fetchData, debounceMs);
+
+    const resetSelection = () => {
+        internalOptions.selectAll = false;
+        internalOptions.selected = [];
     };
 
-    const debouncedUpdate = debounce(update, debounceMs);
-    watch(search, debouncedUpdate);
+    watch(() => form.search, debouncedUpdate);
+    watch(() => [form.perPage, form.sortField, form.sortOrder], fetchData);
+    watch(() => form.filters, fetchData, { deep: true });
 
-    watch([perPage, sortField, sortOrder], update);
-    watch(filters, update, { deep: true });
+    resetSelectionOnPathChange(internalOptions);
 
     return {
-        search,
-        perPage,
-        sortField,
-        sortOrder,
-        filters,
-        selectAll,
-        selected,
-        update,
+        ...toRefs(form),
+        ...toRefs(internalOptions),
+        fetchData,
+        resetSelection,
+        form,
     };
 }

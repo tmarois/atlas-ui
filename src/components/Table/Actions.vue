@@ -19,7 +19,7 @@
             >
                 <div v-if="menuItem.children && menuItem.children.length" class="relative">
                     <div
-                        class="flex items-center space-x-0.5 font-semibold hover:cursor-pointer hover:text-white text-sm hover:bg-primary-600/50 hover:rounded-none px-3 py-2"
+                        class="flex items-center space-x-0.5 font-semibold cursor-pointer hover:text-white text-sm hover:bg-primary-600/50 px-3 py-2"
                         @click.stop="toggle"
                     >
                         <div class="flex items-center space-x-0.5 font-semibold hover:cursor-pointer">
@@ -61,12 +61,28 @@
                 </div>
                 <div
                     v-else
-                    class="flex items-center space-x-0.5 font-semibold hover:cursor-pointer hover:text-white text-sm hover:bg-primary-600/50 hover:rounded-none px-3 py-2"
+                    class="flex items-center space-x-0.5 font-semibold cursor-pointer hover:text-white text-sm hover:bg-primary-600/50 px-3 py-2"
                     :class="{ 'text-white/50 pointer-events-none': menuItem?.disabled }"
                     @click="() => actionClick(menuItem)"
                 >
                     <span class="text-sm">{{ menuItem.label }}</span>
                 </div>
+            </div>
+            <div>
+                <button
+                    v-tooltip.bottom="{
+                        value: 'Clear selection',
+                        pt: {
+                            root: 'absolute shadow-md p-fadein py-0 px-0 max-w-[260px] mt-1',
+                            text: 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-700 dark:border-surface-800 rounded whitespace-pre-line'
+                        }
+                    }"
+                    type="button"
+                    class="flex items-center justify-center hover:bg-primary-600/50 transition px-3 py-2 cursor-pointer opacity-80 hover:opacity-100"
+                    @click="$emit('action', 'clear')"
+                >
+                    <IconX class="size-4" />
+                </button>
             </div>
         </div>
     </div>
@@ -75,6 +91,7 @@
 <script setup>
 import { ref } from 'vue';
 import { formatNumber } from '@atlas/utils';
+import { IconX } from '@tabler/icons-vue';
 
 const emit = defineEmits(['action']);
 
