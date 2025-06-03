@@ -71,7 +71,7 @@ Peer dependencies:
 "tailwindcss": "^4.1.4",
 "tailwindcss-primeui": "^0.6.1",
 "vue": "^3.4.0",
-"vuedraggable": "^2.24.3"
+"vuedraggable": "^4.1.0"
 ```
 
 If using tiptap editor, install these:
