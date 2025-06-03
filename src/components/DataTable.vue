@@ -77,7 +77,7 @@ const theme = ref<DataTablePassThroughOptions>({
     tfoot: `p-scrollable:bg-surface-0 dark:p-scrollable:bg-surface-900 p-scrollable:bottom-0 p-scrollable:z-10`,
     footer: `py-3 px-4 border-b border-surface-200 dark:border-surface-700
         text-surface-700 dark:text-surface-0`,
-    mask: `bg-black/50 text-surface-200 absolute z-10 flex items-center justify-center w-full h-full backdrop-blu-`,
+    mask: `bg-black/50 text-surface-200 absolute z-10 flex items-center justify-center w-full h-full backdrop-blur-sm`,
     column: {
         root: ``,
         headerCell: `group py-2 px-3 font-normal text-start transition-colors duration-200
