@@ -1,7 +1,7 @@
 <template>
     <div class="relative inline-block">
         <slot name="trigger" :toggle="togglePopover" />
-        <Popover ref="popover" pt:content="p-0" @hide="emit('close');applyInitColumns()" @show="applyInitColumns()">
+        <Popover ref="popover" pt:content="p-0" @hide="applyInitColumns()" @show="applyInitColumns()">
             <div class="flex flex-col w-[360px]">
                 <div class="p-4 py-3">
                     <div class="text-md font-semibold flex items-center gap-x-1 text-gray-900">
@@ -76,7 +76,7 @@
                 <div class="flex items-center justify-start border-t border-gray-200 p-3 shadow">
                     <div class="grow flex items-center space-x-2">
                         <Button label="Save" size="small" raised @click="submitColumns" />
-                        <Button text type="button" label="Cancel" size="small" @click="popover.value.hide()" />
+                        <Button text type="button" label="Cancel" size="small" @click="close" />
                     </div>
                     <div>
                         <Button
@@ -107,7 +107,7 @@ const props = defineProps({
     defaultColumnList: Array,
 });
 
-const emit = defineEmits(['update', 'close']);
+const emit = defineEmits(['update']);
 
 const popover = ref(null);
 const searchColumns = ref('');
@@ -174,12 +174,14 @@ const isDefault = computed(() => {
 
 const submitColumns = () => {
     emit('update', selectedColumns.value.map(col => col.key));
-    popover.value.hide();
+    close();
 };
 
 const checkLocked = ({ draggedContext, relatedContext }) => {
     return !draggedContext.element?.locked && !relatedContext.element?.locked;
 };
+
+const close = () => popover.value.hide();
 
 onMounted(() => {
     applyInitColumns();
