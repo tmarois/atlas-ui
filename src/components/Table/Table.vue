@@ -33,7 +33,7 @@
                 rowHover: true,
                 showGridlines: true,
                 scrollHeight: 'flex',
-                scrollable: true,
+                scrollable: scrollable,
                 size,
                 tableStyle,
                 ...$attrs
@@ -131,7 +131,7 @@ const props = defineProps({
     },
     defaultColumnList: {
         type: Array,
-        required: true,
+        default: () => []
     },
     size: {
         type: String,
@@ -164,6 +164,10 @@ const props = defineProps({
     scrollOffset: {
         type: Number,
         default: 0
+    },
+    scrollable: {
+        type: Boolean,
+        default: false
     }
 });
 
