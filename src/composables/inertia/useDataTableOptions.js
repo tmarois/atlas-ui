@@ -59,6 +59,7 @@ export function useDataTableOptions(routeConfig, options = {}, config = {}) {
         sortField: 'name',
         sortOrder: 1,
         filters: {},
+        viewFields: [],
         ...options
     });
 
@@ -79,6 +80,7 @@ export function useDataTableOptions(routeConfig, options = {}, config = {}) {
                 sortField: form.sortField,
                 sortOrder: form.sortOrder,
                 filters: form.filters,
+                viewFields: form.viewFields,
                 ...formOptions,
             }, {
                 only: mergedOnly,
@@ -98,7 +100,12 @@ export function useDataTableOptions(routeConfig, options = {}, config = {}) {
 
     watch(() => form.search, debouncedUpdate);
     watch(() => [form.perPage, form.sortField, form.sortOrder], fetchData);
-    watch(() => form.filters, fetchData, { deep: true });
+    watch(() => form.viewFields, fetchData, { deep: true });
+
+    watch(() => form.filters, () => {
+        fetchData();
+        resetSelection();
+    }, { deep: true });
 
     resetSelectionOnPathChange(internalOptions);
 
