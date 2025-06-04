@@ -1,7 +1,7 @@
 <template>
     <div class="relative inline-block">
-        <slot name="trigger" :toggle="toggle" />
-        <Popover ref="popover" pt:content="p-0" @hide="emit('close');initStart()" @show="initStart()">
+        <slot name="trigger" :toggle="togglePopover" />
+        <Popover ref="popover" pt:content="p-0" @hide="emit('close');applyInitColumns()" @show="applyInitColumns()">
             <div class="flex flex-col w-[360px]">
                 <div class="p-4 py-3">
                     <div class="text-md font-semibold flex items-center gap-x-1 text-gray-900">
@@ -19,7 +19,7 @@
                 <div class="h-[300px] overflow-hidden overflow-y-auto">
                     <div class="text-xs py-1 px-3 bg-gray-200 text-gray-700">Visible</div>
                     <draggable
-                        v-model="filteredSelectedColumns"
+                        v-model="selectedColumns"
                         item-key="key"
                         group="columns"
                         class="p-2 px-3"
@@ -29,20 +29,18 @@
                     >
                         <template #item="{ element: column }">
                             <div
-                                v-if="!column?.hidden"
+                                v-if="!column?.hidden && column.header.toLowerCase().includes(searchColumns.toLowerCase())"
                                 class="flex items-center w-full hover:bg-gray-100 rounded p-1 cursor-pointer text-sm"
                                 :class="{ 'cursor-not-allowed opacity-50': column.locked }"
                                 @click="!column.locked && toggleColumn(column.key)"
                             >
                                 <div class="grow flex items-center space-x-2">
-                                    <div class="flex items-center">
-                                        <Checkbox
-                                            v-model="activeColumns[column.key]"
-                                            binary
-                                            size="small"
-                                            :disabled="column.locked"
-                                        />
-                                    </div>
+                                    <Checkbox
+                                        v-model="activeColumns[column.key]"
+                                        binary
+                                        size="small"
+                                        :disabled="column.locked"
+                                    />
                                     <div class="hover:underline">{{ column.header }}</div>
                                 </div>
                                 <div v-if="column.group" class="text-gray-400 text-xs">{{ column.group }}</div>
@@ -62,14 +60,12 @@
                                     @click="!column.locked && toggleColumn(column.key)"
                                 >
                                     <div class="grow flex items-center space-x-2">
-                                        <div class="flex items-center">
-                                            <Checkbox
-                                                v-model="activeColumns[column.key]"
-                                                binary
-                                                size="small"
-                                                :disabled="column.locked"
-                                            />
-                                        </div>
+                                        <Checkbox
+                                            v-model="activeColumns[column.key]"
+                                            binary
+                                            size="small"
+                                            :disabled="column.locked"
+                                        />
                                         <div class="hover:underline">{{ column.header }}</div>
                                     </div>
                                 </div>
@@ -79,19 +75,8 @@
                 </div>
                 <div class="flex items-center justify-start border-t border-gray-200 p-3 shadow">
                     <div class="grow flex items-center space-x-2">
-                        <Button
-                            label="Save"
-                            size="small"
-                            raised
-                            @click="submitColumns"
-                        />
-                        <Button
-                            text
-                            type="button"
-                            label="Cancel"
-                            size="small"
-                            @click="closeWindow"
-                        />
+                        <Button label="Save" size="small" raised @click="submitColumns" />
+                        <Button text type="button" label="Cancel" size="small" @click="popover.value.hide()" />
                     </div>
                     <div>
                         <Button
@@ -99,7 +84,7 @@
                             size="small"
                             text
                             :disabled="isDefault"
-                            @click="resetToDefault"
+                            @click="() => applyColumns(props.defaultColumnList)"
                         />
                     </div>
                 </div>
@@ -109,7 +94,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import draggable from 'vuedraggable';
 import Popover from '@atlas/components/Popover.vue';
 import Button from '@atlas/components/Button.vue';
@@ -117,18 +102,9 @@ import InputText from '@atlas/components/InputText.vue';
 import Checkbox from '@atlas/components/Checkbox.vue';
 
 const props = defineProps({
-    columns: {
-        type: Array,
-        required: true,
-    },
-    activeColumnList: {
-        type: Array,
-        required: true,
-    },
-    defaultColumnList: {
-        type: Array,
-        required: true,
-    }
+    columns: Array,
+    activeColumnList: Array,
+    defaultColumnList: Array,
 });
 
 const emit = defineEmits(['update', 'close']);
@@ -137,44 +113,67 @@ const popover = ref(null);
 const searchColumns = ref('');
 const activeColumns = ref({});
 const selectedColumns = ref([]);
-const filteredSelectedColumns = ref([]);
 
-const toggle = (event) => {
+const togglePopover = (event) => {
     popover.value.toggle(event);
 };
 
-const filteredUnselectedColumnGroups = computed(() => {
-    const columns = props.columns.filter(column => !activeColumns.value[column.key] && column.header.toLowerCase().includes(searchColumns.value.toLowerCase()));
-    return columns.reduce((acc, column) => {
-        const group = column.group || '';
-        (acc[group] ||= []).push(column);
-        return acc;
-    }, {});
-});
+const applyColumns = (columnsList) => {
+    const map = {};
+    const selected = [];
+
+    for (const column of props.columns) {
+        const isActive = columnsList.includes(column.key);
+        map[column.key] = isActive;
+        if (isActive) selected.push(column);
+    }
+
+    activeColumns.value = map;
+    selectedColumns.value = selected;
+};
+
+const applyInitColumns = () => {
+    applyColumns(props.activeColumnList.length ? props.activeColumnList : props.defaultColumnList);
+};
 
 const toggleColumn = (key) => {
+    const index = selectedColumns.value.findIndex(col => col.key === key);
     const column = props.columns.find(col => col.key === key);
     if (!column || column.locked) return;
 
     activeColumns.value[key] = !activeColumns.value[key];
 
-    if (activeColumns.value[key]) {
-        if (!selectedColumns.value.some(col => col.key === key)) {
-            selectedColumns.value.push(column);
-        }
-    } else {
-        selectedColumns.value = selectedColumns.value.filter(col => col.key !== key);
+    if (activeColumns.value[key] && index === -1) {
+        selectedColumns.value.push(column);
+    } else if (!activeColumns.value[key] && index !== -1) {
+        selectedColumns.value.splice(index, 1);
     }
-
-    updateFilteredSelectedColumns();
 };
+
+const filteredUnselectedColumnGroups = computed(() => {
+    const list = props.columns.filter(col =>
+        !activeColumns.value[col.key] &&
+        col.header.toLowerCase().includes(searchColumns.value.toLowerCase())
+    );
+
+    return list.reduce((groups, column) => {
+        const group = column.group || '';
+        (groups[group] ||= []).push(column);
+        return groups;
+    }, {});
+});
+
+const isDefault = computed(() => {
+    const defaultKeys = props.defaultColumnList.filter(key =>
+        props.columns.some(col => col.key === key)
+    );
+
+    return defaultKeys.length === selectedColumns.value.length &&
+        defaultKeys.every((key, i) => selectedColumns.value[i]?.key === key);
+});
 
 const submitColumns = () => {
-    emit('update', selectedColumns.value.map(column => column.key));
-    popover.value.hide();
-};
-
-const closeWindow = () => {
+    emit('update', selectedColumns.value.map(col => col.key));
     popover.value.hide();
 };
 
@@ -182,47 +181,8 @@ const checkLocked = ({ draggedContext, relatedContext }) => {
     return !draggedContext.element?.locked && !relatedContext.element?.locked;
 };
 
-const updateFilteredSelectedColumns = () => {
-    filteredSelectedColumns.value = selectedColumns.value.filter(column =>
-        (searchColumns.value && column.header.toLowerCase().includes(searchColumns.value.toLowerCase())) || (!searchColumns.value)
-    );
-};
-
-const initializeColumns = (columnsList) => {
-    activeColumns.value = props.columns.reduce((acc, column) => {
-        acc[column.key] = columnsList.includes(column.key);
-        return acc;
-    }, {});
-
-    selectedColumns.value = columnsList.map(key => props.columns.find(column => column.key === key));
-
-    updateFilteredSelectedColumns();
-};
-
-const resetToDefault = () => initializeColumns(props.defaultColumnList);
-
-const initStart = () => initializeColumns(props.activeColumnList.length ? props.activeColumnList : props.defaultColumnList);
-
-const isDefault = computed(() => {
-    const visibleDefaultKeys = props.defaultColumnList.filter(key =>
-        props.columns.some(col => col.key === key)
-    );
-
-    const currentKeys = selectedColumns.value.map(col => col.key);
-    if (currentKeys.length !== visibleDefaultKeys.length) return false;
-    return currentKeys.every((key, index) => key === visibleDefaultKeys[index]);
-});
-
-watch(searchColumns, updateFilteredSelectedColumns);
-
-watch(filteredSelectedColumns, (newOrder) => {
-    if (searchColumns.value.trim() === '') {
-        selectedColumns.value = [...newOrder];
-    }
-}, { deep: true });
-
 onMounted(() => {
-    initStart();
+    applyInitColumns();
 });
 </script>
 
