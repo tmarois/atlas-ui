@@ -93,14 +93,13 @@
 </template>
 
 <script setup>
-import { onMounted, useAttrs } from 'vue';
-import DataTable from '@atlas/components/DataTable.vue';
+import { computed, onMounted, useAttrs } from 'vue';
 import Column from 'primevue/column';
+import DataTable from '@atlas/components/DataTable.vue';
 import ButtonMenu from '@atlas/components/ButtonMenu.vue';
-import { computed } from 'vue';
-import { formatNumber } from '@atlas/utils';
 import CustomizeColumns from '@atlas/components/Table/CustomizeColumns.vue';
 import { IconSettings } from '@tabler/icons-vue';
+import { formatNumber } from '@atlas/utils';
 
 const emit = defineEmits(['sort', 'update:selected', 'update:selectAll', 'update:activeColumnList']);
 

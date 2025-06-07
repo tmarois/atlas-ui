@@ -92,6 +92,7 @@
 import { ref } from 'vue';
 import { formatNumber } from '@atlas/utils';
 import { IconX } from '@tabler/icons-vue';
+import Menu from '@atlas/components/Menu.vue';
 
 const emit = defineEmits(['action']);
 
