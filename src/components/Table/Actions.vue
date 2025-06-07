@@ -107,7 +107,7 @@ const { selectedCount, menuItems } = defineProps({
     },
 });
 
-const menu = ref();
+const menu = ref(null);
 
 const actionClick = (item) => {
     if (!item?.disabled) {

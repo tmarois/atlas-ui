@@ -98,6 +98,7 @@ import Column from 'primevue/column';
 import DataTable from '@atlas/components/DataTable.vue';
 import ButtonMenu from '@atlas/components/ButtonMenu.vue';
 import CustomizeColumns from '@atlas/components/Table/CustomizeColumns.vue';
+import ScrollFrame from '@atlas/components/ScrollFrame.vue';
 import { IconSettings } from '@tabler/icons-vue';
 import { formatNumber } from '@atlas/utils';
 

@@ -1,6 +1,7 @@
 import { reactive, toRefs, watch, onBeforeUnmount } from 'vue';
 import debounce from 'lodash/debounce';
 import { router, useForm, usePage } from '@inertiajs/vue3';
+import route from '@/plugins/ziggy.js';
 
 const internalOptions = reactive({
     selectAll: false,
