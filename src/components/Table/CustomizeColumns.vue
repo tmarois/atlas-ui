@@ -57,7 +57,13 @@
                         <div class="text-xs py-1 px-3 border-b border-t border-gray-200 text-surface-900 font-semibold uppercase">Not visible</div>
                         <div class="flex flex-col w-full p-2 px-3 space-y-2">
                             <template v-for="(group, groupName) in filteredUnselectedColumnGroups" :key="groupName">
-                                <div v-if="groupName" class="text-xs py-1 pb-0 px-0 text-surface-400 font-semibold">{{ groupName }}</div>
+                                <div
+                                    v-if="groupName"
+                                    class="flex items-center gap-2 text-xs py-1 pb-0 px-0 text-surface-400 font-semibold"
+                                >
+                                    <span>{{ groupName }}</span>
+                                    <div class="h-px bg-surface-200 flex-1"></div>
+                                </div>
                                 <div class="flex flex-col w-full">
                                     <div
                                         v-for="column in group"
