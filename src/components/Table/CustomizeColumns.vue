@@ -5,7 +5,7 @@
             <div class="flex flex-col w-[360px]">
                 <div class="p-4 py-3">
                     <div class="text-md font-semibold flex items-center gap-x-1 text-gray-900">
-                        Customize columns {{  isTop }}
+                        Customize columns
                     </div>
                 </div>
                 <div class="p-4 pt-0 border-b border-gray-200 text-sm font-normal" :class="{ 'shadow-sm': !isTop }">
