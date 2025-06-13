@@ -65,6 +65,8 @@ const props = defineProps({
 });
 
 const isActive = (item) => {
+    if (typeof window === 'undefined') return;
+
     try {
         const currentPath = new URL(props.pageUrl, window?.location?.origin).pathname;
         const hrefPath = new URL(item.href, window?.location?.origin).pathname;

@@ -8,6 +8,8 @@ const internalOptions = reactive({
 });
 
 const resetSelectionOnPathChange = (state) => {
+    if (typeof window === 'undefined') return;
+
     const page = usePage();
     const currentPath = new URL(page.url, window.location.origin).pathname;
     let nextPath = null;

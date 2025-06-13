@@ -214,6 +214,9 @@ const hasPageHeader = computed(() =>
 const hasPageFooter = computed(() => hasSlotContent(slots.footer) || hasSlotContent(slots.footerAction));
 
 onMounted(() => {
+
+    if (typeof window === 'undefined') return;
+
     nextTick(() => {
         calculateFooterMetrics();
     });
@@ -222,6 +225,9 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
+
+    if (typeof window === 'undefined') return;
+
     window.removeEventListener('resize', calculateFooterMetrics);
 });
 </script>

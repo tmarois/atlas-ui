@@ -127,6 +127,8 @@ const props = defineProps({
 });
 
 const isActiveTab = (tab) => {
+    if (typeof window === 'undefined') return;
+
     try {
         const currentPath = new URL(props.pageUrl, window?.location?.origin).pathname;
         const hrefPath = new URL(tab.href, window?.location?.origin).pathname;
