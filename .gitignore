@@ -46,5 +46,6 @@ Temporary Items
 
 components.d.ts
 auto-imports.d.ts
+package-lock.json
 
 /resources/old-presets
