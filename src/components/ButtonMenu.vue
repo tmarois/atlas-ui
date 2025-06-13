@@ -25,6 +25,7 @@
                 :class="isMenuOpen ? 'rotate-180' : ''"
             />
         </Button>
+
         <Menu
             ref="menu"
             :model="items"
@@ -36,9 +37,15 @@
         >
             <template #item="{ item, props }">
                 <div
-                    class="flex items-center px-3 py-2 hover:bg-surface-100 cursor-pointer text-sm"
                     v-bind="props.action"
                     @click="actionClick(item)"
+                    :class="[
+                        'flex items-center px-3 py-2 text-sm',
+                        item.disabled
+                            ? 'opacity-50 cursor-not-allowed'
+                            : 'cursor-pointer hover:bg-surface-100 dark:hover:bg-surface-800',
+                        'text-surface-900 dark:text-surface-0 rounded-md'
+                    ]"
                 >
                     <span v-if="item.icon" :class="item.icon" />
                     <span class="ml-2">{{ item.label }}</span>
@@ -58,18 +65,9 @@ const emit = defineEmits(['action']);
 
 const props = defineProps({
     items: Array,
-    icon: {
-        type: String,
-        default: 'pi pi-ellipsis-v'
-    },
-    ptData: {
-        type: Object,
-        default: () => ({})
-    },
-    onHover: {
-        type: Boolean,
-        default: false
-    }
+    icon: { type: String, default: 'pi pi-ellipsis-v' },
+    ptData: { type: Object, default: () => ({}) },
+    onHover: { type: Boolean, default: false }
 });
 
 const trigger = ref(null);
@@ -84,53 +82,33 @@ const onTriggerEnter = async () => {
     clearTimeout(closeTimeout.value);
     await nextTick();
     const el = getTriggerEl();
-    if (el) {
-        menu.value.show({ currentTarget: el });
-    }
+    if (el) menu.value.show({ currentTarget: el });
 };
 
 const onTriggerLeave = () => {
     if (!props.onHover) return;
     closeTimeout.value = setTimeout(() => {
-        if (isMenuOpen.value) {
-            menu.value.hide();
-        }
+        if (isMenuOpen.value) menu.value.hide();
     }, 100);
 };
 
-const toggleMenu = async () => {
+const toggleMenu = () => {
     const el = getTriggerEl();
-    if (el) {
-        menu.value.toggle({ currentTarget: el });
-    }
+    if (el) menu.value.toggle({ currentTarget: el });
 };
 
-const onMenuShow = () => {
-    isMenuOpen.value = true;
-};
-
-const onMenuHide = () => {
-    isMenuOpen.value = false;
-};
-
-const onMenuEnter = () => {
-    clearTimeout(closeTimeout.value);
-};
-
+const onMenuShow = () => (isMenuOpen.value = true);
+const onMenuHide = () => (isMenuOpen.value = false);
+const onMenuEnter = () => clearTimeout(closeTimeout.value);
 const onMenuLeave = () => {
     if (!props.onHover) return;
     closeTimeout.value = setTimeout(() => {
-        if (isMenuOpen.value) {
-            menu.value.hide();
-        }
+        if (isMenuOpen.value) menu.value.hide();
     }, 100);
 };
 
-
-
 const actionClick = (item) => {
     if (item?.disabled) return;
-    if (item?.click) item.click();
-    else emit('action', item.action, props.ptData);
+    item?.click ? item.click() : emit('action', item.action, props.ptData);
 };
 </script>
