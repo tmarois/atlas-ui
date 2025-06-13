@@ -18,6 +18,7 @@
             ref="trigger"
             text
             pt:root:class="!p-0 !w-[20px]"
+            @click="toggleMenu"
         >
             <IconChevronDown
                 class="transition-transform duration-200"
