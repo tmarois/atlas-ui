@@ -17,7 +17,7 @@
                     />
                 </div>
                 <div class="h-[300px] overflow-hidden overflow-y-auto">
-                    <div class="text-xs py-1 px-3 bg-gray-200 text-gray-700">Visible</div>
+                    <div class="text-xs py-1 px-3 bg-primary-100/70 text-surface-900">Visible</div>
                     <draggable
                         v-model="selectedColumns"
                         item-key="key"
@@ -35,22 +35,28 @@
                                 @click="!column.locked && toggleColumn(column.key)"
                             >
                                 <div class="grow flex items-center space-x-2">
+                                    <IconGripVertical class="cursor-grab text-gray-400 size-4"
+                                        :class="{ 'cursor-not-allowed opacity-50': column.locked }"
+                                    />
                                     <Checkbox
                                         v-model="activeColumns[column.key]"
                                         binary
                                         size="small"
                                         :disabled="column.locked"
                                     />
-                                    <div class="hover:underline">{{ column.header }}</div>
+                                    <div :class="{
+                                        'cursor-not-allowed': column.locked,
+                                        'hover:underline': !column.locked
+                                    }">{{ column.header }}</div>
                                 </div>
                                 <div v-if="column.group" class="text-gray-400 text-xs">{{ column.group }}</div>
                             </div>
                         </template>
                     </draggable>
-                    <div class="text-xs py-1 px-3 bg-gray-200 text-gray-700">Not visible</div>
+                    <div class="text-xs py-1 px-3 bg-surface-200 text-surface-900">Not visible</div>
                     <div class="flex flex-col w-full p-2 px-3 space-y-2">
                         <template v-for="(group, groupName) in filteredUnselectedColumnGroups" :key="groupName">
-                            <div v-if="groupName" class="text-xs py-1 px-2 bg-gray-200 text-gray-700 rounded">{{ groupName }}</div>
+                            <div v-if="groupName" class="text-xs py-1 px-2 bg-surface-200 text-surface-900 rounded">{{ groupName }}</div>
                             <div class="flex flex-col w-full">
                                 <div
                                     v-for="column in group"
@@ -95,6 +101,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
+import { IconGripVertical } from '@tabler/icons-vue';
 import draggable from 'vuedraggable';
 import Popover from '@atlas/components/Popover.vue';
 import Button from '@atlas/components/Button.vue';
