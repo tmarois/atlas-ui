@@ -4,7 +4,7 @@
         <Popover ref="popover" pt:content="p-0" @hide="applyInitColumns()" @show="onPopoverShow()">
             <div class="flex flex-col w-[360px]">
                 <div class="p-4 py-3">
-                    <div class="text-md font-semibold flex items-center gap-x-1 text-gray-900">
+                    <div class="text-lg font-semibold flex items-center gap-x-1 text-gray-900">
                         Customize columns
                     </div>
                 </div>
