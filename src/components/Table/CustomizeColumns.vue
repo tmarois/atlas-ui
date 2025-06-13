@@ -1,14 +1,14 @@
 <template>
     <div class="relative inline-block">
         <slot name="trigger" :toggle="togglePopover" />
-        <Popover ref="popover" pt:content="p-0" @hide="applyInitColumns()" @show="applyInitColumns()">
+        <Popover ref="popover" pt:content="p-0" @hide="applyInitColumns()" @show="onPopoverShow()">
             <div class="flex flex-col w-[360px]">
                 <div class="p-4 py-3">
                     <div class="text-md font-semibold flex items-center gap-x-1 text-gray-900">
-                        Customize columns
+                        Customize columns {{  isTop }}
                     </div>
                 </div>
-                <div class="p-4 pt-0 border-b border-gray-200 text-sm font-normal shadow-sm">
+                <div class="p-4 pt-0 border-b border-gray-200 text-sm font-normal" :class="{ 'shadow-sm': !isTop }">
                     <InputText
                         v-model="searchColumns"
                         size="small"
@@ -16,8 +16,8 @@
                         placeholder="Search columns"
                     />
                 </div>
-                <div class="h-[300px] overflow-hidden overflow-y-auto">
-                    <div class="text-xs py-1 px-3 bg-primary-100/70 text-surface-900">Visible</div>
+                <div ref="frame" class="h-[300px] overflow-hidden overflow-y-auto">
+                    <div class="text-xs py-1 px-3 border-b border-gray-200 text-surface-900 font-semibold uppercase">Visible</div>
                     <draggable
                         v-model="selectedColumns"
                         item-key="key"
@@ -53,31 +53,33 @@
                             </div>
                         </template>
                     </draggable>
-                    <div class="text-xs py-1 px-3 bg-surface-200 text-surface-900">Not visible</div>
-                    <div class="flex flex-col w-full p-2 px-3 space-y-2">
-                        <template v-for="(group, groupName) in filteredUnselectedColumnGroups" :key="groupName">
-                            <div v-if="groupName" class="text-xs py-1 px-2 bg-surface-200 text-surface-900 rounded">{{ groupName }}</div>
-                            <div class="flex flex-col w-full">
-                                <div
-                                    v-for="column in group"
-                                    :key="column.key"
-                                    class="flex items-center w-full hover:bg-gray-100 p-1 cursor-pointer text-sm rounded"
-                                    :class="{ 'cursor-not-allowed opacity-50': column.locked }"
-                                    @click="!column.locked && toggleColumn(column.key)"
-                                >
-                                    <div class="grow flex items-center space-x-2">
-                                        <Checkbox
-                                            v-model="activeColumns[column.key]"
-                                            binary
-                                            size="small"
-                                            :disabled="column.locked"
-                                        />
-                                        <div class="hover:underline">{{ column.header }}</div>
+                    <template v-if="Object.keys(filteredUnselectedColumnGroups).length > 0">
+                        <div class="text-xs py-1 px-3 border-b border-t border-gray-200 text-surface-900 font-semibold uppercase">Not visible</div>
+                        <div class="flex flex-col w-full p-2 px-3 space-y-2">
+                            <template v-for="(group, groupName) in filteredUnselectedColumnGroups" :key="groupName">
+                                <div v-if="groupName" class="text-xs py-1 pb-0 px-2 text-surface-500 rounded font-semibold uppercase">{{ groupName }}</div>
+                                <div class="flex flex-col w-full">
+                                    <div
+                                        v-for="column in group"
+                                        :key="column.key"
+                                        class="flex items-center w-full hover:bg-gray-100 p-1 cursor-pointer text-sm rounded"
+                                        :class="{ 'cursor-not-allowed opacity-50': column.locked }"
+                                        @click="!column.locked && toggleColumn(column.key)"
+                                    >
+                                        <div class="grow flex items-center space-x-2">
+                                            <Checkbox
+                                                v-model="activeColumns[column.key]"
+                                                binary
+                                                size="small"
+                                                :disabled="column.locked"
+                                            />
+                                            <div class="hover:underline">{{ column.header }}</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </template>
-                    </div>
+                            </template>
+                        </div>
+                    </template>
                 </div>
                 <div class="flex items-center justify-start border-t border-gray-200 p-3 shadow">
                     <div class="grow flex items-center space-x-2">
@@ -100,13 +102,14 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, nextTick } from 'vue';
 import { IconGripVertical } from '@tabler/icons-vue';
 import draggable from 'vuedraggable';
 import Popover from '@atlas/components/Popover.vue';
 import Button from '@atlas/components/Button.vue';
 import InputText from '@atlas/components/InputText.vue';
 import Checkbox from '@atlas/components/Checkbox.vue';
+import { useScroll } from '@atlas/composables/useScroll';
 
 const props = defineProps({
     columns: Array,
@@ -116,6 +119,9 @@ const props = defineProps({
 
 const emit = defineEmits(['update']);
 
+const { bindScrollHandler, isTop } = useScroll("customize-columns");
+
+const frame = ref(null);
 const popover = ref(null);
 const searchColumns = ref('');
 const activeColumns = ref({});
@@ -190,9 +196,12 @@ const checkLocked = ({ draggedContext, relatedContext }) => {
 
 const close = () => popover.value.hide();
 
-onMounted(() => {
+const onPopoverShow = () => {
     applyInitColumns();
-});
+    nextTick(() => {
+        bindScrollHandler(frame).add();
+    });
+};
 </script>
 
 <style scoped>
