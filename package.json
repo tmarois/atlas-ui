@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/tmarois/atlas-ui#readme",
   "description": "",
-  "dependencies": {
+  "optionalDependencies": {
     "@tiptap/extension-bold": "^2.11.7",
     "@tiptap/extension-bullet-list": "^2.11.7",
     "@tiptap/extension-hard-break": "^2.11.7",
@@ -23,7 +23,8 @@
     "@tiptap/extension-ordered-list": "^2.11.7",
     "@tiptap/extension-placeholder": "^2.12.0",
     "@tiptap/starter-kit": "^2.11.7",
-    "@tiptap/vue-3": "^2.11.7"
+    "@tiptap/vue-3": "^2.11.7",
+    "vuedraggable": "^4.1.0"
   },
   "peerDependencies": {
     "@tabler/icons-vue": "^3.31.0",
