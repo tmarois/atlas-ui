@@ -1,5 +1,5 @@
 import { twMerge } from 'tailwind-merge';
-import { mergeProps, Slot } from 'vue';
+import { mergeProps, Slot, VNode } from 'vue';
 
 export const ptViewMerge = (globalPTProps = {} as any, selfPTProps = {} as any, datasets: any) => {
     const { class: globalClass, ...globalRest } = globalPTProps;
@@ -9,10 +9,15 @@ export const ptViewMerge = (globalPTProps = {} as any, selfPTProps = {} as any, 
 };
 
 export function hasSlotContent(slot?: Slot): boolean {
-    if (!slot) return false;
+    if (!slot) return false
 
-    const content = slot();
-    if (!Array.isArray(content) || content.length === 0) return false;
+    const content = slot()
+    if (!Array.isArray(content) || content.length === 0) return false
 
-    return content.some(node => !!node.children && String(node.children).trim() !== '');
+    return content.some((node: VNode) => {
+        return (
+            typeof node.type === 'object' ||
+            (node.children && String(node.children).trim() !== '')
+        )
+    })
 }
