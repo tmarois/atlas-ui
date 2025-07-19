@@ -4,28 +4,32 @@
         @mouseenter="onTriggerEnter"
         @mouseleave="onTriggerLeave"
     >
-        <Button
-            v-if="!onHover"
-            ref="trigger"
-            :icon="icon"
-            text
-            size="small"
-            pt:root:class="!p-0 !w-[20px]"
-            @click="toggleMenu"
-        />
-        <Button
-            v-else
-            ref="trigger"
-            text
-            pt:root:class="!p-0 !w-[20px]"
-            @click="toggleMenu"
-        >
-            <IconChevronDown
-                class="transition-transform duration-200"
-                :class="isMenuOpen ? 'rotate-180' : ''"
+        <template v-if="$slots.trigger">
+            <slot name="trigger" :toggleMenu="toggleMenu" :triggerRef="setTriggerRef" />
+        </template>
+        <template v-else>
+            <Button
+                v-if="!onHover"
+                ref="trigger"
+                :icon="icon"
+                text
+                size="small"
+                pt:root:class="!p-0 !w-[20px]"
+                @click="toggleMenu"
             />
-        </Button>
-
+            <Button
+                v-else
+                ref="trigger"
+                text
+                pt:root:class="!p-0 !w-[20px]"
+                @click="toggleMenu"
+            >
+                <IconChevronDown
+                    class="transition-transform duration-200"
+                    :class="isMenuOpen ? 'rotate-180' : ''"
+                />
+            </Button>
+        </template>
         <Menu
             ref="menu"
             :model="items"
@@ -74,6 +78,10 @@ const trigger = ref(null);
 const menu = ref(null);
 const isMenuOpen = ref(false);
 let closeTimeout = ref(null);
+
+const setTriggerRef = (el) => {
+    trigger.value = el;
+};
 
 const getTriggerEl = () => trigger.value?.$el || trigger.value?.$refs?.button || trigger.value;
 
