@@ -104,7 +104,7 @@
 
         <!-- App Layout Component -->
         <div class="h-screen">
-            <App
+            <LayoutApp
                 :pageUrl="'#'"
                 :isSideNav="isSideNav"
                 :pageTitle="showPageHeader ? 'Test Page Title' : null"
@@ -171,7 +171,7 @@
                         </Card>
                     </div>
                 </div>
-            </App>
+            </LayoutApp>
         </div>
     </div>
 </template>
@@ -179,7 +179,7 @@
 <script setup>
 import {ref, computed, onMounted, watch, nextTick} from 'vue';
     import { IconBook, IconUser, IconColorFilter } from '@tabler/icons-vue';
-    import App from '@atlas/components/App/Layout/App.vue';
+    import LayoutApp from '@atlas/components/App/Layout/App.vue';
     import Drawer from '@atlas/components/Drawer.vue';
     import Button from '@atlas/components/Button.vue';
     import { useTheme } from '@atlas/composables/useTheme';
