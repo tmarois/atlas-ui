@@ -144,9 +144,14 @@
                     <Button label="Action" size="small" />
                 </template>
                 <template v-if="showPageSideContent" #pageSideContent>
-                    <div class="p-4">
+                    <div class="p-4 w-[300px]">
+                        <div class="bg-gray-100 dark:bg-zinc-700 rounded mb-4 py-8 px-4">
+                            <div class="flex items-center justify-center">
+                                Can do anything here and it will resize the width with your content.
+                            </div>
+                        </div>
                         <ul class="space-y-2">
-                            <li v-for="i in 5" :key="i" class="p-2 px-4 bg-gray-100 dark:bg-zinc-700 rounded">
+                            <li v-for="i in 50" :key="i" class="p-2 px-4 bg-gray-100 dark:bg-zinc-700 rounded">
                                 Item {{ i }}
                             </li>
                         </ul>
@@ -159,7 +164,7 @@
                 </template>
                 <template v-if="showPageFooter" #footerAction>
                     <div>
-                        <Button label="Footer action" size="small" />
+                        [footer actions]
                     </div>
                 </template>
                 <div>
