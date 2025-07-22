@@ -1,5 +1,5 @@
 <template>
-    <div class="relative">
+    <div v-if="init" class="relative">
         <!-- Control button -->
         <button
             @click="showControls = !showControls"
@@ -22,7 +22,7 @@
                         <label class="control-label block mb-2">Theme</label>
                         <div class="flex items-center space-x-2">
                             <button
-                                @click="toggleDark"
+                                @click="handleToggleDark"
                                 class="px-3 py-2 bg-gray-200 dark:bg-gray-700 rounded-md flex items-center space-x-2"
                             >
                                 <span v-if="isDark">🌞</span>
@@ -66,6 +66,10 @@
                                 <input type="checkbox" v-model="showPageHeader" class="form-checkbox">
                                 <span class="ml-2">Page Header</span>
                             </label>
+                            <label class="items-center ml-6" v-if="showPageHeader">
+                                <input type="checkbox" v-model="showPageHeaderTabs" class="form-checkbox">
+                                <span class="ml-2">Page Header Tabs</span>
+                            </label>
                             <label class=" items-center">
                                 <input type="checkbox" v-model="showPageSideNav" class="form-checkbox">
                                 <span class="ml-2">Page Side Navigation</span>
@@ -104,7 +108,7 @@
                 :pageUrl="'#'"
                 :isSideNav="isSideNav"
                 :pageTitle="showPageHeader ? 'Test Page Title' : null"
-                :pageTabs="showPageHeader ? pageTabs : []"
+                :pageTabs="showPageHeader && showPageHeaderTabs ? pageTabs : []"
                 :pageNavItems="showPageSideNav ? pageNavItems : []"
                 :sideBarItems="sideBarItems"
                 :topBarItems="topBarItems"
@@ -126,50 +130,45 @@
                         </button>
                     </div>
                 </template>
-<!--                <template #appTopBar v-if="showAppBar">-->
-<!--                    <div class="px-4 w-full flex items-center justify-between">-->
-<!--                        <div class="w-[400px]">-->
-<!--                            <InputText placeholder="Search for contacts" size="small" fluid />-->
-<!--                        </div>-->
-<!--                        <div>-->
-<!--                            [profile]-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </template>-->
-                <template #headerAction v-if="showPageHeader">
+                <template v-if="showAppBar" #appTopBar>
+                    <div class="px-4 w-full flex items-center justify-between">
+                        <div class="w-[400px]">
+                            <InputText placeholder="Search for contacts" size="small" fluid />
+                        </div>
+                        <div>
+                            [profile]
+                        </div>
+                    </div>
+                </template>
+                <template v-if="showPageHeader" #headerAction>
                     <Button label="Action" size="small" />
                 </template>
-<!--                <template #pageSideContent v-if="showPageSideContent">-->
-<!--                    <div class="p-4">-->
-<!--                        <h3 class="font-medium text-lg mb-3">Side Content</h3>-->
-<!--                        <ul class="space-y-2">-->
-<!--                            <li v-for="i in 5" :key="i" class="p-2 bg-gray-100 dark:bg-gray-700 rounded">-->
-<!--                                Item {{ i }}-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </div>-->
-<!--                </template>-->
-                <template #footer v-if="showPageFooter">
+                <template v-if="showPageSideContent" #pageSideContent>
+                    <div class="p-4">
+                        <ul class="space-y-2">
+                            <li v-for="i in 5" :key="i" class="p-2 px-4 bg-gray-100 dark:bg-zinc-700 rounded">
+                                Item {{ i }}
+                            </li>
+                        </ul>
+                    </div>
+                </template>
+                <template v-if="showPageFooter" #footer>
                     <div>
                         <span class="text-sm text-gray-500 dark:text-gray-400">© 2025 Atlas UI. All rights reserved.</span>
                     </div>
                 </template>
-                <template #footerAction v-if="showPageFooter">
+                <template v-if="showPageFooter" #footerAction>
                     <div>
-                        <button class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-md text-sm">
-                            Footer Action
-                        </button>
+                        <Button label="Footer action" size="small" />
                     </div>
                 </template>
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-                    <h2 class="text-xl font-bold mb-4">Main Content Area</h2>
-                    <p class="mb-4">This is the main content area of the App layout component.</p>
-                    <div :style="{ height: `${contentSize}px`, overflow: 'auto' }" class="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
-                        <div class="space-y-4">
-                            <div v-for="i in 20" :key="i" class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                                Content Block {{ i }}
-                            </div>
-                        </div>
+                <div>
+                    <div class="space-y-4">
+                        <Card v-for="i in 20" :key="i">
+                            <template #content>
+                                test
+                            </template>
+                        </Card>
                     </div>
                 </div>
             </App>
@@ -178,27 +177,104 @@
 </template>
 
 <script setup>
-    import { ref, computed } from 'vue';
+import {ref, computed, onMounted, watch, nextTick} from 'vue';
     import { IconBook, IconUser, IconColorFilter } from '@tabler/icons-vue';
     import App from '@atlas/components/App/Layout/App.vue';
     import Drawer from '@atlas/components/Drawer.vue';
     import Button from '@atlas/components/Button.vue';
     import { useTheme } from '@atlas/composables/useTheme';
     import InputText from '@atlas/components/InputText.vue';
+    import Card from '@atlas/components/Card.vue';
 
+    const STORAGE_KEY = 'atlas-ui-layout-controls';
     const showControls = ref(false);
 
-    const { toggleDark, isDark } = useTheme();
+    const { toggleDark, isDark, setDark } = useTheme();
+
+    // Custom toggleDark function that also saves to localStorage
+    const handleToggleDark = () => {
+        toggleDark();
+        saveControls();
+    };
 
     const isSideNav = ref(true);
     const widthClass = ref('w-full'); // Default to full width
     const showPageHeader = ref(true);
+    const showPageHeaderTabs = ref(true);
     const showPageSideNav = ref(false);
     const showPageSideContent = ref(false);
     const showPageFooter = ref(true);
     const showAppBar = ref(false);
     const contentSize = ref(300);
     const noScroll = ref(false);
+    const init = ref(false);
+
+    // Load saved controls from localStorage
+    onMounted(() => {
+        nextTick(() => {
+            init.value = true;
+        });
+        const savedControls = localStorage.getItem(STORAGE_KEY);
+        if (savedControls) {
+            try {
+                const controls = JSON.parse(savedControls);
+                // Set the dark mode first to avoid flashing
+                if (controls.isDark !== undefined) {
+                    setDark(controls.isDark);
+                }
+
+                isSideNav.value = controls.isSideNav ?? true;
+                widthClass.value = controls.widthClass ?? 'w-full';
+                showPageHeader.value = controls.showPageHeader ?? true;
+                showPageHeaderTabs.value = controls.showPageHeaderTabs ?? true;
+                showPageSideNav.value = controls.showPageSideNav ?? false;
+                showPageSideContent.value = controls.showPageSideContent ?? false;
+                showPageFooter.value = controls.showPageFooter ?? true;
+                showAppBar.value = controls.showAppBar ?? false;
+                contentSize.value = controls.contentSize ?? 300;
+                noScroll.value = controls.noScroll ?? false;
+            } catch (e) {
+                console.error('Error loading saved controls', e);
+            }
+        }
+    });
+
+    // Save controls to localStorage whenever they change
+    const saveControls = () => {
+        const controls = {
+            isDark: isDark.value,
+            isSideNav: isSideNav.value,
+            widthClass: widthClass.value,
+            showPageHeader: showPageHeader.value,
+            showPageHeaderTabs: showPageHeaderTabs.value,
+            showPageSideNav: showPageSideNav.value,
+            showPageSideContent: showPageSideContent.value,
+            showPageFooter: showPageFooter.value,
+            showAppBar: showAppBar.value,
+            contentSize: contentSize.value,
+            noScroll: noScroll.value
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(controls));
+    };
+
+    // Watch for changes in all controls
+    watch(
+        [
+            isDark,
+            isSideNav,
+            widthClass,
+            showPageHeader,
+            showPageHeaderTabs,
+            showPageSideNav,
+            showPageSideContent,
+            showPageFooter,
+            showAppBar,
+            contentSize,
+            noScroll
+        ],
+        () => saveControls(),
+        { deep: true }
+    );
 
     const pageTabs = [
         { title: 'Overview', href: '/' },
@@ -263,7 +339,7 @@
 
     const pageNavItems = [
         { label: 'Components', children: [
-                { label: 'Forms', href: '/components/forms' },
+                { label: 'Forms', href: '/' },
                 { label: 'Editor', href: '/components/editor', parent: '/components/editor' },
             ] },
         { label: 'My Account', children: [
@@ -294,11 +370,13 @@
 
     const increaseContentSize = () => {
         contentSize.value += 100;
+        saveControls();
     };
 
     const decreaseContentSize = () => {
         if (contentSize.value > 100) {
             contentSize.value -= 100;
+            saveControls();
         }
     };
 </script>
