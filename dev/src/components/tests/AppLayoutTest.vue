@@ -1,76 +1,109 @@
 <template>
-    <div>
-        <div class="test-controls dark:text-white py-6 px-8">
-            <h3 class="text-lg font-medium mb-3">Layout Controls</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="control-group">
-                    <label class="control-label">Navigation Type</label>
-                    <div class="flex space-x-4">
-                        <label class="inline-flex items-center">
-                            <input type="radio" v-model="isSideNav" :value="true" class="form-radio">
-                            <span class="ml-2">Side Navigation</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" v-model="isSideNav" :value="false" class="form-radio">
-                            <span class="ml-2">Top Navigation</span>
-                        </label>
+    <div class="relative">
+        <!-- Control button -->
+        <button
+            @click="showControls = !showControls"
+            class="fixed top-2 right-4 z-50 p-2 rounded-md bg-white dark:bg-gray-800 shadow-md hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center gap-2"
+        >
+            <span v-if="showControls">✕</span>
+            <span v-else>⚙️</span>
+            <span class="text-sm">{{ showControls ? 'Close' : 'Controls' }}</span>
+        </button>
+        <Drawer
+            v-model:visible="showControls"
+            position="right"
+            class="test-controls-drawer"
+            :style="{ width: '350px' }"
+        >
+            <div class="p-4 dark:text-white">
+                <h3 class="text-lg font-medium mb-4">Layout Controls</h3>
+                <div class="space-y-5">
+                    <div class="control-group">
+                        <label class="control-label block mb-2">Theme</label>
+                        <div class="flex items-center space-x-2">
+                            <button
+                                @click="toggleDark"
+                                class="px-3 py-2 bg-gray-200 dark:bg-gray-700 rounded-md flex items-center space-x-2"
+                            >
+                                <span v-if="isDark">🌞</span>
+                                <span v-else>🌙</span>
+                                <span>{{ isDark ? 'Light Mode' : 'Dark Mode' }}</span>
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">Width Class</label>
-                    <select v-model="widthClass" class="form-select block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                        <option value="max-w-screen-sm">Small (max-w-screen-sm)</option>
-                        <option value="max-w-screen-md">Medium (max-w-screen-md)</option>
-                        <option value="max-w-screen-lg">Large (max-w-screen-lg)</option>
-                        <option value="max-w-screen-xl">Extra Large (max-w-screen-xl)</option>
-                        <option value="max-w-screen-2xl">2X Large (max-w-screen-2xl)</option>
-                        <option value="w-full">Full (w-full)</option>
-                    </select>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">Show Components</label>
-                    <div class="space-y-2">
-                        <label class="inline-flex items-center">
-                            <input type="checkbox" v-model="showPageHeader" class="form-checkbox">
-                            <span class="ml-2">Page Header</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="checkbox" v-model="showPageSideNav" class="form-checkbox">
-                            <span class="ml-2">Page Side Navigation</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="checkbox" v-model="showPageSideContent" class="form-checkbox">
-                            <span class="ml-2">Page Side Content</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="checkbox" v-model="showPageFooter" class="form-checkbox">
-                            <span class="ml-2">Page Footer</span>
-                        </label>
+                    <div class="control-group">
+                        <label class="control-label block mb-2">Navigation Type</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" v-model="isSideNav" :value="true" class="form-radio">
+                                <span class="ml-2">Side Navigation</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" v-model="isSideNav" :value="false" class="form-radio">
+                                <span class="ml-2">Top Navigation</span>
+                            </label>
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">Content Size</label>
-                    <div class="flex items-center space-x-2">
-                        <button @click="decreaseContentSize" class="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded">-</button>
-                        <span>{{ contentSize }}px</span>
-                        <button @click="increaseContentSize" class="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded">+</button>
+                    <div class="control-group">
+                        <label class="control-label block mb-2">Width Class</label>
+                        <select v-model="widthClass" class="form-select block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600">
+                            <option value="max-w-screen-sm">Small (max-w-screen-sm)</option>
+                            <option value="max-w-screen-md">Medium (max-w-screen-md)</option>
+                            <option value="max-w-screen-lg">Large (max-w-screen-lg)</option>
+                            <option value="max-w-screen-xl">Extra Large (max-w-screen-xl)</option>
+                            <option value="max-w-screen-2xl">2X Large (max-w-screen-2xl)</option>
+                            <option value="w-full">Full (w-full)</option>
+                        </select>
                     </div>
-                    <div class="mt-2">
-                        <label class="inline-flex items-center">
-                            <input type="checkbox" v-model="noScroll" class="form-checkbox">
-                            <span class="ml-2">Disable Scroll</span>
-                        </label>
+                    <div class="control-group">
+                        <label class="control-label block mb-2">Show Components</label>
+                        <div class="space-y-2 flex flex-col">
+                            <label class=" items-center">
+                                <input type="checkbox" v-model="showAppBar" class="form-checkbox">
+                                <span class="ml-2">App Top Bar</span>
+                            </label>
+                            <label class=" items-center">
+                                <input type="checkbox" v-model="showPageHeader" class="form-checkbox">
+                                <span class="ml-2">Page Header</span>
+                            </label>
+                            <label class=" items-center">
+                                <input type="checkbox" v-model="showPageSideNav" class="form-checkbox">
+                                <span class="ml-2">Page Side Navigation</span>
+                            </label>
+                            <label class=" items-center">
+                                <input type="checkbox" v-model="showPageSideContent" class="form-checkbox">
+                                <span class="ml-2">Page Side Content</span>
+                            </label>
+                            <label class=" items-center">
+                                <input type="checkbox" v-model="showPageFooter" class="form-checkbox">
+                                <span class="ml-2">Page Footer</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label block mb-2">Content Size</label>
+                        <div class="flex items-center space-x-2">
+                            <button @click="decreaseContentSize" class="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded">-</button>
+                            <span>{{ contentSize }}px</span>
+                            <button @click="increaseContentSize" class="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded">+</button>
+                        </div>
+                        <div class="mt-2">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" v-model="noScroll" class="form-checkbox">
+                                <span class="ml-2">Disable Scroll</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </Drawer>
 
         <!-- App Layout Component -->
-        <div class="test-frame" :style="{ height: `${frameHeight}px` }">
+        <div class="h-screen">
             <App
                 :pageUrl="'#'"
                 :isSideNav="isSideNav"
-                :pageTitle="showPageHeader ? 'Test Page Title' : ''"
+                :pageTitle="showPageHeader ? 'Test Page Title' : null"
                 :pageTabs="showPageHeader ? pageTabs : []"
                 :pageNavItems="showPageSideNav ? pageNavItems : []"
                 :sideBarItems="sideBarItems"
@@ -78,15 +111,13 @@
                 :widthClass="widthClass"
                 :noScroll="noScroll"
             >
-                <!-- Nav Logo Slot -->
                 <template #navLogo>
                     <div class="flex items-center">
                         <div class="w-8 h-8 bg-indigo-500 rounded-md flex items-center justify-center text-white font-bold">A</div>
                     </div>
                 </template>
-                <!-- Nav Actions Slot -->
                 <template #navActions>
-                    <div class="flex space-x-2">
+                    <div class="flex flex-col space-x-2">
                         <button class="p-1 rounded-full bg-gray-200 dark:bg-gray-700">
                             <span class="block w-6 h-6 flex items-center justify-center">🔔</span>
                         </button>
@@ -95,47 +126,34 @@
                         </button>
                     </div>
                 </template>
-                <!-- App Top Bar Slot -->
-                <template #appTopBar>
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <span class="font-medium">Current User:</span> Test User
-                        </div>
-                        <div>
-                            <button class="px-3 py-1 bg-indigo-500 text-white rounded-md text-sm">Action</button>
-                        </div>
-                    </div>
-                </template>
-                <!-- Header Title Slot -->
-                <template #headerTitle v-if="showPageHeader">
-                    <div class="flex items-center">
-                        <span class="text-xl font-bold">Custom Header Title</span>
-                    </div>
-                </template>
-                <!-- Header Action Slot -->
+<!--                <template #appTopBar v-if="showAppBar">-->
+<!--                    <div class="px-4 w-full flex items-center justify-between">-->
+<!--                        <div class="w-[400px]">-->
+<!--                            <InputText placeholder="Search for contacts" size="small" fluid />-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            [profile]-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </template>-->
                 <template #headerAction v-if="showPageHeader">
-                    <button class="px-4 py-2 bg-indigo-600 text-white rounded-md">
-                        Header Action
-                    </button>
+                    <Button label="Action" size="small" />
                 </template>
-                <!-- Page Side Content Slot -->
-                <template #pageSideContent v-if="showPageSideContent">
-                    <div class="p-4">
-                        <h3 class="font-medium text-lg mb-3">Side Content</h3>
-                        <ul class="space-y-2">
-                            <li v-for="i in 5" :key="i" class="p-2 bg-gray-100 dark:bg-gray-700 rounded">
-                                Item {{ i }}
-                            </li>
-                        </ul>
-                    </div>
-                </template>
-                <!-- Footer Slot -->
+<!--                <template #pageSideContent v-if="showPageSideContent">-->
+<!--                    <div class="p-4">-->
+<!--                        <h3 class="font-medium text-lg mb-3">Side Content</h3>-->
+<!--                        <ul class="space-y-2">-->
+<!--                            <li v-for="i in 5" :key="i" class="p-2 bg-gray-100 dark:bg-gray-700 rounded">-->
+<!--                                Item {{ i }}-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </template>-->
                 <template #footer v-if="showPageFooter">
                     <div>
                         <span class="text-sm text-gray-500 dark:text-gray-400">© 2025 Atlas UI. All rights reserved.</span>
                     </div>
                 </template>
-                <!-- Footer Action Slot -->
                 <template #footerAction v-if="showPageFooter">
                     <div>
                         <button class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-md text-sm">
@@ -143,7 +161,6 @@
                         </button>
                     </div>
                 </template>
-                <!-- Default Slot (Main Content) -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
                     <h2 class="text-xl font-bold mb-4">Main Content Area</h2>
                     <p class="mb-4">This is the main content area of the App layout component.</p>
@@ -164,21 +181,29 @@
     import { ref, computed } from 'vue';
     import { IconBook, IconUser, IconColorFilter } from '@tabler/icons-vue';
     import App from '@atlas/components/App/Layout/App.vue';
+    import Drawer from '@atlas/components/Drawer.vue';
+    import Button from '@atlas/components/Button.vue';
+    import { useTheme } from '@atlas/composables/useTheme';
+    import InputText from '@atlas/components/InputText.vue';
+
+    const showControls = ref(false);
+
+    const { toggleDark, isDark } = useTheme();
 
     const isSideNav = ref(true);
-    const widthClass = ref('max-w-screen-2xl');
+    const widthClass = ref('w-full'); // Default to full width
     const showPageHeader = ref(true);
     const showPageSideNav = ref(false);
     const showPageSideContent = ref(false);
     const showPageFooter = ref(true);
+    const showAppBar = ref(false);
     const contentSize = ref(300);
     const noScroll = ref(false);
-    const frameHeight = ref(600);
 
     const pageTabs = [
-        { label: 'Overview', url: '#overview', active: true },
-        { label: 'Details', url: '#details' },
-        { label: 'Settings', url: '#settings' }
+        { title: 'Overview', href: '/' },
+        { title: 'Variants', href: '/components/editor/variant' },
+        { title: 'Text', href: '/components/editor/text' },
     ];
 
     const profileMenuItems = computed(() => [
@@ -235,6 +260,37 @@
             ],
         },
     ]);
+
+    const pageNavItems = [
+        { label: 'Components', children: [
+                { label: 'Forms', href: '/components/forms' },
+                { label: 'Editor', href: '/components/editor', parent: '/components/editor' },
+            ] },
+        { label: 'My Account', children: [
+                { label: 'Account', href: '/settings/account' },
+                { label: 'Security', href: '/settings/security' },
+            ] },
+        { label: 'Notifications', children: [
+                { label: 'Email', href: '/settings/notifications/email' },
+                { label: 'Push', href: '/settings/notifications/push' },
+            ] },
+        { label: 'Security', children: [
+                { label: 'Password', href: '/settings/security/password' },
+                { label: 'Two Factor', href: '/settings/security/two-factor' },
+            ] },
+        { label: 'Billing', children: [
+                { label: 'Plans', href: '/settings/billing/plans' },
+                { label: 'Invoices', href: '/settings/billing/invoices' },
+                { label: 'Subscriptions', href: '/settings/billing/subscriptions' },
+            ] },
+        { label: 'Integrations', children: [
+                { label: 'Google', href: '/settings/integrations/google' },
+                { label: 'Slack', href: '/settings/integrations/slack' },
+                { label: 'Dropbox', href: '/settings/integrations/dropbox' },
+                { label: 'Mailchimp', href: '/settings/integrations/mailchimp' },
+                { label: 'Stripe', href: '/settings/integrations/stripe' },
+            ] },
+    ];
 
     const increaseContentSize = () => {
         contentSize.value += 100;
