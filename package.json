@@ -13,7 +13,7 @@
     "url": "https://github.com/tmarois/atlas-ui/issues"
   },
   "homepage": "https://github.com/tmarois/atlas-ui#readme",
-  "description": "",
+  "description": "A flexible, component-driven UI toolkit for Vue 3 projects",
   "optionalDependencies": {
     "@tiptap/extension-bold": "^2.11.7",
     "@tiptap/extension-bullet-list": "^2.11.7",
@@ -36,6 +36,8 @@
     "vue": "^3.4.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.9",
+    "@babel/plugin-transform-typescript": "^7.26.9",
     "@babel/preset-env": "^7.26.9",
     "babel-jest": "^29.7.0",
     "jest": "^29.7.0",

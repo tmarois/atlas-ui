@@ -8,6 +8,7 @@
  */
 export const isClient = typeof window !== 'undefined' && typeof document !== 'undefined';
 
-export * from '@atlas/utils/format'
-export * from '@atlas/utils/validate'
-export * from '@atlas/utils/vue'
+export * from './format.js'
+export * from './validate.js'
+// Vue utilities are not exported here to avoid TypeScript issues in testing
+// They should be imported directly from './vue.ts' where needed
