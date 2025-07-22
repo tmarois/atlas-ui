@@ -2,55 +2,25 @@
 
 Atlas UI is a flexible, component-driven UI toolkit for Vue 3 projects, designed for clean integration with PrimeVue (Unstyled), TailwindCSS, Inertia.js, and composable architecture.
 
-## 📚 Composables
+## 📚 Documentation
 
-### 👉 Composables
+### Composables
 
-These composables can be used within any Vue3 / PrimeVue / Tailwindcss project.
+- [General Composables](./docs/composables.md) - Vue 3 composables for any project
+  - `useModal` - Reactive global modal manager
+  - `useScroll` - Reactive scroll tracking utility
+  - `useTheme` - Detects and manages light/dark mode
 
-| Composable             | Link                                                 | Description                                              |
-|------------------------|------------------------------------------------------|----------------------------------------------------------|
-| `useModal`             | [🔗](./src/composables/useModal.js)                                     | Reactive global modal manager                            |
-| `useScroll`            | [🔗](./src/composables/useScroll.js)                                    | Reactive scroll tracking utility                         |
-| `useTheme`             | [🔗](./src/composables/useTheme.js)                                     | Detects and manages light/dark mode                      |
+- [Inertia Composables](./docs/inertia-composables.md) - Inertia.js-specific composables
+  - `useDataTableOptions` - Server-driven pagination/sorting
+  - `useFormSubmit` - Form submission with hooks
+  - `usePageProp` - Access Inertia page props
 
-### 👉 Composables (Inertia-only)
+### Utilities
 
-These composables require InertiaJs.
-
-| Composable             | Link                                                 | Description                                              |
-|------------------------|------------------------------------------------------|----------------------------------------------------------|
-| `useDataTableOptions`  | [🔗](./src/composables/inertia/useDataTableOptions.js)                         | Reactive filters for server-driven pagination/sorting    |
-| `useFormSubmit`        | [🔗](./src/composables/inertia/useFormSubmit.js)                                | Submits Inertia forms with hooks and toast support       |
-| `usePageProp`          | [🔗](./src/composables/inertia/usePageProp.js)                                  | Extracts a single Inertia prop with reactivity           |
-
-## 📚 Utilities
-
-### 👉 Format
-
-Reusable format utilities available for any project.
-
-| Utility Function       | Link                                                 | Description                                              |
-|------------------------|------------------------------------------------------|----------------------------------------------------------|
-| `formatNumber`         | [🔗](./src/utils/format.js)                                  | Format a number with commas and optional decimals        |
-| `formatToCurrency`     | [🔗](./src/utils/format.js)                                    | Format number to currency (e.g. `$1,000`)                |
-| `formatPercentage`     | [🔗](./src/utils/format.js)                                  | Convert a decimal to a percentage string                 |
-| `formatBytes`          | [🔗](./src/utils/format.js)                                         | Convert byte count to KB/MB/GB string                    |
-| `formatToDate`         | [🔗](./src/utils/format.js)                                       | Format UTC to local date string                          |
-| `formatToDatetime`     | [🔗](./src/utils/format.js)                                    | Format UTC to local date + time string                   |
-| `formatToSlug`         | [🔗](./src/utils/format.js)                                       | Slugify a string for use in URLs                         |
-| `formatToValidURL`     | [🔗](./src/utils/format.js)                                 | Ensure a URL has http/https protocol                     |
-
-### 👉 Validate
-
-Reusable validator utilities available for any project.
-
-| Utility Function       | Link                                                 | Description                                              |
-|------------------------|------------------------------------------------------|----------------------------------------------------------|
-| `isValidURL`           | [🔗](./src/utils/validate.js)                                   | Validate a string as a valid HTTP/HTTPS URL              |
-| `isValidEmail`         | [🔗](./src/utils/validate.js)                                  | Check if a string is a valid email                       |
-| `isNumeric`            | [🔗](./src/utils/validate.js)                                     | Returns true if the value is a valid number              |
-| `isEmpty`              | [🔗](./src/utils/validate.js)                                      | Checks if a value is empty (string, array, object)       |
+- [Format Utilities](./docs/utils.md#format-utilities) - Format data for display
+- [Validation Utilities](./docs/utils.md#validation-utilities) - Validate inputs
+- [Environment Utilities](./docs/utils.md#environment-utilities) - Environment detection
 
 
 ---
