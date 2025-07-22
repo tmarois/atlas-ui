@@ -62,7 +62,20 @@ If using inertia composables make sure `@inertiajs/vue3` is installed.
 
 ## Development
 
-### Running Tests
+### Component Testing Environment
+
+Atlas UI includes a Vite-based visual testing environment for UI components, especially focused on layout, dark mode, theming, and sizing.
+
+```bash
+# Start the visual testing environment
+npm run dev
+```
+
+This will open a development server where you can interact with components, toggle dark mode, adjust sizes, and test different configurations. The testing environment is separate from the main source code as it's only used for development purposes.
+
+For more details, see the [Testing Environment Documentation](./dev/README.md).
+
+### Running Unit Tests
 
 ```bash
 npm test

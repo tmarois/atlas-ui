@@ -11,10 +11,4 @@ export const isClient = typeof window !== 'undefined' && typeof document !== 'un
 // Import format and validation utilities
 export * from './format.js';
 export * from './validate.js';
-
-// Import Vue utilities
-const vueUtils = require('./vue.js');
-
-// Export Vue utilities
-export const ptViewMerge = vueUtils.ptViewMerge;
-export const hasSlotContent = vueUtils.hasSlotContent;
+export * from './vue.js';

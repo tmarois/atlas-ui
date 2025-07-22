@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tailwind CSS Test</title>
+  <link rel="stylesheet" href="./src/style.css">
+  <style>
+    /* Add a simple indicator to show if the page loads without styles */
+    body:not(.tailwind-loaded) .tailwind-indicator::before {
+      content: "❌ Tailwind CSS is NOT loaded";
+      color: red;
+      font-weight: bold;
+    }
+
+    /* This will be overridden by Tailwind if it loads correctly */
+    .text-blue-500 {
+      color: red !important;
+    }
+
+    /* Add this class via JavaScript if Tailwind loads */
+    body.tailwind-loaded .tailwind-indicator::before {
+      content: "✅ Tailwind CSS is loaded";
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4">Tailwind CSS Test</h1>
+
+    <div class="tailwind-indicator text-lg mb-4"></div>
+
+    <p class="mb-4">The text below should be blue if Tailwind CSS is loaded correctly:</p>
+    <p class="text-blue-500 font-bold">This text should be BLUE if Tailwind CSS is working.</p>
+
+    <div class="grid grid-cols-3 gap-4 mt-8">
+      <div class="bg-gray-100 p-4 rounded">Grid Item 1</div>
+      <div class="bg-gray-200 p-4 rounded">Grid Item 2</div>
+      <div class="bg-gray-300 p-4 rounded">Grid Item 3</div>
+    </div>
+
+    <button class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Test Button
+    </button>
+
+    <div class="mt-8 p-4 border border-gray-300 rounded">
+      <h2 class="text-xl font-bold mb-2">Instructions for Testing</h2>
+      <ol class="list-decimal pl-5 space-y-2">
+        <li>Start the development server with <code>npm run dev</code></li>
+        <li>Open this file in your browser: <code>http://localhost:3000/test-tailwind.html</code></li>
+        <li>Check if the indicator at the top shows "Tailwind CSS is loaded" in green</li>
+        <li>Verify that the text that says "This text should be BLUE" is actually blue (not red)</li>
+        <li>Check if the grid layout and button styles are applied correctly</li>
+      </ol>
+      <p class="mt-4">If all the above checks pass, then Tailwind CSS is loading correctly!</p>
+    </div>
+  </div>
+
+  <script>
+    // Check if Tailwind CSS is loaded by testing if it overrides our styles
+    window.onload = function() {
+      const testElement = document.querySelector('.text-blue-500');
+      const computedStyle = window.getComputedStyle(testElement);
+
+      // If the color is not red, Tailwind CSS has been applied
+      if (computedStyle.color !== 'rgb(255, 0, 0)') {
+        document.body.classList.add('tailwind-loaded');
+      }
+    };
+  </script>
+</body>
+</html>

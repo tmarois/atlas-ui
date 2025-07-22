@@ -4,7 +4,9 @@
   "main": "src/index.js",
   "scripts": {
     "eslint": "npx eslint \"src/**/*.{js,vue}\"",
-    "test": "jest"
+    "test": "jest",
+    "dev": "vite dev/",
+    "build:dev": "vite build dev/"
   },
   "keywords": [],
   "author": "",
@@ -39,9 +41,16 @@
     "@babel/core": "^7.26.9",
     "@babel/plugin-transform-typescript": "^7.26.9",
     "@babel/preset-env": "^7.26.9",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@tailwindcss/typography": "^0.5.10",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "autoprefixer": "^10.4.16",
     "babel-jest": "^29.7.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "tailwindcss": "^4.1.4",
+    "tailwindcss-primeui": "^0.6.1",
+    "vite": "^5.0.0",
     "vitest": "^3.1.2"
   }
 }
