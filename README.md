@@ -59,3 +59,17 @@ If using tiptap editor, install these:
 ```
 
 If using inertia composables make sure `@inertiajs/vue3` is installed.
+
+## Development
+
+### Running Tests
+
+```bash
+npm test
+```
+
+### Linting
+
+```bash
+npm run eslint
+```
