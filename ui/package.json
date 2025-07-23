@@ -6,6 +6,11 @@
         ".": "./src/index.ts"
     },
     "description": "Reusable Vue 3 UI components",
+    "scripts": {
+        "test": "vitest run",
+        "test:watch": "vitest watch",
+        "test:coverage": "vitest run --coverage"
+    },
     "peerDependencies": {
         "@tabler/icons-vue": "^3.31.0",
         "lodash": "^4.17.21",
@@ -15,5 +20,14 @@
         "tailwindcss": "^4.1.4",
         "tailwindcss-primeui": "^0.6.1",
         "vue": "^3.4.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.5",
+        "@vitejs/plugin-vue": "^5.0.3",
+        "@vitest/coverage-v8": "^1.2.1",
+        "jsdom": "^24.0.0",
+        "typescript": "^5.3.3",
+        "vite": "^5.0.12",
+        "vitest": "^1.2.1"
     }
 }
