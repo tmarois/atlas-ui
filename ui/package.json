@@ -5,7 +5,8 @@
     "exports": {
         ".": "./src/index.ts"
     },
-    "description": "Reusable Vue 3 UI components",
+    "description": "Reusable Vue 3 UI components and library.",
+    "keywords": ["vuejs", "utility", "ui components"],
     "scripts": {
         "test": "vitest run",
         "test:watch": "vitest watch",
@@ -29,5 +30,18 @@
         "typescript": "^5.3.3",
         "vite": "^5.0.12",
         "vitest": "^1.2.1"
-    }
+    },
+    "directories": {
+        "test": "tests"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tmarois/atlas.git"
+    },
+    "author": "Timothy Marois",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/tmarois/atlas/issues"
+    },
+    "homepage": "https://github.com/tmarois/atlas#readme"
 }
