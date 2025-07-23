@@ -1,0 +1,9 @@
+{
+    "name": "tmarois/atlas-laravel",
+    "description": "Reusable Laravel base framework",
+    "autoload": {
+        "psr-4": {
+            "Atlas\\Laravel\\": "src/"
+        }
+    }
+}

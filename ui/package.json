@@ -1,0 +1,19 @@
+{
+    "name": "@tmarois/atlas-ui",
+    "version": "1.0.0",
+    "main": "src/index.ts",
+    "exports": {
+        ".": "./src/index.ts"
+    },
+    "description": "Reusable Vue 3 UI components",
+    "peerDependencies": {
+        "@tabler/icons-vue": "^3.31.0",
+        "lodash": "^4.17.21",
+        "primeicons": "^7.0.0",
+        "primevue": "^4.0.0",
+        "tailwind-merge": "^3.2.0",
+        "tailwindcss": "^4.1.4",
+        "tailwindcss-primeui": "^0.6.1",
+        "vue": "^3.4.0"
+    }
+}
