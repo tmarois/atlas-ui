@@ -2,6 +2,11 @@
 
 This documentation covers the usage of two Vue composables: `useModal` and `useScroll`.
 
+## Table of Contents
+
+- [useModal](#usemodal) - Modal management system
+- [useScroll](#usescroll) - Scroll utilities and detection
+
 ## useModal
 
 The `useModal` composable provides a flexible modal management system for Vue applications.
