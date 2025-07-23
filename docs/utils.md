@@ -34,7 +34,7 @@ Converts a number of bytes into a human-readable file size string.
 
 **Example:**
 ```typescript
-import { formatBytes } from '@/utils/format';
+import { formatBytes } from '@tmarois/atlas';
 
 formatBytes(1024);        // '1.00 KB'
 formatBytes(1536, 1);     // '1.5 KB'
@@ -55,7 +55,7 @@ Formats a date string or Date object into a localized date string.
 
 **Example:**
 ```typescript
-import { formatDate } from '@/utils/format';
+import { formatDate } from '@tmarois/atlas';
 
 formatDate('2023-01-15T12:00:00');                  // '1/15/2023'
 formatDate('2023-01-15T12:00:00', 'America/New_York'); // '1/15/2023'
@@ -75,7 +75,7 @@ Formats a date string or Date object into a localized date and time string.
 
 **Example:**
 ```typescript
-import { formatDatetime } from '@/utils/format';
+import { formatDatetime } from '@tmarois/atlas';
 
 formatDatetime('2023-01-15T12:00:00');                  // '1/15/2023, 12:00 PM'
 formatDatetime('2023-01-15T12:00:00', 'America/New_York'); // '1/15/2023, 7:00 AM'
@@ -94,7 +94,7 @@ Formats a number with thousands separators and optional decimal places.
 
 **Example:**
 ```typescript
-import { formatNumber } from '@/utils/format';
+import { formatNumber } from '@tmarois/atlas';
 
 formatNumber(1000);      // '1,000'
 formatNumber(1234.56, 2); // '1,234.56'
@@ -114,7 +114,7 @@ Formats a numeric decimal into a percentage string.
 
 **Example:**
 ```typescript
-import { formatPercentage } from '@/utils/format';
+import { formatPercentage } from '@tmarois/atlas';
 
 formatPercentage(0.25);     // '25%'
 formatPercentage(0.3333, 2); // '33.33%'
@@ -133,7 +133,7 @@ Converts a string into a safe, lowercase slug.
 
 **Example:**
 ```typescript
-import { formatSlug } from '@/utils/format';
+import { formatSlug } from '@tmarois/atlas';
 
 formatSlug('Hello World');      // 'hello-world'
 formatSlug('My Blog Post!');    // 'my-blog-post'
@@ -153,7 +153,7 @@ Normalizes and ensures a URL includes a valid protocol.
 
 **Example:**
 ```typescript
-import { formatValidURL } from '@/utils/format';
+import { formatValidURL } from '@tmarois/atlas';
 
 formatValidURL('google.com');                // 'http://google.com'
 formatValidURL('google.com', true);         // 'https://google.com'
@@ -176,7 +176,7 @@ Checks if a value is empty (null, undefined, empty string, empty array, or empty
 
 **Example:**
 ```typescript
-import { isEmpty } from '@/utils/validate';
+import { isEmpty } from '@tmarois/atlas';
 
 isEmpty('');        // true
 isEmpty(null);       // true
@@ -199,7 +199,7 @@ Checks if a value is a valid number or numeric string.
 
 **Example:**
 ```typescript
-import { isNumeric } from '@/utils/validate';
+import { isNumeric } from '@tmarois/atlas';
 
 isNumeric(123);        // true
 isNumeric('123');       // true
@@ -221,7 +221,7 @@ Checks if a string is a valid email address format.
 
 **Example:**
 ```typescript
-import { isValidEmail } from '@/utils/validate';
+import { isValidEmail } from '@tmarois/atlas';
 
 isValidEmail('user@example.com');      // true
 isValidEmail('name.surname@domain.co'); // true
@@ -242,7 +242,7 @@ Checks if a string is a valid URL format.
 
 **Example:**
 ```typescript
-import { isValidURL } from '@/utils/validate';
+import { isValidURL } from '@tmarois/atlas';
 
 isValidURL('https://google.com');         // true
 isValidURL('http://subdomain.domain.co.uk'); // true
@@ -264,7 +264,7 @@ Detects if the code is running in a client/browser environment (as opposed to se
 
 **Example:**
 ```typescript
-import { isClient } from '@/utils';
+import { isClient } from '@tmarois/atlas';
 
 // Only execute browser-specific code when in the browser
 if (isClient) {
