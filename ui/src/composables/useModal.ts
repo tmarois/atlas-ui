@@ -1,4 +1,4 @@
-import { reactive, computed, ComputedRef } from 'vue';
+import { reactive, computed, ComputedRef, type Ref } from 'vue';
 
 type ModalData = unknown;
 
@@ -35,7 +35,7 @@ export function useModal() {
         }
     };
 
-    const activeState = (name: string): ComputedRef<boolean> => computed({
+    const activeState = (name: string): Ref<boolean> => computed({
         get: () => modals.get(name)?.open === true,
         set: (value: boolean) => {
             value ? open(name) : close(name);
