@@ -14,6 +14,5 @@ export const formatBytes = (bytes: number, decimals = 2): string => {
     const k = 1024;
     const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
     const i = Math.floor(Math.log(absoluteBytes) / Math.log(k));
-
     return `${(absoluteBytes / Math.pow(k, i)).toFixed(decimals)} ${sizes[i]}`;
 };

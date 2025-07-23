@@ -6,13 +6,21 @@
  * @returns Localized datetime string (e.g. '7/22/2025, 4:13 PM')
  */
 export const formatDatetime = (
-    utcDatetime: string,
+    utcDatetime: string | Date,
     userTimezone = 'UTC',
     locale = 'en-US'
 ): string => {
     if (!utcDatetime) return '';
-    const date = new Date(utcDatetime.endsWith('Z') ? utcDatetime : `${utcDatetime}Z`);
-    if (isNaN(date.getTime())) return 'Invalid date';
+
+    const date =
+        utcDatetime instanceof Date
+            ? utcDatetime
+            : typeof utcDatetime === 'string'
+                ? new Date(utcDatetime.endsWith('Z') ? utcDatetime : `${utcDatetime}Z`)
+                : null;
+
+    if (!date || isNaN(date.getTime())) return '';
+
     return date.toLocaleString(locale, {
         timeZone: userTimezone,
         year: 'numeric',
