@@ -1,6 +1,6 @@
 # Project Conventions
 
-This document defines the naming, structure, and formatting conventions that all developers must follow. These standards exist to ensure that the codebase is readable, predictable, and easy to navigate across the entire team.
+This document defines the naming, structure, and formatting conventions that all developers must follow. These standards exist to ensure the codebase is readable, predictable, and easy to navigate across the entire team.
 
 Conventions are not suggestions. They are enforced during code review and must be followed in all feature and bugfix work.
 
@@ -37,9 +37,17 @@ Conventions are not suggestions. They are enforced during code review and must b
 - PascalCase and clearly scoped.
 - Example: `UserStatus`, `PaymentMethod`.
 
-### Events, Notifications, Mailables
-- Verb-oriented names like `UserRegistered`, `PasswordResetNotification`.
-- Use suffix only where required (`Notification`, `Mail`, etc.).
+### Events
+- PascalCase, past-tense, describes something that **has happened**.
+- Example: `UserRegistered`, `InvoicePaid`.
+
+### Listeners
+- PascalCase, imperative, describes what the listener **does**.
+- Example: `SendWelcomeEmail`, `SyncContactToCrm`.
+
+### Notifications & Mailables
+- PascalCase, descriptive. Suffixes like `Notification`, `Mail` only when necessary.
+- Example: `PasswordResetNotification`, `WelcomeMail`.
 
 ---
 
@@ -48,6 +56,14 @@ Conventions are not suggestions. They are enforced during code review and must b
 - Every file must live in the correct folder as defined in [architecture.md](architecture.md).
 - Services must be grouped by domain if needed (e.g. `Services/Users/UserService.php`).
 - No flat "god folders" (e.g., `Services/`, `Jobs/`) if domain contexts exist.
+
+### Events & Listeners
+
+- Events must live in `App/Events/{Domain}/`.
+- Listeners must live in `App/Listeners/{Domain}/`.
+- Both must be grouped by domain or feature (e.g., `User/`, `Billing/`, `Auth/`).
+- Events must contain no logic — only data.
+- Listeners must only handle **side effects** (emails, logs, notifications). They must not trigger other workflows or mutate domain state directly.
 
 ---
 

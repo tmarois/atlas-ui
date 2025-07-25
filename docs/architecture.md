@@ -24,6 +24,8 @@ The application follows a layered service-oriented architecture. Business logic 
     ├── Jobs/
     ├── Models/
     ├── Notifications/
+    ├── Events/
+    ├── Listeners/
     ├── Providers/
     └── Services/
 
@@ -47,6 +49,10 @@ This directory holds PHP enums that represent fixed domain values such as status
 
 Custom exception classes live here. These are used to represent meaningful, application-specific failure cases. They must not contain business logic or side effects.
 
+### `App/Events`
+
+Events represent that something has already happened in the application. They are strictly data objects and must not contain any logic, model interaction, or side effects. Events are dispatched by services to signal state transitions, such as `UserRegistered` or `InvoicePaid`.
+
 ### `App/Http/Controllers`
 
 Controllers are the entry point for web and API requests. Their only job is to delegate work to service classes, form requests, or jobs. Controllers must never contain any business rules, database access, or conditional behavior beyond routing.
@@ -66,6 +72,10 @@ This layer is responsible for transforming data for frontend or API consumers. R
 ### `App/Jobs`
 
 Jobs encapsulate deferred tasks to be executed asynchronously. Jobs are expected to be small and focused. They are allowed to invoke service classes but must not contain business rules themselves.
+
+### `App/Listeners`
+
+Listeners handle passive side effects in response to events. They may send notifications, write to logs, or call external systems — but they must not mutate core application state, perform business decisions, or dispatch additional events. Complex side effects should be offloaded to jobs or services.
 
 ### `App/Models`
 
@@ -92,4 +102,3 @@ Support classes contain reusable, stateless utility logic such as formatters, st
 The success of this architecture depends on discipline. Controllers must not contain logic. Services must not contain view code. Models must not trigger workflows. Utilities must not evolve into service containers. The boundaries between layers must be clear and strictly enforced.
 
 Every developer on the team is responsible for keeping these boundaries intact. This is not a guideline — it is the architecture.
-
