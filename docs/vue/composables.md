@@ -73,12 +73,12 @@ const modal = useModal();
 
 // Register open callback
 modal.onOpen('userForm', (data) => {
-  console.log('User form opened with data:', data);
+    console.log('User form opened with data:', data);
 });
 
 // Register close callback
 modal.onClose('userForm', (data) => {
-  console.log('User form closed with data:', data);
+    console.log('User form closed with data:', data);
 });
 </script>
 ```
