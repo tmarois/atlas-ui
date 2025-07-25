@@ -48,25 +48,25 @@ const modalData = modal.data('confirmDialog');
 
 #### Using with v-model
 
-```typescript
+```js
 <template>
-  <Modal v-model="isConfirmOpen">
-    <!-- Modal content -->
-  </Modal>
+    <Modal v-model="isActive">
+        <!-- Modal content -->
+    </Modal>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { useModal } from '@tmarois/atlas';
 
 const modal = useModal();
-const isConfirmOpen = modal.activeState('confirm');
+const isActive = modal.activeState('confirmDialog');
 </script>
 ```
 
 #### Using with Callbacks
 
-```typescript
-<script setup lang="ts">
+```js
+<script setup>
 import { useModal } from '@tmarois/atlas';
 
 const modal = useModal();
@@ -89,11 +89,12 @@ The `useScroll` composable provides utilities for scroll management and detectio
 
 ### Basic Usage
 
-```typescript
+```js
+<script setup>
 import { useScroll } from '@tmarois/atlas';
 import { ref } from 'vue';
 
-const elementRef = ref<HTMLElement | null>(null);
+const elementRef = ref(null);
 const scroll = useScroll('myScrollContainer');
 
 // Bind scroll handler to element
@@ -101,13 +102,14 @@ const scrollHandler = scroll.bindScrollHandler(elementRef);
 
 // Add scroll listener
 onMounted(() => {
-  scrollHandler.add();
+    scrollHandler.add();
 });
 
 // Remove scroll listener
 onUnmounted(() => {
-  scrollHandler.remove();
+    scrollHandler.remove();
 });
+</script>
 ```
 
 ### API Reference
@@ -124,40 +126,40 @@ onUnmounted(() => {
 
 #### Scroll Detection
 
-```typescript
+```js
 <template>
-  <div ref="containerRef" class="scroll-container">
-    <div v-if="!isAtTop" class="scroll-indicator">
-      Scrolled down
+    <div ref="containerRef" class="scroll-container">
+        <div v-if="!isAtTop" class="scroll-indicator">
+            Scrolled down
+        </div>
+        <!-- Content -->
     </div>
-    <!-- Content -->
-  </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useScroll } from '@tmarois/atlas';
 
-const containerRef = ref<HTMLElement | null>(null);
+const containerRef = ref(null);
 const scroll = useScroll('container');
 const isAtTop = scroll.isTop;
 
 const scrollHandler = scroll.bindScrollHandler(containerRef);
 
 onMounted(() => {
-  scrollHandler.add();
+    scrollHandler.add();
 });
 
 onUnmounted(() => {
-  scrollHandler.remove();
+    scrollHandler.remove();
 });
 </script>
 ```
 
 #### Modal with Scroll Lock
 
-```typescript
-<script setup lang="ts">
+```js
+<script setup>
 import { useModal, useScroll } from '@tmarois/atlas';
 
 const modal = useModal();
@@ -165,12 +167,12 @@ const scroll = useScroll('modal');
 
 // Lock scroll when modal opens
 modal.onOpen('fullscreenModal', () => {
-  scroll.lockScroll();
+    scroll.lockScroll();
 });
 
 // Unlock scroll when modal closes
 modal.onClose('fullscreenModal', () => {
-  scroll.unlockScroll();
+    scroll.unlockScroll();
 });
 </script>
 ```
