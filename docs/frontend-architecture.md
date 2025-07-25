@@ -26,6 +26,11 @@ This document defines the structure and rules for building Vue 3 components usin
     │   └── composables/
     │   └── services/
     │   └── utils/
+    ├── tests/
+    │   └── components/
+    │   └── composables/
+    │   └── services/
+    │   └── utils/
     └── views/
 
 ### Pages
