@@ -6,7 +6,7 @@ This document defines the structure, boundaries, and design rules for this appli
 
 The application follows a layered service-oriented architecture. Business logic is isolated in service classes. Controllers act only as request coordinators. Models are used for data mapping and persistence, not behavior. Jobs are queued tasks with minimal logic. Every part of the application must respect its own responsibility and never reach across layers inappropriately.
 
-## Project Structure
+## Structure
 
 ### Directories
 
