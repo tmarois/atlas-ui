@@ -1,4 +1,4 @@
-# Atlas UI Utilities Documentation
+# Vue Utilities
 
 ## Table of Contents
 

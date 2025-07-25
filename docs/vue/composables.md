@@ -1,4 +1,4 @@
-# Vue Composables Documentation
+# Vue Composables
 
 This documentation covers the usage of two Vue composables: `useModal` and `useScroll`.
 
