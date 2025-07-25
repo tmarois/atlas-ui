@@ -6,11 +6,9 @@ This document defines the structure and rules for building Vue 3 components usin
 
 ## Core Principles
 
-- Pages only coordinate — no logic or markup bloat.
+- Pages only coordinate — no logic or bloat.
 - All logic is extracted to composables or services.
 - Components are atomic, reusable, and scoped.
-- Global state is opt-in and minimized.
-- Structure and naming must remain consistent across all features.
 
 ---
 
@@ -70,6 +68,7 @@ Organized into subfolders:
 - Use Tailwind for styling; never write custom CSS unless scoped.
 - Never access browser APIs directly in components — use composables.
 - Register layouts only at the page level.
+- Forms should always try use `useForm` when possible.
 
 ---
 
