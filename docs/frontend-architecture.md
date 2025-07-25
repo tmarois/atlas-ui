@@ -14,6 +14,20 @@ This document defines the structure and rules for building Vue 3 components usin
 
 ## Structure Overview
 
+### Directories
+
+    resources/
+    ├── assets/ 
+    │   └── css/
+    │   └── images/
+    ├── js/
+    │   └── pages/
+    │   └── components/
+    │   └── composables/
+    │   └── services/
+    │   └── utils/
+    └── views/
+
 ### Pages
 
 - One file per route.
