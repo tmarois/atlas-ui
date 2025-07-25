@@ -83,7 +83,7 @@ Eloquent models define the data schema, relationships, accessors, mutators, and 
 
 ### `App/Notifications`
 
-This directory contains notification classes responsible for formatting and delivering messages via email, Slack, or other channels. Notifications must be passive and never perform side effects or contain business rules. Triggering notifications must be handled in service classes.
+This directory contains all outbound communication classes, including Laravel Notifications and custom Mailables. These classes are passive — they format and deliver messages via email, Slack, or other channels. No side effects or business rules are allowed. They must be triggered by services or listeners.
 
 ### `App/Providers`
 
