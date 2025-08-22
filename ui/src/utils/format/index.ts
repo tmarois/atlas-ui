@@ -6,3 +6,4 @@ export * from './formatNumber';
 export * from './formatPercentage';
 export * from './formatSlug';
 export * from './formatValidURL';
+export * from './formatYmdDate';
