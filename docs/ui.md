@@ -36,6 +36,8 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [Card](#card)
   - [Divider](#divider)
 - [Data Display](#data-display)
+  - [Avatar](#avatar)
+  - [AvatarGroup](#avatargroup)
   - [Chip](#chip)
 - [Feedback](#feedback)
   - [Alert](#alert)
@@ -209,6 +211,35 @@ import { Divider } from '@atlas/ui';
 Refer to the [PrimeVue Divider API](https://primevue.org/divider/#api).
 
 ### Data Display
+
+#### Avatar
+```ts
+import { Avatar } from '@atlas/ui';
+```
+
+```vue
+<Avatar label="AB" />
+```
+
+##### API
+
+Refer to the [PrimeVue Avatar API](https://primevue.org/avatar/#api).
+
+#### AvatarGroup
+```ts
+import { AvatarGroup, Avatar } from '@atlas/ui';
+```
+
+```vue
+<AvatarGroup>
+  <Avatar label="AB" />
+  <Avatar label="CD" />
+</AvatarGroup>
+```
+
+##### API
+
+Refer to the [PrimeVue AvatarGroup API](https://primevue.org/avatargroup/#api).
 
 #### Chip
 ```ts
