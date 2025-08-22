@@ -29,7 +29,7 @@ const theme = ref<CardPassThroughOptions>({
     header: `p-6 py-4 border-b border-surface-300 dark:border-surface-700`,
     body: `flex flex-col`,
     caption: `flex flex-col gap-2`,
-    title: `font-semibold text-lg`,
+    title: `font-semibold text-lg px-6 py-4`,
     subtitle: `text-surface-500 dark:text-surface-400`,
     content: `p-6 h-full`,
     footer: `p-6 py-4 border-t border-surface-300 dark:border-surface-700`
