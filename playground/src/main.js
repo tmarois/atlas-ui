@@ -4,6 +4,7 @@ import StyleClass from 'primevue/styleclass';
 import Tooltip from 'primevue/tooltip';
 import ToastService from 'primevue/toastservice';
 import App from './App.vue';
+import 'primeicons/primeicons.css';
 import './style.css';
 
 // Create and mount the Vue application
