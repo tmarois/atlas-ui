@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import Card, { type CardPassThroughOptions, type CardProps } from 'primevue/card';
 import { ref, useAttrs, computed } from 'vue';
-import { ptViewMerge, mergePT } from '../utils';
+import { ptViewMerge, ptMerge } from '../utils';
 
 interface Props extends /* @vue-ignore */ CardProps {}
 const props = defineProps<Props>();
@@ -35,7 +35,7 @@ const theme = ref<CardPassThroughOptions>({
     footer: `p-6 py-4 border-t border-surface-300 dark:border-surface-700`
 });
 
-const mergedPt = computed(() => mergePT(theme.value, props.pt));
+const mergedPt = computed(() => ptMerge(theme.value, props.pt));
 const passThroughProps = computed(() => {
     const { pt, ...rest } = props as any;
     return rest;

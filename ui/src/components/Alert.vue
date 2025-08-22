@@ -24,7 +24,7 @@
 <script setup lang="ts">
 import { IconInfoCircleFilled, IconExclamationCircleFilled } from '@tabler/icons-vue';
 import { useAttrs, computed } from 'vue';
-import { mergePT } from '../utils';
+import { ptMerge } from '../utils';
 
 interface AlertPassThroughOptions {
     root?: any;
@@ -62,7 +62,7 @@ const theme = computed<AlertPassThroughOptions>(() => ({
     actions: 'flex items-center space-x-2',
 }));
 
-const mergedPt = computed(() => mergePT(theme.value, props.pt));
+const mergedPt = computed(() => ptMerge(theme.value, props.pt));
 
 const passThroughProps = computed(() => {
     const { pt, warning, hideIcon, ...rest } = props as any;

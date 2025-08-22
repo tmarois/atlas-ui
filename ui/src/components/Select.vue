@@ -37,7 +37,7 @@ import SpinnerIcon from '@primevue/icons/spinner';
 import TimesIcon from '@primevue/icons/times';
 import Select, { type SelectPassThroughOptions, type SelectProps } from 'primevue/select';
 import { ref, useAttrs, computed } from 'vue';
-import { ptViewMerge, mergePT } from '../utils';
+import { ptViewMerge, ptMerge } from '../utils';
 
 interface Props extends /* @vue-ignore */ SelectProps {}
 const props = defineProps<Props>();
@@ -110,7 +110,7 @@ const theme = ref<SelectPassThroughOptions>({
     }
 });
 
-const mergedPt = computed(() => mergePT(theme.value, props.pt));
+const mergedPt = computed(() => ptMerge(theme.value, props.pt));
 const passThroughProps = computed(() => {
     const { pt, ...rest } = props as any;
     return rest;

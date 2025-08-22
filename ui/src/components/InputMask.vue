@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import InputMask, { type InputMaskPassThroughOptions, type InputMaskProps } from 'primevue/inputmask';
 import { ref, useAttrs, computed } from 'vue';
-import { ptViewMerge, mergePT } from '../utils';
+import { ptViewMerge, ptMerge } from '../utils';
 
 interface Props extends /* @vue-ignore */ InputMaskProps {}
 const props = defineProps<Props>();
@@ -35,7 +35,7 @@ const theme = ref<InputMaskPassThroughOptions>({
         transition-colors duration-200 shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]`
 });
 
-const mergedPt = computed(() => mergePT(theme.value, props.pt));
+const mergedPt = computed(() => ptMerge(theme.value, props.pt));
 const passThroughProps = computed(() => {
     const { pt, ...rest } = props as any;
     return rest;

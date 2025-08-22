@@ -14,13 +14,13 @@ describe('Button', () => {
         const wrapper = mountWithPrime({ loading: true });
         const button = wrapper.find('button');
         expect(button.attributes('disabled')).not.toBeUndefined();
-        expect(wrapper.find('.pi-spinner').exists()).toBe(true);
+        expect(wrapper.find('.p-icon-spin').exists()).toBe(true);
     });
 
     it('applies small size padding', () => {
         const wrapper = mountWithPrime({ size: 'small' });
         const classes = wrapper.find('button').attributes('class');
-        expect(classes).toContain('p-small:!px-[0.625rem]');
-        expect(classes).toContain('p-small:!py-[0.375rem]');
+        expect(classes).toContain('p-small:px-[0.625rem]');
+        expect(classes).toContain('p-small:py-[0.375rem]');
     });
 });

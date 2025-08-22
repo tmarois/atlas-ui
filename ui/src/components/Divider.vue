@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import Divider, { type DividerPassThroughOptions, type DividerProps } from 'primevue/divider';
 import { ref, useAttrs, computed } from 'vue';
-import { ptViewMerge, mergePT } from '../utils';
+import { ptViewMerge, ptMerge } from '../utils';
 
 interface Props extends /* @vue-ignore */ DividerProps {}
 const props = defineProps<Props>();
@@ -32,7 +32,7 @@ const theme = ref<DividerPassThroughOptions>({
         p-horizontal:py-0 p-horizontal:px-2 p-vertical:py-2 p-vertical:px-0`
 });
 
-const mergedPt = computed(() => mergePT(theme.value, props.pt));
+const mergedPt = computed(() => ptMerge(theme.value, props.pt));
 const passThroughProps = computed(() => {
     const { pt, ...rest } = props as any;
     return rest;

@@ -1,6 +1,6 @@
 import { ptViewMerge } from './ptViewMerge';
 
-export const mergePT = (
+export const ptMerge = (
     base: Record<string, any> = {},
     override: Record<string, any> = {}
 ): Record<string, any> => {

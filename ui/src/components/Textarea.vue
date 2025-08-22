@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import Textarea, { type TextareaPassThroughOptions, type TextareaProps } from 'primevue/textarea';
 import { ref, useAttrs, computed } from 'vue';
-import { ptViewMerge, mergePT } from '../utils';
+import { ptViewMerge, ptMerge } from '../utils';
 
 interface Props extends /* @vue-ignore */ TextareaProps {}
 const props = defineProps<Props>();
@@ -35,7 +35,7 @@ const theme = ref<TextareaPassThroughOptions>({
         transition-colors duration-200 shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]`
 });
 
-const mergedPt = computed(() => mergePT(theme.value, props.pt));
+const mergedPt = computed(() => ptMerge(theme.value, props.pt));
 const passThroughProps = computed(() => {
     const { pt, ...rest } = props as any;
     return rest;

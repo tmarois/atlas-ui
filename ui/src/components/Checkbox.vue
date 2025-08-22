@@ -17,7 +17,7 @@ import CheckIcon from '@primevue/icons/check';
 import MinusIcon from '@primevue/icons/minus';
 import Checkbox, { type CheckboxPassThroughOptions, type CheckboxProps } from 'primevue/checkbox';
 import { ref, useAttrs, computed } from 'vue';
-import { ptViewMerge, mergePT } from '../utils';
+import { ptViewMerge, ptMerge } from '../utils';
 
 interface Props extends /* @vue-ignore */ CheckboxProps {}
 const props = defineProps<Props>();
@@ -50,7 +50,7 @@ const theme = ref<CheckboxPassThroughOptions>({
         text-white p-disabled:text-surface-400 dark:p-disabled:text-surface-600`
 });
 
-const mergedPt = computed(() => mergePT(theme.value, props.pt));
+const mergedPt = computed(() => ptMerge(theme.value, props.pt));
 const passThroughProps = computed(() => {
     const { pt, ...rest } = props as any;
     return rest;

@@ -22,7 +22,7 @@
 import TimesCircleIcon from '@primevue/icons/timescircle';
 import Chip, { type ChipPassThroughOptions, type ChipProps } from 'primevue/chip';
 import { ref, useAttrs, computed } from 'vue';
-import { ptViewMerge, mergePT } from '../utils';
+import { ptViewMerge, ptMerge } from '../utils';
 
 interface Props extends /* @vue-ignore */ ChipProps {}
 const props = defineProps<Props>();
@@ -38,7 +38,7 @@ const theme = ref<ChipPassThroughOptions>({
     icon: `text-surface-800 dark:text-surface-0 text-base w-4 h-4`
 });
 
-const mergedPt = computed(() => mergePT(theme.value, props.pt));
+const mergedPt = computed(() => ptMerge(theme.value, props.pt));
 const passThroughProps = computed(() => {
     const { pt, ...rest } = props as any;
     return rest;
