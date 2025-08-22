@@ -35,6 +35,7 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [MultiSelect](#multiselect)
   - [Textarea](#textarea)
   - [Checkbox](#checkbox)
+  - [LabelChoice](#labelchoice)
 - [Layout](#layout)
   - [ScrollFrame](#scrollframe)
   - [Accordion](#accordion)
@@ -215,6 +216,38 @@ import { Checkbox } from '@atlas/ui';
 ##### API
 
 See the [PrimeVue Checkbox API](https://primevue.org/checkbox/#api).
+
+#### LabelChoice
+```ts
+import { LabelChoice, Checkbox, RadioButton } from '@atlas/ui';
+```
+
+**Checkbox**
+
+```vue
+<LabelChoice v-model="checked" label="Accept terms" inputId="accept">
+  <Checkbox />
+</LabelChoice>
+```
+
+**Radio Button**
+
+```vue
+<LabelChoice
+  v-model="selected"
+  :value="'a'"
+  label="Option A"
+  name="options"
+  inputId="option-a"
+>
+  <RadioButton />
+</LabelChoice>
+```
+
+##### API
+
+Refer to the [PrimeVue Checkbox API](https://primevue.org/checkbox/#api) and
+[RadioButton API](https://primevue.org/radiobutton/#api).
 
 ### Layout
 

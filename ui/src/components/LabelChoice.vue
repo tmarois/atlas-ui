@@ -1,9 +1,15 @@
 <template>
     <div :class="mergedPt.root.class">
-        <RadioButton v-model="model" v-bind="radioAttrs" :pt="mergedPt.radio" />
+        <component
+            v-if="choiceComponent"
+            :is="choiceComponent"
+            v-model="model"
+            v-bind="choiceAttrs"
+            :pt="mergedPt.input"
+        />
         <label
             v-if="label"
-            :for="radioAttrs.inputId"
+            :for="choiceAttrs.inputId"
             :class="mergedPt.label.class"
         >
             {{ label }}
@@ -12,19 +18,18 @@
 </template>
 
 <script setup lang="ts">
-import RadioButton from './RadioButton.vue';
-import { useAttrs, computed } from 'vue';
+import { computed, useAttrs, useSlots } from 'vue';
 import { ptMerge } from '../utils';
 
-interface LabelRadioButtonPassThroughOptions {
+interface LabelChoicePassThroughOptions {
     root?: any;
-    radio?: any;
+    input?: any;
     label?: any;
 }
 
 interface Props {
     label?: string;
-    pt?: LabelRadioButtonPassThroughOptions;
+    pt?: LabelChoicePassThroughOptions;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -33,25 +38,36 @@ const props = withDefaults(defineProps<Props>(), {
 
 const model = defineModel<any>();
 const attrs = useAttrs();
+const slots = useSlots();
 
-const theme = computed<LabelRadioButtonPassThroughOptions>(() => ({
+const choiceComponent = computed(() => slots.default?.()[0]?.type);
+
+const isChecked = computed(() => {
+    if ((attrs as any)?.value !== undefined) {
+        return model.value === (attrs as any).value;
+    }
+    return !!model.value;
+});
+
+const theme = computed<LabelChoicePassThroughOptions>(() => ({
     root: 'w-full flex items-center space-x-2',
-    radio: {},
+    input: {},
     label: `block text-sm transition-colors ${
-        attrs?.disabled ? 'cursor-default pointer-events-none' : 'cursor-pointer'
+        (attrs as any)?.disabled ? 'cursor-default pointer-events-none' : 'cursor-pointer'
     } ${
-        model.value === (attrs as any).value
-            ? (attrs?.disabled
+        isChecked.value
+            ? ((attrs as any)?.disabled
                 ? 'text-gray-500 dark:text-gray-400'
                 : 'text-black dark:text-white hover:text-primary-700 dark:hover:text-white')
-            : (attrs?.disabled
+            : ((attrs as any)?.disabled
                 ? 'text-gray-400 dark:text-gray-400'
                 : 'text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-white')
     }`
 }));
 
 const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const radioAttrs = computed(() => {
+
+const choiceAttrs = computed(() => {
     const { pt, ...rest } = attrs as any;
     return rest;
 });
