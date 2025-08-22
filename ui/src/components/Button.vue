@@ -5,7 +5,12 @@
         :pt="mergedPt"
         :ptOptions="{ mergeProps: ptViewMerge }"
     >
-        <template v-for="(_, slotName) in $slots" v-slot:[slotName]="slotProps">
+        <template #loadingicon="slotProps">
+            <slot name="loadingicon" v-bind="slotProps">
+                <IconLoader2 :class="slotProps.class" />
+            </slot>
+        </template>
+        <template v-for="slotName in forwardedSlots" v-slot:[slotName]="slotProps">
             <slot :name="slotName" v-bind="slotProps ?? {}" />
         </template>
     </Button>
@@ -13,12 +18,15 @@
 
 <script setup lang="ts">
 import Button, { type ButtonPassThroughOptions, type ButtonProps } from 'primevue/button';
-import { ref, useAttrs, computed } from 'vue';
+import { IconLoader2 } from '@tabler/icons-vue';
+import { ref, useAttrs, computed, useSlots } from 'vue';
 import { ptViewMerge, mergePT } from '../utils';
 
 interface Props extends /* @vue-ignore */ ButtonProps {}
 const props = defineProps<Props>();
 const attrs = useAttrs();
+const slots = useSlots();
+const forwardedSlots = computed(() => Object.keys(slots).filter((name) => name !== 'loadingicon'));
 
 const theme = ref<ButtonPassThroughOptions>({
     root: `inline-flex self-start cursor-pointer select-none items-center justify-center overflow-hidden relative
@@ -45,7 +53,9 @@ const theme = ref<ButtonPassThroughOptions>({
         dark:p-text:border-transparent dark:enabled:hover:p-text:border-transparent dark:enabled:active:p-text:border-transparent
         dark:p-text:text-white dark:enabled:hover:p-text:text-primary dark:enabled:active:p-text:text-primary
     `,
-    loadingIcon: `pi pi-spinner animate-spin`,
+    loadingIcon: {
+        class: `animate-spin`
+    },
     icon: `p-right:order-1 p-bottom:order-2`,
     label: `
             p-icon-only:invisible p-icon-only:w-0
