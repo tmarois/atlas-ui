@@ -42,19 +42,18 @@ $service->delete($user);
 
 ## Configuring the Service
 
-You may override `configure` to prepare the service for different contexts.
-
-### Static configuration
+Set the model class on the consumer side. For simple cases you can assign it
+directly on the service:
 
 ```php
 class UserService extends ModelService
 {
-    protected function configure(): void
-    {
-        $this->model = User::class;
-    }
+    protected string $model = User::class;
 }
 ```
+
+For more dynamic scenarios, assign the model in your own constructor or other
+initializer.
 
 ### Contextual configuration
 
@@ -64,11 +63,6 @@ use Illuminate\Database\Eloquent\Builder;
 class TeamUserService extends ModelService
 {
     public function __construct(protected int $teamId)
-    {
-        $this->configure();
-    }
-
-    protected function configure(): void
     {
         $this->model = User::class;
     }
@@ -87,15 +81,12 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class SortedUserService extends ModelService
 {
+    protected string $model = User::class;
+
     protected array $defaults = [
         'sortField' => 'name',
         'sortOrder' => 1,
     ];
-
-    protected function configure(): void
-    {
-        $this->model = User::class;
-    }
 
     public function listPaginated(int $perPage = 15, array $options = []): LengthAwarePaginator
     {
