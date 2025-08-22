@@ -19,9 +19,8 @@ All contributions must follow the architecture and coding conventions outlined i
 
 ## Testing
 - Run front-end tests with `npm test` inside `ui/`.
-- The Laravel package currently has no automated tests; manually verify changes.
+- Run Laravel package tests with `composer test` inside `laravel/`.
 
 ## Pull requests
 - Keep commits focused and reference relevant documentation when introducing new patterns.
 - Update this file and other docs as conventions evolve.
-
