@@ -2,6 +2,17 @@
 
 The `InertiaDataTableOptions` trait helps controllers build datatable query options by combining defaults, request input, and optional session data. Filter values are type-cast using the `Caster` helper so they can be safely consumed by services and queries.
 
+## Returned Options
+
+`resolveIndexOptions` returns an array with these keys:
+
+- `search` – free-text query used for filtering.
+- `filters` – associative array of typed filters.
+- `viewFields` – fields that should be visible in the table.
+- `perPage` – number of results per page.
+- `sortField` – column used to order results.
+- `sortOrder` – `1` for ascending or `-1` for descending order.
+
 ## Usage
 
 ```php
@@ -39,5 +50,19 @@ class UsersController
 - `$indexDefaults` provides fallback values for pagination and sorting.
 - Calling `resolveIndexOptions($request, true, 'users.index')` merges defaults with request data, persists them to the session, and returns the combined options for rendering.
 
-This pattern keeps controller methods lean while ensuring consistent datatable behavior across requests.
+## Frontend Integration
+
+Pass the resolved `$options` to your Inertia view. On the client side, the [`useDataTableOptions` composable](../ui/composables.md#usedatatableoptions) consumes the array and keeps query parameters synchronized with the server. Whenever a user searches, sorts, or filters, the composable issues an Inertia request with the updated options so both frontend and backend stay in sync.
+
+```vue
+<script setup>
+import { useDataTableOptions } from '@tmarois/atlas';
+import { usePage } from '@inertiajs/vue3';
+
+const { props } = usePage();
+const table = useDataTableOptions('users.index', props.options);
+</script>
+```
+
+This pattern keeps controller methods lean while ensuring consistent datatable behavior across requests and a seamless experience between frontend and backend.
 

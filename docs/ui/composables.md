@@ -1,11 +1,35 @@
 # Vue Composables
 
-This documentation covers the usage of two Vue composables: `useModal` and `useScroll`.
+This documentation covers the usage of three Vue composables: `useDataTableOptions`, `useModal`, and `useScroll`.
 
 ## Table of Contents
 
+- [useDataTableOptions](#usedatatableoptions) - Datatable state management with Inertia
 - [useModal](#usemodal) - Modal management system
 - [useScroll](#usescroll) - Scroll utilities and detection
+
+## useDataTableOptions
+
+The `useDataTableOptions` composable keeps datatable query options in sync with the backend via Inertia. It accepts a route configuration and initial options—typically the `options` array returned by the Laravel [Inertia DataTable Options trait](../laravel/inertia-data-table-options.md)—and returns reactive refs for those options along with helpers to fetch new data.
+
+### Basic Usage
+
+```vue
+<script setup>
+import { useDataTableOptions } from '@tmarois/atlas';
+import { usePage } from '@inertiajs/vue3';
+
+const { props } = usePage();
+const table = useDataTableOptions('users.index', props.options);
+</script>
+```
+
+### API Reference
+
+- `search`, `perPage`, `sortField`, `sortOrder`, `filters`, `viewFields` – reactive query option refs.
+- `selectAll`, `selected` – selection helpers for rows.
+- `fetchData()` – trigger an Inertia visit with the current options.
+- `resetSelection()` – clear the current selection.
 
 ## useModal
 
