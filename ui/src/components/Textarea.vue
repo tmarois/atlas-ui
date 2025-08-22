@@ -1,20 +1,20 @@
 <template>
     <Textarea
         unstyled
-        :pt="theme"
-        :ptOptions="{
-            mergeProps: ptViewMerge
-        }"
+        v-bind="bindProps"
+        :pt="mergedPt"
+        :ptOptions="{ mergeProps: ptViewMerge }"
     />
 </template>
 
 <script setup lang="ts">
 import Textarea, { type TextareaPassThroughOptions, type TextareaProps } from 'primevue/textarea';
-import { ref } from 'vue';
-import { ptViewMerge } from '../utils';
+import { ref, useAttrs, computed } from 'vue';
+import { ptViewMerge, mergePT } from '../utils';
 
 interface Props extends /* @vue-ignore */ TextareaProps {}
-defineProps<Props>();
+const props = defineProps<Props>();
+const attrs = useAttrs();
 
 const theme = ref<TextareaPassThroughOptions>({
     root: `appearance-none rounded-md outline-hidden
@@ -34,5 +34,11 @@ const theme = ref<TextareaPassThroughOptions>({
         p-large:text-lg p-large:px-[0.875rem] p-large:py-[0.625rem]
         transition-colors duration-200 shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]`
 });
-</script>
 
+const mergedPt = computed(() => mergePT(theme.value, props.pt));
+const passThroughProps = computed(() => {
+    const { pt, ...rest } = props as any;
+    return rest;
+});
+const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+</script>

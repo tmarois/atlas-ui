@@ -1,10 +1,9 @@
 <template>
     <Button
         unstyled
-        :pt="theme"
-        :ptOptions="{
-            mergeProps: ptViewMerge
-        }"
+        v-bind="bindProps"
+        :pt="mergedPt"
+        :ptOptions="{ mergeProps: ptViewMerge }"
     >
         <template v-for="(_, slotName) in $slots" v-slot:[slotName]="slotProps">
             <slot :name="slotName" v-bind="slotProps ?? {}" />
@@ -14,11 +13,12 @@
 
 <script setup lang="ts">
 import Button, { type ButtonPassThroughOptions, type ButtonProps } from 'primevue/button';
-import { ref } from 'vue';
-import { ptViewMerge } from '../utils';
+import { ref, useAttrs, computed } from 'vue';
+import { ptViewMerge, mergePT } from '../utils';
 
 interface Props extends /* @vue-ignore */ ButtonProps {}
-defineProps<Props>();
+const props = defineProps<Props>();
+const attrs = useAttrs();
 
 const theme = ref<ButtonPassThroughOptions>({
     root: `inline-flex cursor-pointer select-none items-center justify-center overflow-hidden relative
@@ -57,4 +57,11 @@ const theme = ref<ButtonPassThroughOptions>({
         root: `min-w-4 h-4 leading-4 bg-primary-contrast rounded-full text-primary text-xs font-bold`
     }
 });
+
+const mergedPt = computed(() => mergePT(theme.value, props.pt));
+const passThroughProps = computed(() => {
+    const { pt, ...rest } = props as any;
+    return rest;
+});
+const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
 </script>

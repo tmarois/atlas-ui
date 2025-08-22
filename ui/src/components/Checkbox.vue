@@ -1,10 +1,9 @@
 <template>
     <Checkbox
         unstyled
-        :pt="theme"
-        :ptOptions="{
-            mergeProps: ptViewMerge
-        }"
+        v-bind="bindProps"
+        :pt="mergedPt"
+        :ptOptions="{ mergeProps: ptViewMerge }"
     >
         <template #icon="{ checked, indeterminate, dataP }">
             <CheckIcon v-if="checked" :class="theme.icon" :data-p="dataP" />
@@ -17,11 +16,12 @@
 import CheckIcon from '@primevue/icons/check';
 import MinusIcon from '@primevue/icons/minus';
 import Checkbox, { type CheckboxPassThroughOptions, type CheckboxProps } from 'primevue/checkbox';
-import { ref } from 'vue';
-import { ptViewMerge } from '../utils';
+import { ref, useAttrs, computed } from 'vue';
+import { ptViewMerge, mergePT } from '../utils';
 
 interface Props extends /* @vue-ignore */ CheckboxProps {}
-defineProps<Props>();
+const props = defineProps<Props>();
+const attrs = useAttrs();
 
 const theme = ref<CheckboxPassThroughOptions>({
     root: `relative inline-flex select-none w-5 h-5 align-bottom
@@ -49,5 +49,11 @@ const theme = ref<CheckboxPassThroughOptions>({
         p-large:w-4 p-large:h-4
         text-white p-disabled:text-surface-400 dark:p-disabled:text-surface-600`
 });
-</script>
 
+const mergedPt = computed(() => mergePT(theme.value, props.pt));
+const passThroughProps = computed(() => {
+    const { pt, ...rest } = props as any;
+    return rest;
+});
+const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+</script>

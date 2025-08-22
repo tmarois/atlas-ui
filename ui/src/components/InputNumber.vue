@@ -1,10 +1,9 @@
 <template>
     <InputNumber
         unstyled
-        :pt="theme"
-        :ptOptions="{
-            mergeProps: ptViewMerge
-        }"
+        v-bind="bindProps"
+        :pt="mergedPt"
+        :ptOptions="{ mergeProps: ptViewMerge }"
     >
         <template #incrementicon>
             <AngleUpIcon />
@@ -22,11 +21,12 @@
 import AngleDownIcon from '@primevue/icons/angledown';
 import AngleUpIcon from '@primevue/icons/angleup';
 import InputNumber, { type InputNumberPassThroughOptions, type InputNumberProps } from 'primevue/inputnumber';
-import { ref } from 'vue';
-import { ptViewMerge } from '../utils';
+import { ref, useAttrs, computed } from 'vue';
+import { ptViewMerge, mergePT } from '../utils';
 
 interface Props extends /* @vue-ignore */ InputNumberProps {}
-defineProps<Props>();
+const props = defineProps<Props>();
+const attrs = useAttrs();
 
 const theme = ref<InputNumberPassThroughOptions>({
     root: `inline-flex relative
@@ -82,5 +82,11 @@ const theme = ref<InputNumberPassThroughOptions>({
         p-vertical:py-2 p-vertical:order-3 p-vertical:rounded-ee-md p-vertical:rounded-es-md p-vertical:w-full p-vertical:border-t-0`,
     decrementIcon: ``
 });
-</script>
 
+const mergedPt = computed(() => mergePT(theme.value, props.pt));
+const passThroughProps = computed(() => {
+    const { pt, ...rest } = props as any;
+    return rest;
+});
+const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+</script>

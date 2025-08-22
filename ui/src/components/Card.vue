@@ -1,10 +1,9 @@
 <template>
     <Card
         unstyled
-        :pt="theme"
-        :ptOptions="{
-            mergeProps: ptViewMerge
-        }"
+        v-bind="bindProps"
+        :pt="mergedPt"
+        :ptOptions="{ mergeProps: ptViewMerge }"
     >
         <template v-for="(_, slotName) in $slots" v-slot:[slotName]="slotProps">
             <slot :name="slotName" v-bind="slotProps ?? {}" />
@@ -14,11 +13,12 @@
 
 <script setup lang="ts">
 import Card, { type CardPassThroughOptions, type CardProps } from 'primevue/card';
-import { ref } from 'vue';
-import { ptViewMerge } from '../utils';
+import { ref, useAttrs, computed } from 'vue';
+import { ptViewMerge, mergePT } from '../utils';
 
 interface Props extends /* @vue-ignore */ CardProps {}
-defineProps<Props>();
+const props = defineProps<Props>();
+const attrs = useAttrs();
 
 const theme = ref<CardPassThroughOptions>({
     root: `flex flex-col rounded-lg
@@ -34,5 +34,11 @@ const theme = ref<CardPassThroughOptions>({
     content: `p-6 h-full`,
     footer: `p-6 py-4 border-t border-surface-300 dark:border-surface-700`
 });
-</script>
 
+const mergedPt = computed(() => mergePT(theme.value, props.pt));
+const passThroughProps = computed(() => {
+    const { pt, ...rest } = props as any;
+    return rest;
+});
+const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+</script>

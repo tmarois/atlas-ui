@@ -5,12 +5,12 @@
                 ref="input"
                 v-model="model"
                 unstyled
-                v-bind="attrs"
-                :pt="theme"
+                v-bind="bindProps"
+                :pt="mergedPt"
                 :ptOptions="{ mergeProps: ptViewMerge }"
             />
             <button
-                v-if="model && !attrs.disabled && clearable"
+                v-if="model && !props.disabled && clearable"
                 type="button"
                 @click="clearInput"
                 class="absolute top-1/2 -translate-y-1/2 right-3 text-surface-400 hover:text-surface-600 dark:text-surface-300 dark:hover:text-white cursor-pointer"
@@ -25,7 +25,7 @@
 import InputText, { type InputTextProps, type InputTextPassThroughOptions } from 'primevue/inputtext';
 import TimesIcon from '@primevue/icons/times';
 import { ref, useAttrs, computed } from 'vue';
-import { ptViewMerge } from '../utils';
+import { ptViewMerge, mergePT } from '../utils';
 
 interface Props extends /* @vue-ignore */ InputTextProps {
     modelValue?: string;
@@ -64,5 +64,12 @@ const theme = ref<InputTextPassThroughOptions>({
         disabled:bg-surface-200 disabled:text-surface-700 disabled:dark:text-surface-400
         disabled:opacity-70 disabled:shadow-none disabled:placeholder:text-surface-400 disabled:dark:placeholder:text-surface-500`
 });
+
+const mergedPt = computed(() => mergePT(theme.value, props.pt));
+const passThroughProps = computed(() => {
+    const { pt, modelValue, clearable, ...rest } = props as any;
+    return rest;
+});
+const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
 </script>
 

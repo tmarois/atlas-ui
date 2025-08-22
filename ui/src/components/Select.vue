@@ -1,10 +1,9 @@
 <template>
     <Select
         unstyled
-        :pt="theme"
-        :ptOptions="{
-            mergeProps: ptViewMerge
-        }"
+        v-bind="bindProps"
+        :pt="mergedPt"
+        :ptOptions="{ mergeProps: ptViewMerge }"
     >
         <template #dropdownicon>
             <ChevronDownIcon />
@@ -20,7 +19,7 @@
                 type="button"
                 @click.prevent.stop="clearCallback"
                 class="absolute top-1/2 -mt-2 end-10 cursor-pointer"
-                :class="attrs.disabled ? 'text-surface-300 dark:text-surface-700' : 'text-surface-400 dark:text-surface-300 hover:text-surface-500 '"
+                :class="props.disabled ? 'text-surface-300 dark:text-surface-700' : 'text-surface-400 dark:text-surface-300 hover:text-surface-500 '"
             >
                 <TimesIcon class="w-4 h-4" />
             </button>
@@ -37,13 +36,12 @@ import SearchIcon from '@primevue/icons/search';
 import SpinnerIcon from '@primevue/icons/spinner';
 import TimesIcon from '@primevue/icons/times';
 import Select, { type SelectPassThroughOptions, type SelectProps } from 'primevue/select';
-import { ref, useAttrs } from 'vue';
-import { ptViewMerge } from '../utils';
-
-const attrs = useAttrs();
+import { ref, useAttrs, computed } from 'vue';
+import { ptViewMerge, mergePT } from '../utils';
 
 interface Props extends /* @vue-ignore */ SelectProps {}
-defineProps<Props>();
+const props = defineProps<Props>();
+const attrs = useAttrs();
 
 const theme = ref<SelectPassThroughOptions>({
     root: `inline-flex cursor-pointer relative select-none rounded-md p-fluid:flex
@@ -111,5 +109,11 @@ const theme = ref<SelectPassThroughOptions>({
         leaveToClass: 'opacity-0'
     }
 });
-</script>
 
+const mergedPt = computed(() => mergePT(theme.value, props.pt));
+const passThroughProps = computed(() => {
+    const { pt, ...rest } = props as any;
+    return rest;
+});
+const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+</script>
