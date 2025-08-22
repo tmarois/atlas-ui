@@ -126,11 +126,6 @@ const website = ref('')
           <span class="text-sm text-gray-500">{{ agree }}</span>
         </div>
         <InputOtp v-model="otp" />
-        <InputGroup class="w-full md:col-span-2">
-          <span class="p-inputgroup-addon">https://</span>
-          <InputText v-model="website" placeholder="example" />
-          <span class="p-inputgroup-addon">.com</span>
-        </InputGroup>
       </div>
     </section>
   </main>
