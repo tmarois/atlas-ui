@@ -6,15 +6,21 @@
  */
 export const formatValidURL = (url: string, https = false): string => {
     if (!url) return '';
-    url = url.trim().toLowerCase();
+    url = url.trim();
 
-    if (/^https?:\/\//.test(url)) {
-        if (https && url.startsWith('http://')) {
-            url = url.replace(/^http:\/\//, 'https://');
-        }
-    } else {
-        url = (https ? 'https://' : 'http://') + url;
+    let protocol = https ? 'https' : 'http';
+    let rest = url;
+
+    const hasProtocol = /^https?:\/\//i.test(rest);
+    if (hasProtocol) {
+        const isHttpsURL = /^https:\/\//i.test(rest);
+        protocol = https || isHttpsURL ? 'https' : 'http';
+        rest = rest.replace(/^https?:\/\//i, '');
     }
 
-    return url;
+    const hostEnd = rest.search(/[/?#]/);
+    const hostname = hostEnd === -1 ? rest : rest.slice(0, hostEnd);
+    const tail = hostEnd === -1 ? '' : rest.slice(hostEnd);
+
+    return `${protocol}://${hostname.toLowerCase()}${tail}`;
 };
