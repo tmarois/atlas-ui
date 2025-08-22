@@ -3,16 +3,19 @@
 Welcome to the **Atlas** monorepo. This file provides high-level guidance for contributors.
 It will grow as the project evolves.
 
+All contributions must follow the architecture and coding conventions outlined in the guides below.
+
 ## Where things live
 - `laravel/`: base Laravel framework package.
 - `ui/`: reusable Vue 3 UI components.
 - `docs/`: architecture and convention references.
 
 ## Conventions
-- Follow the naming, structure, and formatting rules in [docs/conventions.md](docs/conventions.md).
-- Review overall application structure in [docs/architecture.md](docs/architecture.md).
-- Front-end specific patterns are described in [docs/frontend-architecture.md](docs/frontend-architecture.md) and the UI notes
-  in [docs/ui/](docs/ui).
+- Adhere to the architecture and coding standards in [docs/backend-guide.md](docs/backend-guide.md).
+- Front-end architecture and patterns are covered in [docs/frontend-guide.md](docs/frontend-guide.md).
+- UI docs:
+  - [Composables](docs/ui/composables.md)
+  - [Utils](docs/ui/utils.md)
 
 ## Testing
 - Run front-end tests with `npm test` inside `ui/`.
