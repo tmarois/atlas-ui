@@ -35,7 +35,7 @@ const message = ref('')
     <section>
       <h2 class="mb-4 text-xl font-semibold">Card</h2>
       <Card>
-        <template #title>Example Card</template>
+        <template #header>Example Card</template>
         <template #content>
           <p>This is a simple card showcasing how content is displayed inside.</p>
         </template>
