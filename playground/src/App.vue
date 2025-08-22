@@ -12,6 +12,10 @@ import Accordion from '@ui/components/Accordion.vue'
 import AccordionPanel from '@ui/components/AccordionPanel.vue'
 import AccordionHeader from '@ui/components/AccordionHeader.vue'
 import AccordionContent from '@ui/components/AccordionContent.vue'
+import AutoComplete from '@ui/components/AutoComplete.vue'
+import MultiSelect from '@ui/components/MultiSelect.vue'
+import InputOtp from '@ui/components/InputOtp.vue'
+import InputGroup from '@ui/components/InputGroup.vue'
 
 const text = ref('')
 const number = ref()
@@ -19,11 +23,23 @@ const date = ref('')
 const selected = ref()
 const options = [
   { label: 'Option A', value: 'A' },
-  { label: 'Option B', value: 'B' }
+  { label: 'Option B', value: 'B' },
+  { label: 'Option C', value: 'C' }
 ]
 const agree = ref(false)
 const message = ref('')
 const active = ref('0')
+const autoValue = ref('')
+const autoOptions = ['Apple', 'Banana', 'Cherry']
+const filteredOptions = ref([])
+const search = (event) => {
+  filteredOptions.value = autoOptions.filter((item) =>
+    item.toLowerCase().includes(event.query.toLowerCase())
+  )
+}
+const multi = ref([])
+const otp = ref()
+const website = ref('')
 </script>
 
 <template>
@@ -89,12 +105,32 @@ const active = ref('0')
           placeholder="Select"
           class="w-full"
         />
+        <AutoComplete
+          v-model="autoValue"
+          :suggestions="filteredOptions"
+          @complete="search"
+          placeholder="AutoComplete"
+        />
+        <MultiSelect
+          v-model="multi"
+          :options="options"
+          optionLabel="label"
+          optionValue="value"
+          placeholder="MultiSelect"
+          class="w-full"
+        />
         <Textarea v-model="message" placeholder="Textarea" rows="4" />
         <div class="flex items-center gap-2">
           <Checkbox v-model="agree" inputId="agree" binary />
           <label for="agree">Checkbox</label>
           <span class="text-sm text-gray-500">{{ agree }}</span>
         </div>
+        <InputOtp v-model="otp" />
+        <InputGroup class="w-full md:col-span-2">
+          <span class="p-inputgroup-addon">https://</span>
+          <InputText v-model="website" placeholder="example" />
+          <span class="p-inputgroup-addon">.com</span>
+        </InputGroup>
       </div>
     </section>
   </main>
