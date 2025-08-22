@@ -32,6 +32,7 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [Checkbox](#checkbox)
 - [Layout](#layout)
   - [ScrollFrame](#scrollframe)
+  - [Accordion](#accordion)
   - [Card](#card)
   - [Divider](#divider)
 - [Data Display](#data-display)
@@ -162,6 +163,24 @@ Provides a scrollable container sized to the viewport. When `page` is set it loc
 - `offset` (number | null) – explicit pixel offset for height calculation. Defaults to element top position.
 - `addOffset` (number) – extra pixels subtracted from height. Defaults to `0`.
 - `rootClass` (string) – additional classes for the frame element. Defaults to `overflow-y-auto`.
+
+#### Accordion
+```ts
+import { Accordion, AccordionPanel, AccordionHeader, AccordionContent } from '@atlas/ui';
+```
+
+```vue
+<Accordion>
+  <AccordionPanel value="0">
+    <AccordionHeader>Header</AccordionHeader>
+    <AccordionContent>Content</AccordionContent>
+  </AccordionPanel>
+</Accordion>
+```
+
+##### API
+
+Refer to the [PrimeVue Accordion API](https://primevue.org/accordion/#api).
 
 #### Card
 ```ts
