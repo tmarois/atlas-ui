@@ -16,6 +16,8 @@ Reusable Vue 3 components styled with Tailwind CSS and built on top of PrimeVue.
   - [Checkbox](#checkbox)
 - [Layout](#layout)
   - [Card](#card)
+- [Feedback](#feedback)
+  - [Alert](#alert)
 
 ### Actions
 
@@ -126,3 +128,19 @@ import { Card } from '@atlas/ui';
 ##### API
 
 Refer to the [PrimeVue Card API](https://primevue.org/card/#api).
+
+### Feedback
+
+#### Alert
+```ts
+import { Alert } from '@atlas/ui';
+```
+
+```vue
+<Alert>Default message</Alert>
+```
+
+##### Props
+
+- `warning` – use warning styling.
+- `hideIcon` – hide the default icon.

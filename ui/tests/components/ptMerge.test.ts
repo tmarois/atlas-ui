@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
 import PrimeVue from 'primevue/config';
-import { Button, Card, Checkbox, InputMask, InputNumber, InputText, Select, Textarea } from '../../src/components';
+import { Alert, Button, Card, Checkbox, InputMask, InputNumber, InputText, Select, Textarea } from '../../src/components';
 
 Object.defineProperty(window, 'matchMedia', {
     writable: true,
@@ -58,5 +58,11 @@ describe('pass-through prop merging', () => {
     it('Textarea merges pt classes', () => {
         const wrapper = mountWithPrime(Textarea, { pt: { root: { class: 'bg-red-500' } } });
         expect(wrapper.find('textarea').classes()).toContain('bg-red-500');
+    });
+
+    it('Alert merges pt classes', () => {
+        const wrapper = mountWithPrime(Alert, { pt: { root: { class: 'bg-red-500' } } });
+        expect(wrapper.element.className).toContain('bg-red-500');
+        expect(wrapper.element.className).not.toContain('bg-surface-50');
     });
 });
