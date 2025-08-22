@@ -26,7 +26,7 @@ const message = ref('')
     <section>
       <h2 class="mb-4 text-xl font-semibold">Buttons</h2>
       <div class="flex flex-wrap gap-4">
-        <Button>Default</Button>
+        <Button size="small">Default</Button>
         <Button severity="secondary">Secondary</Button>
         <Button severity="success">Success</Button>
         <Button severity="info">Info</Button>
