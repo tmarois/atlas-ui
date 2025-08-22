@@ -25,7 +25,7 @@ const theme = ref<ButtonPassThroughOptions>({
         px-4 py-2.5 gap-2 rounded disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
         bg-primary-500 enabled:hover:bg-primary-500/70 enabled:active:bg-primary-500/60 text-white text-md font-semibold p-text:!font-medium
         border border-primary-500 enabled:hover:border-primary-500/70 enabled:active:border-primary-500/60
-        focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
+        focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
         p-vertical:flex-col p-fluid:w-full p-fluid:p-icon-only:w-10
         p-icon-only:w-10 p-icon-only:px-0 p-icon-only:gap-0
         p-icon-only:p-rounded:rounded-full p-icon-only:p-rounded:h-10
