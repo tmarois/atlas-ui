@@ -1,6 +1,10 @@
 @import "./base.css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@import "tailwindcss-primeui";
+
+@custom-variant dark (&:where(.dark, .dark *));
 
