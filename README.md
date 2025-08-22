@@ -6,6 +6,8 @@ Monorepo containing the Laravel backend and Vue 3 UI components.
 
 - [Backend Guide](docs/backend-guide.md)
 - [Frontend Guide](docs/frontend-guide.md)
+- Laravel
+  - [Support](docs/laravel/support.md)
 - UI
   - [Composables](docs/ui/composables.md)
   - [Utils](docs/ui/utils.md)
