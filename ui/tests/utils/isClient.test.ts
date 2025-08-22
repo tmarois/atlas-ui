@@ -23,7 +23,7 @@ describe('isClient', () => {
         vi.stubGlobal('window', undefined);
 
         // Re-import to get fresh evaluation
-        const module = await import('../../src/utils/isClient');
+        const module = await import('../../src/utils/browser/isClient');
 
         expect(module.isClient).toBe(false);
     });
@@ -33,7 +33,7 @@ describe('isClient', () => {
         vi.stubGlobal('document', undefined);
 
         // Re-import to get fresh evaluation
-        const module = await import('../../src/utils/isClient');
+        const module = await import('../../src/utils/browser/isClient');
 
         expect(module.isClient).toBe(false);
     });
