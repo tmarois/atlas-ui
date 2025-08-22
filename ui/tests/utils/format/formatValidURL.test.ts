@@ -27,8 +27,8 @@ describe('formatValidURL', () => {
         expect(formatValidURL('  example.com  ')).toBe('http://example.com');
     });
 
-    it('should convert to lowercase', () => {
-        expect(formatValidURL('EXAMPLE.COM')).toBe('http://example.com');
+    it('should lowercase scheme and hostname but preserve path case', () => {
+        expect(formatValidURL('HTTP://EXAMPLE.COM/Some/Path')).toBe('http://example.com/Some/Path');
     });
 
     it('should handle URLs with paths', () => {
