@@ -16,6 +16,7 @@ All contributions must follow the architecture and coding conventions outlined i
 - UI docs:
   - [Composables](docs/ui/composables.md)
   - [Utils](docs/ui/utils.md)
+- When updating UI documentation that discusses a component's API, link to the corresponding PrimeVue API. If PrimeVue lacks an API page, document the component's API details so consumers understand how to use it.
 
 ## Testing
 - Run front-end tests with `npm test` inside `ui/`.
