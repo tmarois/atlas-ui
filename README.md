@@ -7,6 +7,7 @@ Monorepo containing the Laravel backend and Vue 3 UI components.
 - [Backend Guide](docs/backend-guide.md)
 - [Frontend Guide](docs/frontend-guide.md)
 - Laravel
+  - [Inertia DataTable Options](docs/laravel/inertia-data-table-options.md)
   - [Support](docs/laravel/support.md)
 - UI
   - [Composables](docs/ui/composables.md)

@@ -50,3 +50,4 @@ Temporary Items
 /ui/auto-imports.d.ts
 /ui/package-lock.json
 /laravel/vendor
+/laravel/composer.lock
