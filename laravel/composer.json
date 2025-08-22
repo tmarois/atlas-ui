@@ -19,6 +19,13 @@
             "Atlas\\Laravel\\Tests\\": "tests/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Atlas\\Laravel\\AtlasServiceProvider"
+            ]
+        }
+    },
     "scripts": {
         "test": "vendor/bin/phpunit"
     }
