@@ -4,7 +4,7 @@
 
 @import "tailwindcss-primeui";
 
-@source "../ui/src/**/*.{vue,js,ts,jsx,tsx}";
+@source "../../ui/src/**/*.{vue,js,ts,jsx,tsx}";
 
 @plugin "@tailwindcss/typography";
 
