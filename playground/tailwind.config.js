@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+import typography from '@tailwindcss/typography'
+import primeui from 'tailwindcss-primeui'
+
 export default {
   content: [
     './index.html',
@@ -8,5 +11,6 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  darkMode: 'class',
+  plugins: [primeui, typography],
 }
