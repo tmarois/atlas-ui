@@ -2,7 +2,7 @@
 
 namespace Atlas\Laravel\Tests\Support;
 
-use Atlas\Laravel\Support\Phone\PhoneNumber;
+use Atlas\Laravel\Support\PhoneNumber;
 use PHPUnit\Framework\TestCase;
 
 class PhoneNumberTest extends TestCase

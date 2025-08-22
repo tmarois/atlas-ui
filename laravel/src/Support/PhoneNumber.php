@@ -1,6 +1,6 @@
 <?php
 
-namespace Atlas\Laravel\Support\Phone;
+namespace Atlas\Laravel\Support;
 
 class PhoneNumber
 {

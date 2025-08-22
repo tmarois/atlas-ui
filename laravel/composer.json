@@ -10,8 +10,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Atlas\\Laravel\\": "src/",
-            "Atlas\\Laravel\\Support\\Phone\\": "src/Support/Phone/"
+            "Atlas\\Laravel\\": "src/"
         }
     },
     "autoload-dev": {
