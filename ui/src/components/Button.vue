@@ -21,15 +21,15 @@ const props = defineProps<Props>();
 const attrs = useAttrs();
 
 const theme = ref<ButtonPassThroughOptions>({
-    root: `inline-flex cursor-pointer select-none items-center justify-center overflow-hidden relative
-        px-4 py-3 gap-2 rounded disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
+    root: `inline-flex self-start cursor-pointer select-none items-center justify-center overflow-hidden relative
+        px-4 py-2.5 gap-2 rounded disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
         bg-primary-500 enabled:hover:bg-primary-500/70 enabled:active:bg-primary-500/60 text-white text-md font-semibold p-text:!font-medium
         border border-primary-500 enabled:hover:border-primary-500/70 enabled:active:border-primary-500/60
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
         p-vertical:flex-col p-fluid:w-full p-fluid:p-icon-only:w-10
         p-icon-only:w-10 p-icon-only:px-0 p-icon-only:gap-0
         p-icon-only:p-rounded:rounded-full p-icon-only:p-rounded:h-10
-        p-small:text-sm p-small:!px-[0.625rem] p-small:!py-[0.375rem]
+        p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
         p-large:text-[1.125rem] p-large:px-[0.875rem] p-large:py-[0.625rem]
         p-raised:shadow-sm p-rounded:rounded-[2rem]
         p-outlined:bg-transparent enabled:hover:p-outlined:bg-primary-50 enabled:active:p-outlined:bg-primary-100
