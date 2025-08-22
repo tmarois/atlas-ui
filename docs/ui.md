@@ -2,6 +2,22 @@
 
 Reusable Vue 3 components styled with Tailwind CSS and built on top of PrimeVue.
 
+## Overriding Themes with Passthrough
+
+PrimeVue components support a [passthrough (pt) API](https://primevue.org/passthrough/) that lets you customize internal elements and classes. Atlas forwards this API so you can tweak component styles or structure when needed.
+
+### Example: Button
+
+```vue
+<Button
+  label="Submit"
+  :pt="{
+    root: { class: 'bg-emerald-600 hover:bg-emerald-700 border-none' },
+    label: { class: 'text-white font-medium' }
+  }"
+/>
+```
+
 ## Components
 
 ### Table of Contents
