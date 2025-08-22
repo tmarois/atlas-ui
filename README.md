@@ -4,10 +4,11 @@ Monorepo containing the Laravel backend and Vue 3 UI components.
 
 ## Laravel Vue Inertia Bridge
 
-Atlas ships with tooling to bridge Laravel and Vue through Inertia, solving two common pain points:
+Atlas ships with tooling to bridge Laravel and Vue through Inertia, solving three common pain points:
 
 - **DataTables** – build server-driven options for dynamic tables.
 - **Enums** – export PHP enums for type-safe usage in Vue.
+- **Service Layer** – base model service providing CRUD scaffolding.
 
 ## Documentation
 
@@ -16,6 +17,7 @@ Atlas ships with tooling to bridge Laravel and Vue through Inertia, solving two 
 - Laravel
   - [Inertia DataTable Options](docs/laravel/inertia-data-table-options.md)
   - [Enum Exporter](docs/laravel/enum-exporter.md)
+  - [Model Service](docs/laravel/model-service.md)
   - [Support](docs/laravel/support.md)
 - UI
   - [Composables](docs/ui/composables.md)
