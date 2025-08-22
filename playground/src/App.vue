@@ -29,6 +29,16 @@ const message = ref('')
         <Button>Default</Button>
         <Button severity="secondary">Secondary</Button>
         <Button severity="success">Success</Button>
+        <Button severity="info">Info</Button>
+        <Button severity="warning">Warning</Button>
+        <Button severity="danger">Danger</Button>
+        <Button severity="help">Help</Button>
+        <Button outlined>Outlined</Button>
+        <Button text>Text</Button>
+        <Button raised>Raised</Button>
+        <Button rounded>Rounded</Button>
+        <Button loading>Loading</Button>
+        <Button disabled>Disabled</Button>
       </div>
     </section>
 
@@ -58,8 +68,9 @@ const message = ref('')
         />
         <Textarea v-model="message" placeholder="Textarea" rows="4" />
         <div class="flex items-center gap-2">
-          <Checkbox v-model="agree" inputId="agree" />
+          <Checkbox v-model="agree" inputId="agree" binary />
           <label for="agree">Checkbox</label>
+          <span class="text-sm text-gray-500">{{ agree }}</span>
         </div>
       </div>
     </section>
