@@ -25,7 +25,7 @@ const props = defineProps<Props>();
 const attrs = useAttrs();
 
 const theme = ref<AccordionHeaderPassThroughOptions>({
-    root: `cursor-pointer disabled:pointer-events-none disabled:opacity-60 flex items-center justify-between p-[1.125rem] px-6 py-4 font-semibold
+    root: `cursor-pointer disabled:pointer-events-none disabled:opacity-60 flex items-center justify-between px-6 py-4 font-semibold
         text-surface-500 dark:text-surface-400
         hover:text-surface-700 dark:hover:text-surface-0
         hover:bg-surface-100 dark:hover:bg-surface-700
