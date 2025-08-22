@@ -64,31 +64,26 @@ const website = ref('')
     </section>
 
     <section>
-      <h2 class="mb-4 text-xl font-semibold">Card</h2>
+      <h2 class="mb-4 text-xl font-semibold">Accordion in Card</h2>
       <Card>
-        <template #header>Example Card</template>
+        <template #header>Example Accordion Card</template>
         <template #content>
-          <p>This is a simple card showcasing how content is displayed inside.</p>
+          <Accordion v-model:value="active">
+            <AccordionPanel value="0">
+              <AccordionHeader>Header I</AccordionHeader>
+              <AccordionContent>
+                <p class="m-0">Content I</p>
+              </AccordionContent>
+            </AccordionPanel>
+            <AccordionPanel value="1">
+              <AccordionHeader>Header II</AccordionHeader>
+              <AccordionContent>
+                <p class="m-0">Content II</p>
+              </AccordionContent>
+            </AccordionPanel>
+          </Accordion>
         </template>
       </Card>
-    </section>
-
-    <section>
-      <h2 class="mb-4 text-xl font-semibold">Accordion</h2>
-      <Accordion v-model:value="active">
-        <AccordionPanel value="0">
-          <AccordionHeader>Header I</AccordionHeader>
-          <AccordionContent>
-            <p class="m-0">Content I</p>
-          </AccordionContent>
-        </AccordionPanel>
-        <AccordionPanel value="1">
-          <AccordionHeader>Header II</AccordionHeader>
-          <AccordionContent>
-            <p class="m-0">Content II</p>
-          </AccordionContent>
-        </AccordionPanel>
-      </Accordion>
     </section>
 
     <section>
