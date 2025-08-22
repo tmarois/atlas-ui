@@ -38,6 +38,8 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [LabelChoice](#labelchoice)
   - [ToggleButton](#togglebutton)
   - [ToggleSwitch](#toggleswitch)
+  - [Password](#password)
+  - [Slider](#slider)
 - [Layout](#layout)
   - [ScrollFrame](#scrollframe)
   - [Accordion](#accordion)
@@ -51,6 +53,8 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [Badge](#badge)
 - [Navigation](#navigation)
   - [Menu](#menu)
+  - [Paginator](#paginator)
+  - [Pagination](#pagination)
 - [Feedback](#feedback)
   - [Alert](#alert)
   - [Toast](#toast)
@@ -278,6 +282,32 @@ import { ToggleSwitch } from '@atlas/ui';
 ##### API
 
 Refer to the [PrimeVue ToggleSwitch API](https://primevue.org/toggleswitch/#api).
+#### Password
+```ts
+import { Password } from '@atlas/ui';
+```
+
+```vue
+<Password v-model="value" />
+```
+
+##### API
+
+See the [PrimeVue Password API](https://primevue.org/password/#api).
+
+#### Slider
+```ts
+import { Slider } from '@atlas/ui';
+```
+
+```vue
+<Slider v-model="value" />
+```
+
+##### API
+
+See the [PrimeVue Slider API](https://primevue.org/slider/#api).
+
 
 
 ### Layout
@@ -446,6 +476,33 @@ import { Menu } from '@atlas/ui';
 ##### API
 
 Refer to the [PrimeVue Menu API](https://primevue.org/menu/#api).
+#### Paginator
+```ts
+import { Paginator } from '@atlas/ui';
+```
+
+```vue
+<Paginator :totalRecords="100" :rows="10" />
+```
+
+##### API
+
+See the [PrimeVue Paginator API](https://primevue.org/paginator/#api).
+
+#### Pagination
+```ts
+import { Pagination } from '@atlas/ui';
+```
+
+```vue
+<Pagination :links="links" />
+```
+
+##### Props
+
+- `links` – array of pagination link objects.
+- `linkComponent` – component used for each link. Defaults to 'a'.
+
 
 ### Feedback
 
