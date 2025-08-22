@@ -27,6 +27,85 @@ $service->listPaginated(15, [
 $service->delete($user);
 ```
 
+## Available Methods
+
+`ModelService` ships with a handful of helpers for common CRUD work:
+
+- `query()` – get a new query builder for the model.
+- `buildQuery(array $options = [])` – base query method you can extend.
+- `list(array $columns = ['*'], array $options = [])` – retrieve all models.
+- `listPaginated(int $perPage = 15, array $options = [])` – retrieve a paginated list.
+- `find(int|string $id)` – locate a model by its primary key.
+- `create(array $data)` – persist a new model.
+- `update(Model $model, array $data)` – update an existing model.
+- `delete(Model $model)` – remove a model from storage.
+
+## Configuring the Service
+
+You may override `configure` to prepare the service for different contexts.
+
+### Static configuration
+
+```php
+class UserService extends ModelService
+{
+    protected function configure(): void
+    {
+        $this->model = User::class;
+    }
+}
+```
+
+### Contextual configuration
+
+```php
+use Illuminate\Database\Eloquent\Builder;
+
+class TeamUserService extends ModelService
+{
+    public function __construct(protected int $teamId)
+    {
+        $this->configure();
+    }
+
+    protected function configure(): void
+    {
+        $this->model = User::class;
+    }
+
+    public function buildQuery(array $options = []): Builder
+    {
+        return parent::buildQuery($options)->where('team_id', $this->teamId);
+    }
+}
+```
+
+### Setting defaults
+
+```php
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+
+class SortedUserService extends ModelService
+{
+    protected array $defaults = [
+        'sortField' => 'name',
+        'sortOrder' => 1,
+    ];
+
+    protected function configure(): void
+    {
+        $this->model = User::class;
+    }
+
+    public function listPaginated(int $perPage = 15, array $options = []): LengthAwarePaginator
+    {
+        $options = array_merge($this->defaults, $options);
+
+        return parent::listPaginated($perPage, $options);
+    }
+}
+```
+
 ## Customizing Queries
 
 Override `buildQuery` in your service to push filter or search options into

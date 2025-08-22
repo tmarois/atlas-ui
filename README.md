@@ -8,7 +8,7 @@ Atlas ships with tooling to bridge Laravel and Vue through Inertia, solving thre
 
 - **DataTables** – build server-driven options for dynamic tables.
 - **Enums** – export PHP enums for type-safe usage in Vue.
-- **Service Layer** – base model service providing CRUD scaffolding.
+- **Model Service** – base model service providing CRUD scaffolding.
 
 ## Documentation
 
