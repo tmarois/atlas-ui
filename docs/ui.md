@@ -36,6 +36,8 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [Textarea](#textarea)
   - [Checkbox](#checkbox)
   - [LabelChoice](#labelchoice)
+  - [ToggleButton](#togglebutton)
+  - [ToggleSwitch](#toggleswitch)
 - [Layout](#layout)
   - [ScrollFrame](#scrollframe)
   - [Accordion](#accordion)
@@ -50,6 +52,7 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [Menu](#menu)
 - [Feedback](#feedback)
   - [Alert](#alert)
+  - [Toast](#toast)
 
 ### Actions
 
@@ -249,6 +252,33 @@ import { LabelChoice, Checkbox, RadioButton } from '@atlas/ui';
 Refer to the [PrimeVue Checkbox API](https://primevue.org/checkbox/#api) and
 [RadioButton API](https://primevue.org/radiobutton/#api).
 
+#### ToggleButton
+```ts
+import { ToggleButton } from '@atlas/ui';
+```
+
+```vue
+<ToggleButton v-model="checked" />
+```
+
+##### API
+
+Refer to the [PrimeVue ToggleButton API](https://primevue.org/togglebutton/#api).
+
+#### ToggleSwitch
+```ts
+import { ToggleSwitch } from '@atlas/ui';
+```
+
+```vue
+<ToggleSwitch v-model="checked" />
+```
+
+##### API
+
+Refer to the [PrimeVue ToggleSwitch API](https://primevue.org/toggleswitch/#api).
+
+
 ### Layout
 
 #### ScrollFrame
@@ -409,3 +439,16 @@ import { Alert } from '@atlas/ui';
 
 - `warning` – use warning styling.
 - `hideIcon` – hide the default icon.
+
+#### Toast
+```ts
+import { Toast } from '@atlas/ui';
+```
+
+```vue
+<Toast />
+```
+
+##### API
+
+Refer to the [PrimeVue Toast API](https://primevue.org/toast/#api).

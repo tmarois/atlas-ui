@@ -30,3 +30,6 @@ export { default as LabelField } from './LabelField.vue';
 export { default as Popover } from './Popover.vue';
 export { default as RadioButton } from './RadioButton.vue';
 export { default as TooltipIcon } from './TooltipIcon.vue';
+export { default as Toast } from './Toast.vue';
+export { default as ToggleButton } from './ToggleButton.vue';
+export { default as ToggleSwitch } from './ToggleSwitch.vue';
