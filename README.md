@@ -26,3 +26,13 @@ Atlas ships with tooling to bridge Laravel and Vue through Inertia, solving thre
 ## Contributing
 
 See [AGENTS.md](AGENTS.md) for repository conventions, testing instructions, and pull request guidelines.
+
+### Installing
+
+- Install backend dependencies with `composer install` inside `laravel/`
+- Install UI dependencies with `npm install` inside `ui/`
+
+### Testing
+
+- Run backend tests with `composer test` inside `laravel/`
+- Run UI tests with `npm test` inside `ui/`
