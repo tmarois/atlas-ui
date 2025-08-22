@@ -36,3 +36,7 @@ See [AGENTS.md](AGENTS.md) for repository conventions, testing instructions, and
 
 - Run backend tests with `composer test` inside `laravel/`
 - Run UI tests with `npm test` inside `ui/`
+
+### Playground
+
+A local Vite + Vue 3 sandbox lives in `playground/` for manually testing Atlas UI components during development. It's not part of the production packages. See [playground/README.md](playground/README.md) for setup and usage.
