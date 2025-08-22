@@ -32,6 +32,9 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [Checkbox](#checkbox)
 - [Layout](#layout)
   - [Card](#card)
+  - [Divider](#divider)
+- [Data Display](#data-display)
+  - [Chip](#chip)
 - [Feedback](#feedback)
   - [Alert](#alert)
 
@@ -144,6 +147,34 @@ import { Card } from '@atlas/ui';
 ##### API
 
 Refer to the [PrimeVue Card API](https://primevue.org/card/#api).
+
+#### Divider
+```ts
+import { Divider } from '@atlas/ui';
+```
+
+```vue
+<Divider />
+```
+
+##### API
+
+Refer to the [PrimeVue Divider API](https://primevue.org/divider/#api).
+
+### Data Display
+
+#### Chip
+```ts
+import { Chip } from '@atlas/ui';
+```
+
+```vue
+<Chip label="Label" />
+```
+
+##### API
+
+Refer to the [PrimeVue Chip API](https://primevue.org/chip/#api).
 
 ### Feedback
 
