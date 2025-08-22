@@ -51,3 +51,5 @@ Temporary Items
 /ui/package-lock.json
 /laravel/vendor
 /laravel/composer.lock
+/playground/node_modules
+/playground/package-lock.json
