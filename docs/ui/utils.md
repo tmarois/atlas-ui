@@ -6,6 +6,7 @@
   - [formatBytes](#formatbytes)
   - [formatDate](#formatdate)
   - [formatDatetime](#formatdatetime)
+  - [formatYmdDate](#formatymddate)
   - [formatNumber](#formatnumber)
   - [formatPercentage](#formatpercentage)
   - [formatSlug](#formatslug)
@@ -18,6 +19,8 @@
   - [isValidURL](#isvalidurl)
 - [Other Utilities](#other-utilities)
   - [isClient](#isclient)
+  - [getRandomItem](#getrandomitem)
+  - [roundTo](#roundto)
 
 ## Format Utilities
 
@@ -81,6 +84,23 @@ import { formatDatetime } from '@tmarois/atlas';
 formatDatetime('2023-01-15T12:00:00');                  // '1/15/2023, 12:00 PM'
 formatDatetime('2023-01-15T12:00:00', 'America/New_York'); // '1/15/2023, 7:00 AM'
 formatDatetime(new Date(2023, 0, 15, 12), 'Europe/London', 'en-GB'); // '15/01/2023, 12:00 pm'
+```
+
+### formatYmdDate
+
+Converts a `YYYY-MM-DD` date string into `MM/DD/YYYY` format.
+
+**Parameters:**
+- `dateString` (string): Date string in `YYYY-MM-DD` format
+
+**Returns:** The formatted date string
+
+**Example:**
+```typescript
+import { formatYmdDate } from '@tmarois/atlas';
+
+formatYmdDate('2023-12-05'); // '12/05/2023'
+formatYmdDate('2023-01-01'); // '01/01/2023'
 ```
 
 ### formatNumber
@@ -292,4 +312,39 @@ import { isClient } from '@tmarois/atlas';
 if (isClient) {
   window.addEventListener('resize', handleResize);
 }
+```
+
+### getRandomItem
+
+Returns a random element from an array.
+
+**Parameters:**
+- `items` (any[]): Array of items
+
+**Returns:** A random element from the array or `undefined` for empty arrays
+
+**Example:**
+```typescript
+import { getRandomItem } from '@tmarois/atlas';
+
+const numbers = [1, 2, 3, 4];
+getRandomItem(numbers); // 1 | 2 | 3 | 4
+```
+
+### roundTo
+
+Rounds a number to a specified number of decimal places.
+
+**Parameters:**
+- `num` (number): The number to round
+- `decimals` (number, optional): Decimal places (default: 2)
+
+**Returns:** The rounded number
+
+**Example:**
+```typescript
+import { roundTo } from '@tmarois/atlas';
+
+roundTo(1.005, 2); // 1.01
+roundTo(123.456, 1); // 123.5
 ```
