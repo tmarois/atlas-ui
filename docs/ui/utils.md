@@ -10,6 +10,7 @@
   - [formatPercentage](#formatpercentage)
   - [formatSlug](#formatslug)
   - [formatValidURL](#formatvalidurl)
+  - [formatUSPhoneNumber](#formatusphonenumber)
 - [Validation Utilities](#validation-utilities)
   - [isEmpty](#isempty)
   - [isNumeric](#isnumeric)
@@ -159,6 +160,27 @@ formatValidURL('google.com');                // 'http://google.com'
 formatValidURL('google.com', true);         // 'https://google.com'
 formatValidURL('http://example.com');       // 'http://example.com'
 formatValidURL('http://example.com', true); // 'https://example.com'
+```
+
+### formatUSPhoneNumber
+
+Formats a US-based phone number from 10 digits into `(999) 999-9999` format. If the
+input includes a leading `1` (e.g. `19995551234`), the extra digit is ignored. An
+optional flag can prefix the result with `+1`.
+
+**Parameters:**
+- `phoneNumber` (string | number): The phone number to format (10 digits or 11 digits starting with `1`)
+- `withCountryCode` (boolean, optional): Prefix the formatted number with `+1` (default: `false`)
+
+**Returns:** The formatted phone number string (e.g. `(123) 456-7890` or `+1 (123) 456-7890`)
+
+**Example:**
+```typescript
+import { formatUSPhoneNumber } from '@tmarois/atlas';
+
+formatUSPhoneNumber('1234567890'); // '(123) 456-7890'
+formatUSPhoneNumber(9876543210, true); // '+1 (987) 654-3210'
+formatUSPhoneNumber('19998887777'); // '(999) 888-7777'
 ```
 
 ## Validation Utilities
