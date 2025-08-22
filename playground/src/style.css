@@ -4,6 +4,8 @@
 
 @import "tailwindcss-primeui";
 
+@source "../ui/src/**/*.{vue,js,ts,jsx,tsx}";
+
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark, .dark *));
