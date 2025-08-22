@@ -4,5 +4,6 @@ export { default as Checkbox } from './Checkbox.vue';
 export { default as InputMask } from './InputMask.vue';
 export { default as InputNumber } from './InputNumber.vue';
 export { default as InputText } from './InputText.vue';
+export { default as Alert } from './Alert.vue';
 export { default as Select } from './Select.vue';
 export { default as Textarea } from './Textarea.vue';
