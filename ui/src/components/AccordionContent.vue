@@ -20,7 +20,7 @@ const attrs = useAttrs();
 
 const theme = ref<AccordionContentPassThroughOptions>({
     root: `flex flex-col`,
-    content: `text-surface-700 dark:text-surface-0 pt-0 px-[1.125rem] px-6 pb-[1.125rem] text-base`,
+    content: `text-surface-700 dark:text-surface-0 pt-0 px-6 pb-[1.125rem] text-base`,
     transition: {
         enterFromClass: 'max-h-0',
         enterActiveClass: 'overflow-hidden transition-[max-height] duration-1000 ease-[cubic-bezier(0.42,0,0.58,1)]',
