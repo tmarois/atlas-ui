@@ -26,7 +26,7 @@ const message = ref('')
     <section>
       <h2 class="mb-4 text-xl font-semibold">Buttons</h2>
       <div class="flex flex-wrap gap-4">
-        <Button size="small">Default</Button>
+        <Button>Default</Button>
         <Button severity="secondary">Secondary</Button>
         <Button severity="success">Success</Button>
         <Button severity="info">Info</Button>
@@ -37,7 +37,7 @@ const message = ref('')
         <Button text>Text</Button>
         <Button raised>Raised</Button>
         <Button rounded>Rounded</Button>
-        <Button loading>Loading</Button>
+        <Button :loading="true" label="loading" />
         <Button disabled>Disabled</Button>
       </div>
     </section>
