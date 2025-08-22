@@ -49,3 +49,4 @@ Temporary Items
 /ui/components.d.ts
 /ui/auto-imports.d.ts
 /ui/package-lock.json
+/laravel/vendor
