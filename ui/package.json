@@ -3,10 +3,15 @@
     "version": "1.0.0",
     "main": "src/index.ts",
     "exports": {
-        ".": "./src/index.ts"
+        ".": "./src/index.ts",
+        "./inertia": "./src/inertia.ts"
     },
     "description": "Reusable Vue 3 UI components and library.",
-    "keywords": ["vuejs", "utility", "ui components"],
+    "keywords": [
+        "vuejs",
+        "utility",
+        "ui components"
+    ],
     "scripts": {
         "test": "vitest run",
         "test:watch": "vitest watch",
@@ -23,6 +28,7 @@
         "vue": "^3.4.0"
     },
     "devDependencies": {
+        "@inertiajs/vue3": "^1.0.0",
         "@types/node": "^20.11.5",
         "@vitejs/plugin-vue": "^5.0.3",
         "@vitest/coverage-v8": "^1.2.1",
