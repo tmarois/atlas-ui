@@ -20,6 +20,7 @@ Atlas ships with tooling to bridge Laravel and Vue through Inertia, solving thre
   - [Model Service](docs/laravel/model-service.md)
   - [Support](docs/laravel/support.md)
 - UI
+  - [Components](docs/ui/components.md)
   - [Composables](docs/ui/composables.md)
   - [Utils](docs/ui/utils.md)
 

@@ -1,9 +1,9 @@
 <script setup>
-import AButton from '@ui/components/AButton.vue'
+import Button from '@ui/components/Button.vue'
 </script>
 
 <template>
   <div class="p-4">
-    <AButton>Test Button</AButton>
+    <Button>Test Button</Button>
   </div>
 </template>

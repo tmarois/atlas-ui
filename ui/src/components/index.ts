@@ -1,8 +1,8 @@
-export { default as AButton } from './AButton.vue';
-export { default as ACard } from './ACard.vue';
-export { default as ACheckbox } from './ACheckbox.vue';
-export { default as AInputMask } from './AInputMask.vue';
-export { default as AInputNumber } from './AInputNumber.vue';
-export { default as AInputText } from './AInputText.vue';
-export { default as ASelect } from './ASelect.vue';
-export { default as ATextarea } from './ATextarea.vue';
+export { default as Button } from './Button.vue';
+export { default as Card } from './Card.vue';
+export { default as Checkbox } from './Checkbox.vue';
+export { default as InputMask } from './InputMask.vue';
+export { default as InputNumber } from './InputNumber.vue';
+export { default as InputText } from './InputText.vue';
+export { default as Select } from './Select.vue';
+export { default as Textarea } from './Textarea.vue';
