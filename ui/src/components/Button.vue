@@ -29,7 +29,7 @@ const theme = ref<ButtonPassThroughOptions>({
         p-vertical:flex-col p-fluid:w-full p-fluid:p-icon-only:w-10
         p-icon-only:w-10 p-icon-only:px-0 p-icon-only:gap-0
         p-icon-only:p-rounded:rounded-full p-icon-only:p-rounded:h-10
-        p-small:text-sm p-small:px-4px p-small:py-[0.375rem]
+        p-small:text-sm p-small:px-1 p-small:py-[0.375rem]
         p-large:text-[1.125rem] p-large:px-[0.875rem] p-large:py-[0.625rem]
         p-raised:shadow-sm p-rounded:rounded-[2rem]
         p-outlined:bg-transparent enabled:hover:p-outlined:bg-primary-50 enabled:active:p-outlined:bg-primary-100
@@ -46,7 +46,7 @@ const theme = ref<ButtonPassThroughOptions>({
         dark:p-text:text-white dark:enabled:hover:p-text:text-primary dark:enabled:active:p-text:text-primary
         p-large:px-4 p-large:py-3
     `,
-    loadingIcon: `animate-spin`,
+    loadingIcon: `pi pi-spinner animate-spin`,
     icon: `p-right:order-1 p-bottom:order-2`,
     label: `
             p-icon-only:invisible p-icon-only:w-0
