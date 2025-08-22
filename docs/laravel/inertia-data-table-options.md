@@ -66,3 +66,35 @@ const table = useDataTableOptions('users.index', props.options);
 
 This pattern keeps controller methods lean while ensuring consistent datatable behavior across requests and a seamless experience between frontend and backend.
 
+### Custom Filters
+
+The composable returns a reactive `filters` object. Bind UI inputs to it or
+update it programmatically and `useDataTableOptions` will automatically submit
+new requests whenever a filter changes.
+
+```vue
+<template>
+    <select v-model="table.form.filters.status">
+        <option value="">Any status</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+    </select>
+</template>
+
+<script setup>
+import { useDataTableOptions } from '@tmarois/atlas';
+import { usePage } from '@inertiajs/vue3';
+
+const { props } = usePage();
+const table = useDataTableOptions('users.index', props.options);
+
+// Filters can also be set directly in script
+table.form.filters.role = 'admin';
+</script>
+```
+
+Any modification to `filters` triggers `fetchData` and resets row selection so
+the server and client remain in sync. Call `table.fetchData()` manually if you
+need to dispatch a request on demand (for example after clicking a submit
+button).
+
