@@ -23,10 +23,13 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
 ### Table of Contents
 - [Actions](#actions)
   - [Button](#button)
+  - [ButtonGroup](#buttongroup)
 - [Form Elements](#form-elements)
   - [InputText](#inputtext)
   - [InputNumber](#inputnumber)
   - [InputMask](#inputmask)
+  - [InputGroup](#inputgroup)
+  - [InputOtp](#inputotp)
   - [Select](#select)
   - [Textarea](#textarea)
   - [Checkbox](#checkbox)
@@ -39,6 +42,7 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [Avatar](#avatar)
   - [AvatarGroup](#avatargroup)
   - [Chip](#chip)
+  - [Badge](#badge)
 - [Feedback](#feedback)
   - [Alert](#alert)
 
@@ -56,6 +60,22 @@ import { Button } from '@atlas/ui';
 ##### API
 
 Refer to the [PrimeVue Button API](https://primevue.org/button/#api) for available props and events.
+
+#### ButtonGroup
+```ts
+import { ButtonGroup, Button } from '@atlas/ui';
+```
+
+```vue
+<ButtonGroup>
+  <Button label="Save" />
+  <Button label="Cancel" />
+</ButtonGroup>
+```
+
+##### API
+
+Refer to the [PrimeVue ButtonGroup API](https://primevue.org/buttongroup/#api).
 
 ### Form Elements
 
@@ -97,6 +117,35 @@ import { InputMask } from '@atlas/ui';
 ##### API
 
 Refer to the [PrimeVue InputMask API](https://primevue.org/inputmask/#api).
+
+#### InputGroup
+```ts
+import { InputGroup, InputText, Button } from '@atlas/ui';
+```
+
+```vue
+<InputGroup>
+  <InputText v-model="value" />
+  <Button label="Search" />
+</InputGroup>
+```
+
+##### API
+
+Refer to the [PrimeVue InputGroup API](https://primevue.org/inputgroup/#api).
+
+#### InputOtp
+```ts
+import { InputOtp } from '@atlas/ui';
+```
+
+```vue
+<InputOtp v-model="code" />
+```
+
+##### API
+
+Refer to the [PrimeVue InputOtp API](https://primevue.org/inputotp/#api).
 
 #### Select
 ```ts
@@ -253,6 +302,19 @@ import { Chip } from '@atlas/ui';
 ##### API
 
 Refer to the [PrimeVue Chip API](https://primevue.org/chip/#api).
+
+#### Badge
+```ts
+import { Badge } from '@atlas/ui';
+```
+
+```vue
+<Badge value="2" />
+```
+
+##### API
+
+Refer to the [PrimeVue Badge API](https://primevue.org/badge/#api).
 
 ### Feedback
 
