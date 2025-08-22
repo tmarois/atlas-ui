@@ -7,3 +7,5 @@ export { default as InputText } from './InputText.vue';
 export { default as Alert } from './Alert.vue';
 export { default as Select } from './Select.vue';
 export { default as Textarea } from './Textarea.vue';
+export { default as Chip } from './Chip.vue';
+export { default as Divider } from './Divider.vue';
