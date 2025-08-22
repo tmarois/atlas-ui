@@ -31,6 +31,8 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [InputGroup](#inputgroup)
   - [InputOtp](#inputotp)
   - [Select](#select)
+  - [AutoComplete](#autocomplete)
+  - [MultiSelect](#multiselect)
   - [Textarea](#textarea)
   - [Checkbox](#checkbox)
 - [Layout](#layout)
@@ -43,6 +45,8 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [AvatarGroup](#avatargroup)
   - [Chip](#chip)
   - [Badge](#badge)
+- [Navigation](#navigation)
+  - [Menu](#menu)
 - [Feedback](#feedback)
   - [Alert](#alert)
 
@@ -159,6 +163,32 @@ import { Select } from '@atlas/ui';
 ##### API
 
 See the [PrimeVue Select API](https://primevue.org/select/#api).
+
+#### AutoComplete
+```ts
+import { AutoComplete } from '@atlas/ui';
+```
+
+```vue
+<AutoComplete v-model="value" :suggestions="items" />
+```
+
+##### API
+
+See the [PrimeVue AutoComplete API](https://primevue.org/autocomplete/#api).
+
+#### MultiSelect
+```ts
+import { MultiSelect } from '@atlas/ui';
+```
+
+```vue
+<MultiSelect v-model="selected" :options="options" optionLabel="name" optionValue="value" />
+```
+
+##### API
+
+Refer to the [PrimeVue MultiSelect API](https://primevue.org/multiselect/#api).
 
 #### Textarea
 ```ts
@@ -315,6 +345,21 @@ import { Badge } from '@atlas/ui';
 ##### API
 
 Refer to the [PrimeVue Badge API](https://primevue.org/badge/#api).
+
+### Navigation
+
+#### Menu
+```ts
+import { Menu } from '@atlas/ui';
+```
+
+```vue
+<Menu :model="items" />
+```
+
+##### API
+
+Refer to the [PrimeVue Menu API](https://primevue.org/menu/#api).
 
 ### Feedback
 
