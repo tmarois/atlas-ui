@@ -65,7 +65,7 @@ const website = ref('')
 
     <section>
       <h2 class="mb-4 text-xl font-semibold">Accordion in Card</h2>
-      <Card>
+      <Card pt:content="p-0">
         <template #header>Example Accordion Card</template>
         <template #content>
           <Accordion v-model:value="active">
