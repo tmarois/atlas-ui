@@ -31,6 +31,7 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [Textarea](#textarea)
   - [Checkbox](#checkbox)
 - [Layout](#layout)
+  - [ScrollFrame](#scrollframe)
   - [Card](#card)
   - [Divider](#divider)
 - [Data Display](#data-display)
@@ -134,6 +135,19 @@ import { Checkbox } from '@atlas/ui';
 See the [PrimeVue Checkbox API](https://primevue.org/checkbox/#api).
 
 ### Layout
+
+#### ScrollFrame
+```ts
+import { ScrollFrame } from '@atlas/ui';
+```
+
+```vue
+<ScrollFrame>
+    Content
+</ScrollFrame>
+```
+
+Provides a scrollable container that fills the viewport and manages scroll locking when used as a page frame.
 
 #### Card
 ```ts
