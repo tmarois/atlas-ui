@@ -16,6 +16,8 @@ import AutoComplete from '@ui/components/AutoComplete.vue'
 import MultiSelect from '@ui/components/MultiSelect.vue'
 import InputOtp from '@ui/components/InputOtp.vue'
 import InputGroup from '@ui/components/InputGroup.vue'
+import DataTable from '@ui/components/DataTable.vue'
+import Column from 'primevue/column'
 
 const text = ref('')
 const number = ref()
@@ -40,6 +42,16 @@ const search = (event) => {
 const multi = ref([])
 const otp = ref()
 const website = ref('')
+const users = ref([
+  { name: 'Alice', email: 'alice@example.com', country: 'USA' },
+  { name: 'Bob', email: 'bob@example.com', country: 'Canada' },
+  { name: 'Charlie', email: 'charlie@example.com', country: 'UK' },
+  { name: 'Dana', email: 'dana@example.com', country: 'Australia' },
+  { name: 'Eve', email: 'eve@example.com', country: 'Brazil' },
+  { name: 'Frank', email: 'frank@example.com', country: 'Germany' },
+  { name: 'Grace', email: 'grace@example.com', country: 'France' },
+  { name: 'Hank', email: 'hank@example.com', country: 'Japan' }
+])
 </script>
 
 <template>
@@ -122,6 +134,14 @@ const website = ref('')
         </div>
         <InputOtp v-model="otp" />
       </div>
+    </section>
+    <section>
+      <h2 class="mb-4 text-xl font-semibold">DataTable</h2>
+      <DataTable :value="users" paginator :rows="5">
+        <Column field="name" header="Name" />
+        <Column field="email" header="Email" />
+        <Column field="country" header="Country" />
+      </DataTable>
     </section>
   </main>
 </template>

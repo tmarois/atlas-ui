@@ -15,6 +15,7 @@ export { default as Avatar } from './Avatar.vue';
 export { default as AvatarGroup } from './AvatarGroup.vue';
 export { default as Badge } from './Badge.vue';
 export { default as Chip } from './Chip.vue';
+export { default as DataTable } from './DataTable.vue';
 export { default as Divider } from './Divider.vue';
 export { default as ScrollFrame } from './ScrollFrame.vue';
 export { default as Accordion } from './Accordion.vue';
