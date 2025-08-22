@@ -36,8 +36,16 @@ describe('formatCurrency', () => {
         expect(formatCurrency('abc')).toBe('Invalid');
     });
 
+    it('should return "Invalid" for empty string', () => {
+        expect(formatCurrency('')).toBe('Invalid');
+    });
+
     it('should return custom invalid text when specified', () => {
         expect(formatCurrency('abc', 2, 'USD', 'N/A')).toBe('N/A');
+    });
+
+    it('should return custom invalid text for empty string when specified', () => {
+        expect(formatCurrency('', 2, 'USD', 'N/A')).toBe('N/A');
     });
 
     it('should handle NaN input', () => {
