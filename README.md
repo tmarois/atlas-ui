@@ -1,6 +1,8 @@
 # Atlas
 
-Monorepo containing the Laravel backend and Vue 3 UI components.
+Atlas is designed for apps built with [Laravel](https://laravel.com), [Vue](https://vuejs.org), and [Inertia.js](https://inertiajs.com). It bundles a Laravel backend with a library of Vue 3 components optimized for Inertia-driven dashboards. Those Vue components can also be used in standalone Vue applications without Laravel or Inertia.
+
+This package bridges common pain points when maintaining projects and helps you avoid reinventing the wheel. It strives to provide guidelines and the basic essentials for building web-based applications—mostly around dashboards or admin systems—but it can be used for any web-based project.
 
 ## Laravel Vue Inertia Bridge
 
