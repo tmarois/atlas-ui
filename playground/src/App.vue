@@ -8,6 +8,10 @@ import InputNumber from '@ui/components/InputNumber.vue'
 import InputText from '@ui/components/InputText.vue'
 import Select from '@ui/components/Select.vue'
 import Textarea from '@ui/components/Textarea.vue'
+import Accordion from '@ui/components/Accordion.vue'
+import AccordionPanel from '@ui/components/AccordionPanel.vue'
+import AccordionHeader from '@ui/components/AccordionHeader.vue'
+import AccordionContent from '@ui/components/AccordionContent.vue'
 
 const text = ref('')
 const number = ref()
@@ -19,6 +23,7 @@ const options = [
 ]
 const agree = ref(false)
 const message = ref('')
+const active = ref('0')
 </script>
 
 <template>
@@ -50,6 +55,24 @@ const message = ref('')
           <p>This is a simple card showcasing how content is displayed inside.</p>
         </template>
       </Card>
+    </section>
+
+    <section>
+      <h2 class="mb-4 text-xl font-semibold">Accordion</h2>
+      <Accordion v-model:value="active">
+        <AccordionPanel value="0">
+          <AccordionHeader>Header I</AccordionHeader>
+          <AccordionContent>
+            <p class="m-0">Content I</p>
+          </AccordionContent>
+        </AccordionPanel>
+        <AccordionPanel value="1">
+          <AccordionHeader>Header II</AccordionHeader>
+          <AccordionContent>
+            <p class="m-0">Content II</p>
+          </AccordionContent>
+        </AccordionPanel>
+      </Accordion>
     </section>
 
     <section>
