@@ -9,3 +9,4 @@ export { default as Select } from './Select.vue';
 export { default as Textarea } from './Textarea.vue';
 export { default as Chip } from './Chip.vue';
 export { default as Divider } from './Divider.vue';
+export { default as ScrollFrame } from './ScrollFrame.vue';
