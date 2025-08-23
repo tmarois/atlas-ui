@@ -1,14 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from './pages/Home.vue';
-import Buttons from './pages/Buttons.vue';
-import Form from './pages/Form.vue';
-import Data from './pages/Data.vue';
+import Users from './pages/Users.vue';
+import ComponentsLayout from './pages/components/Index.vue';
+import Buttons from './pages/components/Buttons.vue';
+import Forms from './pages/components/Forms.vue';
+import Tables from './pages/components/Tables.vue';
 
 const routes = [
-  { path: '/', component: Home, meta: { title: 'Home' } },
-  { path: '/buttons', component: Buttons, meta: { title: 'Buttons' } },
-  { path: '/form', component: Form, meta: { title: 'Form Inputs' } },
-  { path: '/data', component: Data, meta: { title: 'Data Table' } },
+  { path: '/', component: Home, meta: { title: 'Dashboard' } },
+  { path: '/users', component: Users, meta: { title: 'Users table' } },
+  {
+    path: '/components',
+    component: ComponentsLayout,
+    redirect: '/components/buttons',
+    children: [
+      { path: 'buttons', component: Buttons, meta: { title: 'Buttons' } },
+      { path: 'forms', component: Forms, meta: { title: 'Forms' } },
+      { path: 'tables', component: Tables, meta: { title: 'Tables' } },
+    ],
+  },
 ];
 
 export default createRouter({

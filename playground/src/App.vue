@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useRoute, RouterView } from 'vue-router';
 import UiApp from '@ui/components/App/Index.vue';
 import RouterLink from './components/RouterLink.vue';
-import { IconHome, IconHandClick, IconForms, IconTable } from '@tabler/icons-vue';
+import { IconHome, IconUsers, IconSettings } from '@tabler/icons-vue';
 
 const route = useRoute();
 
@@ -11,19 +11,23 @@ const sideBarItems = computed(() => [
   {
     children: [
       { label: 'Home', href: '/', icon: IconHome, activeIcon: IconHome },
-      { label: 'Buttons', href: '/buttons', icon: IconHandClick, activeIcon: IconHandClick },
-      { label: 'Form', href: '/form', icon: IconForms, activeIcon: IconForms },
-      { label: 'Data', href: '/data', icon: IconTable, activeIcon: IconTable },
+      { label: 'Users', href: '/users', icon: IconUsers, activeIcon: IconUsers },
+      { label: 'Components', href: '/components/buttons', icon: IconSettings, activeIcon: IconSettings },
     ],
   },
 ]);
 
-const pageNavItems = computed(() => [
-  { label: 'Home', href: '/' },
-  { label: 'Buttons', href: '/buttons' },
-  { label: 'Form Inputs', href: '/form' },
-  { label: 'Data Table', href: '/data' },
-]);
+const pageNavItems = computed(() => {
+  if (route.path.startsWith('/components')) {
+    return [
+      { label: 'Buttons', href: '/components/buttons' },
+      { label: 'Forms', href: '/components/forms' },
+      { label: 'Tables', href: '/components/tables' },
+    ];
+  }
+
+  return [];
+});
 
 const pageTitle = computed(() => route.meta.title || '');
 </script>

@@ -17,7 +17,7 @@ const users = ref([
 
 <template>
   <section class="p-4 space-y-4">
-    <h2 class="text-xl font-semibold">DataTable</h2>
+    <h2 class="text-xl font-semibold">Tables</h2>
     <DataTable :value="users" paginator :rows="5">
       <Column field="name" header="Name" />
       <Column field="email" header="Email" />
