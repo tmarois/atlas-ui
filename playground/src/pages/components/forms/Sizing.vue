@@ -86,7 +86,9 @@ const search = (event) => {
   <section class="p-4 space-y-4">
     <Card v-for="item in formSizes" :key="item.label" class="w-full">
       <template #header>
-        <span>{{ item.label }}</span>
+        <div class="font-semibold text-gray-900 dark:text-gray-100 text-md flex items-center">
+          {{ item.label }}
+        </div>
       </template>
       <template #content>
         <div class="space-y-4">
@@ -142,10 +144,12 @@ const search = (event) => {
               <Select v-model="form.gender" :options="genders" optionLabel="gender" optionValue="id" fluid :size="item.size" />
             </LabelField>
           </div>
-          <div class="flex items-center space-x-4">
-            <Button outlined label="Cancel" :size="item.size" />
-            <Button label="Save" :size="item.size" />
-          </div>
+        </div>
+      </template>
+      <template #footer>
+        <div class="flex items-center space-x-4">
+          <Button label="Save" :size="item.size" />
+          <Button label="Cancel" text :size="item.size" />
         </div>
       </template>
     </Card>
