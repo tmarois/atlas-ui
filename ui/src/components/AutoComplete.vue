@@ -27,7 +27,7 @@ const attrs = useAttrs();
 const theme = ref<AutoCompletePassThroughOptions>({
     root: `inline-flex p-fluid:flex`,
     pcInputText: {
-        root: `appearance-none rounded outline-hidden
+        root: `appearance-none rounded-md outline-hidden
             bg-surface-0 dark:bg-surface-950
             p-filled:bg-surface-50 dark:p-filled:bg-surface-800
             text-surface-700 dark:text-surface-0
@@ -47,7 +47,7 @@ const theme = ref<AutoCompletePassThroughOptions>({
     },
     inputMultiple: `m-0 list-none cursor-text overflow-hidden flex items-center flex-wrap
         px-3 py-1 not-p-empty:px-1 gap-1 text-surface-700 dark:text-surface-0 bg-surface-0 dark:bg-surface-950
-        border border-surface-300 dark:border-surface-700 rounded p-has-dropdown:rounded-e-none w-full
+        border border-surface-300 dark:border-surface-700 rounded-md p-has-dropdown:rounded-e-none w-full
         hover:border-surface-400 dark:hover:border-surface-600 p-focus:border-primary
         p-invalid:border-red-400 dark:p-invalid:border-red-300
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
@@ -74,7 +74,7 @@ const theme = ref<AutoCompletePassThroughOptions>({
     input: `border-none outline-none bg-transparent m-0 p-0 shadow-none rounded-none w-full text-inherit
         placeholder:text-surface-500 dark:placeholder:text-surface-400`,
     loader: `absolute top-1/2 -mt-2 end-3 p-has-dropdown:end-[3.25rem] animate-spin`,
-    dropdown: `cursor-pointer inline-flex items-center justify-center select-none overflow-hidden relative w-10 shrink-0 rounded-e
+    dropdown: `cursor-pointer inline-flex items-center justify-center select-none overflow-hidden relative w-10 shrink-0 rounded-e-md
         border border-s-0 border-surface-300 dark:border-surface-700
         bg-surface-100 enabled:hover:bg-surface-200 enabled:active:bg-surface-300
         text-surface-600 enabled:hover:text-surface-700 enabled:hover:active:text-surface-800
@@ -83,7 +83,7 @@ const theme = ref<AutoCompletePassThroughOptions>({
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
         transition-colors duration-200`,
     dropdownIcon: ``,
-    overlay: `p-portal-self:min-w-full absolute top-0 left-0 rounded
+    overlay: `p-portal-self:min-w-full absolute top-0 left-0 rounded-md
         bg-surface-0 dark:bg-surface-900
         border border-surface-200 dark:border-surface-700
         text-surface-700 dark:text-surface-0
