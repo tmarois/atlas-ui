@@ -33,6 +33,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const frame = ref<HTMLElement | null>(null);
 const dynamicHeight = ref('0px');
+let resizeObserver: ResizeObserver | null = null;
 
 const { bindScrollHandler, lockScroll, unlockScroll } = useScroll(
     props.scrollKey !== null ? props.scrollKey : props.page ? 'page' : Symbol()
@@ -61,6 +62,10 @@ onMounted(() => {
     });
     if (typeof window !== 'undefined') {
         window.addEventListener('resize', updateHeight);
+        if (typeof ResizeObserver !== 'undefined') {
+            resizeObserver = new ResizeObserver(() => updateHeight());
+            resizeObserver.observe(document.body);
+        }
     }
 });
 
@@ -69,6 +74,7 @@ onBeforeUnmount(() => {
     if (props.page && !props.allowBodyScroll) unlockScroll();
     if (typeof window !== 'undefined') {
         window.removeEventListener('resize', updateHeight);
+        resizeObserver?.disconnect();
     }
 });
 
