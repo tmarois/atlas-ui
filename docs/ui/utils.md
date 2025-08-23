@@ -21,6 +21,7 @@
   - [isClient](#isclient)
   - [getRandomItem](#getrandomitem)
   - [roundTo](#roundto)
+  - [isPageActive](#ispageactive)
 
 ## Format Utilities
 
@@ -347,4 +348,24 @@ import { roundTo } from '@tmarois/atlas';
 
 roundTo(1.005, 2); // 1.01
 roundTo(123.456, 1); // 123.5
+```
+
+### isPageActive
+
+Determines whether the current Inertia page URL matches a given path.
+
+**Parameters:**
+- `itemPath` (string): The path to compare against the current page URL.
+- `itemParent` (string, optional): Parent path that overrides `itemPath`.
+- `eq` (boolean, optional): If true, requires an exact match; otherwise checks that the current path starts with the route path.
+
+**Returns:** Boolean indicating whether the current page is active.
+
+**Example:**
+```typescript
+import { isPageActive } from '@tmarois/atlas';
+
+isPageActive('/users'); // true when current URL begins with '/users'
+isPageActive('/users', undefined, true); // true only when URL is exactly '/users'
+isPageActive('/profile', '/users'); // checks against '/users'
 ```
