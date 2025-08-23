@@ -1,11 +1,11 @@
 <template>
     <span v-tooltip.top="tooltip" :class="mergedPt.root.class">
-        <IconInfoCircle :class="mergedPt.icon.class" />
+        <IconInfoSquareRoundedFilled :class="mergedPt.icon.class" />
     </span>
 </template>
 
 <script setup lang="ts">
-import { IconInfoCircle } from '@tabler/icons-vue';
+import { IconInfoSquareRoundedFilled } from '@tabler/icons-vue';
 import { ref, computed } from 'vue';
 import { ptMerge } from '../utils';
 
@@ -21,18 +21,20 @@ interface TooltipIconPassThroughOptions {
 }
 
 interface Props {
-    text: string;
+    text?: string | null;
+    iconClass?: string;
     pt?: TooltipIconPassThroughOptions;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    text: ''
+    text: null,
+    iconClass: 'size-5'
 });
 
-const theme = ref<TooltipIconPassThroughOptions>({
-    root: 'inline-flex items-center',
-    icon: 'w-4 h-4 text-surface-400 dark:text-surface-500'
-});
+const theme = computed<TooltipIconPassThroughOptions>(() => ({
+    root: 'cursor-help inline text-surface-500 dark:text-surface-400 hover:text-surface-800 dark:hover:text-surface-300',
+    icon: props.iconClass
+}));
 
 const mergedPt = computed(() => ptMerge(theme.value, props.pt));
 

@@ -665,6 +665,7 @@ import { TooltipIcon } from '@atlas/ui';
 ##### Props
 
 - `text` – tooltip text displayed on hover.
+- `iconClass` – additional CSS classes applied to the icon.
 - `pt` – passthrough options to customize internal elements.
 
 #### TooltipInfo
