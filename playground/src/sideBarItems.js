@@ -4,7 +4,7 @@ export const sideBarItems = [
   {
     children: [
       { label: 'Home', href: '/', icon: IconHome, activeIcon: IconHome },
-      { label: 'Users', href: '/users', icon: IconUsers, activeIcon: IconUsers },
+      { label: 'Users', href: '/users', parent: '/users', icon: IconUsers, activeIcon: IconUsers },
       {
         label: 'Components',
         href: '/components/buttons',
