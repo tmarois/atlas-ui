@@ -42,3 +42,5 @@ export { default as Slider } from './Slider.vue';
 export { default as Password } from './Password.vue';
 export { default as Paginator } from './Paginator.vue';
 export { default as Pagination } from './Pagination.vue';
+export { default as Editor } from './Editor/Index.vue';
+export { default as EditorContent } from './Editor/EditorContent.vue';
