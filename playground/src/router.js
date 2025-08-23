@@ -6,6 +6,9 @@ import Buttons from './pages/components/Buttons.vue';
 import Forms from './pages/components/Forms.vue';
 import Tables from './pages/components/Tables.vue';
 import Tabs from './pages/components/Tabs.vue';
+import Editor from './pages/components/editor/Index.vue';
+import EditorVariant from './pages/components/editor/Variant.vue';
+import EditorText from './pages/components/editor/Text.vue';
 
 const routes = [
   { path: '/', component: Home, meta: { title: 'Dashboard' } },
@@ -19,6 +22,9 @@ const routes = [
       { path: 'forms', component: Forms, meta: { title: 'Forms' } },
       { path: 'tables', component: Tables, meta: { title: 'Tables' } },
       { path: 'tabs', component: Tabs, meta: { title: 'Tabs' } },
+      { path: 'editor', component: Editor, meta: { title: 'Editor' } },
+      { path: 'editor/variant', component: EditorVariant, meta: { title: 'Editor Variants' } },
+      { path: 'editor/text', component: EditorText, meta: { title: 'Editor Text' } },
     ],
   },
 ];
