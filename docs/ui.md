@@ -2,7 +2,63 @@
 
 Reusable Vue 3 components styled with Tailwind CSS and built on top of PrimeVue.
 
-## Overriding Themes with Passthrough
+## Table of Contents
+- [Application](#application)
+- [Override Themes with Passthrough](#override-themes-with-passthrough)
+- [Components](#components)
+  - [Actions](#actions)
+    - [Button](#button)
+    - [ButtonGroup](#buttongroup)
+  - [Form Elements](#form-elements)
+    - [InputText](#inputtext)
+    - [InputNumber](#inputnumber)
+    - [InputMask](#inputmask)
+    - [InputGroup](#inputgroup)
+    - [InputOtp](#inputotp)
+    - [DatePicker](#datepicker)
+    - [Select](#select)
+    - [AutoComplete](#autocomplete)
+    - [MultiSelect](#multiselect)
+    - [Textarea](#textarea)
+    - [Checkbox](#checkbox)
+    - [RadioButton](#radiobutton)
+    - [LabelField](#labelfield)
+    - [LabelChoice](#labelchoice)
+    - [ToggleButton](#togglebutton)
+    - [ToggleSwitch](#toggleswitch)
+    - [Password](#password)
+    - [Slider](#slider)
+    - [Editor](#editor)
+  - [Layout](#layout)
+    - [ScrollFrame](#scrollframe)
+    - [Accordion](#accordion)
+    - [Card](#card)
+    - [Divider](#divider)
+    - [Dialog](#dialog)
+    - [Drawer](#drawer)
+    - [DrawerForm](#drawerform)
+    - [Popover](#popover)
+    - [Tabs](#tabs)
+  - [Data Display](#data-display)
+    - [DataTable](#datatable)
+    - [Avatar](#avatar)
+    - [AvatarGroup](#avatargroup)
+    - [Chip](#chip)
+    - [Badge](#badge)
+    - [TooltipIcon](#tooltipicon)
+    - [TooltipInfo](#tooltipinfo)
+  - [Navigation](#navigation)
+    - [ButtonMenu](#buttonmenu)
+    - [Menu](#menu)
+    - [Paginator](#paginator)
+    - [Pagination](#pagination)
+  - [Feedback](#feedback)
+    - [Alert](#alert)
+    - [Errors](#errors)
+    - [Toast](#toast)
+    - [ProgressBar](#progressbar)
+
+## Override Themes with Passthrough
 
 PrimeVue components support a [passthrough (pt) API](https://primevue.org/passthrough/) that lets you customize internal elements and classes. Atlas forwards this API so you can tweak component styles or structure when needed.
 
@@ -18,60 +74,11 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
 />
 ```
 
-## Components
+## Application
 
-### Table of Contents
-- [Actions](#actions)
-  - [Button](#button)
-  - [ButtonGroup](#buttongroup)
-- [Form Elements](#form-elements)
-  - [InputText](#inputtext)
-  - [InputNumber](#inputnumber)
-  - [InputMask](#inputmask)
-  - [InputGroup](#inputgroup)
-  - [InputOtp](#inputotp)
-  - [DatePicker](#datepicker)
-  - [Select](#select)
-  - [AutoComplete](#autocomplete)
-  - [MultiSelect](#multiselect)
-  - [Textarea](#textarea)
-  - [Checkbox](#checkbox)
-  - [RadioButton](#radiobutton)
-  - [LabelField](#labelfield)
-  - [LabelChoice](#labelchoice)
-  - [ToggleButton](#togglebutton)
-  - [ToggleSwitch](#toggleswitch)
-  - [Password](#password)
-  - [Slider](#slider)
-  - [Editor](#editor)
-- [Layout](#layout)
-  - [ScrollFrame](#scrollframe)
-  - [Accordion](#accordion)
-  - [Card](#card)
-  - [Divider](#divider)
-  - [Dialog](#dialog)
-  - [Drawer](#drawer)
-  - [DrawerForm](#drawerform)
-  - [Popover](#popover)
-  - [Tabs](#tabs)
-- [Data Display](#data-display)
-  - [DataTable](#datatable)
-  - [Avatar](#avatar)
-  - [AvatarGroup](#avatargroup)
-  - [Chip](#chip)
-  - [Badge](#badge)
-  - [TooltipIcon](#tooltipicon)
-  - [TooltipInfo](#tooltipinfo)
-- [Navigation](#navigation)
-  - [ButtonMenu](#buttonmenu)
-  - [Menu](#menu)
-  - [Paginator](#paginator)
-  - [Pagination](#pagination)
-- [Feedback](#feedback)
-  - [Alert](#alert)
-  - [Errors](#errors)
-  - [Toast](#toast)
-  - [ProgressBar](#progressbar)
+See the [Application UI guide](ui/application.md) for the app's page structure and layout.
+
+## Components
 
 ### Actions
 
@@ -368,6 +375,10 @@ import { Slider } from '@atlas/ui';
 See the [PrimeVue Slider API](https://primevue.org/slider/#api).
 
 #### Editor
+
+See the [Editor guide](ui/editor.md) for dependencies and usage.
+
+
 ```ts
 import { Editor } from '@atlas/ui';
 ```
@@ -576,6 +587,7 @@ import Column from 'primevue/column';
 ##### API
 
 Refer to the [PrimeVue DataTable API](https://primevue.org/datatable/#api).
+See the [Table guide](ui/table.md) for column definitions, pagination, and CSV export.
 
 #### Avatar
 ```ts
