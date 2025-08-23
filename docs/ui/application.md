@@ -3,14 +3,19 @@
 Documentation for the Atlas application's overall structure and layout.
 
 ## Table of Contents
-- [NavTopbar](#navtopbar)
-- [NavSidebar](#navsidebar)
-- [PageHeader](#pageheader)
-- [PageSideNav](#pagesidenav)
-- [PageContent](#pagecontent)
-- [PageFooter](#pagefooter)
+- [Navigation](#navigation)
+  - [NavTopbar](#navtopbar)
+  - [NavSidebar](#navsidebar)
+  - [PageSideNav](#pagesidenav)
+- [Layout](#layout)
+  - [PageHeader](#pageheader)
+  - [PageContent](#pagecontent)
+  - [PageFooter](#pagefooter)
 
-## NavTopbar
+## Navigation
+Components that allow users to navigate across or within pages.
+
+### NavTopbar
 Global top navigation bar.
 
 ```ts
@@ -34,7 +39,7 @@ import { NavTopbar } from '@atlas/ui';
 **Events**
 - None
 
-## NavSidebar
+### NavSidebar
 Vertical navigation sidebar.
 
 ```ts
@@ -57,7 +62,28 @@ import { NavSidebar } from '@atlas/ui';
 **Events**
 - None
 
-## PageHeader
+### PageSideNav
+Secondary navigation within a page.
+
+```ts
+import { PageSideNav } from '@atlas/ui';
+```
+
+```vue
+<PageSideNav :items="sideItems" />
+```
+
+**Props**
+- `items: NavItem[]` – navigation links. Default `[]`.
+- `linkComponent: string | object` – component used for links. Default `'a'`.
+
+**Events**
+- None
+
+## Layout
+Structural components that organize page content and actions.
+
+### PageHeader
 Page-level header with optional breadcrumbs and tabs.
 
 ```ts
@@ -82,25 +108,7 @@ import { PageHeader } from '@atlas/ui';
 **Events**
 - None
 
-## PageSideNav
-Secondary navigation within a page.
-
-```ts
-import { PageSideNav } from '@atlas/ui';
-```
-
-```vue
-<PageSideNav :items="sideItems" />
-```
-
-**Props**
-- `items: NavItem[]` – navigation links. Default `[]`.
-- `linkComponent: string | object` – component used for links. Default `'a'`.
-
-**Events**
-- None
-
-## PageContent
+### PageContent
 Scrollable main content area.
 
 ```ts
@@ -122,7 +130,7 @@ import { PageContent } from '@atlas/ui';
 **Events**
 - None
 
-## PageFooter
+### PageFooter
 Sticky footer with optional action slot.
 
 ```ts
