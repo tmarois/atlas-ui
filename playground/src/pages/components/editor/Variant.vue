@@ -10,7 +10,7 @@ const editContent = ref('');
 </script>
 
 <template>
-  <section class="p-4 space-y-4">
+  <section class="space-y-4">
     <Card pt:content:class="p-0">
       <template #content>
         <Editor v-model="editContent" placeholder="Start typing..." />

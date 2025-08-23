@@ -17,7 +17,7 @@ const users = ref([
 </script>
 
 <template>
-  <section class="p-4 space-y-4">
+  <section class="space-y-4">
     <Card noPadding>
       <template #content>
         <DataTable :value="users" paginator :rows="5">
