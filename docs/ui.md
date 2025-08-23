@@ -77,7 +77,7 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
 
 ## Application
 
-See the [Application UI guide](ui/application.md) for the app's page structure and layout.
+See the [Application UI guide](ui/application.md) for the app's page structure and layout and the [App Layout](ui/app.md) component for a ready-to-use page wrapper.
 
 ## Components
 

@@ -2,6 +2,8 @@
 
 Documentation for the Atlas application's overall structure and layout.
 
+For an all-in-one page wrapper that composes these pieces together, see the [App Layout](app.md) component.
+
 ## Table of Contents
 - [Navigation](#navigation)
   - [NavTopbar](#navtopbar)
