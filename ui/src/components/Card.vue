@@ -13,14 +13,19 @@
 
 <script setup lang="ts">
 import Card, { type CardPassThroughOptions, type CardProps } from 'primevue/card';
-import { ref, useAttrs, computed } from 'vue';
+import { useAttrs, computed } from 'vue';
 import { ptViewMerge, ptMerge } from '../utils';
 
-interface Props extends /* @vue-ignore */ CardProps {}
-const props = defineProps<Props>();
+interface Props extends /* @vue-ignore */ CardProps {
+    noPadding?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    noPadding: false,
+});
 const attrs = useAttrs();
 
-const theme = ref<CardPassThroughOptions>({
+const theme = computed<CardPassThroughOptions>(() => ({
     root: `flex flex-col rounded-lg
         bg-surface-0 dark:bg-surface-800
         text-surface-700 dark:text-surface-0
@@ -31,13 +36,13 @@ const theme = ref<CardPassThroughOptions>({
     caption: `flex flex-col gap-2`,
     title: `font-semibold text-lg px-6 py-4`,
     subtitle: `text-surface-500 dark:text-surface-400`,
-    content: `p-6 h-full`,
+    content: `${props.noPadding ? '' : 'p-6'} h-full`,
     footer: `p-6 py-4 border-t border-surface-300 dark:border-surface-700`
-});
+}));
 
 const mergedPt = computed(() => ptMerge(theme.value, props.pt));
 const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
+    const { pt, noPadding, ...rest } = props as any;
     return rest;
 });
 const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
