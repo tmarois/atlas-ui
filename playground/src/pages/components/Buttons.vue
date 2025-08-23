@@ -25,7 +25,6 @@ const states = [
 
 <template>
   <section class="p-4 space-y-4">
-    <h2 class="text-xl font-semibold">Buttons</h2>
     <Card v-for="group in groups" :key="group.title">
       <template #header>
         <h3 class="text-lg font-semibold">{{ group.title }}</h3>

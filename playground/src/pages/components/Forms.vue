@@ -108,7 +108,6 @@ const search = (event) => {
 
 <template>
   <section class="p-4 space-y-4">
-    <h2 class="text-xl font-semibold">Forms</h2>
     <div class="flex flex-col space-y-4">
       <div class="flex space-x-4">
         <Card>
