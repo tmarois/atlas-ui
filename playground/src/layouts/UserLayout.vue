@@ -2,6 +2,7 @@
 import { useRoute } from 'vue-router';
 import LayoutApp from '@ui/components/App/Index.vue';
 import { Button, useModal } from '@atlas/ui';
+import UserModals from '../components/UserModals.vue';
 import Link from '../components/RouterLink.vue';
 import { sideBarItems } from '../sideBarItems';
 
@@ -63,4 +64,5 @@ const route = useRoute();
             </div>
         </template>
     </LayoutApp>
+    <UserModals />
 </template>

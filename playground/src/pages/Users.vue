@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue';
 import LayoutApp from '@ui/components/App/Index.vue';
 import { Table, ButtonMenu, TableActions, InputText, Button, Select, useModal } from '@atlas/ui';
+import UserModals from '../components/UserModals.vue';
 import Link from '../components/RouterLink.vue';
 import LinkPaginator from '../components/LinkPaginator.vue';
 import { sideBarItems } from '../sideBarItems';
@@ -202,4 +203,5 @@ const userTotal = computed(() => users.value.total);
             [placeholder]
         </template>
     </LayoutApp>
+    <UserModals />
 </template>
