@@ -5,6 +5,7 @@ import ComponentsLayout from './pages/components/Index.vue';
 import Buttons from './pages/components/Buttons.vue';
 import Forms from './pages/components/Forms.vue';
 import Tables from './pages/components/Tables.vue';
+import Tabs from './pages/components/Tabs.vue';
 
 const routes = [
   { path: '/', component: Home, meta: { title: 'Dashboard' } },
@@ -17,6 +18,7 @@ const routes = [
       { path: 'buttons', component: Buttons, meta: { title: 'Buttons' } },
       { path: 'forms', component: Forms, meta: { title: 'Forms' } },
       { path: 'tables', component: Tables, meta: { title: 'Tables' } },
+      { path: 'tabs', component: Tabs, meta: { title: 'Tabs' } },
     ],
   },
 ];

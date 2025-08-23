@@ -1,5 +1,6 @@
 <script setup>
 import Button from '@ui/components/Button.vue';
+import Card from '@ui/components/Card.vue';
 
 const groups = [
   { title: 'Buttons (regular)', attrs: {} },
@@ -25,17 +26,20 @@ const states = [
 <template>
   <section class="p-4 space-y-4">
     <h2 class="text-xl font-semibold">Buttons</h2>
-    <div v-for="group in groups" :key="group.title" class="space-y-2">
-      <h3 class="text-lg font-semibold">{{ group.title }}</h3>
-      <div class="flex flex-wrap gap-4">
-        <Button
-          v-for="state in states"
-          :key="state.label"
-          v-bind="{ ...group.attrs, ...state.attrs }"
-        >
-          {{ state.label }}
-        </Button>
-      </div>
-    </div>
+    <Card v-for="group in groups" :key="group.title">
+      <template #header>
+        <h3 class="text-lg font-semibold">{{ group.title }}</h3>
+      </template>
+      <template #content>
+        <div class="flex flex-wrap gap-4">
+          <Button
+            v-for="state in states"
+            :key="state.label"
+            v-bind="{ ...group.attrs, ...state.attrs }"
+            :label="state.label"
+          />
+        </div>
+      </template>
+    </Card>
   </section>
 </template>

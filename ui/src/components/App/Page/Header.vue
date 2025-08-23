@@ -92,7 +92,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, useSlots } from 'vue';
+import { computed, useSlots, toRefs } from 'vue';
 import { IconLock } from '@tabler/icons-vue';
 import { useScroll } from '../../../composables/useScroll';
 import { hasSlotContent, isPageActive } from '../../../utils';
@@ -129,12 +129,12 @@ const props = withDefaults(defineProps<Props>(), {
     hideTitle: false,
 });
 
-const { breadcrumbs, tabs, title, linkComponent, widthClass, hideTitle } = props;
+const { breadcrumbs, tabs, title, linkComponent, widthClass, hideTitle } = toRefs(props);
 
 const isActiveTab = (tab: Tab) =>
     tab.parent ? isPageActive(tab.parent) : isPageActive(tab.href, undefined, true);
 
 const hasAction = computed(() => hasSlotContent(slots.action));
-const hasTitle = computed(() => hasSlotContent(slots.title) || title);
+const hasTitle = computed(() => hasSlotContent(slots.title) || title.value);
 const { isTop } = useScroll('page');
 </script>

@@ -23,6 +23,7 @@ const pageNavItems = computed(() => {
       { label: 'Buttons', href: '/components/buttons' },
       { label: 'Forms', href: '/components/forms' },
       { label: 'Tables', href: '/components/tables' },
+      { label: 'Tabs', href: '/components/tabs' },
     ];
   }
 
