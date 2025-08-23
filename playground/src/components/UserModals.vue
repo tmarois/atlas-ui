@@ -10,16 +10,15 @@ const addEditUserData = data('ADD_EDIT_USER');
 const deleteUserData = data('DELETE_USER');
 
 const form = reactive({
-  id: null as number | null,
+  id: null,
   name: '',
   email: '',
   processing: false,
-  errors: {} as Record<string, any>,
+  errors: {},
 });
 
 watch(addEditUserVisible, (visible) => {
   if (visible) {
-    const user: any = addEditUserData.value || {};
     form.id = user.id ?? null;
     form.name = user.name ?? '';
     form.email = user.email ?? '';
@@ -53,10 +52,9 @@ const confirmDelete = () => {
       </LabelField>
     </div>
   </DrawerForm>
-
   <DialogConfirmation
     v-model="deleteUserVisible"
-    :message="`Are you sure you want to delete ${deleteUserData.value?.name || 'this user'}?`"
+    :message="`Are you sure you want to delete this user?`"
     @confirm="confirmDelete"
   />
 </template>
