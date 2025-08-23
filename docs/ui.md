@@ -23,7 +23,8 @@ Reusable Vue 3 components styled with Tailwind CSS and built on top of PrimeVue.
     - [Checkbox](#checkbox)
     - [RadioButton](#radiobutton)
     - [LabelField](#labelfield)
-    - [LabelChoice](#labelchoice)
+    - [LabelCheckbox](#labelcheckbox)
+    - [LabelRadioButton](#labelradiobutton)
     - [ToggleButton](#togglebutton)
     - [ToggleSwitch](#toggleswitch)
     - [Password](#password)
@@ -291,37 +292,41 @@ import { LabelField, InputText } from '@atlas/ui';
 - `required` – display an asterisk when true.
 - `error` – validation message displayed below the field.
 
-#### LabelChoice
+#### LabelCheckbox
 ```ts
-import { LabelChoice, Checkbox, RadioButton } from '@atlas/ui';
+import { LabelCheckbox } from '@atlas/ui';
 ```
 
-**Checkbox**
-
 ```vue
-<LabelChoice v-model="checked" label="Accept terms" inputId="accept">
-  <Checkbox />
-</LabelChoice>
+<LabelCheckbox v-model="checked" label="Accept terms" inputId="accept" binary />
 ```
 
-**Radio Button**
+See the [PrimeVue Checkbox](https://primevue.org/checkbox/) for all available options.
+
+##### API
+
+Refer to the [PrimeVue Checkbox API](https://primevue.org/checkbox/#api).
+
+#### LabelRadioButton
+```ts
+import { LabelRadioButton } from '@atlas/ui';
+```
 
 ```vue
-<LabelChoice
+<LabelRadioButton
   v-model="selected"
   :value="'a'"
   label="Option A"
   name="options"
   inputId="option-a"
->
-  <RadioButton />
-</LabelChoice>
+/>
 ```
+
+See the [PrimeVue RadioButton](https://primevue.org/radiobutton/) for all available options.
 
 ##### API
 
-Refer to the [PrimeVue Checkbox API](https://primevue.org/checkbox/#api) and
-[RadioButton API](https://primevue.org/radiobutton/#api).
+Refer to the [PrimeVue RadioButton API](https://primevue.org/radiobutton/#api).
 
 #### ToggleButton
 ```ts

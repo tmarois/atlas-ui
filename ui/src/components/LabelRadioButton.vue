@@ -1,15 +1,9 @@
 <template>
     <div :class="mergedPt.root.class">
-        <component
-            v-if="choiceComponent"
-            :is="choiceComponent"
-            v-model="model"
-            v-bind="choiceAttrs"
-            :pt="mergedPt.input"
-        />
+        <RadioButton v-model="model" v-bind="inputAttrs" :pt="mergedPt.input" />
         <label
             v-if="label"
-            :for="choiceAttrs.inputId"
+            :for="inputAttrs.inputId"
             :class="mergedPt.label.class"
         >
             {{ label }}
@@ -18,10 +12,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, useAttrs, useSlots } from 'vue';
+import RadioButton from './RadioButton.vue';
+import { computed, useAttrs } from 'vue';
 import { ptMerge } from '../utils';
 
-interface LabelChoicePassThroughOptions {
+interface LabelRadioButtonPassThroughOptions {
     root?: any;
     input?: any;
     label?: any;
@@ -29,7 +24,7 @@ interface LabelChoicePassThroughOptions {
 
 interface Props {
     label?: string;
-    pt?: LabelChoicePassThroughOptions;
+    pt?: LabelRadioButtonPassThroughOptions;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -38,18 +33,10 @@ const props = withDefaults(defineProps<Props>(), {
 
 const model = defineModel<any>();
 const attrs = useAttrs();
-const slots = useSlots();
 
-const choiceComponent = computed(() => slots.default?.()[0]?.type);
+const isChecked = computed(() => model.value === (attrs as any)?.value);
 
-const isChecked = computed(() => {
-    if ((attrs as any)?.value !== undefined) {
-        return model.value === (attrs as any).value;
-    }
-    return !!model.value;
-});
-
-const theme = computed<LabelChoicePassThroughOptions>(() => ({
+const theme = computed<LabelRadioButtonPassThroughOptions>(() => ({
     root: 'w-full flex items-center space-x-2',
     input: {},
     label: `block text-sm transition-colors ${
@@ -67,7 +54,7 @@ const theme = computed<LabelChoicePassThroughOptions>(() => ({
 
 const mergedPt = computed(() => ptMerge(theme.value, props.pt));
 
-const choiceAttrs = computed(() => {
+const inputAttrs = computed(() => {
     const { pt, ...rest } = attrs as any;
     return rest;
 });
