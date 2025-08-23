@@ -3,6 +3,7 @@
 Reusable Vue 3 components styled with Tailwind CSS and built on top of PrimeVue.
 
 ## Table of Contents
+- [Component Guide](ui/component-guide.md)
 - [Application](#application)
 - [Override Themes with Passthrough](#override-themes-with-passthrough)
 - [Components](#components)
