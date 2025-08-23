@@ -11,9 +11,8 @@ import MultiSelect from '@ui/components/MultiSelect.vue';
 import AutoComplete from '@ui/components/AutoComplete.vue';
 import InputNumber from '@ui/components/InputNumber.vue';
 import Alert from '@ui/components/Alert.vue';
-import LabelChoice from '@ui/components/LabelChoice.vue';
-import RadioButton from '@ui/components/RadioButton.vue';
-import Checkbox from '@ui/components/Checkbox.vue';
+import LabelCheckbox from '@ui/components/LabelCheckbox.vue';
+import LabelRadioButton from '@ui/components/LabelRadioButton.vue';
 import { useModal } from '@ui/composables';
 
 const { open } = useModal();
@@ -227,27 +226,17 @@ const search = (event) => {
               <div class="w-full">
                 <LabelField name="when" label="Charge">
                   <div class="space-y-2 mt-2">
-                    <LabelChoice v-model="form.payment" label="Now" inputId="payment1" name="payment" value="Now">
-                      <RadioButton />
-                    </LabelChoice>
-                    <LabelChoice v-model="form.payment" label="Later" inputId="payment2" name="payment" value="Later">
-                      <RadioButton />
-                    </LabelChoice>
-                    <LabelChoice v-model="form.payment" label="Disabled" inputId="payment3" name="payment" value="disabled" :disabled="true">
-                      <RadioButton />
-                    </LabelChoice>
+                    <LabelRadioButton v-model="form.payment" label="Now" inputId="payment1" name="payment" value="Now" />
+                    <LabelRadioButton v-model="form.payment" label="Later" inputId="payment2" name="payment" value="Later" />
+                    <LabelRadioButton v-model="form.payment" label="Disabled" inputId="payment3" name="payment" value="disabled" :disabled="true" />
                   </div>
                 </LabelField>
               </div>
               <div class="w-full">
                 <LabelField name="agree" label="Terms">
                   <div class="space-y-2 mt-2">
-                    <LabelChoice v-model="form.agree" label="I agree to the terms" inputId="agree" binary>
-                      <Checkbox />
-                    </LabelChoice>
-                    <LabelChoice v-model="form.agree" label="Terms disabled" inputId="agreeDisabled" binary :disabled="true">
-                      <Checkbox />
-                    </LabelChoice>
+                    <LabelCheckbox v-model="form.agree" label="I agree to the terms" inputId="agree" binary />
+                    <LabelCheckbox v-model="form.agree" label="Terms disabled" inputId="agreeDisabled" binary :disabled="true" />
                   </div>
                 </LabelField>
               </div>
@@ -284,27 +273,17 @@ const search = (event) => {
               <div class="w-full">
                 <LabelField name="when" label="Charge">
                   <div class="space-y-2 mt-2">
-                    <LabelChoice v-model="form.payment" label="Now" inputId="payment1d" name="payment2" value="Now" :disabled="true">
-                      <RadioButton />
-                    </LabelChoice>
-                    <LabelChoice v-model="form.payment" label="Later" inputId="payment2d" name="payment2" value="Later" :disabled="true">
-                      <RadioButton />
-                    </LabelChoice>
-                    <LabelChoice v-model="form.payment" label="Disabled" inputId="payment3d" name="payment2" value="disabled" :disabled="true">
-                      <RadioButton />
-                    </LabelChoice>
+                    <LabelRadioButton v-model="form.payment" label="Now" inputId="payment1d" name="payment2" value="Now" :disabled="true" />
+                    <LabelRadioButton v-model="form.payment" label="Later" inputId="payment2d" name="payment2" value="Later" :disabled="true" />
+                    <LabelRadioButton v-model="form.payment" label="Disabled" inputId="payment3d" name="payment2" value="disabled" :disabled="true" />
                   </div>
                 </LabelField>
               </div>
               <div class="w-full">
                 <LabelField name="agree" label="Terms">
                   <div class="space-y-2 mt-2">
-                    <LabelChoice v-model="form.agree" label="I agree to the terms" inputId="agree2" binary :disabled="true">
-                      <Checkbox />
-                    </LabelChoice>
-                    <LabelChoice v-model="form.agree" label="Terms disabled" inputId="agree2d" binary :disabled="true">
-                      <Checkbox />
-                    </LabelChoice>
+                    <LabelCheckbox v-model="form.agree" label="I agree to the terms" inputId="agree2" binary :disabled="true" />
+                    <LabelCheckbox v-model="form.agree" label="Terms disabled" inputId="agree2d" binary :disabled="true" />
                   </div>
                 </LabelField>
               </div>
