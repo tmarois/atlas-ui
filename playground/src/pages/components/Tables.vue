@@ -18,7 +18,7 @@ const users = ref([
 
 <template>
   <section class="p-4 space-y-4">
-    <Card pt.content="p-0">
+    <Card noPadding>
       <template #content>
         <DataTable :value="users" paginator :rows="5">
           <Column field="name" header="Name" />
