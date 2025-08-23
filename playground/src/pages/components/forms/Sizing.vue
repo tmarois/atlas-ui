@@ -21,7 +21,14 @@ const form = reactive({
   checked: 'on',
   gender: null,
   autorole: null,
+  query: null,
 });
+
+const formSizes = [
+  { label: 'Default', size: undefined },
+  { label: 'Small', size: 'small' },
+  { label: 'Large', size: 'large' },
+];
 
 const roles = ref([
   { id: 'admin', name: 'Admin' },
@@ -77,29 +84,46 @@ const search = (event) => {
 
 <template>
   <section class="p-4 space-y-4">
-    <Card class="w-full">
+    <Card v-for="item in formSizes" :key="item.label" class="w-full">
+      <template #header>
+        <span>{{ item.label }}</span>
+      </template>
       <template #content>
         <div class="space-y-4">
+          <div class="flex items-end space-x-4">
+            <LabelField name="query" label="Query" class="flex-1">
+              <InputText v-model="form.query" fluid :size="item.size" />
+            </LabelField>
+            <Button label="Search" :size="item.size" />
+          </div>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <LabelField name="first_name" label="First Name">
-              <InputText v-model="form.first_name" fluid />
+              <InputText v-model="form.first_name" fluid :size="item.size" />
             </LabelField>
             <LabelField name="last_name" label="Last Name">
-              <InputText v-model="form.last_name" fluid />
+              <InputText v-model="form.last_name" fluid :size="item.size" />
             </LabelField>
             <LabelField name="email" label="Email">
-              <InputText v-model="form.email" fluid />
+              <InputText v-model="form.email" fluid :size="item.size" />
             </LabelField>
             <LabelField name="type" label="Type">
-              <Select v-model="form.type" :options="types" optionLabel="name" optionValue="id" fluid />
+              <Select v-model="form.type" :options="types" optionLabel="name" optionValue="id" fluid :size="item.size" />
             </LabelField>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <LabelField name="amount" label="Amount">
-              <InputNumber v-model="form.amount" mode="currency" currency="USD" locale="en-US" fluid placeholder="$0.00" />
+              <InputNumber
+                v-model="form.amount"
+                mode="currency"
+                currency="USD"
+                locale="en-US"
+                fluid
+                placeholder="$0.00"
+                :size="item.size"
+              />
             </LabelField>
             <LabelField name="roles" label="Roles">
-              <MultiSelect v-model="form.roles" :options="roles" optionLabel="name" optionValue="id" fluid />
+              <MultiSelect v-model="form.roles" :options="roles" optionLabel="name" optionValue="id" fluid :size="item.size" />
             </LabelField>
             <LabelField name="autorole" label="Auto Role">
               <AutoComplete
@@ -111,15 +135,16 @@ const search = (event) => {
                 fluid
                 dropdown
                 showClear
+                :size="item.size"
               />
             </LabelField>
             <LabelField name="gender" label="Gender">
-              <Select v-model="form.gender" :options="genders" optionLabel="gender" optionValue="id" fluid />
+              <Select v-model="form.gender" :options="genders" optionLabel="gender" optionValue="id" fluid :size="item.size" />
             </LabelField>
           </div>
           <div class="flex items-center space-x-4">
-            <Button outlined label="Cancel" />
-            <Button label="Save" />
+            <Button outlined label="Cancel" :size="item.size" />
+            <Button label="Save" :size="item.size" />
           </div>
         </div>
       </template>
