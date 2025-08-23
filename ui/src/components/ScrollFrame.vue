@@ -59,14 +59,21 @@ onMounted(() => {
     nextTick(() => {
         updateHeight();
     });
+    if (typeof window !== 'undefined') {
+        window.addEventListener('resize', updateHeight);
+    }
 });
 
 onBeforeUnmount(() => {
     remove();
     if (props.page && !props.allowBodyScroll) unlockScroll();
+    if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', updateHeight);
+    }
 });
 
 watch(() => props.offset, updateHeight);
+watch(() => props.addOffset, updateHeight);
 
 watch(
     () => props.allowBodyScroll,
