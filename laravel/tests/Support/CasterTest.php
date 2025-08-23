@@ -17,6 +17,7 @@ class CasterTest extends TestCase
             'options' => '{"foo":"bar"}',
             'birthday' => '2024-01-01',
             'meta' => ['foo' => 'bar'],
+            'metaObject' => (object) ['foo' => 'bar'],
             'invalidDate' => 'not-a-date',
             'invalidJson' => '{bad json',
         ];
@@ -29,6 +30,7 @@ class CasterTest extends TestCase
             'options' => 'json',
             'birthday' => 'datetime',
             'meta' => 'json',
+            'metaObject' => 'json',
             'invalidDate' => 'datetime',
             'invalidJson' => 'json',
         ];
@@ -41,7 +43,8 @@ class CasterTest extends TestCase
         $this->assertTrue($result['active']);
         $this->assertSame(['foo' => 'bar'], $result['options']);
         $this->assertInstanceOf(\DateTime::class, $result['birthday']);
-        $this->assertSame(json_encode(['foo' => 'bar']), $result['meta']);
+        $this->assertSame(['foo' => 'bar'], $result['meta']);
+        $this->assertSame(['foo' => 'bar'], $result['metaObject']);
         $this->assertNull($result['invalidDate']);
         $this->assertNull($result['invalidJson']);
     }

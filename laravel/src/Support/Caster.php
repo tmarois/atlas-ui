@@ -59,15 +59,22 @@ class Caster
     }
 
     /**
-     * Cast a value to JSON string or object.
+     * Cast a value to a decoded JSON representation.
+     *
+     * Arrays or objects are converted to JSON and then decoded so that the
+     * return value is always a PHP array (or scalar) rather than a JSON string.
      *
      * @param mixed $value The value to cast.
-     * @return mixed The cast JSON value.
+     * @return mixed The decoded JSON value or null on failure.
      */
     private static function castToJson(mixed $value): mixed
     {
         if (is_array($value) || is_object($value)) {
-            return json_encode($value);
+            $value = json_encode($value);
+
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                return null;
+            }
         }
 
         $decoded = json_decode($value, true);
