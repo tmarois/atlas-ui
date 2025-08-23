@@ -19,6 +19,38 @@ const pageNavItems = [
       { label: 'Editor', href: '/components/editor', parent: '/components/editor' },
     ],
   },
+  {
+    label: 'Notifications',
+    children: [
+      { label: 'Email', href: '/notifications/email' },
+      { label: 'Push', href: '/notifications/push' },
+    ],
+  },
+  {
+    label: 'Security',
+    children: [
+      { label: 'Password', href: '/security/password' },
+      { label: 'Two Factor', href: '/security/two-factor' },
+    ],
+  },
+  {
+    label: 'Billing',
+    children: [
+      { label: 'Plans', href: '/billing/plans', disabled: true },
+      {
+        label: 'Invoices',
+        href: '/billing/invoices',
+        disabled: true,
+        lockTooltipText: 'Coming soon',
+      },
+      {
+        label: 'Subscriptions',
+        href: '/billing/subscriptions',
+        disabled: true,
+        lockTooltipText: 'Coming soon',
+      },
+    ],
+  },
 ];
 
 const pageTabs = computed(() => {
