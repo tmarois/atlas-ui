@@ -1,5 +1,5 @@
 <template>
-    <RadioButton
+    <PrimeRadioButton
         unstyled
         v-bind="bindProps"
         :pt="mergedPt"
@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import RadioButton, { type RadioButtonPassThroughOptions, type RadioButtonProps } from 'primevue/radiobutton';
+import PrimeRadioButton, { type RadioButtonPassThroughOptions, type RadioButtonProps } from 'primevue/radiobutton';
 import { ref, useAttrs, computed } from 'vue';
 import { ptViewMerge, ptMerge } from '../utils';
 

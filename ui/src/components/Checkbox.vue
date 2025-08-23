@@ -1,5 +1,5 @@
 <template>
-    <Checkbox
+    <PrimeCheckbox
         unstyled
         v-bind="bindProps"
         :pt="mergedPt"
@@ -9,13 +9,13 @@
             <CheckIcon v-if="checked" :class="theme.icon" :data-p="dataP" />
             <MinusIcon v-else-if="indeterminate" :class="theme.icon" :data-p="dataP" />
         </template>
-    </Checkbox>
+    </PrimeCheckbox>
 </template>
 
 <script setup lang="ts">
 import CheckIcon from '@primevue/icons/check';
 import MinusIcon from '@primevue/icons/minus';
-import Checkbox, { type CheckboxPassThroughOptions, type CheckboxProps } from 'primevue/checkbox';
+import PrimeCheckbox, { type CheckboxPassThroughOptions, type CheckboxProps } from 'primevue/checkbox';
 import { ref, useAttrs, computed } from 'vue';
 import { ptViewMerge, ptMerge } from '../utils';
 
