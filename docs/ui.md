@@ -36,18 +36,23 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [MultiSelect](#multiselect)
   - [Textarea](#textarea)
   - [Checkbox](#checkbox)
+  - [RadioButton](#radiobutton)
+  - [LabelField](#labelfield)
   - [LabelChoice](#labelchoice)
   - [ToggleButton](#togglebutton)
   - [ToggleSwitch](#toggleswitch)
   - [Password](#password)
   - [Slider](#slider)
+  - [Editor](#editor)
 - [Layout](#layout)
   - [ScrollFrame](#scrollframe)
   - [Accordion](#accordion)
   - [Card](#card)
   - [Divider](#divider)
+  - [Popover](#popover)
   - [Tabs](#tabs)
 - [Data Display](#data-display)
+  - [DataTable](#datatable)
   - [Avatar](#avatar)
   - [AvatarGroup](#avatargroup)
   - [Chip](#chip)
@@ -241,6 +246,38 @@ import { Checkbox } from '@atlas/ui';
 
 See the [PrimeVue Checkbox API](https://primevue.org/checkbox/#api).
 
+#### RadioButton
+```ts
+import { RadioButton } from '@atlas/ui';
+```
+
+```vue
+<RadioButton v-model="selected" :value="'a'" name="group" />
+```
+
+##### API
+
+Refer to the [PrimeVue RadioButton API](https://primevue.org/radiobutton/#api).
+
+#### LabelField
+```ts
+import { LabelField, InputText } from '@atlas/ui';
+```
+
+```vue
+<LabelField label="Name" name="name" required tooltip="Enter full name">
+  <InputText v-model="name" />
+</LabelField>
+```
+
+##### Props
+
+- `label` – text for the label.
+- `tooltip` – help text shown in a tooltip.
+- `name` – associates the label with an input.
+- `required` – display an asterisk when true.
+- `error` – validation message displayed below the field.
+
 #### LabelChoice
 ```ts
 import { LabelChoice, Checkbox, RadioButton } from '@atlas/ui';
@@ -324,7 +361,25 @@ import { Slider } from '@atlas/ui';
 
 See the [PrimeVue Slider API](https://primevue.org/slider/#api).
 
+#### Editor
+```ts
+import { Editor } from '@atlas/ui';
+```
 
+```vue
+<Editor v-model="content" placeholder="Write something..." />
+```
+
+##### Props
+
+- `modelValue` – bound editor content.
+- `placeholder` – placeholder text.
+- `editorClass` – additional classes for the editor area.
+- `autofocus` – focus editor on mount.
+- `toolbar` – show the formatting toolbar.
+- `toolbarOptions` – array of toolbar buttons to display.
+- `textOnly` – restrict to plain text input.
+- `toolbarClass` – additional classes for the toolbar.
 
 ### Layout
 
@@ -399,6 +454,22 @@ import { Divider } from '@atlas/ui';
 
 Refer to the [PrimeVue Divider API](https://primevue.org/divider/#api).
 
+#### Popover
+```ts
+import { Popover, Button } from '@atlas/ui';
+```
+
+```vue
+<Popover ref="popover">
+  <template #content>More info</template>
+</Popover>
+<Button label="Show" @click="popover.toggle($event)" />
+```
+
+##### API
+
+Refer to the [PrimeVue Popover API](https://primevue.org/popover/#api).
+
 #### Tabs
 ```ts
 import { Tabs, Tab, TabList, TabPanel, TabPanels } from '@atlas/ui';
@@ -422,6 +493,23 @@ import { Tabs, Tab, TabList, TabPanel, TabPanels } from '@atlas/ui';
 Refer to the [PrimeVue Tabs API](https://primevue.org/tabs/#api).
 
 ### Data Display
+
+#### DataTable
+```ts
+import { DataTable } from '@atlas/ui';
+import Column from 'primevue/column';
+```
+
+```vue
+<DataTable :value="rows">
+  <Column field="name" header="Name" />
+  <Column field="email" header="Email" />
+</DataTable>
+```
+
+##### API
+
+Refer to the [PrimeVue DataTable API](https://primevue.org/datatable/#api).
 
 #### Avatar
 ```ts
