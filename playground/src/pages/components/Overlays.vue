@@ -61,7 +61,7 @@ const submitDrawerForm = () => {
         <DrawerForm
           v-model="drawerFormVisible"
           :title="form.id ? 'Edit user' : 'Add user'"
-          :tabs="[{ title: 'Details' }, { title: 'Line items' }, { title: 'Roles', disabled: true }]"
+          :tabs="[{ title: 'Details' }, { title: 'Line items' }, { title: 'Roles', disabled: true, lockTooltipText: 'Manage roles in settings' }]"
           position="right"
           width="600px"
           :loading="form.processing"

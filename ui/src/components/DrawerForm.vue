@@ -32,8 +32,16 @@
                                     ]"
                                     @click="() => { if (!tab?.disabled) activeTab = i }"
                                 >
-                                    <IconLock v-if="tab?.disabled" size="16" />
-                                    <span>{{ tab.title }}</span>
+                                    <span class="flex items-center gap-1">
+                                        <span
+                                            v-if="tab?.disabled && tab.lockTooltipText"
+                                            v-tooltip.top="{ value: tab.lockTooltipText, pt: tooltipPt }"
+                                            class="pointer-events-auto"
+                                        >
+                                            <IconLock size="16" />
+                                        </span>
+                                        <span>{{ tab.title }}</span>
+                                    </span>
                                 </button>
                             </li>
                         </ul>
@@ -73,7 +81,7 @@ import Button from './Button.vue';
 import { IconLock } from '@tabler/icons-vue';
 import { ref, watch } from 'vue';
 
-type Tab = { title: string; disabled?: boolean };
+type Tab = { title: string; disabled?: boolean; lockTooltipText?: string };
 
 const props = defineProps({
     modelValue: Boolean,
@@ -93,6 +101,11 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue', 'submit', 'update:modelActiveTab']);
 const activeTab = ref(props.modelActiveTab);
+
+const tooltipPt = {
+    root: 'absolute shadow-md p-fadein py-0 px-0 max-w-[260px]',
+    text: 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-700 dark:border-surface-800 rounded whitespace-pre-line'
+};
 
 watch(activeTab, val => emit('update:modelActiveTab', val));
 watch(() => props.modelActiveTab, val => activeTab.value = val);

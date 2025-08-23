@@ -79,6 +79,12 @@ import { PageSideNav } from '@atlas/ui';
 - `items: NavItem[]` – navigation links. Default `[]`.
 - `linkComponent: string | object` – component used for links. Default `'a'`.
 
+**NavItem**
+- `label: string`
+- `href: string`
+- `disabled?: boolean` – apply disabled styling and prevent navigation.
+- `lockTooltipText?: string` – when `disabled`, show a lock icon with this tooltip.
+
 **Events**
 - None
 

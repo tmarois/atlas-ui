@@ -23,7 +23,16 @@
                                         child.disabled && 'opacity-50 cursor-not-allowed pointer-events-none'
                                     ]"
                                 >
-                                    {{ child.label }}
+                                    <span class="flex items-center gap-2">
+                                        <span
+                                            v-if="child.disabled && child.lockTooltipText"
+                                            v-tooltip.top="{ value: child.lockTooltipText, pt: tooltipPt }"
+                                            class="pointer-events-auto"
+                                        >
+                                            <IconLock size="16" />
+                                        </span>
+                                        <span>{{ child.label }}</span>
+                                    </span>
                                 </component>
                             </li>
                         </ul>
@@ -40,7 +49,16 @@
                             item.disabled && 'opacity-50 cursor-not-allowed pointer-events-none'
                         ]"
                     >
-                        {{ item.label }}
+                        <span class="flex items-center gap-2">
+                            <span
+                                v-if="item.disabled && item.lockTooltipText"
+                                v-tooltip.top="{ value: item.lockTooltipText, pt: tooltipPt }"
+                                class="pointer-events-auto"
+                            >
+                                <IconLock size="16" />
+                            </span>
+                            <span>{{ item.label }}</span>
+                        </span>
                     </component>
                 </template>
             </div>
@@ -50,6 +68,7 @@
 
 <script setup lang="ts">
 import ScrollFrame from '../../ScrollFrame.vue';
+import { IconLock } from '@tabler/icons-vue';
 import { isPageActive } from '../../../utils';
 
 interface NavItem {
@@ -58,6 +77,7 @@ interface NavItem {
     parent?: string;
     children?: NavItem[];
     disabled?: boolean;
+    lockTooltipText?: string;
 }
 
 interface Props {
@@ -71,6 +91,11 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const { items, linkComponent } = props;
+
+const tooltipPt = {
+    root: 'absolute shadow-md p-fadein py-0 px-0 max-w-[260px]',
+    text: 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-700 dark:border-surface-800 rounded whitespace-pre-line'
+};
 
 const isActive = (item: NavItem) =>
     item.parent ? isPageActive(item.parent) : isPageActive(item.href, undefined, true);

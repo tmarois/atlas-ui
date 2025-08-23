@@ -45,12 +45,12 @@ const sideBarItems = computed(() => [
             { label: 'Two Factor', href: '/security/two-factor' },
           ],
         },
-        {
+        { 
           label: 'Billing',
           children: [
-            { label: 'Plans', href: '/billing/plans', disabled: true },
-            { label: 'Invoices', href: '/billing/invoices', disabled: true },
-            { label: 'Subscriptions', href: '/billing/subscriptions', disabled: true },
+            { label: 'Plans', href: '/billing/plans', disabled: true, lockTooltipText: 'Coming soon' },
+            { label: 'Invoices', href: '/billing/invoices', disabled: true, lockTooltipText: 'Coming soon' },
+            { label: 'Subscriptions', href: '/billing/subscriptions', disabled: true, lockTooltipText: 'Coming soon' },
           ],
         },
       ];
