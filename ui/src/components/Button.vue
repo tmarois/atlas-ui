@@ -22,7 +22,7 @@ const attrs = useAttrs();
 
 const theme = ref<ButtonPassThroughOptions>({
     root: `inline-flex self-start cursor-pointer select-none items-center justify-center overflow-hidden relative
-        px-4 py-2.5 gap-2 rounded disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
+        px-4 py-[9px] leading-5 gap-2 rounded disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
         bg-primary-500 enabled:hover:bg-primary-500/70 enabled:active:bg-primary-500/60 text-white text-md font-semibold p-text:!font-medium
         border border-primary-500 enabled:hover:border-primary-500/70 enabled:active:border-primary-500/60
         focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
@@ -48,6 +48,7 @@ const theme = ref<ButtonPassThroughOptions>({
     loadingIcon: `animate-spin`,
     icon: `p-right:order-1 p-bottom:order-2`,
     label: `
+            leading-5
             p-icon-only:invisible p-icon-only:w-0
             p-large:font-bold
         `,

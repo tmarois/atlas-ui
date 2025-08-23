@@ -23,4 +23,12 @@ describe('Button', () => {
         expect(classes).toContain('p-small:px-[0.625rem]');
         expect(classes).toContain('p-small:py-[0.375rem]');
     });
+
+    it('uses 40px default height', () => {
+        const wrapper = mountWithPrime({ label: 'Test' });
+        const classes = wrapper.find('button').attributes('class');
+        expect(classes).toContain('py-[9px]');
+        const labelClasses = wrapper.find('span').attributes('class');
+        expect(labelClasses).toContain('leading-5');
+    });
 });
