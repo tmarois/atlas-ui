@@ -34,7 +34,10 @@ const form = reactive({
 
 const errors = reactive({
     first_name: 'First name is required',
-    last_name: 'Last name is required'
+    last_name: 'Last name is required',
+    gender: 'Gender is required',
+    roles: 'Roles are required',
+    autorole: 'Role is required'
 });
 
 const roles = ref([
@@ -315,7 +318,6 @@ const search = (event) => {
           </template>
           <template #content>
             <div class="space-y-4 w-full">
-              <Errors :errors="errors" />
               <div class="w-full flex items-center space-x-4">
                 <LabelField name="first_name" label="First Name" required :error="errors.first_name">
                   <InputText id="first_name_invalid" v-model="form.first_name" type="text" fluid clearable :invalid="true" />
@@ -325,30 +327,26 @@ const search = (event) => {
                 </LabelField>
               </div>
               <div class="w-full">
-                <LabelField name="email" label="Email" required>
-                  <InputText id="email_invalid" v-model="form.email" type="text" fluid />
+                <LabelField name="gender" label="Gender" :error="errors.gender">
+                  <Select v-model="form.gender" showClear :options="genders" optionLabel="gender" optionValue="id" fluid filter :invalid="true" />
                 </LabelField>
               </div>
               <div class="w-full">
-                <LabelField name="gender" label="Gender">
-                  <Select v-model="form.gender" showClear :options="genders" optionLabel="gender" optionValue="id" fluid filter />
+                <LabelField name="roles" label="Roles" :error="errors.roles">
+                  <MultiSelect v-model="form.roles" showClear :options="roles" optionLabel="name" optionValue="id" fluid filter :invalid="true" />
                 </LabelField>
               </div>
               <div class="w-full">
-                <LabelField name="roles" label="Roles">
-                  <MultiSelect v-model="form.roles" showClear :options="roles" optionLabel="name" optionValue="id" fluid filter />
+                <LabelField name="roles" label="Roles (chips)" :error="errors.roles">
+                  <MultiSelect v-model="form.roles" display="chip" :options="roles" optionLabel="name" optionValue="id" fluid filter :maxSelectedLabels="6" :invalid="true" />
                 </LabelField>
               </div>
               <div class="w-full">
-                <LabelField name="roles" label="Roles (chips)">
-                  <MultiSelect v-model="form.roles" display="chip" :options="roles" optionLabel="name" optionValue="id" fluid filter :maxSelectedLabels="6" />
+                <LabelField name="autorole" label="Roles (autocomplete)" :error="errors.autorole">
+                  <AutoComplete v-model="form.autorole" :suggestions="filteredRoles" @complete="search" optionLabel="label" optionValue="id" fluid dropdown showClear forceSelection :invalid="true" />
                 </LabelField>
               </div>
-              <div class="w-full">
-                <LabelField name="roles" label="Roles (autocomplete)">
-                  <AutoComplete v-model="form.autorole" :suggestions="filteredRoles" @complete="search" optionLabel="label" optionValue="id" fluid dropdown showClear forceSelection />
-                </LabelField>
-              </div>
+              <Errors :errors="errors" />
             </div>
           </template>
         </Card>
