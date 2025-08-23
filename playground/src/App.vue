@@ -64,6 +64,7 @@ const sideBarItems = computed(() => [
       return [
         { title: 'General', href: '/components/forms' },
         { title: 'Sizing', href: '/components/forms/sizing' },
+        { title: 'Errors', href: '/components/forms/errors' },
       ];
     }
     if (route.path.startsWith('/components/editor')) {
