@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
 import PrimeVue from 'primevue/config';
-import { Button } from '../../src/components';
+import Button from '../../src/components/Button.vue';
 
 const mountWithPrime = (props: any = {}) =>
     mount(Button, {

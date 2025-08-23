@@ -1,7 +1,15 @@
 import { describe, it, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
 import PrimeVue from 'primevue/config';
-import { Alert, Button, Card, Checkbox, InputMask, InputNumber, InputText, Select, Textarea } from '../../src/components';
+import Alert from '../../src/components/Alert.vue';
+import Button from '../../src/components/Button.vue';
+import Card from '../../src/components/Card.vue';
+import Checkbox from '../../src/components/Checkbox.vue';
+import InputMask from '../../src/components/InputMask.vue';
+import InputNumber from '../../src/components/InputNumber.vue';
+import InputText from '../../src/components/InputText.vue';
+import Select from '../../src/components/Select.vue';
+import Textarea from '../../src/components/Textarea.vue';
 
 Object.defineProperty(window, 'matchMedia', {
     writable: true,
