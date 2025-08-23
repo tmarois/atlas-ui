@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from './pages/Home.vue';
 import Users from './pages/Users.vue';
-import User from './pages/User.vue';
 import Buttons from './pages/components/Buttons.vue';
 import Forms from './pages/components/forms/Index.vue';
 import FormsSizing from './pages/components/forms/Sizing.vue';
@@ -35,9 +34,7 @@ const routes = [
   {
     path: '/users/:id',
     component: UserLayout,
-    children: [
-      { path: '', component: User, meta: { title: 'User details' } },
-    ],
+    meta: { title: 'User details' },
   },
   {
     path: '/components',
