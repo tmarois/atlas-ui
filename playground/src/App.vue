@@ -33,6 +33,12 @@ const sideBarItems = computed(() => [
   });
 
   const pageTabs = computed(() => {
+    if (route.path.startsWith('/components/forms')) {
+      return [
+        { title: 'General', href: '/components/forms' },
+        { title: 'Sizing', href: '/components/forms/sizing' },
+      ];
+    }
     if (route.path.startsWith('/components/editor')) {
       return [
         { title: 'Overview', href: '/components/editor' },
