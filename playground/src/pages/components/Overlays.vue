@@ -17,12 +17,14 @@ const dialogVisible = ref(false);
           Drawer
         </div>
       </template>
-      <div class="p-4">
-        <Button label="Open Drawer" @click="drawerVisible = true" />
-      </div>
-      <Drawer v-model:visible="drawerVisible" header="Drawer">
-        <p class="m-0 p-4">Drawer Content</p>
-      </Drawer>
+      <template #content>
+        <div class="p-4">
+          <Button label="Open Drawer" @click="drawerVisible = true" />
+        </div>
+        <Drawer v-model:visible="drawerVisible" header="Drawer">
+          <p class="m-0 p-4">Drawer Content</p>
+        </Drawer>
+      </template>
     </Card>
 
     <Card pt.content="p-0">
@@ -31,15 +33,17 @@ const dialogVisible = ref(false);
           Modal
         </div>
       </template>
-      <div class="p-4">
-        <Button label="Open Modal" @click="dialogVisible = true" />
-      </div>
-      <Dialog v-model:visible="dialogVisible" header="Modal">
-        <p class="m-0 p-4">Modal Content</p>
-        <template #footer>
-          <Button label="Close" @click="dialogVisible = false" />
-        </template>
-      </Dialog>
+      <template #content>
+        <div class="p-4">
+          <Button label="Open Modal" @click="dialogVisible = true" />
+        </div>
+        <Dialog v-model:visible="dialogVisible" header="Modal">
+          <p class="m-0 p-4">Modal Content</p>
+          <template #footer>
+            <Button label="Close" @click="dialogVisible = false" />
+          </template>
+        </Dialog>
+      </template>
     </Card>
   </section>
 </template>
