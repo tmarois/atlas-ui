@@ -49,8 +49,7 @@ const theme = ref<ButtonPassThroughOptions>({
     icon: `p-right:order-1 p-bottom:order-2`,
     label: `
             p-icon-only:invisible p-icon-only:w-0
-            p-small:text-sm
-            p-large:text-base p-large:font-bold
+            p-large:font-bold
         `,
     pcBadge: {
         root: `min-w-4 h-4 leading-4 bg-primary-contrast rounded-full text-primary text-xs font-bold`
