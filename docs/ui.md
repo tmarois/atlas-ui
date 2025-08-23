@@ -49,6 +49,7 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [Accordion](#accordion)
   - [Card](#card)
   - [Divider](#divider)
+  - [Dialog](#dialog)
   - [Popover](#popover)
   - [Tabs](#tabs)
 - [Data Display](#data-display)
@@ -456,6 +457,24 @@ import { Divider } from '@atlas/ui';
 ##### API
 
 Refer to the [PrimeVue Divider API](https://primevue.org/divider/#api).
+
+#### Dialog
+```ts
+import { Dialog, Button } from '@atlas/ui';
+```
+
+```vue
+<Dialog v-model:visible="visible">
+  Content
+  <template #footer>
+    <Button label="Close" @click="visible = false" />
+  </template>
+</Dialog>
+```
+
+##### API
+
+Refer to the [PrimeVue Dialog API](https://primevue.org/dialog/#api).
 
 #### Popover
 ```ts
