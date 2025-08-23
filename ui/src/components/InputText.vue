@@ -10,10 +10,11 @@
                 :ptOptions="{ mergeProps: ptViewMerge }"
             />
             <button
-                v-if="model && !props.disabled && clearable"
+                v-if="model && clearable"
                 type="button"
                 @click="clearInput"
-                class="absolute top-1/2 -translate-y-1/2 right-3 text-surface-400 hover:text-surface-600 dark:text-surface-300 dark:hover:text-white cursor-pointer"
+                :disabled="isDisabled"
+                class="absolute top-1/2 -translate-y-1/2 right-3 text-surface-400 hover:text-surface-600 dark:text-surface-300 dark:hover:text-white cursor-pointer disabled:hidden disabled:pointer-events-none"
             >
                 <TimesIcon class="w-4 h-4" />
             </button>
@@ -71,5 +72,6 @@ const passThroughProps = computed(() => {
     return rest;
 });
 const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const isDisabled = computed(() => !!bindProps.value.disabled);
 </script>
 
