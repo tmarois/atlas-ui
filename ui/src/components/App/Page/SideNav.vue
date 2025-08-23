@@ -19,7 +19,8 @@
                                     :class="[
                                         isActive(child)
                                             ? 'bg-surface-100 dark:bg-surface-700 text-primary-800 dark:text-white font-semibold'
-                                            : 'text-slate-900 hover:bg-surface-100 dark:text-slate-300 dark:hover:bg-surface-700'
+                                            : 'text-slate-900 hover:bg-surface-100 dark:text-slate-300 dark:hover:bg-surface-700',
+                                        child.disabled && 'opacity-50 cursor-not-allowed pointer-events-none'
                                     ]"
                                 >
                                     {{ child.label }}
@@ -35,7 +36,8 @@
                         :class="[
                             isActive(item)
                                 ? 'bg-surface-100 dark:bg-surface-700 text-primary-800 dark:text-white font-semibold'
-                                : 'text-slate-900 hover:bg-surface-100 dark:text-slate-300 dark:hover:bg-surface-700'
+                                : 'text-slate-900 hover:bg-surface-100 dark:text-slate-300 dark:hover:bg-surface-700',
+                            item.disabled && 'opacity-50 cursor-not-allowed pointer-events-none'
                         ]"
                     >
                         {{ item.label }}
@@ -55,6 +57,7 @@ interface NavItem {
     href: string;
     parent?: string;
     children?: NavItem[];
+    disabled?: boolean;
 }
 
 interface Props {

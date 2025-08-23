@@ -48,9 +48,9 @@ const sideBarItems = computed(() => [
         {
           label: 'Billing',
           children: [
-            { label: 'Plans', href: '/billing/plans' },
-            { label: 'Invoices', href: '/billing/invoices' },
-            { label: 'Subscriptions', href: '/billing/subscriptions' },
+            { label: 'Plans', href: '/billing/plans', disabled: true },
+            { label: 'Invoices', href: '/billing/invoices', disabled: true },
+            { label: 'Subscriptions', href: '/billing/subscriptions', disabled: true },
           ],
         },
       ];
