@@ -9,7 +9,7 @@
             <span v-if="required" :class="mergedPt.required.class">*</span>
             <TooltipIcon v-if="tooltip" :text="tooltip" :class="mergedPt.tooltip.class" />
         </label>
-        <div :class="mergedPt.field.class">
+        <div :class="mergedPt.field.class" ref="fieldRef">
             <slot />
             <div v-if="error" :class="mergedPt.error.class">
                 {{ error }}
@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import TooltipIcon from './TooltipIcon.vue';
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { ptMerge } from '../utils';
 
 interface LabelFieldPassThroughOptions {
@@ -61,4 +61,20 @@ const theme = computed<LabelFieldPassThroughOptions>(() => ({
 }));
 
 const mergedPt = computed(() => ptMerge(theme.value, props.pt));
+
+const fieldRef = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+    if (!props.name || !fieldRef.value) {
+        return;
+    }
+
+    const input = fieldRef.value.querySelector<HTMLElement>(
+        'input,select,textarea,button,[tabindex]'
+    );
+
+    if (input && !input.id) {
+        input.id = props.name;
+    }
+});
 </script>
