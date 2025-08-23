@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from './pages/Home.vue';
 import Users from './pages/Users.vue';
+import User from './pages/User.vue';
 import Buttons from './pages/components/Buttons.vue';
 import Forms from './pages/components/forms/Index.vue';
 import FormsSizing from './pages/components/forms/Sizing.vue';
@@ -13,6 +14,7 @@ import EditorVariant from './pages/components/editor/Variant.vue';
 import EditorText from './pages/components/editor/Text.vue';
 import MainLayout from './layouts/MainLayout.vue';
 import UserLayout from './layouts/UserLayout.vue';
+import UsersLayout from './layouts/UsersLayout.vue';
 import ComponentsLayout from './layouts/ComponentsLayout.vue';
 
 const routes = [
@@ -25,20 +27,28 @@ const routes = [
   },
   {
     path: '/users',
-    component: Users,
-    meta: { title: 'Users table' },
+    component: UsersLayout,
+    children: [
+      { path: '', component: Users, meta: { title: 'Users table' } },
+    ],
   },
   {
     path: '/users/:id',
     component: UserLayout,
-    meta: { title: 'User details' },
-    props: route => ({
-      item: {
-        id: Number(route.params.id),
-        name: `User ${route.params.id}`,
-        email: `user${route.params.id}@example.com`,
+    children: [
+      {
+        path: '',
+        component: User,
+        meta: { title: 'User details' },
+        props: route => ({
+          item: {
+            id: Number(route.params.id),
+            name: `User ${route.params.id}`,
+            email: `user${route.params.id}@example.com`,
+          },
+        }),
       },
-    }),
+    ],
   },
   {
     path: '/components',

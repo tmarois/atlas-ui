@@ -15,8 +15,10 @@ const pageTitle = computed(() => route.meta.title || '');
     :pageTitle="pageTitle"
     :sideBarItems="sideBarItems"
     :linkComponent="RouterLink"
-    :widthClass="'w-full'"
+    :containerClass="'p-0'"
+    :noScroll="true"
     :isSideNav="true"
+    :widthClass="'w-full'"
   >
     <template #navLogo>
       <img src="/atlas.png" alt="Atlas" class="h-8 w-8 rounded-full" />
