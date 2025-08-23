@@ -13,13 +13,12 @@ import TabPanel from '@ui/components/TabPanel.vue';
 
 <template>
   <section class="p-4 space-y-4">
-    <Card>
+    <Card :pt="{ root: 'p-0' }">
       <template #header>
         <div class="font-semibold text-gray-900 dark:text-gray-100 text-md flex items-center space-x-2">
           <div>Accordion</div>
         </div>
       </template>
-      <template #content>
         <Accordion value="0">
             <AccordionPanel value="0">
               <AccordionHeader>Header I</AccordionHeader>
@@ -46,16 +45,14 @@ import TabPanel from '@ui/components/TabPanel.vue';
               </AccordionContent>
             </AccordionPanel>
           </Accordion>
+        </Card>
+      <Card :pt="{ root: 'p-0' }">
+        <template #header>
+          <div class="font-semibold text-gray-900 dark:text-gray-100 text-md flex items-center space-x-2">
+            <div>Tabs</div>
+          </div>
         </template>
-      </Card>
-    <Card>
-      <template #header>
-        <div class="font-semibold text-gray-900 dark:text-gray-100 text-md flex items-center space-x-2">
-          <div>Tabs</div>
-        </div>
-      </template>
-      <template #content>
-        <Tabs value="0">
+          <Tabs value="0">
             <TabList>
               <Tab value="0">Header I</Tab>
               <Tab value="1">Header II</Tab>
@@ -78,8 +75,7 @@ import TabPanel from '@ui/components/TabPanel.vue';
                 </p>
               </TabPanel>
             </TabPanels>
-          </Tabs>
-        </template>
-      </Card>
-  </section>
-</template>
+            </Tabs>
+        </Card>
+    </section>
+  </template>

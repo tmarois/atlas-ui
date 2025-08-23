@@ -24,6 +24,7 @@ const pageNavItems = computed(() => {
       { label: 'Forms', href: '/components/forms' },
       { label: 'Tables', href: '/components/tables' },
       { label: 'Tabs', href: '/components/tabs' },
+      { label: 'Overlays', href: '/components/overlays' },
     ];
   }
 
