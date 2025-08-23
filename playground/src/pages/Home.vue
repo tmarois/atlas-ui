@@ -1,3 +1,9 @@
+<script setup>
+import MainLayout from '../layouts/MainLayout.vue';
+</script>
+
 <template>
-  <section></section>
+  <MainLayout>
+    <section></section>
+  </MainLayout>
 </template>

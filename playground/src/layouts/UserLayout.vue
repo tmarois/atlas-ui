@@ -1,68 +1,50 @@
 <script setup>
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import LayoutApp from '@ui/components/App/Index.vue';
-import { Button, useModal } from '@atlas/ui';
-import UserModals from '../components/UserModals.vue';
-import Link from '../components/RouterLink.vue';
+import UiApp from '@ui/components/App/Index.vue';
+import RouterLink from '../components/RouterLink.vue';
 import { sideBarItems } from '../sideBarItems';
 
+const route = useRoute();
+
 const props = defineProps({
-    item: {
-        type: Object,
-        default: () => ({}),
-    },
+  pageTitle: String,
+  containerClass: String,
+  noScroll: Boolean,
 });
 
-const { open } = useModal();
-const route = useRoute();
+const pageTitle = computed(() => props.pageTitle ?? route.meta.title || '');
 </script>
 
 <template>
-    <LayoutApp
-        title="User"
-        :pageUrl="route.fullPath"
-        :pageTitle="'User'"
-        :sideBarItems="sideBarItems"
-        :linkComponent="Link"
-        :widthClass="'w-full'"
-        :isSideNav="true"
-    >
-        <template #navLogo>
-            <img src="/atlas.png" alt="Atlas" class="h-8 w-8 rounded-full" />
-        </template>
-        <template #headerTitle>
-            <div class="pr-2">
-                <Button
-                    as="a"
-                    text
-                    icon="pi pi-arrow-left"
-                    size="small"
-                    href="/users"
-                />
-            </div>
-            <div class="flex flex-col space-y-0 py-3">
-                <div class="text-md font-medium">{{ item.name }}</div>
-                <div class="text-sm text-slate-500">{{ item.email }}</div>
-            </div>
-        </template>
-        <template #headerAction>
-            <Button
-                size="small"
-                label="Edit"
-                @click="open('ADD_EDIT_USER', item)"
-            />
-        </template>
-        <template #pageSideContent>
-            <div class="h-[1000px] w-[350px] p-4">
-                <div>This is my side content</div>
-            </div>
-        </template>
-        <template #default>
-            <div class="h-[1000px]">
-                <div>This is my page content</div>
-                <div>{{ item }}</div>
-            </div>
-        </template>
-    </LayoutApp>
-    <UserModals />
+  <UiApp
+    :pageUrl="route.fullPath"
+    :pageTitle="pageTitle"
+    :sideBarItems="sideBarItems"
+    :linkComponent="RouterLink"
+    :widthClass="'w-full'"
+    :isSideNav="true"
+    :containerClass="props.containerClass"
+    :noScroll="props.noScroll"
+  >
+    <template #navLogo>
+      <img src="/atlas.png" alt="Atlas" class="h-8 w-8 rounded-full" />
+    </template>
+    <template v-if="$slots.headerTitle" #headerTitle>
+      <slot name="headerTitle" />
+    </template>
+    <template v-if="$slots.headerAction" #headerAction>
+      <slot name="headerAction" />
+    </template>
+    <template v-if="$slots.footer" #footer>
+      <slot name="footer" />
+    </template>
+    <template v-if="$slots.footerAction" #footerAction>
+      <slot name="footerAction" />
+    </template>
+    <template v-if="$slots.pageSideContent" #pageSideContent>
+      <slot name="pageSideContent" />
+    </template>
+    <slot />
+  </UiApp>
 </template>

@@ -1,4 +1,5 @@
 <script setup>
+import ComponentsLayout from "../../../layouts/ComponentsLayout.vue";
 import { ref, reactive } from 'vue';
 import Card from '@ui/components/Card.vue';
 import LabelField from '@ui/components/LabelField.vue';
@@ -83,6 +84,7 @@ const search = (event) => {
 </script>
 
 <template>
+  <ComponentsLayout>
   <section class="space-y-4">
     <Card v-for="item in formSizes" :key="item.label" class="w-full">
       <template #header>
@@ -152,4 +154,5 @@ const search = (event) => {
       </template>
     </Card>
   </section>
+  </ComponentsLayout>
 </template>

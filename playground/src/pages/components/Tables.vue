@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import DataTable from '@ui/components/DataTable.vue';
 import Column from 'primevue/column';
 import Card from '@ui/components/Card.vue';
+import ComponentsLayout from '../../layouts/ComponentsLayout.vue';
 
 const users = ref([
   { name: 'Alice', email: 'alice@example.com', country: 'USA' },
@@ -17,15 +18,17 @@ const users = ref([
 </script>
 
 <template>
-  <section class="space-y-4">
-    <Card noPadding>
-      <template #content>
-        <DataTable :value="users" paginator :rows="5">
-          <Column field="name" header="Name" />
-          <Column field="email" header="Email" />
-          <Column field="country" header="Country" />
-        </DataTable>
-      </template>
-    </Card>
-  </section>
+  <ComponentsLayout>
+    <section class="space-y-4">
+      <Card noPadding>
+        <template #content>
+          <DataTable :value="users" paginator :rows="5">
+            <Column field="name" header="Name" />
+            <Column field="email" header="Email" />
+            <Column field="country" header="Country" />
+          </DataTable>
+        </template>
+      </Card>
+    </section>
+  </ComponentsLayout>
 </template>

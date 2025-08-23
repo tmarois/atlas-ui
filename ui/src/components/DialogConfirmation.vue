@@ -82,7 +82,9 @@ const theme = computed<DialogConfirmationPassThroughOptions>(() => ({
     confirmButton: {
         root: 'text-white bg-red-600 enabled:hover:bg-red-700 border-red-600 enabled:active:border-red-400 enabled:active:bg-red-600 enabled:hover:border-red-emphasis',
     },
-    cancelButton: {},
+    cancelButton: {
+        root: 'text-gray-700 dark:text-gray-200',
+    },
 }));
 
 const mergedPt = computed(() => ptMerge(theme.value, props.pt));

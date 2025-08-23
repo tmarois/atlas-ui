@@ -1,11 +1,9 @@
 <script setup>
 import { ref, computed } from 'vue';
-import LayoutApp from '@ui/components/App/Index.vue';
 import { Table, ButtonMenu, TableActions, InputText, Button, Select, useModal } from '@atlas/ui';
 import UserModals from '../components/UserModals.vue';
 import Link from '../components/RouterLink.vue';
-import LinkPaginator from '../components/LinkPaginator.vue';
-import { sideBarItems } from '../sideBarItems';
+import UsersLayout from '../layouts/UsersLayout.vue';
 
 const { open } = useModal();
 
@@ -116,19 +114,11 @@ const userTotal = computed(() => users.value.total);
 </script>
 
 <template>
-    <LayoutApp
-        title="Users"
+    <UsersLayout
         :pageTitle="`Users (${userTotal})`"
         containerClass="p-0"
         :noScroll="true"
-        :sideBarItems="sideBarItems"
-        :linkComponent="Link"
-        :isSideNav="true"
-        :widthClass="'w-full'"
     >
-        <template #navLogo>
-            <img src="/atlas.png" alt="Atlas" class="h-8 w-8 rounded-full" />
-        </template>
         <template v-if="(selectAll ? userTotal : selected?.length) > 0" #headerTitle>
             <TableActions
                 :selectedCount="selectAll ? userTotal : selected?.length"
@@ -202,6 +192,6 @@ const userTotal = computed(() => users.value.total);
         <template #footerAction>
             [placeholder]
         </template>
-    </LayoutApp>
+    </UsersLayout>
     <UserModals />
 </template>

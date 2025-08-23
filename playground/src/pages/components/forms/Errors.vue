@@ -1,4 +1,5 @@
 <script setup>
+import ComponentsLayout from "../../../layouts/ComponentsLayout.vue";
 import { ref, reactive } from 'vue';
 import Card from '@ui/components/Card.vue';
 import ToggleSwitch from '@ui/components/ToggleSwitch.vue';
@@ -99,6 +100,7 @@ const search = (event) => {
 </script>
 
 <template>
+  <ComponentsLayout>
   <section class="space-y-4">
     <div class="flex space-x-4">
       <Card>
@@ -155,5 +157,6 @@ const search = (event) => {
       </Card>
     </div>
   </section>
+  </ComponentsLayout>
 </template>
 

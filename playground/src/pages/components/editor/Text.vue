@@ -1,4 +1,5 @@
 <script setup>
+import ComponentsLayout from "../../../layouts/ComponentsLayout.vue";
 import { ref } from 'vue';
 import Card from '@ui/components/Card.vue';
 import Editor from '@ui/components/Editor/Index.vue';
@@ -9,6 +10,7 @@ const editContent = ref('');
 </script>
 
 <template>
+  <ComponentsLayout>
   <section class="space-y-4">
     <Card pt:content:class="p-0">
       <template #content>
@@ -26,4 +28,5 @@ const editContent = ref('');
       </template>
     </Card>
   </section>
+  </ComponentsLayout>
 </template>
