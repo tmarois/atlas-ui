@@ -52,7 +52,7 @@ const perPageOptions = [
 ];
 
 const search = ref('');
-const perPage = ref(15);
+const perPage = ref(100);
 const sortField = ref('name');
 const sortOrder = ref(1);
 const viewFields = ref(['edit', 'name', 'email']);
