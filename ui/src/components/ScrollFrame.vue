@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, nextTick, onMounted, onBeforeUnmount } from 'vue';
+import { ref, watch, nextTick, onMounted, onBeforeUnmount, onUpdated } from 'vue';
 import { useScroll } from '../composables/useScroll';
 
 interface Props {
@@ -67,6 +67,12 @@ onMounted(() => {
             resizeObserver.observe(document.body);
         }
     }
+});
+
+onUpdated(() => {
+    nextTick(() => {
+        updateHeight();
+    });
 });
 
 onBeforeUnmount(() => {
