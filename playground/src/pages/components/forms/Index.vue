@@ -254,10 +254,9 @@ const search = (event) => {
             </div>
           </template>
           <template #footer>
-            <div class="flex items-center space-x-4">
-              <Button label="Save" @click="open('TEST')" />
-              <Button outlined label="Show blank" @click="open('BLANK_DRAWER')" />
-            </div>
+              <div class="flex items-center space-x-4">
+                <Button label="Save" @click="open('TEST')" />
+              </div>
           </template>
         </Card>
         <Card>
@@ -312,14 +311,12 @@ const search = (event) => {
             </div>
           </template>
           <template #footer>
-            <div class="flex items-center space-x-4">
-              <Button label="Save" @click="open('TEST')" :disabled="true" />
-              <Button outlined label="Show blank" @click="open('BLANK_DRAWER')" :disabled="true" />
-            </div>
+              <div class="flex items-center space-x-4">
+                <Button label="Save" @click="open('TEST')" :disabled="true" />
+              </div>
           </template>
         </Card>
       </div>
-      
     </div>
   </section>
 </template>
