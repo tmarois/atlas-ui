@@ -42,3 +42,13 @@ import { Editor } from '@atlas/ui';
 ```
 Bind `v-model` to your data to read and write HTML content.
 
+## Displaying Content
+```ts
+import { EditorContent } from '@atlas/ui';
+```
+
+```vue
+<EditorContent :content="html" />
+```
+Use `EditorContent` to render editor output as HTML.
+

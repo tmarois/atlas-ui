@@ -36,12 +36,18 @@ Reusable Vue 3 components styled with Tailwind CSS and built on top of PrimeVue.
     - [Card](#card)
     - [Divider](#divider)
     - [Dialog](#dialog)
+    - [DialogConfirmation](#dialogconfirmation)
     - [Drawer](#drawer)
     - [DrawerForm](#drawerform)
+    - [Topbar](#topbar)
     - [Popover](#popover)
     - [Tabs](#tabs)
   - [Data Display](#data-display)
     - [DataTable](#datatable)
+    - [Table](#table)
+    - [TableActions](#tableactions)
+    - [TableCustomizeColumns](#tablecustomizecolumns)
+    - [EditorContent](#editorcontent)
     - [Avatar](#avatar)
     - [AvatarGroup](#avatargroup)
     - [Chip](#chip)
@@ -498,6 +504,29 @@ import { Dialog, Button } from '@atlas/ui';
 
 Refer to the [PrimeVue Dialog API](https://primevue.org/dialog/#api).
 
+#### DialogConfirmation
+```ts
+import { DialogConfirmation } from '@atlas/ui';
+```
+
+```vue
+<DialogConfirmation v-model="open" title="Delete item" @confirm="remove" />
+```
+
+##### Props
+
+- `modelValue: boolean` – controls visibility.
+- `title: string` – header text. Default `'Delete Item'`.
+- `icon: string` – icon class for the dialog. Default `'pi pi-trash'`.
+- `message: string` – confirmation message.
+- `loading: boolean` – disable buttons and show loading state.
+- `pt: object` – passthrough options for internal elements.
+
+##### Events
+
+- `update:modelValue` – emitted when visibility changes.
+- `confirm` – emitted when the confirm button is clicked.
+
 #### Drawer
 ```ts
 import { Drawer } from '@atlas/ui';
@@ -542,6 +571,29 @@ import { DrawerForm } from '@atlas/ui';
 - `update:modelValue` – emitted when visibility changes.
 - `submit` – emitted on save.
 - `update:modelActiveTab` – emitted when active tab changes.
+
+#### Topbar
+```ts
+import { Topbar } from '@atlas/ui';
+```
+
+```vue
+<Topbar>
+  <span>Announcements</span>
+</Topbar>
+```
+
+##### Props
+
+- `pt: object` – passthrough options for internal elements.
+
+##### Slots
+
+- `default` – content rendered inside the bar.
+
+##### Events
+
+- None
 
 #### Popover
 ```ts
@@ -693,6 +745,116 @@ import { TooltipInfo } from '@atlas/ui';
 ##### Slots
 
 - `default` – content displayed inside the popover.
+
+#### Table
+```ts
+import { Table } from '@atlas/ui';
+```
+
+```vue
+<Table
+  :items="rows"
+  :columns="columns"
+  :activeColumnList="activeColumns"
+  @sort="onSort"
+/>
+```
+
+##### Props
+
+- `items: any[]` – table data rows.
+- `itemTotal: number` – total item count.
+- `selected: any[]` – selected rows.
+- `selectAll: boolean` – select all across pages.
+- `columns: any[]` – column definitions.
+- `activeColumnList: any[]` – ordered list of visible column keys.
+- `defaultColumnList: any[]` – default column keys.
+- `size: string` – table size, default `'small'`.
+- `tableStyle: string` – inline style for table width.
+- `dataKey: string` – unique key field, default `'id'`.
+- `emptyLabel: string` – message when no data, default `'No results'`.
+- `hasSelectAll: boolean` – show select-all menu.
+- `hasSelection: boolean` – enable row selection.
+- `hasCustomizeColumns: boolean` – enable column customization UI.
+- `scrollOffset: number` – additional offset for the scroll frame.
+- `scrollable: boolean` – enable DataTable scrolling.
+
+##### Events
+
+- `sort` – emitted with `{ field, order }` when sorting changes.
+- `update:selected` – emitted with selected rows.
+- `update:selectAll` – emitted when the select-all state changes.
+- `update:activeColumnList` – emitted with new active column keys.
+
+##### Slots
+
+- `columnKey` – named slots for custom cell templates using the column key.
+- `empty` – content shown when no rows exist.
+
+Built on PrimeVue's DataTable. See the [DataTable API](https://primevue.org/datatable/#api) for additional options.
+
+#### TableActions
+```ts
+import { TableActions } from '@atlas/ui';
+```
+
+```vue
+<TableActions :selectedCount="selected.length" :menuItems="actions" @action="onAction" />
+```
+
+##### Props
+
+- `selectedCount: number` – number of selected rows.
+- `menuItems: any[]` – action definitions. Child items may provide nested menus.
+
+##### Events
+
+- `action` – emitted with the action identifier. `'clear'` is emitted when the clear button is pressed.
+
+#### TableCustomizeColumns
+```ts
+import { TableCustomizeColumns } from '@atlas/ui';
+```
+
+```vue
+<TableCustomizeColumns
+  :columns="columns"
+  :activeColumnList="active"
+  :defaultColumnList="defaults"
+  @update="val => active = val"
+>
+  <template #trigger="{ toggle }">
+    <button @click="toggle">Columns</button>
+  </template>
+</TableCustomizeColumns>
+```
+
+##### Props
+
+- `columns: any[]` – column definitions.
+- `activeColumnList: any[]` – visible column keys.
+- `defaultColumnList: any[]` – default visible column keys.
+
+##### Events
+
+- `update` – emitted with new array of active column keys.
+
+##### Slots
+
+- `trigger` – custom element that toggles the popover.
+
+#### EditorContent
+```ts
+import { EditorContent } from '@atlas/ui';
+```
+
+```vue
+<EditorContent :content="html" />
+```
+
+##### Props
+
+- `content: string` – HTML string to render.
 
 ### Navigation
 

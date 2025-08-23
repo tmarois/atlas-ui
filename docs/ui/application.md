@@ -10,6 +10,7 @@ For an all-in-one page wrapper that composes these pieces together, see the [App
   - [NavSidebar](#navsidebar)
   - [PageSideNav](#pagesidenav)
 - [Layout](#layout)
+  - [Topbar](#topbar)
   - [PageHeader](#pageheader)
   - [PageContent](#pagecontent)
   - [PageFooter](#pagefooter)
@@ -90,6 +91,28 @@ import { PageSideNav } from '@atlas/ui';
 
 ## Layout
 Structural components that organize page content and actions.
+
+### Topbar
+Simple bar displayed above page content.
+
+```ts
+import { Topbar } from '@atlas/ui';
+```
+
+```vue
+<Topbar>
+  <span>Announcements</span>
+</Topbar>
+```
+
+**Props**
+- `pt?: object` – passthrough options for internal elements.
+
+**Slots**
+- `default` – bar content.
+
+**Events**
+- None
 
 ### PageHeader
 Page-level header with optional breadcrumbs and tabs.
