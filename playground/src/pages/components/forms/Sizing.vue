@@ -83,7 +83,7 @@ const search = (event) => {
 </script>
 
 <template>
-  <section class="p-4 space-y-4">
+  <section class="space-y-4">
     <Card v-for="item in formSizes" :key="item.label" class="w-full">
       <template #header>
         <div class="font-semibold text-gray-900 dark:text-gray-100 text-md flex items-center">

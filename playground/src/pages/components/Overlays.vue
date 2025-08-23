@@ -31,7 +31,7 @@ const submitDrawerForm = () => {
 </script>
 
 <template>
-  <section class="p-4 space-y-4">
+  <section class="space-y-4">
     <Card pt.content="p-0">
       <template #header>
         <div class="font-semibold text-gray-900 dark:text-gray-100 text-md flex items-center">
@@ -39,11 +39,11 @@ const submitDrawerForm = () => {
         </div>
       </template>
       <template #content>
-        <div class="p-4">
+        <div>
           <Button label="Open Drawer" @click="drawerVisible = true" />
         </div>
         <Drawer v-model:visible="drawerVisible" header="Drawer">
-          <p class="m-0 p-4">Drawer Content</p>
+          <p class="m-0">Drawer Content</p>
         </Drawer>
       </template>
     </Card>
@@ -55,7 +55,7 @@ const submitDrawerForm = () => {
         </div>
       </template>
       <template #content>
-        <div class="p-4">
+        <div>
           <Button label="Open Drawer Form" @click="openDrawerForm" />
         </div>
         <DrawerForm
@@ -110,11 +110,11 @@ const submitDrawerForm = () => {
         </div>
       </template>
       <template #content>
-        <div class="p-4">
+        <div>
           <Button label="Open Modal" @click="dialogVisible = true" />
         </div>
         <Dialog v-model:visible="dialogVisible" header="Modal">
-          <p class="m-0 p-4">Modal Content</p>
+          <p class="m-0">Modal Content</p>
           <template #footer>
             <Button label="Close" @click="dialogVisible = false" />
           </template>

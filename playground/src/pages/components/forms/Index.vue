@@ -106,7 +106,7 @@ const search = (event) => {
 </script>
 
 <template>
-  <section class="p-4 space-y-4">
+  <section class="space-y-4">
     <div class="flex flex-col space-y-4">
       <div class="flex space-x-4">
         <Card>

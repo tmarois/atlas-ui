@@ -24,7 +24,7 @@ const states = [
 </script>
 
 <template>
-  <section class="p-4 space-y-4">
+  <section class="space-y-4">
     <Card v-for="group in groups" :key="group.title">
       <template #header>
         <h3 class="text-lg font-semibold">{{ group.title }}</h3>

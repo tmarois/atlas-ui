@@ -95,7 +95,7 @@ const userTotal = computed(() => filteredUsers.value.length);
 
 <template>
   <section class="flex flex-col h-full overflow-hidden">
-    <div class="flex items-center justify-between p-4">
+    <div class="flex items-center justify-between">
       <div>
         <TableActions
           v-if="(selectAll ? userTotal : selected.length) > 0"
@@ -153,7 +153,7 @@ const userTotal = computed(() => filteredUsers.value.length);
         </template>
       </Table>
     </div>
-    <div class="p-4">
+    <div>
       <Select
         v-model="perPage"
         :options="perPageOptions"
