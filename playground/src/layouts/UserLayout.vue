@@ -2,7 +2,7 @@
 import { useRoute } from 'vue-router';
 import LayoutApp from '@ui/components/App/Index.vue';
 import { Button, useModal } from '@atlas/ui';
-import RouterLink from '../components/RouterLink.vue';
+import Link from '../components/RouterLink.vue';
 import { sideBarItems } from '../sideBarItems';
 
 const props = defineProps({
@@ -22,13 +22,13 @@ const route = useRoute();
         :pageUrl="route.fullPath"
         :pageTitle="'User'"
         :sideBarItems="sideBarItems"
-        :linkComponent="RouterLink"
+        :linkComponent="Link"
         :isSideNav="true"
     >
         <template #headerTitle>
             <div class="pr-2">
                 <Button
-                    as="RouterLink"
+                    as="Link"
                     text
                     icon="pi pi-arrow-left"
                     size="small"
