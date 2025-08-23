@@ -5,5 +5,5 @@
 </template>
 
 <script setup lang="ts">
-import ScrollFrame from '@atlas/components/ScrollFrame.vue';
+import ScrollFrame from '../../ScrollFrame.vue';
 </script>

@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
-import ScrollFrame from '@atlas/components/ScrollFrame.vue';
+import ScrollFrame from '../../ScrollFrame.vue';
 
 interface Props {
     offset?: number | null;
