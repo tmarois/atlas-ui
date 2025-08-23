@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from './pages/Home.vue';
 import Users from './pages/Users.vue';
+import User from './pages/User.vue';
 import ComponentsLayout from './pages/components/Index.vue';
 import Buttons from './pages/components/Buttons.vue';
 import Forms from './pages/components/forms/Index.vue';
@@ -16,6 +17,7 @@ import EditorText from './pages/components/editor/Text.vue';
 const routes = [
   { path: '/', component: Home, meta: { title: 'Dashboard' } },
   { path: '/users', component: Users, meta: { title: 'Users table' } },
+  { path: '/users/:id', component: User, meta: { title: 'User' } },
   {
     path: '/components',
     component: ComponentsLayout,
