@@ -30,6 +30,7 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [InputMask](#inputmask)
   - [InputGroup](#inputgroup)
   - [InputOtp](#inputotp)
+  - [DatePicker](#datepicker)
   - [Select](#select)
   - [AutoComplete](#autocomplete)
   - [MultiSelect](#multiselect)
@@ -52,12 +53,14 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [Chip](#chip)
   - [Badge](#badge)
 - [Navigation](#navigation)
+  - [ButtonMenu](#buttonmenu)
   - [Menu](#menu)
   - [Paginator](#paginator)
   - [Pagination](#pagination)
 - [Feedback](#feedback)
   - [Alert](#alert)
   - [Toast](#toast)
+  - [ProgressBar](#progressbar)
 
 ### Actions
 
@@ -159,6 +162,19 @@ import { InputOtp } from '@atlas/ui';
 ##### API
 
 Refer to the [PrimeVue InputOtp API](https://primevue.org/inputotp/#api).
+
+#### DatePicker
+```ts
+import { DatePicker } from '@atlas/ui';
+```
+
+```vue
+<DatePicker v-model="date" />
+```
+
+##### API
+
+See the [PrimeVue DatePicker API](https://primevue.org/datepicker/#api).
 
 #### Select
 ```ts
@@ -464,6 +480,30 @@ Refer to the [PrimeVue Badge API](https://primevue.org/badge/#api).
 
 ### Navigation
 
+#### ButtonMenu
+```ts
+import { ButtonMenu } from '@atlas/ui';
+```
+
+```vue
+<ButtonMenu :items="items" @action="onAction" />
+```
+
+##### Props
+
+- `items` – array of menu item objects.
+- `icon` – icon class for the default trigger. Defaults to `'pi pi-ellipsis-v'`.
+- `ptData` – additional data passed with the `action` event.
+- `onHover` – show menu on hover instead of click.
+
+##### Slots
+
+- `trigger` – custom trigger element. Receives `{ toggleMenu, triggerRef }`.
+
+##### Events
+
+- `action` – emitted when an item is selected. Arguments: `(action, ptData)`.
+
 #### Menu
 ```ts
 import { Menu } from '@atlas/ui';
@@ -532,3 +572,16 @@ import { Toast } from '@atlas/ui';
 ##### API
 
 Refer to the [PrimeVue Toast API](https://primevue.org/toast/#api).
+
+#### ProgressBar
+```ts
+import { ProgressBar } from '@atlas/ui';
+```
+
+```vue
+<ProgressBar :value="50" />
+```
+
+##### API
+
+Refer to the [PrimeVue ProgressBar API](https://primevue.org/progressbar/#api).
