@@ -93,9 +93,7 @@ const search = (event) => {
       <template #content>
         <div class="space-y-4">
           <div class="flex items-end space-x-4">
-            <LabelField name="query" label="Query" class="flex-1">
-              <InputText v-model="form.query" fluid :size="item.size" />
-            </LabelField>
+            <InputText v-model="form.query" fluid :size="item.size" class="flex-1" />
             <Button label="Search" :size="item.size" />
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
