@@ -1,5 +1,5 @@
 <template>
-    <span :title="text" :class="mergedPt.root.class">
+    <span v-tooltip="text" :class="mergedPt.root.class">
         <IconInfoCircle :class="mergedPt.icon.class" />
     </span>
 </template>
