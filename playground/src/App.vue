@@ -24,8 +24,47 @@ const sideBarItems = computed(() => [
         { label: 'Forms', href: '/components/forms' },
         { label: 'Tables', href: '/components/tables' },
         { label: 'Tabs', href: '/components/tabs' },
-          { label: 'Overlays', href: '/components/overlays' },
+        { label: 'Overlays', href: '/components/overlays' },
         { label: 'Editor', href: '/components/editor', parent: '/components/editor' },
+        {
+          label: 'My Account',
+          children: [
+            { label: 'Account', href: '/account' },
+            { label: 'Security', href: '/account/security' },
+          ],
+        },
+        {
+          label: 'Notifications',
+          children: [
+            { label: 'Email', href: '/notifications/email' },
+            { label: 'Push', href: '/notifications/push' },
+          ],
+        },
+        {
+          label: 'Security',
+          children: [
+            { label: 'Password', href: '/security/password' },
+            { label: 'Two Factor', href: '/security/two-factor' },
+          ],
+        },
+        {
+          label: 'Billing',
+          children: [
+            { label: 'Plans', href: '/billing/plans' },
+            { label: 'Invoices', href: '/billing/invoices' },
+            { label: 'Subscriptions', href: '/billing/subscriptions' },
+          ],
+        },
+        {
+          label: 'Integrations',
+          children: [
+            { label: 'Google', href: '/integrations/google' },
+            { label: 'Slack', href: '/integrations/slack' },
+            { label: 'Dropbox', href: '/integrations/dropbox' },
+            { label: 'Mailchimp', href: '/integrations/mailchimp' },
+            { label: 'Stripe', href: '/integrations/stripe' },
+          ],
+        },
       ];
     }
 
