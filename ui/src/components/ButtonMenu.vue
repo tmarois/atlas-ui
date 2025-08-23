@@ -119,11 +119,13 @@ const onTriggerEnter = async () => {
     if (el) menu.value.show({ currentTarget: el });
 };
 
-const onTriggerLeave = () => {
+const onTriggerLeave = (e: MouseEvent) => {
     if (!props.onHover) return;
+    const toEl = e.relatedTarget as Node | null;
+    if (menu.value?.$el?.contains(toEl)) return;
     closeTimeout.value = setTimeout(() => {
         if (isMenuOpen.value) menu.value.hide();
-    }, 100);
+    }, 200);
 };
 
 const toggleMenu = () => {
@@ -134,11 +136,14 @@ const toggleMenu = () => {
 const onMenuShow = () => (isMenuOpen.value = true);
 const onMenuHide = () => (isMenuOpen.value = false);
 const onMenuEnter = () => clearTimeout(closeTimeout.value);
-const onMenuLeave = () => {
+const onMenuLeave = (e: MouseEvent) => {
     if (!props.onHover) return;
+    const toEl = e.relatedTarget as Node | null;
+    const triggerEl = getTriggerEl();
+    if (triggerEl?.contains(toEl)) return;
     closeTimeout.value = setTimeout(() => {
         if (isMenuOpen.value) menu.value.hide();
-    }, 100);
+    }, 200);
 };
 
 const actionClick = (item: any) => {
