@@ -12,7 +12,6 @@ import Editor from './pages/components/editor/Index.vue';
 import EditorVariant from './pages/components/editor/Variant.vue';
 import EditorText from './pages/components/editor/Text.vue';
 import MainLayout from './layouts/MainLayout.vue';
-import UsersLayout from './layouts/UsersLayout.vue';
 import UserLayout from './layouts/UserLayout.vue';
 import ComponentsLayout from './layouts/ComponentsLayout.vue';
 
@@ -26,15 +25,20 @@ const routes = [
   },
   {
     path: '/users',
-    component: UsersLayout,
-    children: [
-      { path: '', component: Users, meta: { title: 'Users table' } },
-    ],
+    component: Users,
+    meta: { title: 'Users table' },
   },
   {
     path: '/users/:id',
     component: UserLayout,
     meta: { title: 'User details' },
+    props: route => ({
+      item: {
+        id: Number(route.params.id),
+        name: `User ${route.params.id}`,
+        email: `user${route.params.id}@example.com`,
+      },
+    }),
   },
   {
     path: '/components',
