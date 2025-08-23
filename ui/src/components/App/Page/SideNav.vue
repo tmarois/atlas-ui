@@ -23,15 +23,15 @@
                                         child.disabled && 'opacity-50 cursor-not-allowed pointer-events-none'
                                     ]"
                                 >
-                                    <span class="flex items-center gap-2">
+                                    <span class="flex items-center">
+                                        <span class="flex-1">{{ child.label }}</span>
                                         <span
                                             v-if="child.disabled && child.lockTooltipText"
-                                            v-tooltip.top="{ value: child.lockTooltipText, pt: tooltipPt }"
-                                            class="pointer-events-auto"
+                                            v-tooltip.right="{ value: child.lockTooltipText, pt: tooltipPt }"
+                                            class="ml-auto pl-2 pointer-events-auto"
                                         >
                                             <IconLock size="16" />
                                         </span>
-                                        <span>{{ child.label }}</span>
                                     </span>
                                 </component>
                             </li>
@@ -49,15 +49,15 @@
                             item.disabled && 'opacity-50 cursor-not-allowed pointer-events-none'
                         ]"
                     >
-                        <span class="flex items-center gap-2">
+                        <span class="flex items-center">
+                            <span class="flex-1">{{ item.label }}</span>
                             <span
                                 v-if="item.disabled && item.lockTooltipText"
-                                v-tooltip.top="{ value: item.lockTooltipText, pt: tooltipPt }"
-                                class="pointer-events-auto"
+                                v-tooltip.right="{ value: item.lockTooltipText, pt: tooltipPt }"
+                                class="ml-auto pl-2 pointer-events-auto"
                             >
                                 <IconLock size="16" />
                             </span>
-                            <span>{{ item.label }}</span>
                         </span>
                     </component>
                 </template>
@@ -93,7 +93,7 @@ const props = withDefaults(defineProps<Props>(), {
 const { items, linkComponent } = props;
 
 const tooltipPt = {
-    root: 'absolute shadow-md p-fadein py-0 px-0 max-w-[260px]',
+    root: 'absolute ml-2 shadow-md p-fadein py-0 px-0 max-w-[260px]',
     text: 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-700 dark:border-surface-800 rounded whitespace-pre-line'
 };
 

@@ -22,6 +22,7 @@ describe('PageSideNav', () => {
         const link = wrapper.find('a');
         expect(link.classes()).toContain('opacity-50');
         expect(link.classes()).toContain('cursor-not-allowed');
+        expect(wrapper.findComponent(IconLock).exists()).toBe(false);
     });
 
     it('shows lock icon when lockTooltipText provided', () => {

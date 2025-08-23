@@ -83,7 +83,7 @@ import { PageSideNav } from '@atlas/ui';
 - `label: string`
 - `href: string`
 - `disabled?: boolean` – apply disabled styling and prevent navigation.
-- `lockTooltipText?: string` – when `disabled`, show a lock icon with this tooltip.
+- `lockTooltipText?: string` – when `disabled`, show a lock icon on the right with this tooltip.
 
 **Events**
 - None

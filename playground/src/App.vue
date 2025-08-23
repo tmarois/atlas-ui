@@ -48,7 +48,7 @@ const sideBarItems = computed(() => [
         { 
           label: 'Billing',
           children: [
-            { label: 'Plans', href: '/billing/plans', disabled: true, lockTooltipText: 'Coming soon' },
+            { label: 'Plans', href: '/billing/plans', disabled: true },
             { label: 'Invoices', href: '/billing/invoices', disabled: true, lockTooltipText: 'Coming soon' },
             { label: 'Subscriptions', href: '/billing/subscriptions', disabled: true, lockTooltipText: 'Coming soon' },
           ],
