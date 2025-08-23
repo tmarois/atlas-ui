@@ -47,8 +47,8 @@
 </template>
 
 <script setup lang="ts">
-import ScrollFrame from '@atlas/components/ScrollFrame.vue';
-import { isPageActive } from '@atlas/utils';
+import ScrollFrame from '../../ScrollFrame.vue';
+import { isPageActive } from '../../../utils';
 
 interface NavItem {
     label: string;

@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { useSlots, computed } from 'vue';
-import { hasSlotContent } from '@atlas/utils';
+import { hasSlotContent } from '../../../utils';
 
 interface Props {
     leftOffset?: number;

@@ -94,8 +94,8 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
 import { IconLock } from '@tabler/icons-vue';
-import { useScroll } from '@atlas/composables/useScroll';
-import { hasSlotContent, isPageActive } from '@atlas/utils';
+import { useScroll } from '../../../composables/useScroll';
+import { hasSlotContent, isPageActive } from '../../../utils';
 
 interface Breadcrumb {
     href: string;
