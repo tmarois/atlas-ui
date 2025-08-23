@@ -5,4 +5,9 @@ export default {
       './src/**/*.{vue,js,ts,jsx,tsx}',
       '../ui/src/**/*.{vue,js,ts,jsx,tsx}',
   ],
+  safelist: [
+    {
+      pattern: /(bg|text|border|ring|shadow|p|m)-(.*)/,
+    },
+  ],
 }
