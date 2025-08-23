@@ -18,12 +18,14 @@ const users = ref([
 
 <template>
   <section class="p-4 space-y-4">
-    <Card :pt="{ root: 'p-0' }">
-      <DataTable :value="users" paginator :rows="5">
-        <Column field="name" header="Name" />
-        <Column field="email" header="Email" />
-        <Column field="country" header="Country" />
-      </DataTable>
+    <Card pt.content="p-0">
+      <template #content>
+        <DataTable :value="users" paginator :rows="5">
+          <Column field="name" header="Name" />
+          <Column field="email" header="Email" />
+          <Column field="country" header="Country" />
+        </DataTable>
+      </template>
     </Card>
   </section>
 </template>

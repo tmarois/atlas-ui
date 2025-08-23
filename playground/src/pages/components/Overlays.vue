@@ -11,35 +11,39 @@ const dialogVisible = ref(false);
 
 <template>
   <section class="p-4 space-y-4">
-    <Card :pt="{ root: 'p-0' }">
+    <Card pt.content="p-0">
       <template #header>
         <div class="font-semibold text-gray-900 dark:text-gray-100 text-md flex items-center">
           Drawer
         </div>
       </template>
-      <div class="p-4">
-        <Button label="Open Drawer" @click="drawerVisible = true" />
-      </div>
-      <Drawer v-model:visible="drawerVisible" header="Drawer">
-        <p class="m-0 p-4">Drawer Content</p>
-      </Drawer>
+      <template #content>
+        <div class="p-4">
+          <Button label="Open Drawer" @click="drawerVisible = true" />
+        </div>
+        <Drawer v-model:visible="drawerVisible" header="Drawer">
+          <p class="m-0 p-4">Drawer Content</p>
+        </Drawer>
+      </template>
     </Card>
 
-    <Card :pt="{ root: 'p-0' }">
+    <Card pt.content="p-0">
       <template #header>
         <div class="font-semibold text-gray-900 dark:text-gray-100 text-md flex items-center">
           Modal
         </div>
       </template>
-      <div class="p-4">
-        <Button label="Open Modal" @click="dialogVisible = true" />
-      </div>
-      <Dialog v-model:visible="dialogVisible" header="Modal">
-        <p class="m-0 p-4">Modal Content</p>
-        <template #footer>
-          <Button label="Close" @click="dialogVisible = false" />
-        </template>
-      </Dialog>
+      <template #content>
+        <div class="p-4">
+          <Button label="Open Modal" @click="dialogVisible = true" />
+        </div>
+        <Dialog v-model:visible="dialogVisible" header="Modal">
+          <p class="m-0 p-4">Modal Content</p>
+          <template #footer>
+            <Button label="Close" @click="dialogVisible = false" />
+          </template>
+        </Dialog>
+      </template>
     </Card>
   </section>
 </template>
