@@ -3,27 +3,146 @@
 Documentation for the Atlas application's overall structure and layout.
 
 ## Table of Contents
-- [Page Structure](#page-structure)
-  - [Header](#header)
-  - [Sidebar](#sidebar)
-  - [Main Content](#main-content)
-  - [Footer](#footer)
-- [Navigation](#navigation)
+- [NavTopbar](#navtopbar)
+- [NavSidebar](#navsidebar)
+- [PageHeader](#pageheader)
+- [PageSideNav](#pagesidenav)
+- [PageContent](#pagecontent)
+- [PageFooter](#pagefooter)
 
-## Page Structure
+## NavTopbar
+Global top navigation bar.
 
-### Header
-Provides global navigation and user controls.
+```ts
+import { NavTopbar } from '@atlas/ui';
+```
 
-### Sidebar
-Hosts primary section links and contextual actions.
+```vue
+<NavTopbar :items="navItems">
+  <template #actions>
+    <!-- optional action buttons -->
+  </template>
+</NavTopbar>
+```
 
-### Main Content
-Displays the active page's content and interactions.
+**Props**
+- `items: NavItem[]` – navigation links, supports nested `children`.
+- `linkComponent: string | object` – component used for links. Default `'a'`.
+- `homeUrl: string` – root link. Default `'/'`.
+- `widthClass: string` – max width container class. Default `'max-w-screen-2xl'`.
 
-### Footer
-Contains legal links and auxiliary information.
+**Events**
+- None
 
-## Navigation
-Routing between pages uses Vue Router with lazy-loaded routes for performance.
+## NavSidebar
+Vertical navigation sidebar.
+
+```ts
+import { NavSidebar } from '@atlas/ui';
+```
+
+```vue
+<NavSidebar :items="navItems">
+  <template #actions>
+    <!-- footer actions -->
+  </template>
+</NavSidebar>
+```
+
+**Props**
+- `items: NavItem[]` – sections and links displayed in the sidebar.
+- `homeUrl: string` – root link. Default `'/'`.
+- `linkComponent: string | object` – component used for links. Default `'a'`.
+
+**Events**
+- None
+
+## PageHeader
+Page-level header with optional breadcrumbs and tabs.
+
+```ts
+import { PageHeader } from '@atlas/ui';
+```
+
+```vue
+<PageHeader
+  :breadcrumbs="[{ href: '/', title: 'Home' }]"
+  title="Dashboard"
+/>
+```
+
+**Props**
+- `breadcrumbs: Breadcrumb[]` – items for the breadcrumb trail. Default `[]`.
+- `tabs: Tab[]` – optional tab navigation. Default `[]`.
+- `title: string` – page title text. Default `''`.
+- `linkComponent: string | object` – component used for links. Default `'a'`.
+- `widthClass: string` – max width container class. Default `'max-w-screen-2xl'`.
+- `hideTitle: boolean` – hide the title section. Default `false`.
+
+**Events**
+- None
+
+## PageSideNav
+Secondary navigation within a page.
+
+```ts
+import { PageSideNav } from '@atlas/ui';
+```
+
+```vue
+<PageSideNav :items="sideItems" />
+```
+
+**Props**
+- `items: NavItem[]` – navigation links. Default `[]`.
+- `linkComponent: string | object` – component used for links. Default `'a'`.
+
+**Events**
+- None
+
+## PageContent
+Scrollable main content area.
+
+```ts
+import { PageContent } from '@atlas/ui';
+```
+
+```vue
+<PageContent :offset="64">
+  <!-- page body -->
+</PageContent>
+```
+
+**Props**
+- `offset: number | null` – top offset for fixed headers. Default `null`.
+- `footerHeight: number` – height of a sticky footer to offset. Default `0`.
+- `widthClass: string` – max width container class. Default `'max-w-screen-2xl'`.
+- `containerClass: string` – additional container classes. Default `'mx-auto p-4'`.
+
+**Events**
+- None
+
+## PageFooter
+Sticky footer with optional action slot.
+
+```ts
+import { PageFooter } from '@atlas/ui';
+```
+
+```vue
+<PageFooter>
+  <span>&copy; 2024</span>
+  <template #action>
+    <!-- footer action -->
+  </template>
+</PageFooter>
+```
+
+**Props**
+- `leftOffset: number` – offset to account for sidebars. Default `0`.
+- `widthClass: string` – max width container class. Default `'max-w-screen-2xl'`.
+
+**Events**
+- None
+
 
