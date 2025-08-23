@@ -35,7 +35,6 @@
             ref="menu"
             :model="items"
             :popup="true"
-            :pt="mergedPt.menu"
             @show="onMenuShow"
             @hide="onMenuHide"
             @mouseenter="onMenuEnter"
