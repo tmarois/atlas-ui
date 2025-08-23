@@ -17,6 +17,7 @@ export { default as Badge } from './Badge.vue';
 export { default as Chip } from './Chip.vue';
 export { default as DataTable } from './DataTable.vue';
 export { default as Dialog } from './Dialog.vue';
+export { default as DialogConfirmation } from './DialogConfirmation.vue';
 export { default as Divider } from './Divider.vue';
 export { default as ScrollFrame } from './ScrollFrame.vue';
 export { default as Accordion } from './Accordion.vue';
