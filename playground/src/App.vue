@@ -17,21 +17,34 @@ const sideBarItems = computed(() => [
   },
 ]);
 
-const pageNavItems = computed(() => {
-  if (route.path.startsWith('/components')) {
-    return [
-      { label: 'Buttons', href: '/components/buttons' },
-      { label: 'Forms', href: '/components/forms' },
-      { label: 'Tables', href: '/components/tables' },
-      { label: 'Tabs', href: '/components/tabs' },
-      { label: 'Overlays', href: '/components/overlays' },
-    ];
-  }
+  const pageNavItems = computed(() => {
+    if (route.path.startsWith('/components')) {
+      return [
+        { label: 'Buttons', href: '/components/buttons' },
+        { label: 'Forms', href: '/components/forms' },
+        { label: 'Tables', href: '/components/tables' },
+        { label: 'Tabs', href: '/components/tabs' },
+          { label: 'Overlays', href: '/components/overlays' },
+        { label: 'Editor', href: '/components/editor', parent: '/components/editor' },
+      ];
+    }
 
-  return [];
-});
+    return [];
+  });
 
-const pageTitle = computed(() => route.meta.title || '');
+  const pageTabs = computed(() => {
+    if (route.path.startsWith('/components/editor')) {
+      return [
+        { title: 'Overview', href: '/components/editor' },
+        { title: 'Variants', href: '/components/editor/variant' },
+        { title: 'Text', href: '/components/editor/text' },
+      ];
+    }
+
+    return [];
+  });
+
+  const pageTitle = computed(() => route.meta.title || '');
 </script>
 
 <template>
@@ -40,6 +53,7 @@ const pageTitle = computed(() => route.meta.title || '');
     :pageTitle="pageTitle"
     :sideBarItems="sideBarItems"
     :pageNavItems="pageNavItems"
+    :pageTabs="pageTabs"
     :linkComponent="RouterLink"
     :isSideNav="true"
   >
