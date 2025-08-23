@@ -30,7 +30,7 @@ const pageTitle = computed(() => route.meta.title || '');
 
 <template>
   <UiApp
-    :pageUrl="route.path"
+    :pageUrl="route.fullPath"
     :pageTitle="pageTitle"
     :sideBarItems="sideBarItems"
     :pageNavItems="pageNavItems"

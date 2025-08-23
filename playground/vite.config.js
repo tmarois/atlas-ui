@@ -8,7 +8,8 @@ export default defineConfig({
   plugins: [vue(), tailwindcss()],
   resolve: {
     alias: {
-      '@ui': path.resolve(__dirname, '../ui/src')
+      '@ui': path.resolve(__dirname, '../ui/src'),
+      '@inertiajs/vue3': path.resolve(__dirname, './src/inertia.js')
     }
   },
   server: {
