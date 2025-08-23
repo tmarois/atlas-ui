@@ -1,13 +1,16 @@
 <template>
     <div
-        class="relative hover:cursor-pointer text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
-        :class="{ 'text-primary-500 hover:text-primary-600 dark:text-gray-200': isActive }"
+        v-bind="bindProps"
+        :class="[
+            mergedPt.root.class,
+            { 'text-primary-500 hover:text-primary-600 dark:text-gray-200': isActive }
+        ]"
         @click="toggle"
     >
         <svg
             v-show="isActive"
             xmlns="http://www.w3.org/2000/svg"
-            :class="iconClass"
+            :class="mergedPt.icon.class"
             viewBox="0 0 24 24"
         >
             <path
@@ -18,7 +21,7 @@
         <svg
             v-show="!isActive"
             xmlns="http://www.w3.org/2000/svg"
-            :class="iconClass"
+            :class="mergedPt.icon.class"
             viewBox="0 0 24 24"
         >
             <path
@@ -33,16 +36,34 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, useAttrs, computed } from 'vue';
+import { ptMerge } from '../utils';
 import Popover from './Popover.vue';
 
-interface Props {
-    iconClass?: string;
+interface TooltipInfoPassThroughOptions {
+    root?: any;
+    icon?: any;
 }
 
-const props = withDefaults(defineProps<Props>(), {
-    iconClass: 'size-5'
+interface Props {
+    pt?: TooltipInfoPassThroughOptions;
+}
+
+const props = defineProps<Props>();
+const attrs = useAttrs();
+
+const theme = ref<TooltipInfoPassThroughOptions>({
+    root: 'relative hover:cursor-pointer text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200',
+    icon: 'size-5'
 });
+
+const mergedPt = computed(() => ptMerge(theme.value, props.pt));
+
+const passThroughProps = computed(() => {
+    const { pt, ...rest } = props as any;
+    return rest;
+});
+const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
 
 const emit = defineEmits<{ (e: 'toggle', value: boolean): void }>();
 
