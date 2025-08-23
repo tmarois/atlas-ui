@@ -1,6 +1,5 @@
 <script setup>
 import { ref, reactive } from 'vue';
-import Column from 'primevue/column';
 import Card from '@ui/components/Card.vue';
 import ToggleSwitch from '@ui/components/ToggleSwitch.vue';
 import Button from '@ui/components/Button.vue';
@@ -24,19 +23,9 @@ import TabList from '@ui/components/TabList.vue';
 import Tab from '@ui/components/Tab.vue';
 import TabPanels from '@ui/components/TabPanels.vue';
 import TabPanel from '@ui/components/TabPanel.vue';
-import DataTable from '@ui/components/DataTable.vue';
 import { useModal } from '@ui/composables';
 
 const { open } = useModal();
-
-const products = ref(
-    Array.from({ length: 100 }, (_, i) => ({
-        code: `P-${String(i + 1).padStart(3, '0')}`,
-        name: `Product ${i + 1}`,
-        category: `Category ${((i % 10) + 1)}`,
-        quantity: Math.floor(Math.random() * 100) + 1,
-    }))
-);
 
 const form = reactive({
     first_name: 'John',
@@ -410,32 +399,7 @@ const search = (event) => {
           </template>
         </Card>
       </div>
-      <div>
-        <Card :pt="{ content: { class: 'p-0' } }">
-          <template #header>
-            <div class="font-semibold text-gray-900 dark:text-gray-100 text-md flex items-center space-x-2">
-              <div>Virtual table</div>
-            </div>
-          </template>
-          <template #content>
-            <div>
-              <DataTable
-                :value="products"
-                tableStyle="min-width: 50rem"
-                paginator
-                :rows="25"
-                scrollable
-                scrollHeight="300px"
-              >
-                <Column field="code" header="Code" sortable></Column>
-                <Column field="name" header="Name" sortable></Column>
-                <Column field="category" header="Category"></Column>
-                <Column field="quantity" header="Quantity"></Column>
-              </DataTable>
-            </div>
-          </template>
-        </Card>
-      </div>
+      
     </div>
   </section>
 </template>
