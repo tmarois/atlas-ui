@@ -123,6 +123,7 @@ const userTotal = computed(() => users.value.total);
         :sideBarItems="sideBarItems"
         :linkComponent="Link"
         :isSideNav="true"
+        :widthClass="'w-full'"
     >
         <template v-if="(selectAll ? userTotal : selected?.length) > 0" #headerTitle>
             <TableActions
@@ -195,7 +196,7 @@ const userTotal = computed(() => users.value.total);
             />
         </template>
         <template #footerAction>
-            <LinkPaginator :links="users.links" :linkComponent="'Link'" />
+            [placeholder]
         </template>
     </LayoutApp>
 </template>

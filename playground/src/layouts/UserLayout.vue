@@ -23,12 +23,13 @@ const route = useRoute();
         :pageTitle="'User'"
         :sideBarItems="sideBarItems"
         :linkComponent="Link"
+        :widthClass="'w-full'"
         :isSideNav="true"
     >
         <template #headerTitle>
             <div class="pr-2">
                 <Button
-                    as="Link"
+                    as="a"
                     text
                     icon="pi pi-arrow-left"
                     size="small"

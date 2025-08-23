@@ -15,6 +15,7 @@ const pageTitle = computed(() => route.meta.title || '');
     :pageTitle="pageTitle"
     :sideBarItems="sideBarItems"
     :linkComponent="RouterLink"
+    :widthClass="'w-full'"
     :isSideNav="true"
   >
     <template #navLogo>
