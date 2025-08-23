@@ -60,3 +60,4 @@ export { default as Table } from './App/Table/Table.vue';
 export { default as TableActions } from './App/Table/Actions.vue';
 export { default as TableCustomizeColumns } from './App/Table/CustomizeColumns.vue';
 export { default as Topbar } from './App/Topbar.vue';
+export { default as App } from './App/Index.vue';
