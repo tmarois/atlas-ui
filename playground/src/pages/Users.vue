@@ -125,6 +125,9 @@ const userTotal = computed(() => users.value.total);
         :isSideNav="true"
         :widthClass="'w-full'"
     >
+        <template #navLogo>
+            <img src="/atlas.png" alt="Atlas" class="h-8 w-8 rounded-full" />
+        </template>
         <template v-if="(selectAll ? userTotal : selected?.length) > 0" #headerTitle>
             <TableActions
                 :selectedCount="selectAll ? userTotal : selected?.length"

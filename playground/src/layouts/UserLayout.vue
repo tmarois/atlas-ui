@@ -26,6 +26,9 @@ const route = useRoute();
         :widthClass="'w-full'"
         :isSideNav="true"
     >
+        <template #navLogo>
+            <img src="/atlas.png" alt="Atlas" class="h-8 w-8 rounded-full" />
+        </template>
         <template #headerTitle>
             <div class="pr-2">
                 <Button
