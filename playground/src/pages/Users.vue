@@ -94,15 +94,16 @@ const userTotal = computed(() => filteredUsers.value.length);
 </script>
 
 <template>
-  <section class="p-4 space-y-4">
-    <div v-if="(selectAll ? userTotal : selected.length) > 0">
-      <TableActions
-        :selectedCount="selectAll ? userTotal : selected.length"
-        :menuItems="tableActionMenuItems"
-        @action="handleTableAction"
-      />
-    </div>
-    <div class="flex items-center justify-between">
+  <section class="flex flex-col h-full overflow-hidden">
+    <div class="flex items-center justify-between p-4">
+      <div>
+        <TableActions
+          v-if="(selectAll ? userTotal : selected.length) > 0"
+          :selectedCount="selectAll ? userTotal : selected.length"
+          :menuItems="tableActionMenuItems"
+          @action="handleTableAction"
+        />
+      </div>
       <div class="flex items-center space-x-2">
         <InputText
           v-model="search"
@@ -114,7 +115,7 @@ const userTotal = computed(() => filteredUsers.value.length);
         <Button size="small" label="Add user" @click="open('ADD_EDIT_USER')" />
       </div>
     </div>
-    <div class="bg-white dark:bg-surface-800">
+    <div class="flex-1 overflow-hidden bg-white dark:bg-surface-800">
       <Table
         :items="paginatedUsers"
         :itemTotal="userTotal"
@@ -152,13 +153,15 @@ const userTotal = computed(() => filteredUsers.value.length);
         </template>
       </Table>
     </div>
-    <Select
-      v-model="perPage"
-      :options="perPageOptions"
-      size="small"
-      option-label="label"
-      option-value="value"
-    />
+    <div class="p-4">
+      <Select
+        v-model="perPage"
+        :options="perPageOptions"
+        size="small"
+        option-label="label"
+        option-value="value"
+      />
+    </div>
   </section>
 </template>
 
