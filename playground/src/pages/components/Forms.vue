@@ -14,6 +14,11 @@ import Alert from '@ui/components/Alert.vue';
 import LabelChoice from '@ui/components/LabelChoice.vue';
 import RadioButton from '@ui/components/RadioButton.vue';
 import Checkbox from '@ui/components/Checkbox.vue';
+import Tabs from '@ui/components/Tabs.vue';
+import TabList from '@ui/components/TabList.vue';
+import Tab from '@ui/components/Tab.vue';
+import TabPanels from '@ui/components/TabPanels.vue';
+import TabPanel from '@ui/components/TabPanel.vue';
 import { useModal } from '@ui/composables';
 
 const { open } = useModal();
@@ -108,7 +113,14 @@ const search = (event) => {
 
 <template>
   <section class="p-4 space-y-4">
-    <div class="flex flex-col space-y-4">
+    <Tabs value="0">
+      <TabList>
+        <Tab value="0">General</Tab>
+        <Tab value="1">Sizing</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel value="0">
+          <div class="flex flex-col space-y-4">
       <div class="flex space-x-4">
         <Card>
           <template #header>
@@ -254,10 +266,9 @@ const search = (event) => {
             </div>
           </template>
           <template #footer>
-            <div class="flex items-center space-x-4">
-              <Button label="Save" @click="open('TEST')" />
-              <Button outlined label="Show blank" @click="open('BLANK_DRAWER')" />
-            </div>
+              <div class="flex items-center space-x-4">
+                <Button label="Save" @click="open('TEST')" />
+              </div>
           </template>
         </Card>
         <Card>
@@ -312,15 +323,58 @@ const search = (event) => {
             </div>
           </template>
           <template #footer>
-            <div class="flex items-center space-x-4">
-              <Button label="Save" @click="open('TEST')" :disabled="true" />
-              <Button outlined label="Show blank" @click="open('BLANK_DRAWER')" :disabled="true" />
+              <div class="flex items-center space-x-4">
+                <Button label="Save" @click="open('TEST')" :disabled="true" />
+              </div>
+          </template>
+        </Card>
+      </div>
+      </div>
+    </TabPanel>
+    <TabPanel value="1">
+      <div class="space-y-4">
+        <Card class="w-full">
+          <template #content>
+            <div class="space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <LabelField name="first_name" label="First Name">
+                  <InputText v-model="form.first_name" fluid />
+                </LabelField>
+                <LabelField name="last_name" label="Last Name">
+                  <InputText v-model="form.last_name" fluid />
+                </LabelField>
+                <LabelField name="email" label="Email">
+                  <InputText v-model="form.email" fluid />
+                </LabelField>
+                <LabelField name="type" label="Type">
+                  <Select v-model="form.type" :options="types" optionLabel="name" optionValue="id" fluid />
+                </LabelField>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <LabelField name="amount" label="Amount">
+                  <InputNumber v-model="form.amount" mode="currency" currency="USD" locale="en-US" fluid placeholder="$0.00" />
+                </LabelField>
+                <LabelField name="roles" label="Roles">
+                  <MultiSelect v-model="form.roles" :options="roles" optionLabel="name" optionValue="id" fluid />
+                </LabelField>
+                <LabelField name="autorole" label="Auto Role">
+                  <AutoComplete v-model="form.autorole" :suggestions="filteredRoles" @complete="search" optionLabel="label" optionValue="id" fluid dropdown showClear />
+                </LabelField>
+                <LabelField name="gender" label="Gender">
+                  <Select v-model="form.gender" :options="genders" optionLabel="gender" optionValue="id" fluid />
+                </LabelField>
+              </div>
+              <div class="flex items-center space-x-4">
+                <Button outlined label="Cancel" />
+                <Button label="Save" />
+              </div>
             </div>
           </template>
         </Card>
       </div>
-      
-    </div>
+    </TabPanel>
+  </TabPanels>
+    </Tabs>
   </section>
 </template>
 
