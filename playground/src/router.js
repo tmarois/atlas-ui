@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from './pages/Home.vue';
 import Users from './pages/Users.vue';
-import ComponentsLayout from './pages/components/Index.vue';
 import Buttons from './pages/components/Buttons.vue';
 import Forms from './pages/components/forms/Index.vue';
 import FormsSizing from './pages/components/forms/Sizing.vue';
@@ -12,10 +11,25 @@ import Overlays from './pages/components/Overlays.vue';
 import Editor from './pages/components/editor/Index.vue';
 import EditorVariant from './pages/components/editor/Variant.vue';
 import EditorText from './pages/components/editor/Text.vue';
+import MainLayout from './layouts/MainLayout.vue';
+import UsersLayout from './layouts/UsersLayout.vue';
+import ComponentsLayout from './layouts/ComponentsLayout.vue';
 
 const routes = [
-  { path: '/', component: Home, meta: { title: 'Dashboard' } },
-  { path: '/users', component: Users, meta: { title: 'Users table' } },
+  {
+    path: '/',
+    component: MainLayout,
+    children: [
+      { path: '', component: Home, meta: { title: 'Dashboard' } },
+    ],
+  },
+  {
+    path: '/users',
+    component: UsersLayout,
+    children: [
+      { path: '', component: Users, meta: { title: 'Users table' } },
+    ],
+  },
   {
     path: '/components',
     component: ComponentsLayout,
