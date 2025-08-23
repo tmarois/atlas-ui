@@ -59,7 +59,7 @@ import TabPanel from '@ui/components/TabPanel.vue';
           <TabList>
             <Tab value="0">Header I</Tab>
             <Tab value="1">Header II</Tab>
-            <Tab value="2">Header III</Tab>
+            <Tab value="2" disabled>Header III (disabled)</Tab>
           </TabList>
           <TabPanels>
             <TabPanel value="0">
