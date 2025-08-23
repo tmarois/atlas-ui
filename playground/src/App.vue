@@ -93,6 +93,14 @@ const userItem = computed(() => {
   }
   return null;
 });
+
+const widthClass = computed(() =>
+  route.path.startsWith('/users/') ? 'w-full' : 'max-w-screen-2xl'
+);
+
+const containerClass = computed(() =>
+  route.path.startsWith('/users/') ? '' : 'mx-auto p-4'
+);
 </script>
 
 <template>
@@ -104,6 +112,8 @@ const userItem = computed(() => {
     :pageTabs="pageTabs"
     :linkComponent="RouterLink"
     :isSideNav="true"
+    :widthClass="widthClass"
+    :containerClass="containerClass"
   >
       <template #navLogo>
           <img src="/atlas.png" alt="Atlas" class="h-8 w-8 rounded-full" />
