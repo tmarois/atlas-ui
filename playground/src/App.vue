@@ -20,12 +20,39 @@ const sideBarItems = computed(() => [
   const pageNavItems = computed(() => {
     if (route.path.startsWith('/components')) {
       return [
-        { label: 'Buttons', href: '/components/buttons' },
-        { label: 'Forms', href: '/components/forms' },
-        { label: 'Tables', href: '/components/tables' },
-        { label: 'Tabs', href: '/components/tabs' },
-          { label: 'Overlays', href: '/components/overlays' },
-        { label: 'Editor', href: '/components/editor', parent: '/components/editor' },
+        {
+          label: 'Components',
+          children: [
+              { label: 'Buttons', href: '/components/buttons' },
+              { label: 'Forms', href: '/components/forms' },
+              { label: 'Tables', href: '/components/tables' },
+              { label: 'Tabs', href: '/components/tabs' },
+              { label: 'Overlays', href: '/components/overlays' },
+              { label: 'Editor', href: '/components/editor', parent: '/components/editor' },
+          ],
+        },
+        {
+          label: 'Notifications',
+          children: [
+            { label: 'Email', href: '/notifications/email' },
+            { label: 'Push', href: '/notifications/push' },
+          ],
+        },
+        {
+          label: 'Security',
+          children: [
+            { label: 'Password', href: '/security/password' },
+            { label: 'Two Factor', href: '/security/two-factor' },
+          ],
+        },
+        {
+          label: 'Billing',
+          children: [
+            { label: 'Plans', href: '/billing/plans' },
+            { label: 'Invoices', href: '/billing/invoices' },
+            { label: 'Subscriptions', href: '/billing/subscriptions' },
+          ],
+        },
       ];
     }
 
