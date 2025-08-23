@@ -13,7 +13,9 @@ const props = defineProps({
   noScroll: Boolean,
 });
 
-const pageTitle = computed(() => props.pageTitle ?? route.meta.title || '');
+const pageTitle = computed(
+  () => props.pageTitle ?? route.meta.title ?? ''
+);
 </script>
 
 <template>
