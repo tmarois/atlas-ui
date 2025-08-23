@@ -14,6 +14,7 @@ import Alert from '@ui/components/Alert.vue';
 import LabelCheckbox from '@ui/components/LabelCheckbox.vue';
 import LabelRadioButton from '@ui/components/LabelRadioButton.vue';
 import { useModal } from '@ui/composables';
+import Errors from '@ui/components/Errors.vue';
 
 const { open } = useModal();
 
@@ -29,6 +30,11 @@ const form = reactive({
     checked: 'on',
     gender: null,
     autorole: null,
+});
+
+const errors = reactive({
+    first_name: 'First name is required',
+    last_name: 'Last name is required'
 });
 
 const roles = ref([
@@ -293,6 +299,57 @@ const search = (event) => {
               <div class="flex items-center space-x-4">
                 <Button label="Save" @click="open('TEST')" :disabled="true" />
               </div>
+          </template>
+        </Card>
+      </div>
+      <div class="flex space-x-4">
+        <Card>
+          <template #header>
+            <div class="font-semibold text-gray-900 dark:text-gray-100 text-md flex items-center justify-between">
+              <div>Edit (errors)</div>
+              <div class="flex items-center space-x-2">
+                <ToggleSwitch v-model="form.checked" true-value="on" false-value="off" />
+                <ButtonMenu :items="manageItems" />
+              </div>
+            </div>
+          </template>
+          <template #content>
+            <div class="space-y-4 w-full">
+              <Errors :errors="errors" />
+              <div class="w-full flex items-center space-x-4">
+                <LabelField name="first_name" label="First Name" required :error="errors.first_name">
+                  <InputText id="first_name_invalid" v-model="form.first_name" type="text" fluid clearable :invalid="true" />
+                </LabelField>
+                <LabelField name="last_name" label="Last Name" required :error="errors.last_name">
+                  <InputText id="last_name_invalid" placeholder="Last Name" v-model="form.last_name" type="text" fluid :invalid="true" />
+                </LabelField>
+              </div>
+              <div class="w-full">
+                <LabelField name="email" label="Email" required>
+                  <InputText id="email_invalid" v-model="form.email" type="text" fluid />
+                </LabelField>
+              </div>
+              <div class="w-full">
+                <LabelField name="gender" label="Gender">
+                  <Select v-model="form.gender" showClear :options="genders" optionLabel="gender" optionValue="id" fluid filter />
+                </LabelField>
+              </div>
+              <div class="w-full">
+                <LabelField name="roles" label="Roles">
+                  <MultiSelect v-model="form.roles" showClear :options="roles" optionLabel="name" optionValue="id" fluid filter />
+                </LabelField>
+              </div>
+              <div class="w-full">
+                <LabelField name="roles" label="Roles (chips)">
+                  <MultiSelect v-model="form.roles" display="chip" :options="roles" optionLabel="name" optionValue="id" fluid filter :maxSelectedLabels="6" />
+                </LabelField>
+              </div>
+              <div class="w-full">
+                <LabelField name="roles" label="Roles (autocomplete)">
+                  <AutoComplete v-model="form.autorole" :suggestions="filteredRoles" @complete="search" optionLabel="label" optionValue="id" fluid dropdown showClear forceSelection />
+                </LabelField>
+              </div>
+            </div>
           </template>
         </Card>
       </div>
