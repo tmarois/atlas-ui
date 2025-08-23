@@ -57,6 +57,7 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [AvatarGroup](#avatargroup)
   - [Chip](#chip)
   - [Badge](#badge)
+  - [TooltipIcon](#tooltipicon)
 - [Navigation](#navigation)
   - [ButtonMenu](#buttonmenu)
   - [Menu](#menu)
@@ -64,6 +65,7 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [Pagination](#pagination)
 - [Feedback](#feedback)
   - [Alert](#alert)
+  - [Errors](#errors)
   - [Toast](#toast)
   - [ProgressBar](#progressbar)
 
@@ -566,6 +568,20 @@ import { Badge } from '@atlas/ui';
 
 Refer to the [PrimeVue Badge API](https://primevue.org/badge/#api).
 
+#### TooltipIcon
+```ts
+import { TooltipIcon } from '@atlas/ui';
+```
+
+```vue
+<TooltipIcon text="More info" />
+```
+
+##### Props
+
+- `text` – tooltip text displayed on hover.
+- `pt` – passthrough options to customize internal elements.
+
 ### Navigation
 
 #### ButtonMenu
@@ -647,6 +663,28 @@ import { Alert } from '@atlas/ui';
 
 - `warning` – use warning styling.
 - `hideIcon` – hide the default icon.
+
+#### Errors
+```ts
+import { Errors } from '@atlas/ui';
+```
+
+```vue
+<Errors :errors="formErrors" />
+```
+
+##### Props
+
+- `errors` – record or array of error messages.
+- `failed` – show a default error message when true and no errors are provided.
+- `title` – optional heading text.
+- `expandDefault` – expand errors by default.
+- `pt` – passthrough options to customize internal elements.
+
+##### Slots
+
+- `default` – custom template for each error. Slot props: `{ error }`.
+- `defaultError` – content shown when `failed` is true and no errors exist.
 
 #### Toast
 ```ts
