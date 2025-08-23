@@ -2,7 +2,7 @@
     <div :class="mergedPt.root.class">
         <label
             v-if="label"
-            :for="name"
+            :for="labelFor"
             :class="mergedPt.label.class"
         >
             <span :class="mergedPt.labelText.class">{{ label }}</span>
@@ -63,9 +63,10 @@ const theme = computed<LabelFieldPassThroughOptions>(() => ({
 const mergedPt = computed(() => ptMerge(theme.value, props.pt));
 
 const fieldRef = ref<HTMLElement | null>(null);
+const labelFor = ref(props.name);
 
 onMounted(() => {
-    if (!props.name || !fieldRef.value) {
+    if (!fieldRef.value) {
         return;
     }
 
@@ -73,8 +74,14 @@ onMounted(() => {
         'input,select,textarea,button,[tabindex]'
     );
 
-    if (input && !input.id) {
+    if (!input) {
+        return;
+    }
+
+    if (!input.id && props.name) {
         input.id = props.name;
     }
+
+    labelFor.value = input.id;
 });
 </script>
