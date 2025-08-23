@@ -2,7 +2,6 @@ import { createApp } from 'vue';
 import PrimeVue from 'primevue/config';
 import StyleClass from 'primevue/styleclass';
 import Tooltip from 'primevue/tooltip';
-import 'primevue/tooltip/style';
 import ToastService from 'primevue/toastservice';
 import App from './App.vue';
 import router from './router';
