@@ -58,6 +58,7 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [Chip](#chip)
   - [Badge](#badge)
   - [TooltipIcon](#tooltipicon)
+  - [TooltipInfo](#tooltipinfo)
 - [Navigation](#navigation)
   - [ButtonMenu](#buttonmenu)
   - [Menu](#menu)
@@ -581,6 +582,29 @@ import { TooltipIcon } from '@atlas/ui';
 
 - `text` – tooltip text displayed on hover.
 - `pt` – passthrough options to customize internal elements.
+
+#### TooltipInfo
+```ts
+import { TooltipInfo } from '@atlas/ui';
+```
+
+```vue
+<TooltipInfo>
+    Details here
+</TooltipInfo>
+```
+
+##### Props
+
+- `iconClass` – class for the info icon. Defaults to 'size-5'.
+
+##### Events
+
+- `toggle` – emitted with the visibility state when the popover is toggled.
+
+##### Slots
+
+- `default` – content displayed inside the popover.
 
 ### Navigation
 
