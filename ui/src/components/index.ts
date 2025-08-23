@@ -47,3 +47,6 @@ export { default as ButtonMenu } from './ButtonMenu.vue';
 export { default as DatePicker } from './DatePicker.vue';
 export { default as Editor } from './Editor/Index.vue';
 export { default as EditorContent } from './Editor/EditorContent.vue';
+export { default as Table } from './App/Table/Table.vue';
+export { default as TableActions } from './App/Table/Actions.vue';
+export { default as TableCustomizeColumns } from './App/Table/CustomizeColumns.vue';
