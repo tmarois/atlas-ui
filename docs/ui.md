@@ -50,6 +50,8 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   - [Card](#card)
   - [Divider](#divider)
   - [Dialog](#dialog)
+  - [Drawer](#drawer)
+  - [DrawerForm](#drawerform)
   - [Popover](#popover)
   - [Tabs](#tabs)
 - [Data Display](#data-display)
@@ -475,6 +477,48 @@ import { Dialog, Button } from '@atlas/ui';
 ##### API
 
 Refer to the [PrimeVue Dialog API](https://primevue.org/dialog/#api).
+
+#### Drawer
+```ts
+import { Drawer } from '@atlas/ui';
+```
+
+```vue
+<Drawer v-model:visible="visible">
+  Content
+</Drawer>
+```
+
+##### API
+
+Refer to the [PrimeVue Drawer API](https://primevue.org/drawer/#api).
+
+#### DrawerForm
+```ts
+import { DrawerForm } from '@atlas/ui';
+```
+
+```vue
+<DrawerForm v-model="open" title="Title" @submit="save">
+  <!-- form fields -->
+</DrawerForm>
+```
+
+##### Props
+
+- `modelValue` – controls visibility.
+- `title` – header text.
+- `loading` – shows loading state on save.
+- `width` – optional width of drawer.
+- `errors` – form error object.
+- `tabs` – array of tab definitions.
+- `modelActiveTab` – active tab index.
+
+##### Events
+
+- `update:modelValue` – emitted when visibility changes.
+- `submit` – emitted on save.
+- `update:modelActiveTab` – emitted when active tab changes.
 
 #### Popover
 ```ts
