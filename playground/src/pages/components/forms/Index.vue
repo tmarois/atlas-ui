@@ -346,7 +346,15 @@ const search = (event) => {
                   <AutoComplete v-model="form.autorole" :suggestions="filteredRoles" @complete="search" optionLabel="label" optionValue="id" fluid dropdown showClear forceSelection :invalid="true" />
                 </LabelField>
               </div>
+            </div>
+          </template>
+          <template #footer>
+            <div class="space-y-4 w-full">
               <Errors :errors="errors" />
+              <div class="flex items-center space-x-4">
+                <Button label="Cancel" variant="text" />
+                <Button label="Save" @click="open('TEST')" />
+              </div>
             </div>
           </template>
         </Card>
