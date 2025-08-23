@@ -7,6 +7,7 @@
 <script setup lang="ts">
 import { IconInfoCircle } from '@tabler/icons-vue';
 import { ref, computed } from 'vue';
+import { usePrimeVue } from 'primevue/config';
 import { ptMerge } from '../utils';
 
 interface TooltipDirectivePassThroughOptions {
@@ -36,6 +37,9 @@ const theme = ref<TooltipIconPassThroughOptions>({
 
 const mergedPt = computed(() => ptMerge(theme.value, props.pt));
 
+const primevue = usePrimeVue();
+primevue.config.zIndex.tooltip = 2147483647;
+
 const tooltipTheme = ref<TooltipDirectivePassThroughOptions>({
     root: {
         class: 'absolute shadow-md p-fadein py-0 px-0 max-w-[260px]'
@@ -46,8 +50,6 @@ const tooltipTheme = ref<TooltipDirectivePassThroughOptions>({
 const tooltip = computed(() => ({
     value: props.text,
     appendTo: 'body',
-    autoZIndex: true,
-    baseZIndex: 20000,
     pt: ptMerge(tooltipTheme.value, props.pt?.tooltip)
 }));
 </script>
