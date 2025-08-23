@@ -37,6 +37,9 @@ const pageTitle = computed(() => route.meta.title || '');
     :linkComponent="RouterLink"
     :isSideNav="true"
   >
+      <template #navLogo>
+          <img src="/atlas.png" alt="Atlas" class="h-8 w-8 rounded-full" />
+      </template>
     <RouterView />
   </UiApp>
 </template>
