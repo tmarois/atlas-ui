@@ -24,13 +24,27 @@ describe('Button', () => {
         expect(classes).toContain('p-small:py-[0.375rem]');
     });
 
-    it('sizes small icon-only buttons via padding without fixed dimensions', () => {
-        const wrapper = mountWithPrime({ size: 'small', icon: 'pi pi-check', rounded: true });
-        const classes = wrapper.find('button').attributes('class');
-        expect(classes).toContain('p-small:p-icon-only:p-2');
-        expect(classes).toContain('p-small:p-icon-only:w-auto');
-        expect(classes).toContain('p-small:p-icon-only:p-rounded:w-auto');
-        expect(classes).toContain('p-small:p-icon-only:p-rounded:h-auto');
+    it('ensures icon-only buttons are square across sizes', () => {
+        const cases = [
+            {
+                props: { icon: 'pi pi-check' },
+                classes: ['p-icon-only:w-10', 'p-icon-only:h-10', 'p-icon-only:p-0'],
+            },
+            {
+                props: { size: 'small', icon: 'pi pi-check' },
+                classes: ['p-small:p-icon-only:w-[34px]', 'p-small:p-icon-only:h-[34px]', 'p-icon-only:p-0'],
+            },
+            {
+                props: { size: 'large', icon: 'pi pi-check' },
+                classes: ['p-large:p-icon-only:w-12', 'p-large:p-icon-only:h-12', 'p-icon-only:p-0'],
+            },
+        ];
+
+        cases.forEach(({ props, classes: expected }) => {
+            const wrapper = mountWithPrime(props);
+            const classes = wrapper.find('button').attributes('class');
+            expected.forEach((c) => expect(classes).toContain(c));
+        });
     });
 
     it('uses 40px default height', () => {

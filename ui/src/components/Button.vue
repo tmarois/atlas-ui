@@ -26,11 +26,11 @@ const theme = ref<ButtonPassThroughOptions>({
         bg-primary-500 enabled:hover:bg-primary-500/70 enabled:active:bg-primary-500/60 text-white text-md font-semibold p-text:!font-medium
         border border-primary-500 enabled:hover:border-primary-500/70 enabled:active:border-primary-500/60
         focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
-        p-vertical:flex-col p-fluid:w-full p-fluid:p-icon-only:w-10
-        p-icon-only:w-10 p-icon-only:px-0 p-icon-only:gap-0
-        p-icon-only:p-rounded:rounded-full p-icon-only:p-rounded:h-10
-        p-small:p-icon-only:p-2 p-small:p-icon-only:w-auto
-        p-small:p-icon-only:p-rounded:w-auto p-small:p-icon-only:p-rounded:h-auto
+        p-vertical:flex-col p-fluid:w-full p-fluid:p-icon-only:w-10 p-fluid:p-icon-only:h-10
+        p-icon-only:w-10 p-icon-only:h-10 p-icon-only:p-0 p-icon-only:gap-0
+        p-icon-only:p-rounded:rounded-full
+        p-small:p-icon-only:w-[34px] p-small:p-icon-only:h-[34px] p-small:p-icon-only:p-0
+        p-large:p-icon-only:w-12 p-large:p-icon-only:h-12 p-large:p-icon-only:p-0
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
         p-large:text-[1.125rem] p-large:px-[0.875rem] p-large:py-[0.625rem]
         p-raised:shadow-sm p-rounded:rounded-[2rem]
