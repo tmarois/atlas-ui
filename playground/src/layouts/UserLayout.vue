@@ -50,7 +50,7 @@
 
 <script setup>
 import { useRoute } from 'vue-router';
-import LayoutApp from '@ui/components/App/Index.vue';
+import LayoutApp from '@atlas/ui/components/App/Index.vue';
 import { Button, useModal } from '@atlas/ui';
 import UserModals from '../components/UserModals.vue';
 import Link from '../components/RouterLink.vue';

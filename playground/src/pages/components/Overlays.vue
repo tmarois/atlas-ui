@@ -94,14 +94,14 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
-import Card from '@ui/components/Card.vue';
-import Button from '@ui/components/Button.vue';
-import Drawer from '@ui/components/Drawer.vue';
-import Dialog from '@ui/components/Dialog.vue';
-import DrawerForm from '@ui/components/DrawerForm.vue';
-import TooltipIcon from '@ui/components/TooltipIcon.vue';
-import LabelField from '@ui/components/LabelField.vue';
-import InputText from '@ui/components/InputText.vue';
+import Card from '@atlas/ui/components/Card.vue';
+import Button from '@atlas/ui/components/Button.vue';
+import Drawer from '@atlas/ui/components/Drawer.vue';
+import Dialog from '@atlas/ui/components/Dialog.vue';
+import DrawerForm from '@atlas/ui/components/DrawerForm.vue';
+import TooltipIcon from '@atlas/ui/components/TooltipIcon.vue';
+import LabelField from '@atlas/ui/components/LabelField.vue';
+import InputText from '@atlas/ui/components/InputText.vue';
 
 const drawerVisible = ref(false);
 const dialogVisible = ref(false);

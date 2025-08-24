@@ -19,7 +19,7 @@
 <script setup>
 import { computed } from 'vue';
 import { useRoute, RouterView } from 'vue-router';
-import UiApp from '@ui/components/App/Index.vue';
+import UiApp from '@atlas/ui/components/App/Index.vue';
 import RouterLink from '../components/RouterLink.vue';
 import { sideBarItems } from '../sideBarItems';
 

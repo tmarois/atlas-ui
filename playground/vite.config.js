@@ -9,7 +9,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@atlas/ui': path.resolve(__dirname, '../ui/src'),
-      '@ui': path.resolve(__dirname, '../ui/src'),
       '@inertiajs/vue3': path.resolve(__dirname, './src/inertia.js')
     }
   },

@@ -14,9 +14,9 @@
 
 <script setup>
 import { ref } from 'vue';
-import DataTable from '@ui/components/DataTable.vue';
+import DataTable from '@atlas/ui/components/DataTable.vue';
 import Column from 'primevue/column';
-import Card from '@ui/components/Card.vue';
+import Card from '@atlas/ui/components/Card.vue';
 
 const users = ref([
   { name: 'Alice', email: 'alice@example.com', country: 'USA' },

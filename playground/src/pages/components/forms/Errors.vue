@@ -59,17 +59,17 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
-import Card from '@ui/components/Card.vue';
-import ToggleSwitch from '@ui/components/ToggleSwitch.vue';
-import Button from '@ui/components/Button.vue';
-import ButtonMenu from '@ui/components/ButtonMenu.vue';
-import LabelField from '@ui/components/LabelField.vue';
-import InputText from '@ui/components/InputText.vue';
-import Select from '@ui/components/Select.vue';
-import MultiSelect from '@ui/components/MultiSelect.vue';
-import AutoComplete from '@ui/components/AutoComplete.vue';
-import { useModal } from '@ui/composables';
-import Errors from '@ui/components/Errors.vue';
+import Card from '@atlas/ui/components/Card.vue';
+import ToggleSwitch from '@atlas/ui/components/ToggleSwitch.vue';
+import Button from '@atlas/ui/components/Button.vue';
+import ButtonMenu from '@atlas/ui/components/ButtonMenu.vue';
+import LabelField from '@atlas/ui/components/LabelField.vue';
+import InputText from '@atlas/ui/components/InputText.vue';
+import Select from '@atlas/ui/components/Select.vue';
+import MultiSelect from '@atlas/ui/components/MultiSelect.vue';
+import AutoComplete from '@atlas/ui/components/AutoComplete.vue';
+import { useModal } from '@atlas/ui/composables';
+import Errors from '@atlas/ui/components/Errors.vue';
 
 const { open } = useModal();
 

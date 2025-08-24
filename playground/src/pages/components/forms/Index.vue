@@ -198,21 +198,21 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
-import Card from '@ui/components/Card.vue';
-import ToggleSwitch from '@ui/components/ToggleSwitch.vue';
-import Button from '@ui/components/Button.vue';
-import ButtonMenu from '@ui/components/ButtonMenu.vue';
-import LabelField from '@ui/components/LabelField.vue';
-import InputText from '@ui/components/InputText.vue';
-import Select from '@ui/components/Select.vue';
-import MultiSelect from '@ui/components/MultiSelect.vue';
-import AutoComplete from '@ui/components/AutoComplete.vue';
-import InputNumber from '@ui/components/InputNumber.vue';
-import Alert from '@ui/components/Alert.vue';
-import LabelCheckbox from '@ui/components/LabelCheckbox.vue';
-import LabelRadioButton from '@ui/components/LabelRadioButton.vue';
-import TooltipInfo from '@ui/components/TooltipInfo.vue';
-import { useModal } from '@ui/composables';
+import Card from '@atlas/ui/components/Card.vue';
+import ToggleSwitch from '@atlas/ui/components/ToggleSwitch.vue';
+import Button from '@atlas/ui/components/Button.vue';
+import ButtonMenu from '@atlas/ui/components/ButtonMenu.vue';
+import LabelField from '@atlas/ui/components/LabelField.vue';
+import InputText from '@atlas/ui/components/InputText.vue';
+import Select from '@atlas/ui/components/Select.vue';
+import MultiSelect from '@atlas/ui/components/MultiSelect.vue';
+import AutoComplete from '@atlas/ui/components/AutoComplete.vue';
+import InputNumber from '@atlas/ui/components/InputNumber.vue';
+import Alert from '@atlas/ui/components/Alert.vue';
+import LabelCheckbox from '@atlas/ui/components/LabelCheckbox.vue';
+import LabelRadioButton from '@atlas/ui/components/LabelRadioButton.vue';
+import TooltipInfo from '@atlas/ui/components/TooltipInfo.vue';
+import { useModal } from '@atlas/ui/composables';
 
 const { open } = useModal();
 

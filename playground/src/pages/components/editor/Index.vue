@@ -37,10 +37,10 @@
 
 <script setup>
 import { ref } from 'vue';
-import Card from '@ui/components/Card.vue';
-import Editor from '@ui/components/Editor/Index.vue';
-import Content from '@ui/components/Editor/EditorContent.vue';
-import Textarea from '@ui/components/Textarea.vue';
+import Card from '@atlas/ui/components/Card.vue';
+import Editor from '@atlas/ui/components/Editor/Index.vue';
+import Content from '@atlas/ui/components/Editor/EditorContent.vue';
+import Textarea from '@atlas/ui/components/Textarea.vue';
 
 const editContent = ref('');
 </script>

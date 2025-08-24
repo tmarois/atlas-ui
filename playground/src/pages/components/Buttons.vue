@@ -19,8 +19,8 @@
 </template>
 
 <script setup>
-import Button from '@ui/components/Button.vue';
-import Card from '@ui/components/Card.vue';
+import Button from '@atlas/ui/components/Button.vue';
+import Card from '@atlas/ui/components/Card.vue';
 
 const groups = [
   { title: 'Buttons (regular)', attrs: {} },
