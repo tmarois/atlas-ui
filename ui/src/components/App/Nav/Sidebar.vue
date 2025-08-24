@@ -41,7 +41,7 @@
                                                 : 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-700 dark:border-surface-800 rounded-[var(--p-content-border-radius)] whitespace-pre-line'
                                         }
                                 }"
-                                class="relative flex items-center justify-center w-full h-12 mt-2 rounded"
+                                class="relative flex items-center justify-center w-full h-12 mt-2 rounded-[var(--p-content-border-radius)]"
                                 :href="child.href"
                                 :class="linkClass(child)"
                             >

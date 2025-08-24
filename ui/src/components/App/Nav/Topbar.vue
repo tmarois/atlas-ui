@@ -30,14 +30,14 @@
                                 v-if="!item.children"
                                 :is="linkComponent"
                                 :href="item.href"
-                                class="rounded-md px-3 py-2 text-sm font-medium"
+                                class="rounded-[var(--p-content-border-radius)] px-3 py-2 text-sm font-medium"
                                 :class="linkClass(item)"
                             >
                                 {{ item.label }}
                             </component>
                             <div
                                 v-else
-                                class="rounded-md px-3 py-2 text-sm font-medium cursor-pointer"
+                                class="rounded-[var(--p-content-border-radius)] px-3 py-2 text-sm font-medium cursor-pointer"
                                 :class="linkClass(item)"
                                 @click="toggleMenu(item.href, $event)"
                             >
@@ -53,7 +53,7 @@
                                             :is="linkComponent"
                                             v-bind="props.action"
                                             :href="item.href"
-                                            class="flex items-center w-full px-2 py-1 text-sm rounded"
+                                            class="flex items-center w-full px-2 py-1 text-sm rounded-[var(--p-content-border-radius)]"
                                             :class="{
                                                 'bg-surface-200 dark:bg-surface-800 dark:text-white': isActive(item)
                                             }"

@@ -40,7 +40,7 @@ const props = defineProps<Props>();
 const attrs = useAttrs();
 
 const theme = ref<DialogPassThroughOptions>({
-    root: `max-h-[90%] max-w-screen rounded-md
+    root: `max-h-[90%] max-w-screen rounded-[var(--p-content-border-radius)]
         border border-surface-200 dark:border-surface-700
         bg-surface-0 dark:bg-surface-900
         text-surface-700 dark:text-surface-0 shadow-lg
