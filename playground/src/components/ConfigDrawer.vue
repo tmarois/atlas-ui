@@ -1,7 +1,7 @@
 <template>
   <div>
     <button
-      class="fixed z-50 top-1/2 -right-4 transform -translate-y-1/2 bg-primary-500 text-white p-3 rounded-l shadow flex items-center justify-center"
+      class="fixed z-50 top-1/2 -right-2 transform -translate-y-1/2 bg-primary-500 text-white p-3 rounded-l shadow flex items-center justify-center cursor-pointer"
       @click="visible = true"
     >
       <span class="pi pi-cog"></span>
@@ -11,7 +11,7 @@
         <h2 class="text-xl font-semibold">Settings</h2>
         <div class="flex items-center justify-between">
           <span>Dark mode</span>
-          <ToggleSwitch v-model="settings.dark" />
+          <ToggleSwitch v-model="dark" />
         </div>
       </div>
     </UiDrawer>
@@ -25,7 +25,7 @@ import ToggleSwitch from '@atlas/ui/components/ToggleSwitch.vue';
 import { useSettings } from '../composables/useSettings';
 
 const visible = ref(false);
-const settings = useSettings();
+const { dark } = useSettings();
 </script>
 
 <style scoped>
