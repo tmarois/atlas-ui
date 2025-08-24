@@ -252,20 +252,20 @@ const { open } = useModal();
 
 const form = reactive({
     first_name: 'John',
-    last_name: null,
-    amount: null,
+    last_name: 'Doe',
+    amount: 100,
     email: 'example@example.com',
-    roles: [],
+    roles: ['admin', 'user'],
     type: 'credit',
-    payment: 'disabled',
-    agree: false,
+    payment: 'Now',
+    agree: true,
     checked: 'on',
-    gender: null,
-    autorole: null,
-    date: null,
-    month: null,
-    time: null,
-    description: null,
+    gender: 'male',
+    autorole: 'admin',
+    date: new Date('2024-01-01'),
+    month: new Date('2024-02-01'),
+    time: new Date('2024-01-01T12:00:00'),
+    description: 'Example description',
 });
 
 const roles = ref([
