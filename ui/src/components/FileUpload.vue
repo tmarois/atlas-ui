@@ -21,8 +21,7 @@
                 @click.stop="choose"
                 :disabled="isDisabled"
                 size="small"
-                rounded
-                class="mr-2 flex-shrink-0"
+                class="mr-2 flex-shrink-0 !rounded-none"
             />
             <div class="relative flex-1 min-w-0">
                 <div :class="[textBase, clearable && hasFile ? 'pr-8' : '', isDisabled ? 'text-surface-700 dark:text-surface-400 bg-surface-200' : hasFile ? 'text-surface-900 dark:text-surface-0' : 'text-surface-500 dark:text-surface-400']">
@@ -80,9 +79,9 @@ const borderColorClass = computed(() =>
     props.invalid ? 'border-red-400 dark:border-red-500' : 'border-surface-300 dark:border-surface-700'
 );
 const heightClass = 'h-10 p-small:h-[34px] p-large:h-[42px]';
-const paddingClass = 'px-3 p-small:px-[0.625rem] p-large:px-[0.875rem]';
+const paddingClass = 'pr-3 p-small:pr-[0.625rem] p-large:pr-[0.875rem]';
 const baseClass =
-    'flex items-center rounded-md border focus-within:border-primary transition-colors duration-200 overflow-hidden shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]';
+    'flex items-center border focus-within:border-primary transition-colors duration-200 overflow-hidden shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]';
 const inputAttrs = computed(() => {
     const { class: _c, style: _s, ...rest } = attrs as any;
     return rest;
