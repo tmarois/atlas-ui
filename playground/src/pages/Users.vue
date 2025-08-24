@@ -85,8 +85,10 @@
         <template #footerAction>
             [placeholder]
         </template>
+        <template #modals>
+            <UserModals />
+        </template>
     </LayoutApp>
-    <UserModals />
 </template>
 
 <script setup>
