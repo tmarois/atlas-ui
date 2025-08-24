@@ -6,7 +6,6 @@ See the [App Layout](ui/app.md) for a ready-to-use application wrapper.
 
 ## Table of Contents
 - [Setup](#setup)
-- [Component Guide](ui/component-guide.md)
 - [Override Themes with Passthrough](#override-themes-with-passthrough)
 - [Components](#components)
   - [Actions](#actions)
