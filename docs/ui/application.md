@@ -84,6 +84,10 @@ import { App as LayoutApp } from '@atlas/ui';
 - `widthClass: string` – max width container class. Default `'max-w-screen-2xl'`.
 - `containerClass: string` – additional classes for the main container. Default `'mx-auto p-4'`.
 - `noScroll: boolean` – disable vertical scrolling for the main content. Default `false`.
+- `sideBarBackgroundClass: string` – optional classes for the side navigation background and border. Default `''`.
+- `sideBarActiveClass: string` – class applied to active side navigation links. Default `''`.
+- `topBarBackgroundClass: string` – optional classes for the top navigation background and border. Default `''`.
+- `topBarActiveClass: string` – class applied to active top navigation links. Default `''`.
 
 ### Slots
 - `nav` – replace the navigation area entirely.

@@ -12,6 +12,8 @@
                     ref="sideNavRef"
                     :items="sideBarItems"
                     :linkComponent="linkComponent"
+                    :backgroundClass="sideBarBackgroundClass"
+                    :activeClass="sideBarActiveClass"
                 >
                     <template #logo>
                         <slot name="navLogo" />
@@ -24,6 +26,8 @@
                     :items="topBarItems"
                     :linkComponent="linkComponent"
                     :widthClass="widthClass"
+                    :backgroundClass="topBarBackgroundClass"
+                    :activeClass="topBarActiveClass"
                 >
                     <template #logo>
                         <slot name="navLogo" />
@@ -139,6 +143,10 @@ interface Props {
     widthClass?: string;
     containerClass?: string;
     noScroll?: boolean;
+    sideBarBackgroundClass?: string;
+    sideBarActiveClass?: string;
+    topBarBackgroundClass?: string;
+    topBarActiveClass?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -154,6 +162,10 @@ const props = withDefaults(defineProps<Props>(), {
     widthClass: 'max-w-screen-2xl',
     containerClass: 'mx-auto p-4',
     noScroll: false,
+    sideBarBackgroundClass: '',
+    sideBarActiveClass: '',
+    topBarBackgroundClass: '',
+    topBarActiveClass: '',
 });
 
 const slots = useSlots();
