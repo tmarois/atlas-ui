@@ -5,89 +5,23 @@ Documentation for the Atlas application's overall structure and layout.
 For an all-in-one page wrapper that composes these pieces together, see the [App Layout](app.md) component.
 
 ## Table of Contents
-- [Navigation](#navigation)
-  - [NavTopbar](#navtopbar)
-  - [NavSidebar](#navsidebar)
-  - [PageSideNav](#pagesidenav)
+- [App](#app)
 - [Layout](#layout)
   - [Topbar](#topbar)
   - [PageHeader](#pageheader)
   - [PageContent](#pagecontent)
   - [PageFooter](#pagefooter)
+- [Navigation](#navigation)
+  - [NavTopbar](#navtopbar)
+  - [NavSidebar](#navsidebar)
+  - [PageSideNav](#pagesidenav)
 
-## Navigation
-Components that allow users to navigate across or within pages.
-
-### NavTopbar
-Global top navigation bar.
-
-```ts
-import { NavTopbar } from '@atlas/ui';
-```
-
-```vue
-<NavTopbar :items="navItems">
-  <template #actions>
-    <!-- optional action buttons -->
-  </template>
-</NavTopbar>
-```
-
-**Props**
-- `items: NavItem[]` – navigation links, supports nested `children`.
-- `linkComponent: string | object` – component used for links. Default `'a'`.
-- `homeUrl: string` – root link. Default `'/'`.
-- `widthClass: string` – max width container class. Default `'max-w-screen-2xl'`.
-
-**Events**
-- None
-
-### NavSidebar
-Vertical navigation sidebar.
+## App
+Entry point that composes navigation, page chrome, and page content into a full application layout. See the [App Layout](app.md) component for complete usage.
 
 ```ts
-import { NavSidebar } from '@atlas/ui';
+import { App } from '@atlas/ui';
 ```
-
-```vue
-<NavSidebar :items="navItems">
-  <template #actions>
-    <!-- footer actions -->
-  </template>
-</NavSidebar>
-```
-
-**Props**
-- `items: NavItem[]` – sections and links displayed in the sidebar.
-- `homeUrl: string` – root link. Default `'/'`.
-- `linkComponent: string | object` – component used for links. Default `'a'`.
-
-**Events**
-- None
-
-### PageSideNav
-Secondary navigation within a page.
-
-```ts
-import { PageSideNav } from '@atlas/ui';
-```
-
-```vue
-<PageSideNav :items="sideItems" />
-```
-
-**Props**
-- `items: NavItem[]` – navigation links. Default `[]`.
-- `linkComponent: string | object` – component used for links. Default `'a'`.
-
-**NavItem**
-- `label: string`
-- `href: string`
-- `disabled?: boolean` – apply disabled styling and prevent navigation.
-- `lockTooltipText?: string` – when `disabled`, show a lock icon on the right with this tooltip.
-
-**Events**
-- None
 
 ## Layout
 Structural components that organize page content and actions.
@@ -180,6 +114,80 @@ import { PageFooter } from '@atlas/ui';
 **Props**
 - `leftOffset: number` – offset to account for sidebars. Default `0`.
 - `widthClass: string` – max width container class. Default `'max-w-screen-2xl'`.
+
+**Events**
+- None
+
+## Navigation
+Components that allow users to navigate across or within pages.
+
+### NavTopbar
+Global top navigation bar.
+
+```ts
+import { NavTopbar } from '@atlas/ui';
+```
+
+```vue
+<NavTopbar :items="navItems">
+  <template #actions>
+    <!-- optional action buttons -->
+  </template>
+</NavTopbar>
+```
+
+**Props**
+- `items: NavItem[]` – navigation links, supports nested `children`.
+- `linkComponent: string | object` – component used for links. Default `'a'`.
+- `homeUrl: string` – root link. Default `'/'`.
+- `widthClass: string` – max width container class. Default `'max-w-screen-2xl'`.
+
+**Events**
+- None
+
+### NavSidebar
+Vertical navigation sidebar.
+
+```ts
+import { NavSidebar } from '@atlas/ui';
+```
+
+```vue
+<NavSidebar :items="navItems">
+  <template #actions>
+    <!-- footer actions -->
+  </template>
+</NavSidebar>
+```
+
+**Props**
+- `items: NavItem[]` – sections and links displayed in the sidebar.
+- `homeUrl: string` – root link. Default `'/'`.
+- `linkComponent: string | object` – component used for links. Default `'a'`.
+
+**Events**
+- None
+
+### PageSideNav
+Secondary navigation within a page.
+
+```ts
+import { PageSideNav } from '@atlas/ui';
+```
+
+```vue
+<PageSideNav :items="sideItems" />
+```
+
+**Props**
+- `items: NavItem[]` – navigation links. Default `[]`.
+- `linkComponent: string | object` – component used for links. Default `'a'`.
+
+**NavItem**
+- `label: string`
+- `href: string`
+- `disabled?: boolean` – apply disabled styling and prevent navigation.
+- `lockTooltipText?: string` – when `disabled`, show a lock icon on the right with this tooltip.
 
 **Events**
 - None
