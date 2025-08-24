@@ -67,7 +67,7 @@ const theme = ref<DataTablePassThroughOptions>({
     header: `py-3 px-4 border-b border-surface-300 dark:border-surface-700 bg-surface-0 dark:bg-surface-900 text-surface-900 dark:text-surface-0`,
     table: `border-spacing-0 w-full border-separate`,
     thead: `p-scrollable:bg-surface-0 dark:p-scrollable:bg-surface-900 p-scrollable:top-0 p-scrollable:z-10 p-scrollable:shadow-sm`,
-    tbody: `p-hoverable:*:hover:bg-surface-100 p-hoverable:*:hover:text-surface-800 dark:p-hoverable:*:hover:bg-surface-800 dark:p-hoverable:*:hover:text-surface-0 p-frozen:sticky p-frozen:z-10`,
+    tbody: `p-hoverable:*:hover:bg-surface-100 p-hoverable:*:hover:text-surface-800 dark:p-hoverable:*:hover:bg-surface-800 dark:p-hoverable:*:hover:text-surface-0 p-frozen:sticky p-frozen:z-10 [&_a]:text-primary-600 dark:[&_a]:text-primary-400`,
     bodyRow: `bg-white dark:bg-surface-900 text-surface-900 dark:text-surface-0 p-selectable:cursor-pointer p-selected:!bg-yellow-100 dark:p-selected:!bg-yellow-500/30 hover:!bg-surface-100 dark:hover:!bg-surface-800 p-selected:hover:!bg-yellow-200 dark:p-selected:hover:!bg-yellow-500/40`,
     tfoot: `p-scrollable:bg-surface-0 dark:p-scrollable:bg-surface-900 p-scrollable:bottom-0 p-scrollable:z-10`,
     footer: `py-3 px-4 border-b border-surface-200 dark:border-surface-700 text-surface-700 dark:text-surface-0`,
