@@ -87,15 +87,16 @@ const groups = [
   { title: 'Buttons (large-text)', attrs: { size: 'large', text: true } },
 ];
 
-const states = [
-  { label: 'Default', attrs: {} },
-  { label: 'Search', attrs: { icon: 'pi pi-search' } },
-  { label: 'Raised', attrs: { raised: true } },
-  { label: 'Loading', attrs: { loading: true } },
-  { label: 'Disabled', attrs: { disabled: true } },
-];
+  const states = [
+    { label: 'Default', attrs: {} },
+    { label: 'Search', attrs: { icon: 'pi pi-search' } },
+    { label: 'Raised', attrs: { raised: true } },
+    { label: 'Rounded', attrs: { rounded: true } },
+    { label: 'Loading', attrs: { loading: true } },
+    { label: 'Disabled', attrs: { disabled: true } },
+  ];
 
-const buttonStates = states.filter(({ label }) => label !== 'Raised');
+  const buttonStates = states.filter(({ label }) => !['Raised', 'Rounded'].includes(label));
 
 const iconStates = [
   { icon: 'pi pi-check', attrs: {}, ariaLabel: 'Check' },
