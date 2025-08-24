@@ -5,7 +5,7 @@
         :pt="mergedPt"
         :ptOptions="{ mergeProps: ptViewMerge }"
     >
-        <template v-for="(_, slotName) in $slots" v-slot:[slotName]="slotProps">
+        <template v-for="slotName in slotNames" v-slot:[slotName]="slotProps">
             <slot :name="slotName" v-bind="slotProps ?? {}" />
         </template>
     </PrimeFileUpload>
@@ -16,7 +16,7 @@ import PrimeFileUpload, {
     type FileUploadProps,
     type FileUploadPassThroughOptions
 } from 'primevue/fileupload';
-import { ref, useAttrs, computed } from 'vue';
+import { ref, useAttrs, computed, useSlots } from 'vue';
 import { ptViewMerge, ptMerge } from '../utils';
 
 defineOptions({ inheritAttrs: false });
@@ -24,6 +24,7 @@ defineOptions({ inheritAttrs: false });
 interface Props extends /* @vue-ignore */ FileUploadProps {}
 const props = defineProps<Props>();
 const attrs = useAttrs();
+const slots = useSlots();
 
 const theme = ref<FileUploadPassThroughOptions>({
     basicContent: 'flex items-center gap-2',
@@ -65,4 +66,5 @@ const passThroughProps = computed(() => {
     return rest;
 });
 const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const slotNames = computed(() => Object.keys(slots).filter((key) => isNaN(Number(key))));
 </script>
