@@ -47,6 +47,19 @@
               ></button>
           </div>
         </div>
+        <div>
+          <span class="block mb-2 font-medium">Rounding</span>
+          <div class="flex gap-2">
+              <button
+                v-for="option in roundedOptions"
+                :key="option.value"
+                :class="['w-6 h-6 border cursor-pointer bg-surface-0 dark:bg-surface-900', option.class, rounded === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : 'hover:ring-2 hover:ring-offset-2 hover:ring-primary-500']"
+                @click="rounded = option.value"
+                :aria-label="option.label"
+                v-tooltip.bottom="{ value: option.label }"
+              ></button>
+          </div>
+        </div>
       </div>
     </UiDrawer>
   </div>
@@ -59,7 +72,7 @@ import ToggleSwitch from '@atlas/ui/components/ToggleSwitch.vue';
 import { useSettings } from '../composables/useSettings';
 
 const visible = ref(false);
-const { dark, topNav, primary, surface } = useSettings();
+const { dark, topNav, primary, surface, rounded } = useSettings();
 const primaryOptions = [
     { label: 'Blue', value: 'blue', class: 'bg-blue-500' },
     { label: 'Purple', value: 'purple', class: 'bg-purple-500' },
@@ -77,6 +90,13 @@ const surfaceOptions = [
     { label: 'Pink', value: 'pink', class: 'bg-pink-50 dark:bg-pink-900' },
     { label: 'Slate', value: 'slate', class: 'bg-slate-50 dark:bg-slate-900' },
     { label: 'Zinc', value: 'zinc', class: 'bg-zinc-50 dark:bg-zinc-900' },
+];
+const roundedOptions = [
+    { label: '0', value: '0', class: 'rounded-[var(--p-rounded-0)]' },
+    { label: '0.25', value: '1', class: 'rounded-[var(--p-rounded-1)]' },
+    { label: '0.50', value: '2', class: 'rounded-[var(--p-rounded-2)]' },
+    { label: '0.75', value: '3', class: 'rounded-[var(--p-rounded-3)]' },
+    { label: '1', value: '4', class: 'rounded-[var(--p-rounded-4)]' },
 ];
 </script>
 
