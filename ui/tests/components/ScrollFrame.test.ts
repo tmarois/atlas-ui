@@ -144,5 +144,54 @@ describe('ScrollFrame', () => {
         getBoundingClientRect.mockRestore();
         (global as any).IntersectionObserver = originalIntersectionObserver;
     });
+
+    it('recalculates height when external DOM changes', async () => {
+        const originalMutationObserver = (global as any).MutationObserver;
+        let mutationCb: (mutations: any[]) => void = () => {};
+        const observe = vi.fn();
+        const disconnect = vi.fn();
+        (global as any).MutationObserver = vi.fn((cb) => {
+            mutationCb = cb;
+            return { observe, disconnect } as any;
+        });
+
+        let top = 10;
+        const getBoundingClientRect = vi.spyOn(
+            HTMLElement.prototype,
+            'getBoundingClientRect'
+        );
+        getBoundingClientRect.mockImplementation(() => ({
+            top,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            width: 0,
+            height: 0,
+            x: 0,
+            y: top,
+            toJSON: () => {}
+        }));
+
+        const Parent = {
+            components: { ScrollFrame },
+            template: `<div><div id="header"></div><ScrollFrame /></div>`
+        };
+
+        const wrapper = mount(Parent);
+        const frameComp = wrapper.findComponent(ScrollFrame);
+
+        await nextTick();
+        expect(observe).toHaveBeenCalledWith(document.body, expect.any(Object));
+        expect(frameComp.vm.dynamicHeight).toBe('10px');
+
+        top = 20;
+        mutationCb([{ target: document.body }]);
+
+        await nextTick();
+        expect(frameComp.vm.dynamicHeight).toBe('20px');
+
+        getBoundingClientRect.mockRestore();
+        (global as any).MutationObserver = originalMutationObserver;
+    });
 });
 
