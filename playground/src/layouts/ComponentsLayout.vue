@@ -34,6 +34,7 @@ const pageNavItems = [
       { label: 'Tables', href: '/components/tables' },
       { label: 'Tabs', href: '/components/tabs' },
       { label: 'Overlays', href: '/components/overlays' },
+      { label: 'Feedback', href: '/components/feedback', parent: '/components/feedback' },
       { label: 'Editor', href: '/components/editor', parent: '/components/editor' },
     ],
   },
@@ -84,6 +85,13 @@ const pageTabs = computed(() => {
       { title: 'Overview', href: '/components/editor' },
       { title: 'Variants', href: '/components/editor/variant' },
       { title: 'Text', href: '/components/editor/text' },
+    ];
+  }
+  if (route.path.startsWith('/components/feedback')) {
+    return [
+      { title: 'Alerts', href: '/components/feedback' },
+      { title: 'Toast', href: '/components/feedback/toast' },
+      { title: 'ProgressBar', href: '/components/feedback/progressbar' },
     ];
   }
   return [];
