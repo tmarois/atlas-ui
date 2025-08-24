@@ -3,7 +3,6 @@
     <Card>
       <template #content>
         <Button label="Show Toast" @click="show" />
-        <Toast />
       </template>
     </Card>
   </section>
@@ -12,7 +11,6 @@
 <script setup>
 import Card from '@atlas/ui/components/Card.vue';
 import Button from '@atlas/ui/components/Button.vue';
-import Toast from '@atlas/ui/components/Toast.vue';
 import { useToast } from 'primevue/usetoast';
 
 const toast = useToast();
