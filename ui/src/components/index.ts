@@ -51,6 +51,7 @@ export { default as Pagination } from './Pagination.vue';
 export { default as ProgressBar } from './ProgressBar.vue';
 export { default as ButtonMenu } from './ButtonMenu.vue';
 export { default as DatePicker } from './DatePicker.vue';
+export { default as FileUpload } from './FileUpload.vue';
 export { default as Editor } from './Editor/Index.vue';
 export { default as EditorContent } from './Editor/EditorContent.vue';
 export { default as PageContent } from './App/Page/Content.vue';

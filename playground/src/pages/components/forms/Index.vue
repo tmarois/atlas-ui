@@ -66,6 +66,11 @@
                   <Textarea id="description" v-model="form.description" fluid autoResize />
                 </LabelField>
               </div>
+              <div class="w-full">
+                <LabelField name="file" label="Upload file">
+                  <FileUpload mode="basic" customUpload @select="form.file = $event.files[0]" />
+                </LabelField>
+              </div>
             </div>
           </template>
         </Card>
@@ -125,6 +130,11 @@
               <div class="w-full">
                 <LabelField name="description" label="Description">
                   <Textarea id="description_disabled" v-model="form.description" fluid :disabled="true" autoResize />
+                </LabelField>
+              </div>
+              <div class="w-full">
+                <LabelField name="file" label="Upload file">
+                  <FileUpload mode="basic" customUpload :disabled="true" />
                 </LabelField>
               </div>
             </div>
@@ -241,6 +251,7 @@ import MultiSelect from '@atlas/ui/components/MultiSelect.vue';
 import AutoComplete from '@atlas/ui/components/AutoComplete.vue';
 import DatePicker from '@atlas/ui/components/DatePicker.vue';
 import Textarea from '@atlas/ui/components/Textarea.vue';
+import FileUpload from '@atlas/ui/components/FileUpload.vue';
 import InputNumber from '@atlas/ui/components/InputNumber.vue';
 import Alert from '@atlas/ui/components/Alert.vue';
 import LabelCheckbox from '@atlas/ui/components/LabelCheckbox.vue';
@@ -266,6 +277,7 @@ const form = reactive({
     month: new Date('2024-02-01'),
     time: new Date('2024-01-01T12:00:00'),
     description: 'Example description',
+    file: null,
 });
 
 const roles = ref([
