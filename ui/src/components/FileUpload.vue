@@ -111,7 +111,10 @@ const model = computed(() => props.modelValue);
 const fileNames = computed(() => {
     const value = model.value;
     if (!value || (Array.isArray(value) && value.length === 0)) return '';
-    return Array.isArray(value) ? value.map((f) => f.name).join(', ') : value.name;
+    if (Array.isArray(value)) {
+        return value.length === 1 ? value[0].name : `${value.length} files selected`;
+    }
+    return value.name;
 });
 const hasFile = computed(() => !!fileNames.value);
 

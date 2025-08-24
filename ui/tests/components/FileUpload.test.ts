@@ -30,4 +30,25 @@ describe('FileUpload', () => {
         const button = wrapper.find('button');
         expect(button.text()).toBe('Select');
     });
+
+    it('shows file name when one file selected', () => {
+        const file = new File(['a'], 'a.txt', { type: 'text/plain' });
+        const wrapper = mount(FileUpload, {
+            props: { multiple: true, modelValue: [file] },
+            global: { plugins: [PrimeVue] },
+        });
+        const label = wrapper.find('span.truncate');
+        expect(label.text()).toBe('a.txt');
+    });
+
+    it('shows file count when multiple files selected', () => {
+        const file1 = new File(['a'], 'a.txt', { type: 'text/plain' });
+        const file2 = new File(['b'], 'b.txt', { type: 'text/plain' });
+        const wrapper = mount(FileUpload, {
+            props: { multiple: true, modelValue: [file1, file2] },
+            global: { plugins: [PrimeVue] },
+        });
+        const label = wrapper.find('span.truncate');
+        expect(label.text()).toBe('2 files selected');
+    });
 });
