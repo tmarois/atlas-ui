@@ -12,7 +12,7 @@ import './style.css';
 const app = createApp(App);
 app.use(router);
 app.use(ToastService);
-app.use(PrimeVue, { unstyled: true });
+app.use(PrimeVue, { unstyled: true, zIndex: { tooltip: 2100 } });
 app.directive('tooltip', Tooltip);
 app.directive('styleclass', StyleClass);
 app.mount('#app');
