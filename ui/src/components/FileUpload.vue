@@ -82,7 +82,7 @@ const heightClass = 'h-10 p-small:h-[34px] p-large:h-[42px]';
 const paddingClass =
     'pl-[3px] pr-3 p-small:pl-0 p-small:pr-[0.625rem] p-large:pl-1 p-large:pr-[0.875rem]';
 const baseClass =
-    'flex items-center border focus-within:border-primary transition-colors duration-200 overflow-hidden shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]';
+    'flex items-center border focus-within:border-primary rounded-md transition-colors duration-200 overflow-hidden shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]';
 const inputAttrs = computed(() => {
     const { class: _c, style: _s, ...rest } = attrs as any;
     return rest;
