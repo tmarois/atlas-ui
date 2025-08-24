@@ -2,8 +2,10 @@ import { ref, watch } from 'vue';
 
 const dark = ref(localStorage.getItem('playground_dark') === 'true');
 const topNav = ref(localStorage.getItem('playground_top_nav') === 'true');
-const theme = ref(localStorage.getItem('playground_theme') || 'blue');
-const themes = ['blue', 'purple', 'teal', 'pink', 'gray', 'green', 'orange'];
+const primary = ref(localStorage.getItem('playground_primary') || 'blue');
+const surface = ref(localStorage.getItem('playground_surface') || 'blue');
+const primaryThemes = ['blue', 'purple', 'indigo', 'teal', 'pink', 'gray', 'green', 'orange'];
+const surfaceThemes = ['blue', 'gray', 'purple', 'pink', 'slate', 'zinc'];
 
 watch(
   dark,
@@ -23,17 +25,29 @@ watch(
 );
 
 watch(
-  theme,
+  primary,
   (value) => {
-    localStorage.setItem('playground_theme', value);
+    localStorage.setItem('playground_primary', value);
     document.documentElement.classList.remove(
-      ...themes.map((t) => `theme-${t}`)
+      ...primaryThemes.map((t) => `theme-primary-${t}`)
     );
-    document.documentElement.classList.add(`theme-${value}`);
+    document.documentElement.classList.add(`theme-primary-${value}`);
+  },
+  { immediate: true }
+);
+
+watch(
+  surface,
+  (value) => {
+    localStorage.setItem('playground_surface', value);
+    document.documentElement.classList.remove(
+      ...surfaceThemes.map((t) => `theme-surface-${t}`)
+    );
+    document.documentElement.classList.add(`theme-surface-${value}`);
   },
   { immediate: true }
 );
 
 export function useSettings() {
-  return { dark, topNav, theme };
+  return { dark, topNav, primary, surface };
 }
