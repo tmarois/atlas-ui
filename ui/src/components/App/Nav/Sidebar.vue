@@ -1,6 +1,6 @@
 <template>
     <div class="relative dark flex flex-col items-center w-16 h-full overflow-hidden text-white/80 bg-surface-800 border-r border-surface-700 z-[99]">
-        <component :is="linkComponent" class="flex items-center justify-center h-14" :href="homeUrl">
+        <component :is="linkComponent" class="flex items-center justify-center h-14" :href="logoLinkPath">
             <div class="flex-shrink-0">
                 <slot name="logo">
                     <svg
@@ -67,7 +67,7 @@ const props = defineProps({
         type: Array,
         required: true
     },
-    homeUrl: {
+    logoLinkPath: {
         type: String,
         default: '/'
     },

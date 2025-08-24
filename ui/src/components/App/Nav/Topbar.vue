@@ -4,7 +4,7 @@
             <div class="flex h-16 items-center justify-between">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <component :is="linkComponent" :href="homeUrl" class="inline-flex items-center h-8">
+                        <component :is="linkComponent" :href="logoLinkPath" class="inline-flex items-center h-8">
                             <slot name="logo">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +88,7 @@ const props = defineProps({
         type: [String, Object],
         default: 'a',
     },
-    homeUrl: {
+    logoLinkPath: {
         type: String,
         default: '/',
     },

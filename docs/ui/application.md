@@ -4,19 +4,23 @@ Composes navigation, page chrome, and page content into a full application wrapp
 
 ## Table of Contents
 
-### Navigation
-- [NavTopbar](application/nav-topbar.md)
-- [NavSidebar](application/nav-sidebar.md)
-- [PageSideNav](application/page-side-nav.md)
+- App Navigation
+  - [NavTopbar](application/nav-topbar.md)
+  - [NavSidebar](application/nav-sidebar.md)
+- App Layout
+  - [App](#app)
+  - [AppTopbar](application/app-topbar.md)
+- Page Navigation
+  - [PageSideNav](application/page-side-nav.md)
+- Page Layout
+  - [PageHeader](application/page-header.md)
+  - [PageSideContent](application/page-side-content.md)
+  - [PageContent](application/page-content.md)
+  - [PageFooter](application/page-footer.md)
 
-### Layout
-- [AppTopbar](application/app-topbar.md)
-- [PageHeader](application/page-header.md)
-- [PageContent](application/page-content.md)
-- [PageFooter](application/page-footer.md)
-- [PageSideContent](application/page-side-content.md)
+## App
 
-## Example
+### Example
 ```ts
 import { App as LayoutApp } from '@atlas/ui';
 ```
@@ -65,7 +69,7 @@ import { App as LayoutApp } from '@atlas/ui';
 </LayoutApp>
 ```
 
-## Props
+### Props
 - `pageUrl: string` – current page identifier.
 - `isSideNav: boolean` – render side navigation when true; top bar when false. Default `true`.
 - `hasToast: boolean` – include global `<Toast>` instance. Default `true`.
@@ -80,7 +84,7 @@ import { App as LayoutApp } from '@atlas/ui';
 - `containerClass: string` – additional classes for the main container. Default `'mx-auto p-4'`.
 - `noScroll: boolean` – disable vertical scrolling for the main content. Default `false`.
 
-## Slots
+### Slots
 - `nav` – replace the navigation area entirely.
 - `navLogo` – logo inside default navigation components.
 - `navActions` – action area in navigation.
@@ -93,5 +97,5 @@ import { App as LayoutApp } from '@atlas/ui';
 - `modals` – render modal components outside the layout.
 - `default` – main page content.
 
-## Events
+### Events
 - None
