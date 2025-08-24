@@ -44,6 +44,49 @@ const { bindScrollHandler, lockScroll, unlockScroll } = useScroll(
 
 const { add, remove } = bindScrollHandler(frame);
 
+const stopObserving = () => {
+    if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', updateHeight);
+    }
+    resizeObserver?.disconnect();
+    intersectionObserver?.disconnect();
+    mutationObserver?.disconnect();
+    resizeObserver = null;
+    intersectionObserver = null;
+    mutationObserver = null;
+};
+
+const startObserving = () => {
+    if (typeof window === 'undefined') return;
+    window.addEventListener('resize', updateHeight);
+    if (typeof ResizeObserver !== 'undefined' && !resizeObserver) {
+        resizeObserver = new ResizeObserver(() => updateHeight());
+        const element = frame.value?.parentElement ?? document.body;
+        resizeObserver.observe(element);
+    }
+    if (typeof IntersectionObserver !== 'undefined' && !intersectionObserver) {
+        intersectionObserver = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+                updateHeight();
+            }
+        });
+        if (frame.value) intersectionObserver.observe(frame.value);
+    }
+    if (typeof MutationObserver !== 'undefined' && !mutationObserver) {
+        mutationObserver = new MutationObserver((mutations) => {
+            const frameEl = frame.value;
+            if (!frameEl) return;
+            const shouldUpdate = mutations.some((m) => !frameEl.contains(m.target as Node));
+            if (shouldUpdate) updateHeight();
+        });
+        mutationObserver.observe(document.body, {
+            attributes: true,
+            childList: true,
+            subtree: true,
+        });
+    }
+};
+
 const updateHeight = (force = false) => {
     if (
         !force &&
@@ -57,12 +100,16 @@ const updateHeight = (force = false) => {
 };
 
 const handlePointerDown = (e: PointerEvent) => {
-    if (e.target instanceof HTMLTextAreaElement) draggingTextarea = true;
+    if (e.target instanceof HTMLTextAreaElement) {
+        draggingTextarea = true;
+        stopObserving();
+    }
 };
 
 const handlePointerUp = () => {
     if (draggingTextarea) {
         draggingTextarea = false;
+        startObserving();
         updateHeight(true);
     }
 };
@@ -82,37 +129,9 @@ onMounted(() => {
         updateHeight();
     });
     if (typeof window !== 'undefined') {
-        window.addEventListener('resize', updateHeight);
         window.addEventListener('pointerdown', handlePointerDown);
         window.addEventListener('pointerup', handlePointerUp);
-        if (typeof ResizeObserver !== 'undefined') {
-            resizeObserver = new ResizeObserver(() => updateHeight());
-            const element = frame.value?.parentElement ?? document.body;
-            resizeObserver.observe(element);
-        }
-        if (typeof IntersectionObserver !== 'undefined') {
-            intersectionObserver = new IntersectionObserver((entries) => {
-                if (entries.some((entry) => entry.isIntersecting)) {
-                    updateHeight();
-                }
-            });
-            if (frame.value) intersectionObserver.observe(frame.value);
-        }
-        if (typeof MutationObserver !== 'undefined') {
-            mutationObserver = new MutationObserver((mutations) => {
-                const frameEl = frame.value;
-                if (!frameEl) return;
-                const shouldUpdate = mutations.some(
-                    (m) => !frameEl.contains(m.target as Node)
-                );
-                if (shouldUpdate) updateHeight();
-            });
-            mutationObserver.observe(document.body, {
-                attributes: true,
-                childList: true,
-                subtree: true,
-            });
-        }
+        startObserving();
     }
 });
 
@@ -126,12 +145,9 @@ onBeforeUnmount(() => {
     remove();
     if (props.page && !props.allowBodyScroll) unlockScroll();
     if (typeof window !== 'undefined') {
-        window.removeEventListener('resize', updateHeight);
         window.removeEventListener('pointerdown', handlePointerDown);
         window.removeEventListener('pointerup', handlePointerUp);
-        resizeObserver?.disconnect();
-        intersectionObserver?.disconnect();
-        mutationObserver?.disconnect();
+        stopObserving();
     }
 });
 
