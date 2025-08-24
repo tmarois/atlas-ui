@@ -506,7 +506,7 @@ const submit = async () => {
 - `multiple` – allow selecting multiple files.
 - `clearable` – show a clear button to reset the selection.
 - `chooseLabel` – text for the choose button.
-- `size` – `'small' | 'large'`.
+- `size` – `'small' | 'large'` to match `InputText` heights (34 px and 42 px).
 - `invalid` – show the error style with a red border.
 
 ##### Events
