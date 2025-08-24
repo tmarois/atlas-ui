@@ -4,22 +4,26 @@
       <template #content>
         <Alert class="mb-4">Default alert</Alert>
         <Alert warning class="mb-4">Warning alert</Alert>
-        <Alert hideIcon class="mb-4">Alert without icon</Alert>
+        <Alert hideIcon>Alert without icon</Alert>
+      </template>
+    </Card>
 
+    <Card>
+      <template #content>
         <Alert class="mb-4">
-          Default alert
+          <div class="space-y-1">
+            <p class="font-medium">Information</p>
+            <p>There is a new update available.</p>
+          </div>
           <template #actions>
-            <Button size="small" label="Add funds" />
+            <Button size="small" label="View details" />
           </template>
         </Alert>
-        <Alert warning class="mb-4">
-          Warning alert
-          <template #actions>
-            <Button size="small" label="Add funds" />
-          </template>
-        </Alert>
-        <Alert hideIcon>
-          Alert without icon
+        <Alert warning>
+          <div class="space-y-1">
+            <p class="font-medium">Payment needed</p>
+            <p>Your account balance is low. Add funds to continue.</p>
+          </div>
           <template #actions>
             <Button size="small" label="Add funds" />
           </template>
