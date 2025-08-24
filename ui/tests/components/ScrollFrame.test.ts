@@ -47,5 +47,54 @@ describe('ScrollFrame', () => {
 
         getBoundingClientRect.mockRestore();
     });
+
+    it('recalculates height when parent resizes', async () => {
+        const originalResizeObserver = (global as any).ResizeObserver;
+        let resizeCb: () => void = () => {};
+        const observe = vi.fn();
+        const disconnect = vi.fn();
+        (global as any).ResizeObserver = vi.fn((cb) => {
+            resizeCb = cb;
+            return { observe, disconnect } as any;
+        });
+
+        let top = 10;
+        const getBoundingClientRect = vi.spyOn(
+            HTMLElement.prototype,
+            'getBoundingClientRect'
+        );
+        getBoundingClientRect.mockImplementation(() => ({
+            top,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            width: 0,
+            height: 0,
+            x: 0,
+            y: top,
+            toJSON: () => {}
+        }));
+
+        const Parent = {
+            components: { ScrollFrame },
+            template: `<div id="parent"><ScrollFrame /></div>`
+        };
+
+        const wrapper = mount(Parent);
+        const frameComp = wrapper.findComponent(ScrollFrame);
+
+        await nextTick();
+        expect(observe).toHaveBeenCalledWith(wrapper.element);
+        expect(frameComp.vm.dynamicHeight).toBe('10px');
+
+        top = 20;
+        resizeCb();
+
+        await nextTick();
+        expect(frameComp.vm.dynamicHeight).toBe('20px');
+
+        getBoundingClientRect.mockRestore();
+        (global as any).ResizeObserver = originalResizeObserver;
+    });
 });
 

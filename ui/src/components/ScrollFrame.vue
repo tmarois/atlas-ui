@@ -64,7 +64,8 @@ onMounted(() => {
         window.addEventListener('resize', updateHeight);
         if (typeof ResizeObserver !== 'undefined') {
             resizeObserver = new ResizeObserver(() => updateHeight());
-            resizeObserver.observe(document.body);
+            const element = frame.value?.parentElement ?? document.body;
+            resizeObserver.observe(element);
         }
     }
 });
