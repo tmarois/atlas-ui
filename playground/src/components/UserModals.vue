@@ -2,18 +2,36 @@
   <DrawerForm
     v-model="addEditUserVisible"
     :title="form.id ? 'Edit user' : 'Add user'"
+    position="right"
+    width="600px"
     :loading="form.processing"
     :errors="form.errors"
     @submit="submit"
   >
-    <div class="space-y-4 w-full">
-      <LabelField name="name" label="Name">
-        <InputText id="name" v-model="form.name" type="text" />
-      </LabelField>
-      <LabelField name="email" label="Email">
-        <InputText id="email" v-model="form.email" type="text" />
-      </LabelField>
-    </div>
+    <Card>
+      <template #header>
+        <div class="font-semibold text-gray-900 dark:text-gray-200 text-md flex items-center space-x-2">
+          <div>Details</div>
+          <TooltipIcon text="Edit the user details such as name and email." />
+        </div>
+      </template>
+      <template #content>
+        <form>
+          <div class="space-y-4 w-full">
+            <div class="w-full">
+              <LabelField name="name" label="Name" required :error="form.errors.name">
+                <InputText id="name" v-model="form.name" type="text" fluid :invalid="!!form.errors.name" />
+              </LabelField>
+            </div>
+            <div class="w-full">
+              <LabelField name="email" label="Email" required :error="form.errors.email">
+                <InputText id="email" v-model="form.email" type="text" fluid :invalid="!!form.errors.email" />
+              </LabelField>
+            </div>
+          </div>
+        </form>
+      </template>
+    </Card>
   </DrawerForm>
   <DialogConfirmation
     v-model="deleteUserVisible"
@@ -24,7 +42,7 @@
 
 <script setup>
 import { reactive, watch } from 'vue';
-import { DrawerForm, DialogConfirmation, LabelField, InputText, useModal } from '@atlas/ui';
+import { DrawerForm, DialogConfirmation, LabelField, InputText, Card, TooltipIcon, useModal } from '@atlas/ui';
 
 const { activeState, data, close } = useModal();
 
