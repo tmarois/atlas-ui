@@ -27,7 +27,10 @@ The front end centers on a reusable UI library powered by **Vue 3**, **PrimeVue 
 **Documentation**
 
 - [Frontend Guide](docs/frontend-guide.md)
+- [Application Layout](docs/ui/application.md)
 - [Components](docs/ui.md)
+- [Table](docs/ui/table.md)
+- [Editor](docs/ui/editor.md)
 - [Composables](docs/ui/composables.md)
 - [Utils](docs/ui/utils.md)
 
