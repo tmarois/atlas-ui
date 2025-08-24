@@ -113,7 +113,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount, nextTick, useSlots } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount, nextTick, useSlots, watch } from 'vue';
 import { hasSlotContent } from '../../utils';
 import PageHeader from './Page/Header.vue';
 import PageFooter from './Page/Footer.vue';
@@ -163,6 +163,8 @@ const pageSideNavRef = ref(null);
 const footerRef = ref(null);
 const sideContentRef = ref<HTMLElement | null>(null);
 
+let resizeObserver: ResizeObserver | null = null;
+
 const footerHeight = ref(0);
 const footerLeftOffset = ref(0);
 
@@ -184,21 +186,58 @@ const hasPageHeader = computed(() =>
 );
 
 const hasPageFooter = computed(() => hasSlotContent(slots.footer) || hasSlotContent(slots.footerAction));
+const observeElements = () => {
+    if (typeof window === 'undefined' || typeof ResizeObserver === 'undefined') return;
+
+    resizeObserver?.disconnect();
+    resizeObserver = new ResizeObserver(() => {
+        calculateFooterMetrics();
+    });
+
+    const sideNavEl = (sideNavRef.value as any)?.$el;
+    const pageSideNavEl = (pageSideNavRef.value as any)?.$el;
+    const sideContentEl = sideContentRef.value;
+
+    [sideNavEl, pageSideNavEl, sideContentEl].forEach((el) => {
+        if (el) {
+            resizeObserver!.observe(el);
+        }
+    });
+};
 
 onMounted(() => {
     if (typeof window === 'undefined') return;
 
     nextTick(() => {
         calculateFooterMetrics();
+        observeElements();
     });
-
-    window.addEventListener('resize', calculateFooterMetrics);
 });
 
-onBeforeUnmount(() => {
-    if (typeof window === 'undefined') return;
+watch(
+    () => props.isSideNav,
+    () => {
+        if (typeof window === 'undefined') return;
+        nextTick(() => {
+            calculateFooterMetrics();
+            observeElements();
+        });
+    }
+);
 
-    window.removeEventListener('resize', calculateFooterMetrics);
+watch(
+    hasPageSideContent,
+    () => {
+        if (typeof window === 'undefined') return;
+        nextTick(() => {
+            calculateFooterMetrics();
+            observeElements();
+        });
+    }
+);
+
+onBeforeUnmount(() => {
+    resizeObserver?.disconnect();
 });
 </script>
 
