@@ -6,45 +6,51 @@
     >
       <span class="pi pi-cog"></span>
     </button>
-      <UiDrawer v-model:visible="visible" position="right" :modal="false">
-        <div class="p-4 space-y-4">
-          <h2 class="text-xl font-semibold">Settings</h2>
-          <div class="flex items-center justify-between">
-            <span>Dark mode</span>
-            <ToggleSwitch v-model="dark" />
-          </div>
-          <div class="flex items-center justify-between">
-            <span>Top navigation</span>
-            <ToggleSwitch v-model="topNav" />
-          </div>
-          <div>
-            <span class="block mb-2">Primary</span>
-            <div class="flex gap-2">
-              <button
-                v-for="option in primaryOptions"
-                :key="option.value"
-                :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, primary === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : '']"
-                @click="primary = option.value"
-                :aria-label="option.label"
-              ></button>
-            </div>
-          </div>
-          <div>
-            <span class="block mb-2">Surface</span>
-            <div class="flex gap-2">
-              <button
-                v-for="option in surfaceOptions"
-                :key="option.value"
-                :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, surface === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : '']"
-                @click="surface = option.value"
-                :aria-label="option.label"
-              ></button>
-            </div>
+    <UiDrawer
+      v-model:visible="visible"
+      position="right"
+      :modal="false"
+      header="Customize"
+    >
+      <div class="p-4 space-y-6">
+        <div class="flex items-center justify-between">
+          <span class="font-medium">Dark mode</span>
+          <ToggleSwitch v-model="dark" />
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="font-medium">Top navigation</span>
+          <ToggleSwitch v-model="topNav" />
+        </div>
+        <div>
+          <span class="block mb-2 font-medium">Primary</span>
+          <div class="flex gap-2">
+            <button
+              v-for="option in primaryOptions"
+              :key="option.value"
+              :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, primary === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : '']"
+              @click="primary = option.value"
+              :aria-label="option.label"
+              v-tooltip.bottom="{ value: option.label }"
+            ></button>
           </div>
         </div>
-      </UiDrawer>
-    </div>
-  </template>
+        <div>
+          <span class="block mb-2 font-medium">Surface</span>
+          <div class="flex gap-2">
+            <button
+              v-for="option in surfaceOptions"
+              :key="option.value"
+              :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, surface === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : '']"
+              @click="surface = option.value"
+              :aria-label="option.label"
+              v-tooltip.bottom="{ value: option.label }"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </UiDrawer>
+  </div>
+</template>
 
 <script setup>
 import { ref } from 'vue';
