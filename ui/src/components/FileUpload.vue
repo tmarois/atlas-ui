@@ -1,10 +1,23 @@
 <template>
     <div class="relative">
-        <InputGroup :class="['p-1', sizeClass, invalidClass, rootClass]" :style="rootStyle">
+        <div
+            :class="[
+                baseClass,
+                paddingClass,
+                sizeClass,
+                invalidClass,
+                isDisabled
+                    ? 'bg-surface-200 text-surface-700 dark:bg-surface-700 dark:text-surface-400 opacity-70 shadow-none cursor-not-allowed'
+                    : 'bg-surface-0 dark:bg-surface-950 text-surface-900 dark:text-surface-0 hover:border-surface-400 dark:hover:border-surface-600 cursor-pointer',
+                rootClass,
+            ]"
+            :style="rootStyle"
+            @click="onContainerClick"
+        >
             <Button
                 type="button"
                 :label="chooseLabel"
-                @click="choose"
+                @click.stop="choose"
                 :disabled="isDisabled"
                 :size="props.size"
                 class="mr-2"
@@ -16,14 +29,14 @@
                 <button
                     v-if="clearable && hasFile"
                     type="button"
-                    @click="clear"
+                    @click.stop="clear"
                     :disabled="isDisabled"
                     class="absolute top-1/2 -translate-y-1/2 right-3 text-surface-400 hover:text-surface-600 dark:text-surface-300 dark:hover:text-white cursor-pointer disabled:hidden disabled:pointer-events-none"
                 >
                     <TimesIcon class="w-4 h-4" />
                 </button>
             </div>
-        </InputGroup>
+        </div>
         <input
             ref="input"
             type="file"
@@ -38,7 +51,6 @@
 <script setup lang="ts">
 import { ref, computed, useAttrs } from 'vue';
 import Button from './Button.vue';
-import InputGroup from './InputGroup.vue';
 import TimesIcon from '@primevue/icons/times';
 
 interface Props {
@@ -63,6 +75,11 @@ const rootStyle = computed(() => (attrs as any).style);
 
 const sizeClass = computed(() => (props.size ? `p-${props.size}` : ''));
 const invalidClass = computed(() => (props.invalid ? 'p-invalid' : ''));
+const paddingClass = computed(() =>
+    props.size === 'small' ? 'px-px py-0' : 'px-1 py-0'
+);
+const baseClass =
+    'flex items-stretch rounded-md border border-surface-300 dark:border-surface-700 focus-within:border-primary p-invalid:border-red-500 dark:p-invalid:border-red-500 transition-colors duration-200 overflow-hidden shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]';
 const inputAttrs = computed(() => {
     const { class: _c, style: _s, ...rest } = attrs as any;
     return rest;
@@ -72,6 +89,9 @@ const isDisabled = computed(() => !!inputAttrs.value.disabled);
 
 const input = ref<HTMLInputElement>();
 const choose = () => input.value?.click();
+const onContainerClick = () => {
+    if (!isDisabled.value) choose();
+};
 
 const onChange = (e: Event) => {
     const files = (e.target as HTMLInputElement).files;
@@ -94,7 +114,7 @@ const hasFile = computed(() => !!fileNames.value);
 
 const textBase = `flex items-center w-full
     bg-surface-0 dark:bg-surface-950
-    px-3 py-[9px] leading-[1.25rem]
+    px-3 py-[9px] leading-[1.25rem] text-base
     p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
     p-large:text-lg p-large:px-[0.875rem] p-large:py-[0.625rem]
     transition-colors duration-200`;
