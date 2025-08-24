@@ -11,7 +11,7 @@
                 v-tooltip.bottom="{
                     value: menuItem?.tooltip ?? null,
                     pt: {
-                        root: 'absolute shadow-md atlas-tooltip py-0 px-0 max-w-[260px] mt-1',
+                        root: 'absolute shadow-md py-0 px-0 max-w-[260px] mt-1',
                         text: 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-700 dark:border-surface-800 rounded-[var(--p-content-border-radius)] whitespace-pre-line'
                     }
                 }"
@@ -73,7 +73,7 @@
                     v-tooltip.bottom="{
                         value: 'Clear selection',
                         pt: {
-                            root: 'absolute shadow-md atlas-tooltip py-0 px-0 max-w-[260px] mt-1',
+                            root: 'absolute shadow-md py-0 px-0 max-w-[260px] mt-1',
                             text: 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-700 dark:border-surface-800 rounded-[var(--p-content-border-radius)] whitespace-pre-line'
                         }
                     }"
