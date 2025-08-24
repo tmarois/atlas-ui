@@ -34,12 +34,12 @@ const theme = ref<ButtonPassThroughOptions>({
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
         p-large:text-[1.125rem] p-large:px-[0.875rem] p-large:py-[0.625rem]
         p-raised:shadow-sm p-rounded:rounded-[var(--p-rounded-4)]
-        p-outlined:bg-transparent enabled:hover:p-outlined:bg-primary-50 enabled:active:p-outlined:bg-primary-100
-        p-outlined:border-primary-200 enabled:hover:p-outlined:border-primary-200 enabled:active:p-outlined:border-primary-200
-        p-outlined:text-primary enabled:hover:p-outlined:text-primary enabled:active:p-outlined:text-primary
-        dark:p-outlined:bg-transparent dark:enabled:hover:p-outlined:bg-primary/5 dark:enabled:active:p-outlined:bg-primary/15
-        dark:p-outlined:border-primary-300 dark:enabled:hover:p-outlined:border-primary-200 dark:enabled:active:p-outlined:border-primary-500
-        dark:p-outlined:text-primary-300 dark:enabled:hover:p-outlined:text-primary-200 dark:enabled:active:p-outlined:text-primary-200
+        p-outlined:bg-transparent enabled:hover:p-outlined:bg-gray-100 enabled:active:p-outlined:bg-gray-200
+        p-outlined:border-surface-300 enabled:hover:p-outlined:border-surface-400 enabled:active:p-outlined:border-surface-300
+        p-outlined:text-gray-700 enabled:hover:p-outlined:text-gray-700 enabled:active:p-outlined:text-gray-700
+        dark:p-outlined:bg-transparent dark:enabled:hover:p-outlined:bg-surface-700 dark:enabled:active:p-outlined:bg-surface-600
+        dark:p-outlined:border-surface-700 dark:enabled:hover:p-outlined:border-surface-600 dark:enabled:active:p-outlined:border-surface-600
+        dark:p-outlined:text-white dark:enabled:hover:p-outlined:text-white dark:enabled:active:p-outlined:text-white
         p-text:bg-transparent enabled:hover:p-text:bg-gray-100 enabled:active:p-text:bg-primary-100
         p-text:border-transparent enabled:hover:p-text:border-transparent enabled:active:p-text:border-transparent
         p-text:text-gray-700 enabled:hover:p-text:text-gray-700 enabled:active:p-text:text-gray-700
