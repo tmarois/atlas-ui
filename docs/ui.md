@@ -2,13 +2,13 @@
 
 Reusable Vue 3 components styled with Tailwind CSS and built on top of PrimeVue.
 
-See the [App Layout](ui/app.md) for a ready-to-use application wrapper.
+See the [App Layout](ui/application.md) for a ready-to-use application wrapper.
 
 ## Table of Contents
 - [Setup](#setup)
 - [Override Themes with Passthrough](#override-themes-with-passthrough)
 - [Components](#components)
-  - [Application](ui/app.md)
+  - [Application](ui/application.md)
   - [Actions](#actions)
     - [Button](#button)
     - [ButtonGroup](#buttongroup)
