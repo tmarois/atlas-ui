@@ -1,7 +1,14 @@
 <template>
     <div class="relative">
-        <InputGroup :class="rootClass" :style="rootStyle">
-            <Button type="button" label="Choose" @click="choose" :disabled="isDisabled" />
+        <InputGroup :class="['p-1', sizeClass, invalidClass, rootClass]" :style="rootStyle">
+            <Button
+                type="button"
+                :label="chooseLabel"
+                @click="choose"
+                :disabled="isDisabled"
+                :size="props.size"
+                class="mr-2"
+            />
             <div class="relative flex-1">
                 <div :class="[textBase, clearable && hasFile ? 'pr-8' : '', isDisabled ? 'text-surface-700 dark:text-surface-400 bg-surface-200' : hasFile ? 'text-surface-900 dark:text-surface-0' : 'text-surface-500 dark:text-surface-400']">
                     <span class="truncate">{{ fileNames || 'No file selected' }}</span>
@@ -38,14 +45,24 @@ interface Props {
     modelValue?: File | File[] | null;
     multiple?: boolean;
     clearable?: boolean;
+    chooseLabel?: string;
+    size?: 'small' | 'large';
+    invalid?: boolean;
 }
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+    chooseLabel: 'Choose',
+    size: undefined,
+    invalid: false,
+});
 const emit = defineEmits(['update:modelValue']);
 
 const attrs = useAttrs();
 
 const rootClass = computed(() => (attrs as any).class);
 const rootStyle = computed(() => (attrs as any).style);
+
+const sizeClass = computed(() => (props.size ? `p-${props.size}` : ''));
+const invalidClass = computed(() => (props.invalid ? 'p-invalid' : ''));
 const inputAttrs = computed(() => {
     const { class: _c, style: _s, ...rest } = attrs as any;
     return rest;

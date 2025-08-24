@@ -132,6 +132,11 @@
                   <Textarea id="description_disabled" v-model="form.description" fluid :disabled="true" autoResize />
                 </LabelField>
               </div>
+              <div class="w-full">
+                <LabelField name="file" label="File">
+                  <FileUpload v-model="form.file" clearable :disabled="true" />
+                </LabelField>
+              </div>
             </div>
           </template>
         </Card>

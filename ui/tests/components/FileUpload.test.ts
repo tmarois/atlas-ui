@@ -21,4 +21,13 @@ describe('FileUpload', () => {
         await buttons[1].trigger('click');
         expect(wrapper.emitted('update:modelValue')?.[1]?.[0]).toBeNull();
     });
+
+    it('renders custom choose label', () => {
+        const wrapper = mount(FileUpload, {
+            props: { chooseLabel: 'Select' },
+            global: { plugins: [PrimeVue] },
+        });
+        const button = wrapper.find('button');
+        expect(button.text()).toBe('Select');
+    });
 });
