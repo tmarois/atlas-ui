@@ -35,6 +35,8 @@ const navItems = [
 - `items: NavItem[]` – sections and links displayed in the sidebar.
 - `logoLinkPath: string` – root link. Default `'/'`.
 - `linkComponent: string | object` – component used for links. Default `'a'`.
+- `backgroundClass: string` – optional classes for the sidebar background and border. Defaults to a primary `900` tone in dark mode.
+- `activeClass: string` – class applied to active links. Defaults to a white background with primary text/icons.
 
 ## Slots
 - `logo` – brand image or text.

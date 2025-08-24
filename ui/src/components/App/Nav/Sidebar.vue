@@ -1,11 +1,7 @@
 <template>
     <div
         class="relative flex flex-col items-center w-16 h-full overflow-hidden border-r z-[99]"
-        :class="
-            autoDark
-                ? 'text-surface-700 dark:text-white/80 bg-surface-100 dark:bg-surface-800 border-surface-200 dark:border-surface-700'
-                : 'dark text-white/80 bg-surface-800 border-surface-700'
-        "
+        :class="containerClass"
     >
         <component :is="linkComponent" class="flex items-center justify-center h-14" :href="logoLinkPath">
             <div class="flex-shrink-0">
@@ -88,6 +84,14 @@ const props = defineProps({
     autoDark: {
         type: Boolean,
         default: false
+    },
+    backgroundClass: {
+        type: String,
+        default: '',
+    },
+    activeClass: {
+        type: String,
+        default: '',
     }
 });
 
@@ -107,18 +111,24 @@ const getIcon = (item) => {
 
 const hasActions = computed(() => hasSlotContent(slots.actions));
 
+const containerClass = computed(() => {
+    const base = props.autoDark
+        ? 'text-surface-700 dark:text-white/80'
+        : 'dark text-white/80';
+    const bg = props.backgroundClass || (props.autoDark
+        ? 'bg-surface-100 dark:bg-primary-950 border-surface-200 dark:border-primary-950'
+        : 'bg-primary-950 border-primary-950');
+    return `${base} ${bg}`;
+});
+
 const linkClass = (item) => {
+    const activeCls = props.activeClass || 'bg-white text-primary-950';
     if (props.autoDark) {
-        return [
-            'text-surface-600 dark:text-surface-300 hover:bg-surface-200 dark:hover:bg-surface-700',
-            isActive(item)
-                ? 'bg-surface-200 dark:bg-surface-700 text-surface-900 dark:text-white'
-                : ''
-        ].join(' ');
+        const baseCls =
+            'text-surface-600 dark:text-surface-300 hover:bg-surface-200 dark:hover:bg-primary-800';
+        return isActive(item) ? activeCls : baseCls;
     }
-    return [
-        'hover:bg-surface-600 text-white',
-        isActive(item) ? 'bg-surface-500/80' : ''
-    ].join(' ');
+    const baseCls = 'text-white hover:bg-primary-800';
+    return isActive(item) ? activeCls : baseCls;
 };
 </script>

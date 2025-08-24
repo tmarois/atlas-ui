@@ -34,6 +34,8 @@ const navItems = [
 - `linkComponent: string | object` – component used for links. Default `'a'`.
 - `logoLinkPath: string` – root link. Default `'/'`.
 - `widthClass: string` – max width container class. Default `'max-w-screen-2xl'`.
+- `backgroundClass: string` – optional classes for the top bar background and border. Defaults to a primary `900` tone in dark mode.
+- `activeClass: string` – class applied to active links. Defaults to a white background with primary text.
 
 ## Slots
 - `logo` – brand image or text.

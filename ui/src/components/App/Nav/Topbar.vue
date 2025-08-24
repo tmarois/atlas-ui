@@ -1,11 +1,7 @@
 <template>
     <nav
         class="w-full border-b shadow-lg"
-        :class="
-            autoDark
-                ? 'bg-surface-100 dark:bg-surface-800 border-surface-200 dark:border-surface-700'
-                : 'dark bg-surface-800 border-surface-700'
-        "
+        :class="containerClass"
     >
         <div class="mx-auto px-4" :class="widthClass">
             <div class="flex h-16 items-center justify-between">
@@ -54,9 +50,7 @@
                                             v-bind="props.action"
                                             :href="item.href"
                                             class="flex items-center w-full px-2 py-1 text-sm rounded-[var(--p-content-border-radius)]"
-                                            :class="{
-                                                'bg-surface-200 dark:bg-surface-800 dark:text-white': isActive(item)
-                                            }"
+                                            :class="isActive(item) ? menuActiveClass : ''"
                                         >
                                             <span :class="item.icon" />
                                             <span class="ml-2">{{ item.label }}</span>
@@ -103,6 +97,14 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    backgroundClass: {
+        type: String,
+        default: '',
+    },
+    activeClass: {
+        type: String,
+        default: '',
+    },
 });
 
 const menuRefs = reactive({});
@@ -128,14 +130,24 @@ const isActive = (item) => {
 
 const hasActions = computed(() => hasSlotContent(slots.actions));
 
+const containerClass = computed(() => {
+    const bg = props.backgroundClass || (props.autoDark
+        ? 'bg-surface-100 dark:bg-primary-950 border-surface-200 dark:border-primary-950'
+        : 'dark bg-primary-950 border-primary-950');
+    return bg;
+});
+
+const menuActiveClass = computed(() => {
+    return props.activeClass || 'bg-white text-primary-900';
+});
+
 const linkClass = (item) => {
+    const activeCls = props.activeClass || 'bg-white text-primary-900';
     if (props.autoDark) {
-        return isActive(item)
-            ? 'bg-surface-200 dark:bg-surface-700 text-surface-900 dark:text-white'
-            : 'text-surface-700 dark:text-surface-300 hover:bg-surface-200 dark:hover:bg-surface-700 hover:text-surface-900 dark:hover:text-white';
+        const baseCls = 'text-surface-700 dark:text-surface-300 hover:bg-surface-200 dark:hover:bg-primary-800 hover:text-surface-900 dark:hover:text-white';
+        return isActive(item) ? activeCls : baseCls;
     }
-    return isActive(item)
-        ? 'bg-surface-900 text-white'
-        : 'text-gray-300 hover:bg-gray-700 hover:text-white';
+    const baseCls = 'text-gray-300 hover:bg-primary-800 hover:text-white';
+    return isActive(item) ? activeCls : baseCls;
 };
 </script>
