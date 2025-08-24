@@ -28,6 +28,12 @@
         <ProgressBar :value="animatedValue" />
       </template>
     </Card>
+
+    <Card>
+      <template #content>
+        <ProgressBar mode="indeterminate" />
+      </template>
+    </Card>
   </section>
 </template>
 
