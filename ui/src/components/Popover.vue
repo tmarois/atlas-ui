@@ -25,7 +25,7 @@ const theme = ref<PopoverPassThroughOptions>({
     root: `mt-[5px] p-flipped:-mt-[5px] p-flipped:mb-[5px]
         bg-surface-0 dark:bg-surface-900 text-surface-800 dark:text-surface-0 text-sm
         dark:border dark:border-surface-700
-        rounded shadow-floating`,
+        rounded-[var(--p-content-border-radius)] shadow-floating`,
     content: `p-3`,
     transition: {
         enterFromClass: 'opacity-0 scale-y-75',

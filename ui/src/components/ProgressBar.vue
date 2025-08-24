@@ -21,7 +21,7 @@ const props = defineProps<Props>();
 const attrs = useAttrs();
 
 const theme = ref<ProgressBarPassThroughOptions>({
-    root: `relative overflow-hidden h-5 bg-surface-200 dark:bg-surface-700 rounded-md`,
+    root: `relative overflow-hidden h-5 bg-surface-200 dark:bg-surface-700 rounded-[var(--p-content-border-radius)]`,
     value: `m-0 bg-primary-500
         p-determinate:h-full p-determinate:w-0 p-determinate:absolute p-determinate:flex p-determinate:items-center p-determinate:justify-center
         p-determinate:overflow-hidden p-determinate:transition-[width] p-determinate:duration-1000 p-determinate:ease-in-out

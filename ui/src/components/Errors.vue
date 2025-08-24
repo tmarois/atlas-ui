@@ -84,7 +84,7 @@ onMounted(() => {
 });
 
 const theme = ref<ErrorsPassThroughOptions>({
-    root: 'rounded-md bg-red-50 dark:bg-red-900/20 border border-red-300 dark:border-red-800/70 p-4 cursor-pointer',
+    root: 'rounded-[var(--p-content-border-radius)] bg-red-50 dark:bg-red-900/20 border border-red-300 dark:border-red-800/70 p-4 cursor-pointer',
     header: 'flex',
     icon: 'relative top-1 shrink-0 text-red-700 self-start flex items-center',
     titleContainer: 'ml-2 basis-full',

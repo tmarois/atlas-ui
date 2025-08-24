@@ -25,11 +25,11 @@ const theme = ref<MenuPassThroughOptions>({
     root: `bg-surface-0 dark:bg-surface-900
         text-surface-700 dark:text-surface-0
         border border-surface-200 dark:border-surface-700
-        rounded-md min-w-52
+        rounded-[var(--p-content-border-radius)] min-w-52
         p-popup:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]`,
     list: `m-0 p-1 list-none outline-none flex flex-col gap-[2px]`,
     item: `p-disabled:opacity-60 p-disabled:pointer-events-none`,
-    itemContent: `group transition-colors duration-200 rounded-sm text-surface-700 dark:text-surface-0
+    itemContent: `group transition-colors duration-200 rounded-[var(--p-content-border-radius)] text-surface-700 dark:text-surface-0
         p-focus:bg-surface-100 dark:p-focus:bg-surface-800 p-focus:text-surface-800 dark:p-focus:text-surface-0
         hover:bg-surface-100 dark:hover:bg-surface-800 hover:text-surface-800 dark:hover:text-surface-0`,
     itemLink: `cursor-pointer flex items-center no-underline overflow-hidden relative text-inherit
