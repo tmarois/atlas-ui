@@ -1,4 +1,4 @@
-import { IconHome, IconUsers, IconSettings } from '@tabler/icons-vue';
+import { IconHome, IconUsers, IconBox } from '@tabler/icons-vue';
 
 export const sideBarItems = [
   {
@@ -9,8 +9,8 @@ export const sideBarItems = [
         label: 'Components',
         href: '/components/buttons',
         parent: '/components',
-        icon: IconSettings,
-        activeIcon: IconSettings,
+        icon: IconBox,
+        activeIcon: IconBox,
       },
     ],
   },
