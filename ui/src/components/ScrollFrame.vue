@@ -34,6 +34,8 @@ const props = withDefaults(defineProps<Props>(), {
 const frame = ref<HTMLElement | null>(null);
 const dynamicHeight = ref('0px');
 let resizeObserver: ResizeObserver | null = null;
+let intersectionObserver: IntersectionObserver | null = null;
+let mutationObserver: MutationObserver | null = null;
 
 const { bindScrollHandler, lockScroll, unlockScroll } = useScroll(
     props.scrollKey !== null ? props.scrollKey : props.page ? 'page' : Symbol()
@@ -64,7 +66,31 @@ onMounted(() => {
         window.addEventListener('resize', updateHeight);
         if (typeof ResizeObserver !== 'undefined') {
             resizeObserver = new ResizeObserver(() => updateHeight());
-            resizeObserver.observe(document.body);
+            const element = frame.value?.parentElement ?? document.body;
+            resizeObserver.observe(element);
+        }
+        if (typeof IntersectionObserver !== 'undefined') {
+            intersectionObserver = new IntersectionObserver((entries) => {
+                if (entries.some((entry) => entry.isIntersecting)) {
+                    updateHeight();
+                }
+            });
+            if (frame.value) intersectionObserver.observe(frame.value);
+        }
+        if (typeof MutationObserver !== 'undefined') {
+            mutationObserver = new MutationObserver((mutations) => {
+                const frameEl = frame.value;
+                if (!frameEl) return;
+                const shouldUpdate = mutations.some(
+                    (m) => !frameEl.contains(m.target as Node)
+                );
+                if (shouldUpdate) updateHeight();
+            });
+            mutationObserver.observe(document.body, {
+                attributes: true,
+                childList: true,
+                subtree: true,
+            });
         }
     }
 });
@@ -81,6 +107,8 @@ onBeforeUnmount(() => {
     if (typeof window !== 'undefined') {
         window.removeEventListener('resize', updateHeight);
         resizeObserver?.disconnect();
+        intersectionObserver?.disconnect();
+        mutationObserver?.disconnect();
     }
 });
 
