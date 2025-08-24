@@ -47,10 +47,10 @@ const props = withDefaults(defineProps<Props>(), {
 const attrs = useAttrs();
 
 const theme = computed<AlertPassThroughOptions>(() => ({
-    root: `w-full p-4 flex border items-center space-x-4 rounded-md ${
+    root: `w-full p-4 flex border items-center space-x-4 rounded-md text-gray-900 dark:text-surface-100 ${
         props.warning
-            ? 'bg-yellow-100 border-yellow-300 dark:bg-yellow-700 dark:border-yellow-600 dark:text-surface-100'
-            : 'bg-surface-50 border-surface-300 dark:bg-surface-700 dark:border-surface-600 dark:text-surface-100'
+            ? 'bg-yellow-100 border-yellow-300 dark:bg-yellow-700 dark:border-yellow-600'
+            : 'bg-surface-50 border-surface-300 dark:bg-surface-700 dark:border-surface-600'
     }`,
     iconContainer: '',
     icon: `${
