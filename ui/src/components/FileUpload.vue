@@ -22,7 +22,6 @@
                 :disabled="isDisabled"
                 size="small"
                 rounded
-                outlined
                 class="mr-2"
             />
             <div class="relative flex-1">

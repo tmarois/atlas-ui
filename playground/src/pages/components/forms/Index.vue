@@ -71,6 +71,11 @@
                   <FileUpload v-model="form.file" clearable />
                 </LabelField>
               </div>
+              <div class="w-full">
+                <LabelField name="files" label="Files">
+                  <FileUpload v-model="form.files" multiple clearable />
+                </LabelField>
+              </div>
             </div>
           </template>
         </Card>
@@ -135,6 +140,11 @@
               <div class="w-full">
                 <LabelField name="file" label="File">
                   <FileUpload v-model="form.file" clearable :disabled="true" />
+                </LabelField>
+              </div>
+              <div class="w-full">
+                <LabelField name="files" label="Files">
+                  <FileUpload v-model="form.files" multiple clearable :disabled="true" />
                 </LabelField>
               </div>
             </div>
@@ -278,6 +288,7 @@ const form = reactive({
     time: new Date('2024-01-01T12:00:00'),
     description: 'Example description',
     file: null,
+    files: [],
 });
 
 const roles = ref([
