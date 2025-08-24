@@ -89,6 +89,23 @@
         </Dialog>
       </template>
     </Card>
+
+    <Card pt.content="p-0">
+      <template #header>
+        <div class="font-semibold text-gray-900 dark:text-gray-100 text-md flex items-center">
+          Dialog Confirmation
+        </div>
+      </template>
+      <template #content>
+        <div>
+          <Button label="Delete Item" @click="dialogConfirmVisible = true" />
+        </div>
+        <DialogConfirmation
+          v-model="dialogConfirmVisible"
+          @confirm="confirmDelete"
+        />
+      </template>
+    </Card>
   </section>
 </template>
 
@@ -99,12 +116,14 @@ import Button from '@atlas/ui/components/Button.vue';
 import Drawer from '@atlas/ui/components/Drawer.vue';
 import Dialog from '@atlas/ui/components/Dialog.vue';
 import DrawerForm from '@atlas/ui/components/DrawerForm.vue';
+import DialogConfirmation from '@atlas/ui/components/DialogConfirmation.vue';
 import TooltipIcon from '@atlas/ui/components/TooltipIcon.vue';
 import LabelField from '@atlas/ui/components/LabelField.vue';
 import InputText from '@atlas/ui/components/InputText.vue';
 
 const drawerVisible = ref(false);
 const dialogVisible = ref(false);
+const dialogConfirmVisible = ref(false);
 const drawerFormVisible = ref(false);
 const form = reactive({
   id: null,
@@ -121,5 +140,10 @@ const openDrawerForm = () => {
 const submitDrawerForm = () => {
   // no-op for example purposes
   drawerFormVisible.value = false;
+};
+
+const confirmDelete = () => {
+  dialogConfirmVisible.value = false;
+  // no-op for example purposes
 };
 </script>
