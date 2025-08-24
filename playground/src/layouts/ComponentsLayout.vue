@@ -30,7 +30,7 @@ const pageNavItems = [
     label: 'Components',
     children: [
       { label: 'Buttons', href: '/components/buttons' },
-      { label: 'Forms', href: '/components/forms' },
+      { label: 'Forms', href: '/components/forms', parent: '/components/forms' },
       { label: 'Tables', href: '/components/tables' },
       { label: 'Tabs', href: '/components/tabs' },
       { label: 'Overlays', href: '/components/overlays' },
