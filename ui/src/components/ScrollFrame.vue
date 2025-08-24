@@ -44,6 +44,11 @@ const { bindScrollHandler, lockScroll, unlockScroll } = useScroll(
 const { add, remove } = bindScrollHandler(frame);
 
 const updateHeight = () => {
+    if (
+        typeof document !== 'undefined' &&
+        document.activeElement instanceof HTMLTextAreaElement
+    )
+        return;
     const offsetValue = props.offset !== null ? props.offset : calculateOffsets();
     dynamicHeight.value = `${offsetValue}px`;
 };
