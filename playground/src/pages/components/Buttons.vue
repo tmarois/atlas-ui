@@ -48,7 +48,7 @@
             <div class="grid grid-cols-2 gap-4">
               <ButtonGroup>
                 <Button
-                  v-for="state in states"
+                  v-for="state in buttonStates"
                   :key="`solid-${size.key}-${state.label}`"
                   v-bind="{ ...size.attrs, ...state.attrs }"
                   :label="state.label"
@@ -56,7 +56,7 @@
               </ButtonGroup>
               <ButtonGroup>
                 <Button
-                  v-for="state in states"
+                  v-for="state in buttonStates"
                   :key="`outlined-${size.key}-${state.label}`"
                   v-bind="{ ...size.attrs, outlined: true, ...state.attrs }"
                   :label="state.label"
@@ -90,9 +90,12 @@ const groups = [
 const states = [
   { label: 'Default', attrs: {} },
   { label: 'Search', attrs: { icon: 'pi pi-search' } },
+  { label: 'Raised', attrs: { raised: true } },
   { label: 'Loading', attrs: { loading: true } },
   { label: 'Disabled', attrs: { disabled: true } },
 ];
+
+const buttonStates = states.filter(({ label }) => label !== 'Raised');
 
 const iconStates = [
   { icon: 'pi pi-check', attrs: {}, ariaLabel: 'Check' },
