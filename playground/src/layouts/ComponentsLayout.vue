@@ -1,3 +1,21 @@
+<template>
+  <UiApp
+    :pageUrl="route.fullPath"
+    :pageTitle="pageTitle"
+    :sideBarItems="sideBarItems"
+    :pageNavItems="pageNavItems"
+    :pageTabs="pageTabs"
+    :linkComponent="RouterLink"
+    :isSideNav="true"
+    :widthClass="'w-full'"
+  >
+    <template #navLogo>
+      <img src="/atlas.png" alt="Atlas" class="h-8 w-8 rounded-full" />
+    </template>
+    <RouterView />
+  </UiApp>
+</template>
+
 <script setup>
 import { computed } from 'vue';
 import { useRoute, RouterView } from 'vue-router';
@@ -73,21 +91,3 @@ const pageTabs = computed(() => {
 
 const pageTitle = computed(() => route.meta.title || '');
 </script>
-
-<template>
-  <UiApp
-    :pageUrl="route.fullPath"
-    :pageTitle="pageTitle"
-    :sideBarItems="sideBarItems"
-    :pageNavItems="pageNavItems"
-    :pageTabs="pageTabs"
-    :linkComponent="RouterLink"
-    :isSideNav="true"
-    :widthClass="'w-full'"
-  >
-    <template #navLogo>
-      <img src="/atlas.png" alt="Atlas" class="h-8 w-8 rounded-full" />
-    </template>
-    <RouterView />
-  </UiApp>
-</template>

@@ -1,14 +1,3 @@
-<script setup>
-import { computed } from 'vue';
-import { useRoute, RouterView } from 'vue-router';
-import UiApp from '@ui/components/App/Index.vue';
-import RouterLink from '../components/RouterLink.vue';
-import { sideBarItems } from '../sideBarItems';
-
-const route = useRoute();
-const pageTitle = computed(() => route.meta.title || '');
-</script>
-
 <template>
   <UiApp
     :pageUrl="route.fullPath"
@@ -24,3 +13,14 @@ const pageTitle = computed(() => route.meta.title || '');
     <RouterView />
   </UiApp>
 </template>
+
+<script setup>
+import { computed } from 'vue';
+import { useRoute, RouterView } from 'vue-router';
+import UiApp from '@ui/components/App/Index.vue';
+import RouterLink from '../components/RouterLink.vue';
+import { sideBarItems } from '../sideBarItems';
+
+const route = useRoute();
+const pageTitle = computed(() => route.meta.title || '');
+</script>

@@ -1,35 +1,3 @@
-<script setup>
-import { ref, reactive } from 'vue';
-import Card from '@ui/components/Card.vue';
-import Button from '@ui/components/Button.vue';
-import Drawer from '@ui/components/Drawer.vue';
-import Dialog from '@ui/components/Dialog.vue';
-import DrawerForm from '@ui/components/DrawerForm.vue';
-import TooltipIcon from '@ui/components/TooltipIcon.vue';
-import LabelField from '@ui/components/LabelField.vue';
-import InputText from '@ui/components/InputText.vue';
-
-const drawerVisible = ref(false);
-const dialogVisible = ref(false);
-const drawerFormVisible = ref(false);
-const form = reactive({
-  id: null,
-  name: null,
-  email: null,
-  processing: false,
-  errors: {},
-});
-
-const openDrawerForm = () => {
-  drawerFormVisible.value = true;
-};
-
-const submitDrawerForm = () => {
-  // no-op for example purposes
-  drawerFormVisible.value = false;
-};
-</script>
-
 <template>
   <section class="space-y-4">
     <Card pt.content="p-0">
@@ -123,3 +91,35 @@ const submitDrawerForm = () => {
     </Card>
   </section>
 </template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+import Card from '@ui/components/Card.vue';
+import Button from '@ui/components/Button.vue';
+import Drawer from '@ui/components/Drawer.vue';
+import Dialog from '@ui/components/Dialog.vue';
+import DrawerForm from '@ui/components/DrawerForm.vue';
+import TooltipIcon from '@ui/components/TooltipIcon.vue';
+import LabelField from '@ui/components/LabelField.vue';
+import InputText from '@ui/components/InputText.vue';
+
+const drawerVisible = ref(false);
+const dialogVisible = ref(false);
+const drawerFormVisible = ref(false);
+const form = reactive({
+  id: null,
+  name: null,
+  email: null,
+  processing: false,
+  errors: {},
+});
+
+const openDrawerForm = () => {
+  drawerFormVisible.value = true;
+};
+
+const submitDrawerForm = () => {
+  // no-op for example purposes
+  drawerFormVisible.value = false;
+};
+</script>

@@ -1,3 +1,94 @@
+<template>
+    <LayoutApp
+        title="Users"
+        :pageTitle="`Users (${userTotal})`"
+        containerClass="p-0"
+        :noScroll="true"
+        :sideBarItems="sideBarItems"
+        :linkComponent="Link"
+        :isSideNav="true"
+        :widthClass="'w-full'"
+    >
+        <template #navLogo>
+            <img src="/atlas.png" alt="Atlas" class="h-8 w-8 rounded-full" />
+        </template>
+        <template v-if="(selectAll ? userTotal : selected?.length) > 0" #headerTitle>
+            <TableActions
+                :selectedCount="selectAll ? userTotal : selected?.length"
+                :menuItems="tableActionMenuItems"
+                @action="handleTableAction"
+            />
+        </template>
+        <template #headerAction>
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <InputText
+                        v-model="search"
+                        placeholder="Search user name or email"
+                        class="w-[400px]"
+                        size="small"
+                        clearable
+                    />
+                    <Button size="small" label="Add user" @click="open('ADD_EDIT_USER')" />
+                </div>
+            </div>
+        </template>
+        <template #default>
+            <div class="bg-white dark:bg-surface-800">
+                <Table
+                    :items="users.data"
+                    :itemTotal="userTotal"
+                    :columns="columns"
+                    :sortField="sortField"
+                    :sortOrder="sortOrder"
+                    :selected="selected"
+                    :selectAll="selectAll"
+                    :defaultColumnList="defaultColumnList"
+                    :activeColumnList="viewFields"
+                    hasSelection
+                    hasCustomizeColumns
+                    :scrollOffset="53"
+                    scrollable
+                    @update:selected="selected = $event"
+                    @update:selectAll="selectAll = $event"
+                    @update:activeColumnList="viewFields = $event"
+                    @sort="onSort"
+                >
+                    <template #edit="{ data }">
+                        <div class="w-full flex items-center justify-center">
+                            <ButtonMenu
+                                :items="[
+                                    { label: 'Edit', icon: 'pi pi-pencil', click: () => open('ADD_EDIT_USER', data) },
+                                    { separator: true },
+                                    { label: 'Archive', icon: 'pi pi-trash', click: () => open('DELETE_USER', data) },
+                                ]"
+                            />
+                        </div>
+                    </template>
+                    <template #name="{ data }">
+                        <Link class="hover:underline text-black font-medium" :href="`/users/${data.id}`">
+                            {{ data.name }}
+                        </Link>
+                    </template>
+                </Table>
+            </div>
+        </template>
+        <template #footer>
+            <Select
+                v-model="perPage"
+                :options="perPageOptions"
+                size="small"
+                option-label="label"
+                option-value="value"
+            />
+        </template>
+        <template #footerAction>
+            [placeholder]
+        </template>
+    </LayoutApp>
+    <UserModals />
+</template>
+
 <script setup>
 import { ref, computed } from 'vue';
 import LayoutApp from '@ui/components/App/Index.vue';
@@ -114,94 +205,3 @@ const users = computed(() => ({
 
 const userTotal = computed(() => users.value.total);
 </script>
-
-<template>
-    <LayoutApp
-        title="Users"
-        :pageTitle="`Users (${userTotal})`"
-        containerClass="p-0"
-        :noScroll="true"
-        :sideBarItems="sideBarItems"
-        :linkComponent="Link"
-        :isSideNav="true"
-        :widthClass="'w-full'"
-    >
-        <template #navLogo>
-            <img src="/atlas.png" alt="Atlas" class="h-8 w-8 rounded-full" />
-        </template>
-        <template v-if="(selectAll ? userTotal : selected?.length) > 0" #headerTitle>
-            <TableActions
-                :selectedCount="selectAll ? userTotal : selected?.length"
-                :menuItems="tableActionMenuItems"
-                @action="handleTableAction"
-            />
-        </template>
-        <template #headerAction>
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <InputText
-                        v-model="search"
-                        placeholder="Search user name or email"
-                        class="w-[400px]"
-                        size="small"
-                        clearable
-                    />
-                    <Button size="small" label="Add user" @click="open('ADD_EDIT_USER')" />
-                </div>
-            </div>
-        </template>
-        <template #default>
-            <div class="bg-white dark:bg-surface-800">
-                <Table
-                    :items="users.data"
-                    :itemTotal="userTotal"
-                    :columns="columns"
-                    :sortField="sortField"
-                    :sortOrder="sortOrder"
-                    :selected="selected"
-                    :selectAll="selectAll"
-                    :defaultColumnList="defaultColumnList"
-                    :activeColumnList="viewFields"
-                    hasSelection
-                    hasCustomizeColumns
-                    :scrollOffset="53"
-                    scrollable
-                    @update:selected="selected = $event"
-                    @update:selectAll="selectAll = $event"
-                    @update:activeColumnList="viewFields = $event"
-                    @sort="onSort"
-                >
-                    <template #edit="{ data }">
-                        <div class="w-full flex items-center justify-center">
-                            <ButtonMenu
-                                :items="[
-                                    { label: 'Edit', icon: 'pi pi-pencil', click: () => open('ADD_EDIT_USER', data) },
-                                    { separator: true },
-                                    { label: 'Archive', icon: 'pi pi-trash', click: () => open('DELETE_USER', data) },
-                                ]"
-                            />
-                        </div>
-                    </template>
-                    <template #name="{ data }">
-                        <Link class="hover:underline text-black font-medium" :href="`/users/${data.id}`">
-                            {{ data.name }}
-                        </Link>
-                    </template>
-                </Table>
-            </div>
-        </template>
-        <template #footer>
-            <Select
-                v-model="perPage"
-                :options="perPageOptions"
-                size="small"
-                option-label="label"
-                option-value="value"
-            />
-        </template>
-        <template #footerAction>
-            [placeholder]
-        </template>
-    </LayoutApp>
-    <UserModals />
-</template>

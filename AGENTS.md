@@ -13,6 +13,7 @@ All contributions must follow the architecture and coding conventions outlined i
 ## Conventions
 - Adhere to the architecture and coding standards in [docs/backend-guide.md](docs/backend-guide.md).
 - Front-end architecture and patterns are covered in [docs/frontend-guide.md](docs/frontend-guide.md).
+- In Vue single-file components, always order blocks as `<template>`, then `<script>`, and finally `<style>`.
 - UI docs:
   - [Composables](docs/ui/composables.md)
   - [Utils](docs/ui/utils.md)

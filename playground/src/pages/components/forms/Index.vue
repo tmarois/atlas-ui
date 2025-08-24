@@ -1,111 +1,3 @@
-<script setup>
-import { ref, reactive } from 'vue';
-import Card from '@ui/components/Card.vue';
-import ToggleSwitch from '@ui/components/ToggleSwitch.vue';
-import Button from '@ui/components/Button.vue';
-import ButtonMenu from '@ui/components/ButtonMenu.vue';
-import LabelField from '@ui/components/LabelField.vue';
-import InputText from '@ui/components/InputText.vue';
-import Select from '@ui/components/Select.vue';
-import MultiSelect from '@ui/components/MultiSelect.vue';
-import AutoComplete from '@ui/components/AutoComplete.vue';
-import InputNumber from '@ui/components/InputNumber.vue';
-import Alert from '@ui/components/Alert.vue';
-import LabelCheckbox from '@ui/components/LabelCheckbox.vue';
-import LabelRadioButton from '@ui/components/LabelRadioButton.vue';
-import TooltipInfo from '@ui/components/TooltipInfo.vue';
-import { useModal } from '@ui/composables';
-
-const { open } = useModal();
-
-const form = reactive({
-    first_name: 'John',
-    last_name: null,
-    amount: null,
-    email: 'example@example.com',
-    roles: [],
-    type: 'credit',
-    payment: 'disabled',
-    agree: false,
-    checked: 'on',
-    gender: null,
-    autorole: null,
-});
-
-const roles = ref([
-    { id: 'admin', name: 'Admin' },
-    { id: 'user', name: 'User' },
-    { id: 'guest', name: 'Guest' },
-    { id: 'banned', name: 'Banned' },
-    { id: 'pending', name: 'Pending' },
-    { id: 'suspended', name: 'Suspended' },
-    { id: 'deleted', name: 'Deleted' },
-    { id: 'blacklisted', name: 'Blacklisted' },
-    { id: 'archived', name: 'Archived' },
-]);
-
-const genders = ref([
-    { id: 'male', gender: 'Male' },
-    { id: 'female', gender: 'Female' },
-    { id: 'other', gender: 'Other' },
-]);
-
-const autoRoles = ref([
-    { id: 'admin', label: 'Admin' },
-    { id: 'user', label: 'User' },
-    { id: 'guest', label: 'Guest' },
-    { id: 'banned', label: 'Banned' },
-    { id: 'pending', label: 'Pending' },
-    { id: 'suspended', label: 'Suspended' },
-    { id: 'deleted', label: 'Deleted' },
-    { id: 'blacklisted', label: 'Blacklisted' },
-    { id: 'archived', label: 'Archived' },
-]);
-
-const types = ref([
-    { id: 'credit', name: 'Credit' },
-    { id: 'debit', name: 'Debit' },
-    { id: 'transfer', name: 'Transfer' },
-    { id: 'deposit', name: 'Deposit' },
-]);
-
-const manageItems = [
-    {
-        label: 'Edit',
-        icon: 'text-sm pi pi-pencil',
-        action: 'edit'
-    },
-    {
-        label: 'Download',
-        icon: 'text-sm pi pi-download',
-        action: 'download',
-        disabled: true
-    },
-    {
-        separator: true
-    },
-    {
-        label: 'Archive',
-        icon: 'text-sm pi pi-trash',
-        action: 'delete'
-    }
-];
-
-const filteredRoles = ref([...autoRoles.value]);
-
-const search = (event) => {
-    setTimeout(() => {
-        if (!event.query.trim().length) {
-            filteredRoles.value = [...autoRoles.value];
-        } else {
-            filteredRoles.value = autoRoles.value.filter((country) => {
-                return country.label.toLowerCase().startsWith(event.query.toLowerCase());
-            });
-        }
-    }, 250);
-};
-</script>
-
 <template>
   <section class="space-y-4">
     <div class="flex flex-col space-y-4">
@@ -304,3 +196,110 @@ const search = (event) => {
   </section>
 </template>
 
+<script setup>
+import { ref, reactive } from 'vue';
+import Card from '@ui/components/Card.vue';
+import ToggleSwitch from '@ui/components/ToggleSwitch.vue';
+import Button from '@ui/components/Button.vue';
+import ButtonMenu from '@ui/components/ButtonMenu.vue';
+import LabelField from '@ui/components/LabelField.vue';
+import InputText from '@ui/components/InputText.vue';
+import Select from '@ui/components/Select.vue';
+import MultiSelect from '@ui/components/MultiSelect.vue';
+import AutoComplete from '@ui/components/AutoComplete.vue';
+import InputNumber from '@ui/components/InputNumber.vue';
+import Alert from '@ui/components/Alert.vue';
+import LabelCheckbox from '@ui/components/LabelCheckbox.vue';
+import LabelRadioButton from '@ui/components/LabelRadioButton.vue';
+import TooltipInfo from '@ui/components/TooltipInfo.vue';
+import { useModal } from '@ui/composables';
+
+const { open } = useModal();
+
+const form = reactive({
+    first_name: 'John',
+    last_name: null,
+    amount: null,
+    email: 'example@example.com',
+    roles: [],
+    type: 'credit',
+    payment: 'disabled',
+    agree: false,
+    checked: 'on',
+    gender: null,
+    autorole: null,
+});
+
+const roles = ref([
+    { id: 'admin', name: 'Admin' },
+    { id: 'user', name: 'User' },
+    { id: 'guest', name: 'Guest' },
+    { id: 'banned', name: 'Banned' },
+    { id: 'pending', name: 'Pending' },
+    { id: 'suspended', name: 'Suspended' },
+    { id: 'deleted', name: 'Deleted' },
+    { id: 'blacklisted', name: 'Blacklisted' },
+    { id: 'archived', name: 'Archived' },
+]);
+
+const genders = ref([
+    { id: 'male', gender: 'Male' },
+    { id: 'female', gender: 'Female' },
+    { id: 'other', gender: 'Other' },
+]);
+
+const autoRoles = ref([
+    { id: 'admin', label: 'Admin' },
+    { id: 'user', label: 'User' },
+    { id: 'guest', label: 'Guest' },
+    { id: 'banned', label: 'Banned' },
+    { id: 'pending', label: 'Pending' },
+    { id: 'suspended', label: 'Suspended' },
+    { id: 'deleted', label: 'Deleted' },
+    { id: 'blacklisted', label: 'Blacklisted' },
+    { id: 'archived', label: 'Archived' },
+]);
+
+const types = ref([
+    { id: 'credit', name: 'Credit' },
+    { id: 'debit', name: 'Debit' },
+    { id: 'transfer', name: 'Transfer' },
+    { id: 'deposit', name: 'Deposit' },
+]);
+
+const manageItems = [
+    {
+        label: 'Edit',
+        icon: 'text-sm pi pi-pencil',
+        action: 'edit'
+    },
+    {
+        label: 'Download',
+        icon: 'text-sm pi pi-download',
+        action: 'download',
+        disabled: true
+    },
+    {
+        separator: true
+    },
+    {
+        label: 'Archive',
+        icon: 'text-sm pi pi-trash',
+        action: 'delete'
+    }
+];
+
+const filteredRoles = ref([...autoRoles.value]);
+
+const search = (event) => {
+    setTimeout(() => {
+        if (!event.query.trim().length) {
+            filteredRoles.value = [...autoRoles.value];
+        } else {
+            filteredRoles.value = autoRoles.value.filter((country) => {
+                return country.label.toLowerCase().startsWith(event.query.toLowerCase());
+            });
+        }
+    }, 250);
+};
+</script>

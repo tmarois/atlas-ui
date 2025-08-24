@@ -1,16 +1,3 @@
-<script setup>
-import Card from '@ui/components/Card.vue';
-import Accordion from '@ui/components/Accordion.vue';
-import AccordionPanel from '@ui/components/AccordionPanel.vue';
-import AccordionHeader from '@ui/components/AccordionHeader.vue';
-import AccordionContent from '@ui/components/AccordionContent.vue';
-import Tabs from '@ui/components/Tabs.vue';
-import TabList from '@ui/components/TabList.vue';
-import Tab from '@ui/components/Tab.vue';
-import TabPanels from '@ui/components/TabPanels.vue';
-import TabPanel from '@ui/components/TabPanel.vue';
-</script>
-
 <template>
   <section class="space-y-4">
     <Card noPadding>
@@ -83,3 +70,16 @@ import TabPanel from '@ui/components/TabPanel.vue';
     </Card>
   </section>
 </template>
+
+<script setup>
+import Card from '@ui/components/Card.vue';
+import Accordion from '@ui/components/Accordion.vue';
+import AccordionPanel from '@ui/components/AccordionPanel.vue';
+import AccordionHeader from '@ui/components/AccordionHeader.vue';
+import AccordionContent from '@ui/components/AccordionContent.vue';
+import Tabs from '@ui/components/Tabs.vue';
+import TabList from '@ui/components/TabList.vue';
+import Tab from '@ui/components/Tab.vue';
+import TabPanels from '@ui/components/TabPanels.vue';
+import TabPanel from '@ui/components/TabPanel.vue';
+</script>

@@ -1,13 +1,3 @@
-<script setup>
-import { ref } from 'vue';
-import Card from '@ui/components/Card.vue';
-import Editor from '@ui/components/Editor/Index.vue';
-import Content from '@ui/components/Editor/EditorContent.vue';
-import Textarea from '@ui/components/Textarea.vue';
-
-const editContent = ref('');
-</script>
-
 <template>
   <section class="space-y-4">
     <Card pt:content:class="p-0">
@@ -27,3 +17,13 @@ const editContent = ref('');
     </Card>
   </section>
 </template>
+
+<script setup>
+import { ref } from 'vue';
+import Card from '@ui/components/Card.vue';
+import Editor from '@ui/components/Editor/Index.vue';
+import Content from '@ui/components/Editor/EditorContent.vue';
+import Textarea from '@ui/components/Textarea.vue';
+
+const editContent = ref('');
+</script>

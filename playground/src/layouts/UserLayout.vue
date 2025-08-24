@@ -1,22 +1,3 @@
-<script setup>
-import { useRoute } from 'vue-router';
-import LayoutApp from '@ui/components/App/Index.vue';
-import { Button, useModal } from '@atlas/ui';
-import UserModals from '../components/UserModals.vue';
-import Link from '../components/RouterLink.vue';
-import { sideBarItems } from '../sideBarItems';
-
-const props = defineProps({
-    item: {
-        type: Object,
-        default: () => ({}),
-    },
-});
-
-const { open } = useModal();
-const route = useRoute();
-</script>
-
 <template>
     <LayoutApp
         title="User"
@@ -66,3 +47,22 @@ const route = useRoute();
     </LayoutApp>
     <UserModals />
 </template>
+
+<script setup>
+import { useRoute } from 'vue-router';
+import LayoutApp from '@ui/components/App/Index.vue';
+import { Button, useModal } from '@atlas/ui';
+import UserModals from '../components/UserModals.vue';
+import Link from '../components/RouterLink.vue';
+import { sideBarItems } from '../sideBarItems';
+
+const props = defineProps({
+    item: {
+        type: Object,
+        default: () => ({}),
+    },
+});
+
+const { open } = useModal();
+const route = useRoute();
+</script>
