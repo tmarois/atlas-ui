@@ -132,8 +132,8 @@ const hasActions = computed(() => hasSlotContent(slots.actions));
 
 const containerClass = computed(() => {
     const bg = props.backgroundClass || (props.autoDark
-        ? 'bg-surface-100 dark:bg-primary-900 border-surface-200 dark:border-primary-700'
-        : 'dark bg-primary-900 border-primary-700');
+        ? 'bg-surface-100 dark:bg-primary-950 border-surface-200 dark:border-primary-950'
+        : 'dark bg-primary-950 border-primary-950');
     return bg;
 });
 

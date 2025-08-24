@@ -116,13 +116,13 @@ const containerClass = computed(() => {
         ? 'text-surface-700 dark:text-white/80'
         : 'dark text-white/80';
     const bg = props.backgroundClass || (props.autoDark
-        ? 'bg-surface-100 dark:bg-primary-900 border-surface-200 dark:border-primary-700'
-        : 'bg-primary-900 border-primary-700');
+        ? 'bg-surface-100 dark:bg-primary-950 border-surface-200 dark:border-primary-950'
+        : 'bg-primary-950 border-primary-950');
     return `${base} ${bg}`;
 });
 
 const linkClass = (item) => {
-    const activeCls = props.activeClass || 'bg-white text-primary-900';
+    const activeCls = props.activeClass || 'bg-white text-primary-950';
     if (props.autoDark) {
         const baseCls =
             'text-surface-600 dark:text-surface-300 hover:bg-surface-200 dark:hover:bg-primary-800';
