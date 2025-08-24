@@ -5,12 +5,21 @@
         <h3 class="text-lg font-semibold">{{ group.title }}</h3>
       </template>
       <template #content>
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-wrap gap-4 mb-4">
           <Button
             v-for="state in states"
             :key="state.label"
             v-bind="{ ...group.attrs, ...state.attrs }"
             :label="state.label"
+          />
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <Button
+            v-for="state in iconStates"
+            :key="state.icon"
+            v-bind="{ ...group.attrs, ...state.attrs }"
+            :icon="state.icon"
+            :aria-label="state.ariaLabel"
           />
         </div>
       </template>
@@ -40,5 +49,13 @@ const states = [
   { label: 'Rounded', attrs: { rounded: true } },
   { label: 'Loading', attrs: { loading: true } },
   { label: 'Disabled', attrs: { disabled: true } },
+];
+
+const iconStates = [
+  { icon: 'pi pi-check', attrs: {}, ariaLabel: 'Check' },
+  { icon: 'pi pi-search', attrs: { raised: true }, ariaLabel: 'Search' },
+  { icon: 'pi pi-times', attrs: { rounded: true }, ariaLabel: 'Close' },
+  { icon: 'pi pi-refresh', attrs: { loading: true }, ariaLabel: 'Refresh' },
+  { icon: 'pi pi-trash', attrs: { disabled: true }, ariaLabel: 'Delete' },
 ];
 </script>
