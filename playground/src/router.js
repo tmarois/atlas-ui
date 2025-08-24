@@ -9,6 +9,7 @@ import Tables from './pages/components/Tables.vue';
 import Tabs from './pages/components/Tabs.vue';
 import Overlays from './pages/components/Overlays.vue';
 import Feedback from './pages/components/feedback/Index.vue';
+import FeedbackErrors from './pages/components/feedback/Errors.vue';
 import FeedbackToast from './pages/components/feedback/Toast.vue';
 import FeedbackProgressBar from './pages/components/feedback/ProgressBar.vue';
 import Editor from './pages/components/editor/Index.vue';
@@ -56,6 +57,7 @@ const routes = [
       { path: 'tabs', component: Tabs, meta: { title: 'Tabs' } },
       { path: 'overlays', component: Overlays, meta: { title: 'Overlays' } },
       { path: 'feedback', component: Feedback, meta: { title: 'Feedback' } },
+      { path: 'feedback/errors', component: FeedbackErrors, meta: { title: 'Feedback' } },
       { path: 'feedback/toast', component: FeedbackToast, meta: { title: 'Feedback' } },
       { path: 'feedback/progressbar', component: FeedbackProgressBar, meta: { title: 'Feedback' } },
       { path: 'editor', component: Editor, meta: { title: 'Editor' } },

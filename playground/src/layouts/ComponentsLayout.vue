@@ -90,6 +90,7 @@ const pageTabs = computed(() => {
   if (route.path.startsWith('/components/feedback')) {
     return [
       { title: 'Alerts', href: '/components/feedback' },
+      { title: 'Errors', href: '/components/feedback/errors' },
       { title: 'Toast', href: '/components/feedback/toast' },
       { title: 'ProgressBar', href: '/components/feedback/progressbar' },
     ];
