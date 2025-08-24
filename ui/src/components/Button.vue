@@ -21,7 +21,7 @@ const props = defineProps<Props>();
 const attrs = useAttrs();
 
 const theme = ref<ButtonPassThroughOptions>({
-    root: `inline-flex self-start cursor-pointer select-none items-center justify-center overflow-hidden relative
+    root: `inline-flex cursor-pointer select-none items-center justify-center overflow-hidden relative
         px-4 py-[9px] leading-5 gap-2 rounded disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
         bg-primary-500 enabled:hover:bg-primary-500/70 enabled:active:bg-primary-500/60 text-white text-md font-semibold p-text:!font-medium
         border border-primary-500 enabled:hover:border-primary-500/70 enabled:active:border-primary-500/60

@@ -24,6 +24,12 @@ describe('Button', () => {
         expect(classes).toContain('p-small:py-[0.375rem]');
     });
 
+    it('does not offset icon buttons in groups', () => {
+        const wrapper = mountWithPrime({ icon: 'pi pi-check', label: 'Icon' });
+        const classes = wrapper.find('button').attributes('class');
+        expect(classes).not.toContain('self-start');
+    });
+
     it('ensures icon-only buttons are square across sizes', () => {
         const cases = [
             {
