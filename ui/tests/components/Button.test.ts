@@ -24,9 +24,10 @@ describe('Button', () => {
         expect(classes).toContain('p-small:py-[0.375rem]');
     });
 
-    it('does not offset icon buttons in groups', () => {
+    it('aligns icon buttons consistently in groups', () => {
         const wrapper = mountWithPrime({ icon: 'pi pi-check', label: 'Icon' });
         const classes = wrapper.find('button').attributes('class');
+        expect(classes).toContain('align-middle');
         expect(classes).not.toContain('self-start');
     });
 
