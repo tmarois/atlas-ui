@@ -1,16 +1,25 @@
 <template>
-    <FileUpload
+    <PrimeFileUpload
         unstyled
         v-bind="bindProps"
         :pt="mergedPt"
         :ptOptions="{ mergeProps: ptViewMerge }"
-    />
+    >
+        <template v-for="(_, slotName) in $slots" v-slot:[slotName]="slotProps">
+            <slot :name="slotName" v-bind="slotProps ?? {}" />
+        </template>
+    </PrimeFileUpload>
 </template>
 
 <script setup lang="ts">
-import FileUpload, { type FileUploadProps, type FileUploadPassThroughOptions } from 'primevue/fileupload';
+import PrimeFileUpload, {
+    type FileUploadProps,
+    type FileUploadPassThroughOptions
+} from 'primevue/fileupload';
 import { ref, useAttrs, computed } from 'vue';
 import { ptViewMerge, ptMerge } from '../utils';
+
+defineOptions({ inheritAttrs: false });
 
 interface Props extends /* @vue-ignore */ FileUploadProps {}
 const props = defineProps<Props>();
