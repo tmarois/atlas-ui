@@ -36,6 +36,7 @@ const dynamicHeight = ref('0px');
 let resizeObserver: ResizeObserver | null = null;
 let intersectionObserver: IntersectionObserver | null = null;
 let mutationObserver: MutationObserver | null = null;
+let draggingTextarea = false;
 
 const { bindScrollHandler, lockScroll, unlockScroll } = useScroll(
     props.scrollKey !== null ? props.scrollKey : props.page ? 'page' : Symbol()
@@ -43,14 +44,27 @@ const { bindScrollHandler, lockScroll, unlockScroll } = useScroll(
 
 const { add, remove } = bindScrollHandler(frame);
 
-const updateHeight = () => {
+const updateHeight = (force = false) => {
     if (
-        typeof document !== 'undefined' &&
-        document.activeElement instanceof HTMLTextAreaElement
+        !force &&
+        (draggingTextarea ||
+            (typeof document !== 'undefined' &&
+                document.activeElement instanceof HTMLTextAreaElement))
     )
         return;
     const offsetValue = props.offset !== null ? props.offset : calculateOffsets();
     dynamicHeight.value = `${offsetValue}px`;
+};
+
+const handlePointerDown = (e: PointerEvent) => {
+    if (e.target instanceof HTMLTextAreaElement) draggingTextarea = true;
+};
+
+const handlePointerUp = () => {
+    if (draggingTextarea) {
+        draggingTextarea = false;
+        updateHeight(true);
+    }
 };
 
 const calculateOffsets = () => {
@@ -69,6 +83,8 @@ onMounted(() => {
     });
     if (typeof window !== 'undefined') {
         window.addEventListener('resize', updateHeight);
+        window.addEventListener('pointerdown', handlePointerDown);
+        window.addEventListener('pointerup', handlePointerUp);
         if (typeof ResizeObserver !== 'undefined') {
             resizeObserver = new ResizeObserver(() => updateHeight());
             const element = frame.value?.parentElement ?? document.body;
@@ -111,6 +127,8 @@ onBeforeUnmount(() => {
     if (props.page && !props.allowBodyScroll) unlockScroll();
     if (typeof window !== 'undefined') {
         window.removeEventListener('resize', updateHeight);
+        window.removeEventListener('pointerdown', handlePointerDown);
+        window.removeEventListener('pointerup', handlePointerUp);
         resizeObserver?.disconnect();
         intersectionObserver?.disconnect();
         mutationObserver?.disconnect();
