@@ -6,16 +6,19 @@
         <ProgressBar
           class="mb-4"
           :value="30"
-          :pt="ptMerge({ value: { class: 'bg-green-500' } })"
+          :pt="{ value: { class: 'bg-green-500' } }"
+          :pt-options="{ mergeProps: true }"
         />
         <ProgressBar
           class="mb-4"
           :value="70"
-          :pt="ptMerge({ value: { class: 'bg-orange-500' } })"
+          :pt="{ value: { class: 'bg-orange-500' } }"
+          :pt-options="{ mergeProps: true }"
         />
         <ProgressBar
           :value="85"
-          :pt="ptMerge({ value: { class: 'bg-purple-500' } })"
+          :pt="{ value: { class: 'bg-purple-500' } }"
+          :pt-options="{ mergeProps: true }"
         />
       </template>
     </Card>
@@ -32,7 +35,6 @@
 import { ref, onMounted } from 'vue';
 import Card from '@atlas/ui/components/Card.vue';
 import ProgressBar from '@atlas/ui/components/ProgressBar.vue';
-import { ptMerge } from '@atlas/ui/utils';
 
 const animatedValue = ref(0);
 
