@@ -72,14 +72,14 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
-import Card from '@ui/components/Card.vue';
-import LabelField from '@ui/components/LabelField.vue';
-import InputText from '@ui/components/InputText.vue';
-import Select from '@ui/components/Select.vue';
-import MultiSelect from '@ui/components/MultiSelect.vue';
-import AutoComplete from '@ui/components/AutoComplete.vue';
-import InputNumber from '@ui/components/InputNumber.vue';
-import Button from '@ui/components/Button.vue';
+import Card from '@atlas/ui/components/Card.vue';
+import LabelField from '@atlas/ui/components/LabelField.vue';
+import InputText from '@atlas/ui/components/InputText.vue';
+import Select from '@atlas/ui/components/Select.vue';
+import MultiSelect from '@atlas/ui/components/MultiSelect.vue';
+import AutoComplete from '@atlas/ui/components/AutoComplete.vue';
+import InputNumber from '@atlas/ui/components/InputNumber.vue';
+import Button from '@atlas/ui/components/Button.vue';
 
 const form = reactive({
   first_name: 'John',

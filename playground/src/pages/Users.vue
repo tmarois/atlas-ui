@@ -93,7 +93,7 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import LayoutApp from '@ui/components/App/Index.vue';
+import LayoutApp from '@atlas/ui/components/App/Index.vue';
 import { Table, ButtonMenu, TableActions, InputText, Button, Select, useModal } from '@atlas/ui';
 import UserModals from '../components/UserModals.vue';
 import Link from '../components/RouterLink.vue';

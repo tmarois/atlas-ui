@@ -72,14 +72,14 @@
 </template>
 
 <script setup>
-import Card from '@ui/components/Card.vue';
-import Accordion from '@ui/components/Accordion.vue';
-import AccordionPanel from '@ui/components/AccordionPanel.vue';
-import AccordionHeader from '@ui/components/AccordionHeader.vue';
-import AccordionContent from '@ui/components/AccordionContent.vue';
-import Tabs from '@ui/components/Tabs.vue';
-import TabList from '@ui/components/TabList.vue';
-import Tab from '@ui/components/Tab.vue';
-import TabPanels from '@ui/components/TabPanels.vue';
-import TabPanel from '@ui/components/TabPanel.vue';
+import Card from '@atlas/ui/components/Card.vue';
+import Accordion from '@atlas/ui/components/Accordion.vue';
+import AccordionPanel from '@atlas/ui/components/AccordionPanel.vue';
+import AccordionHeader from '@atlas/ui/components/AccordionHeader.vue';
+import AccordionContent from '@atlas/ui/components/AccordionContent.vue';
+import Tabs from '@atlas/ui/components/Tabs.vue';
+import TabList from '@atlas/ui/components/TabList.vue';
+import Tab from '@atlas/ui/components/Tab.vue';
+import TabPanels from '@atlas/ui/components/TabPanels.vue';
+import TabPanel from '@atlas/ui/components/TabPanel.vue';
 </script>
