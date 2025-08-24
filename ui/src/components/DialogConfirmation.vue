@@ -1,7 +1,6 @@
 <template>
     <Dialog
         v-bind="dialogBindProps"
-        :pt="mergedPt.dialog"
         @update:visible="close"
     >
         <div :class="mergedPt.root.class">
@@ -80,7 +79,9 @@ const theme = computed<DialogConfirmationPassThroughOptions>(() => ({
     message: 'text-gray-700 dark:text-gray-200',
     actions: 'flex justify-center items-center space-x-4 py-2',
     confirmButton: {
-        root: 'text-white bg-red-600 enabled:hover:bg-red-700 border-red-600 enabled:active:border-red-400 enabled:active:bg-red-600 enabled:hover:border-red-emphasis',
+        root: {
+            class: 'text-white bg-red-600 enabled:hover:bg-red-700 border-red-600 enabled:active:border-red-400 enabled:active:bg-red-600 enabled:hover:border-red-emphasis',
+        },
     },
     cancelButton: {},
 }));
@@ -94,15 +95,19 @@ const passThroughProps = computed(() => {
 
 const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
 
-const dialogBindProps = computed(() => ({
-    modal: true,
-    dismissableMask: false,
-    closable: false,
-    style: { width: '25rem' },
-    ...bindProps.value,
-    header: props.title,
-    visible: props.modelValue,
-}));
+const dialogBindProps = computed(() => {
+    const { pt, ...rest } = bindProps.value as any;
+    return {
+        modal: true,
+        dismissableMask: false,
+        closable: false,
+        style: { width: '25rem' },
+        ...rest,
+        header: props.title,
+        visible: props.modelValue,
+        pt: ptMerge(pt, mergedPt.value.dialog),
+    };
+});
 
 const close = () => emit('update:modelValue', false);
 const confirm = () => emit('confirm');
