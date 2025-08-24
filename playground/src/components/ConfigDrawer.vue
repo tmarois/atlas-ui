@@ -57,15 +57,20 @@ const { dark, topNav, primary, surface } = useSettings();
 const primaryOptions = [
     { label: 'Blue', value: 'blue', class: 'bg-blue-500' },
     { label: 'Purple', value: 'purple', class: 'bg-purple-500' },
+    { label: 'Indigo', value: 'indigo', class: 'bg-indigo-500' },
     { label: 'Teal', value: 'teal', class: 'bg-teal-500' },
     { label: 'Pink', value: 'pink', class: 'bg-pink-500' },
-    { label: 'Gray', value: 'gray', class: 'bg-gray-500' },
+    { label: 'Black', value: 'gray', class: 'bg-black' },
     { label: 'Green', value: 'green', class: 'bg-green-500' },
     { label: 'Orange', value: 'orange', class: 'bg-orange-500' },
 ];
 const surfaceOptions = [
     { label: 'Blue', value: 'blue', class: 'bg-blue-200' },
     { label: 'Gray', value: 'gray', class: 'bg-gray-200' },
+    { label: 'Purple', value: 'purple', class: 'bg-purple-200' },
+    { label: 'Pink', value: 'pink', class: 'bg-pink-200' },
+    { label: 'Slate', value: 'slate', class: 'bg-slate-200' },
+    { label: 'Zinc', value: 'zinc', class: 'bg-zinc-200' },
 ];
 </script>
 

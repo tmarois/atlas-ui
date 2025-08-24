@@ -4,8 +4,8 @@ const dark = ref(localStorage.getItem('playground_dark') === 'true');
 const topNav = ref(localStorage.getItem('playground_top_nav') === 'true');
 const primary = ref(localStorage.getItem('playground_primary') || 'blue');
 const surface = ref(localStorage.getItem('playground_surface') || 'blue');
-const primaryThemes = ['blue', 'purple', 'teal', 'pink', 'gray', 'green', 'orange'];
-const surfaceThemes = ['blue', 'gray'];
+const primaryThemes = ['blue', 'purple', 'indigo', 'teal', 'pink', 'gray', 'green', 'orange'];
+const surfaceThemes = ['blue', 'gray', 'purple', 'pink', 'slate', 'zinc'];
 
 watch(
   dark,
