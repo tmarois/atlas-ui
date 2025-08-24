@@ -50,6 +50,17 @@
                   <AutoComplete v-model="form.autorole" :suggestions="filteredRoles" @complete="search" optionLabel="label" optionValue="id" fluid dropdown showClear forceSelection />
                 </LabelField>
               </div>
+              <div class="w-full flex items-center space-x-4">
+                <LabelField name="date" label="Date">
+                  <DatePicker id="date" v-model="form.date" fluid />
+                </LabelField>
+                <LabelField name="month" label="Month">
+                  <DatePicker id="month" v-model="form.month" view="month" dateFormat="mm/yy" fluid />
+                </LabelField>
+                <LabelField name="time" label="Time">
+                  <DatePicker id="time" v-model="form.time" timeOnly fluid />
+                </LabelField>
+              </div>
             </div>
           </template>
         </Card>
@@ -93,6 +104,17 @@
               <div class="w-full">
                 <LabelField name="roles" label="Roles (autocomplete)">
                   <AutoComplete v-model="form.autorole" :suggestions="filteredRoles" @complete="search" optionLabel="label" optionValue="id" fluid :disabled="true" dropdown showClear forceSelection />
+                </LabelField>
+              </div>
+              <div class="w-full flex items-center space-x-4">
+                <LabelField name="date" label="Date">
+                  <DatePicker id="date" v-model="form.date" fluid :disabled="true" />
+                </LabelField>
+                <LabelField name="month" label="Month">
+                  <DatePicker id="month" v-model="form.month" view="month" dateFormat="mm/yy" fluid :disabled="true" />
+                </LabelField>
+                <LabelField name="time" label="Time">
+                  <DatePicker id="time" v-model="form.time" timeOnly fluid :disabled="true" />
                 </LabelField>
               </div>
             </div>
@@ -207,6 +229,7 @@ import InputText from '@atlas/ui/components/InputText.vue';
 import Select from '@atlas/ui/components/Select.vue';
 import MultiSelect from '@atlas/ui/components/MultiSelect.vue';
 import AutoComplete from '@atlas/ui/components/AutoComplete.vue';
+import DatePicker from '@atlas/ui/components/DatePicker.vue';
 import InputNumber from '@atlas/ui/components/InputNumber.vue';
 import Alert from '@atlas/ui/components/Alert.vue';
 import LabelCheckbox from '@atlas/ui/components/LabelCheckbox.vue';
@@ -228,6 +251,9 @@ const form = reactive({
     checked: 'on',
     gender: null,
     autorole: null,
+    date: null,
+    month: null,
+    time: null,
 });
 
 const roles = ref([
