@@ -4,6 +4,7 @@
         v-bind="bindProps"
         :pt="mergedPt"
         :ptOptions="{ mergeProps: ptViewMerge }"
+        :style="positionStyle"
     >
         <template #icon>
             <IconCircleCheckFilled class="size-6 text-green-500 dark:text-green-400" />
@@ -28,8 +29,47 @@ interface Props extends /* @vue-ignore */ ToastProps {}
 const props = defineProps<Props>();
 const attrs = useAttrs();
 
+const positionStyle = computed(() => {
+    const pos = props.position || 'top-right';
+    const style: Record<string, string> = { position: 'fixed' };
+    switch (pos) {
+        case 'top-left':
+            style.top = '20px';
+            style.left = '20px';
+            break;
+        case 'top-center':
+            style.top = '20px';
+            style.left = '50%';
+            style.transform = 'translateX(-50%)';
+            break;
+        case 'top-right':
+            style.top = '20px';
+            style.right = '20px';
+            break;
+        case 'bottom-left':
+            style.bottom = '20px';
+            style.left = '20px';
+            break;
+        case 'bottom-center':
+            style.bottom = '20px';
+            style.left = '50%';
+            style.transform = 'translateX(-50%)';
+            break;
+        case 'bottom-right':
+            style.bottom = '20px';
+            style.right = '20px';
+            break;
+        case 'center':
+            style.top = '50%';
+            style.left = '50%';
+            style.transform = 'translate(-50%, -50%)';
+            break;
+    }
+    return style;
+});
+
 const theme = ref<ToastPassThroughOptions>({
-    root: `left-[5px] whitespace-pre-line break-words
+    root: `whitespace-pre-line break-words
         p-top-center:-translate-x-1/2 p-bottom-center:-translate-x-1/2
         p-center:min-w-[20vw] p-center:-translate-x-1/2 p-center:-translate-y-1/2`,
     message: `backdrop-blur-[10px] mb-2 shadow-md not-p-custom:border not-p-custom:backdrop-blur-sm dark:not-p-custom:backdrop-blur-md not-p-custom:rounded-full
