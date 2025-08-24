@@ -57,16 +57,16 @@ const theme = ref<AutoCompletePassThroughOptions>({
     chipItem: ``,
     pcChip: {
         root: `inline-flex items-center rounded-sm gap-2 px-3 py-1
-            bg-surface-100 dark:bg-surface-800
-            text-surface-800 dark:text-surface-0
+            bg-primary-500 dark:bg-primary-500
+            text-white dark:text-surface-0
             has-[img]:pt-1 has-[img]:pb-1
-            p-focus:bg-surface-200 p-focus:text-surface-800 dark:p-focus:bg-surface-700 dark:p-focus:text-surface-0
+            p-focus:bg-primary-500 p-focus:text-white dark:p-focus:bg-primary-500 dark:p-focus:text-surface-0
             p-removable:pe-2`,
         image: `rounded-full w-8 h-8 -ms-2`,
-        icon: `text-surface-800 dark:bg-surface-0 text-base w-4 h-4`,
+        icon: `text-white dark:text-surface-0 text-base w-4 h-4`,
         label: ``,
         removeIcon: `cursor-pointer text-base w-4 h-4 rounded-full
-            text-surface-800 dark:text-surface-0
+            text-white dark:text-surface-0
             focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary`
     },
     chipIcon: ``,
@@ -95,7 +95,7 @@ const theme = ref<AutoCompletePassThroughOptions>({
     option: `cursor-pointer font-normal whitespace-nowrap relative overflow-hidden flex items-center
     px-3 py-1.5 border-none text-surface-700 dark:text-surface-0 bg-transparent rounded-sm
     p-focus:bg-surface-100 dark:p-focus:bg-surface-800 p-focus:text-surface-800 dark:p-focus:text-surface-0
-    p-selected:bg-primary-400 p-focus:p-selected:bg-primary-400 p-selected:text-white p-focus:p-selected:text-white dark:p-selected:bg-primary-600 dark:p-focus:p-selected:bg-primary-600
+    p-selected:bg-primary-500 p-focus:p-selected:bg-primary-500 p-selected:text-white p-focus:p-selected:text-white dark:p-selected:bg-primary-500 dark:p-focus:p-selected:bg-primary-500
     transition-colors duration-200 text-sm`,
     emptyMessage: `px-3 py-2.5`,
     searchResultMessage: ``,

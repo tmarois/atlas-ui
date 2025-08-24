@@ -28,7 +28,7 @@ const theme = ref<ToggleSwitchPassThroughOptions>({
         border border-transparent
         transition-colors duration-200
         peer-enabled:peer-hover:bg-surface-400 dark:peer-enabled:peer-hover:bg-surface-600
-        p-checked:bg-primary peer-enabled:peer-hover:p-checked:bg-primary-emphasis
+        p-checked:bg-primary-500 peer-enabled:peer-hover:p-checked:bg-primary-500/70 peer-enabled:peer-active:p-checked:bg-primary-500/60
         p-invalid:border-red-400 dark:p-invalid:border-red-300
         p-disabled:bg-surface-200 dark:p-disabled:bg-surface-600
         peer-focus-visible:outline peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary`,
@@ -37,7 +37,7 @@ const theme = ref<ToggleSwitchPassThroughOptions>({
         text-surface-500 dark:text-surface-900
         w-4 h-4 start-1 -mt-2 rounded-full
         transition-[background,color,left] duration-200
-        p-checked:bg-surface-0 dark:p-checked:bg-surface-900 p-checked:text-primary p-checked:start-5
+        p-checked:bg-surface-0 dark:p-checked:bg-surface-900 p-checked:text-primary-500 p-checked:start-5
         p-disabled:bg-surface-700 dark:p-disabled:bg-surface-900`
 });
 

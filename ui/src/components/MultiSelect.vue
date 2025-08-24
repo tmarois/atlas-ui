@@ -66,7 +66,7 @@ const theme = ref<MultiSelectPassThroughOptions>({
     chipItem: ``,
     pcChip: {
         root: `inline-flex items-center gap-2 px-3 py-[5px] rounded-sm
-            bg-primary-400 dark:bg-primary-600
+            bg-primary-500 dark:bg-primary-500
             text-white dark:text-surface-0
             has-[img]:pt-1 has-[img]:pb-1
             p-removable:pe-2`,

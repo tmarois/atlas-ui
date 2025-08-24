@@ -24,27 +24,27 @@
         <div>
           <span class="block mb-2 font-medium">Primary</span>
           <div class="flex gap-2">
-            <button
-              v-for="option in primaryOptions"
-              :key="option.value"
-              :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, primary === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : '']"
-              @click="primary = option.value"
-              :aria-label="option.label"
-              v-tooltip.bottom="{ value: option.label }"
-            ></button>
+              <button
+                v-for="option in primaryOptions"
+                :key="option.value"
+                :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, primary === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : 'hover:ring-2 hover:ring-offset-2 hover:ring-primary-500']"
+                @click="primary = option.value"
+                :aria-label="option.label"
+                v-tooltip.bottom="{ value: option.label }"
+              ></button>
           </div>
         </div>
         <div>
           <span class="block mb-2 font-medium">Surface</span>
           <div class="flex gap-2">
-            <button
-              v-for="option in surfaceOptions"
-              :key="option.value"
-              :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, surface === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : '']"
-              @click="surface = option.value"
-              :aria-label="option.label"
-              v-tooltip.bottom="{ value: option.label }"
-            ></button>
+              <button
+                v-for="option in surfaceOptions"
+                :key="option.value"
+                :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, surface === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : 'hover:ring-2 hover:ring-offset-2 hover:ring-primary-500']"
+                @click="surface = option.value"
+                :aria-label="option.label"
+                v-tooltip.bottom="{ value: option.label }"
+              ></button>
           </div>
         </div>
       </div>
