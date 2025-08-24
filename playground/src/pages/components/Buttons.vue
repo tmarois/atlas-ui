@@ -33,11 +33,29 @@
         </div>
       </template>
     </Card>
+    <Card>
+      <template #header>
+        <h3 class="text-lg font-semibold">Button Groups</h3>
+      </template>
+      <template #content>
+        <div class="flex flex-wrap gap-4">
+          <ButtonGroup v-for="size in buttonGroupSizes" :key="size.key">
+            <Button
+              v-for="state in states"
+              :key="`${size.key}-${state.label}`"
+              v-bind="{ ...size.attrs, ...state.attrs }"
+              :label="state.label"
+            />
+          </ButtonGroup>
+        </div>
+      </template>
+    </Card>
   </section>
 </template>
 
 <script setup>
 import Button from '@atlas/ui/components/Button.vue';
+import ButtonGroup from '@atlas/ui/components/ButtonGroup.vue';
 import Card from '@atlas/ui/components/Card.vue';
 
 const groups = [
@@ -66,5 +84,11 @@ const iconStates = [
   { icon: 'pi pi-times', attrs: { rounded: true }, ariaLabel: 'Close' },
   { icon: 'pi pi-refresh', attrs: { loading: true }, ariaLabel: 'Refresh' },
   { icon: 'pi pi-trash', attrs: { disabled: true }, ariaLabel: 'Delete' },
+];
+
+const buttonGroupSizes = [
+  { key: 'regular', attrs: {} },
+  { key: 'small', attrs: { size: 'small' } },
+  { key: 'large', attrs: { size: 'large' } },
 ];
 </script>
