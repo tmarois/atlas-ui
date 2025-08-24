@@ -96,7 +96,6 @@ const roundedOptions = [
     { label: '0.25', value: '1', class: 'rounded-[var(--p-rounded-1)]' },
     { label: '0.50', value: '2', class: 'rounded-[var(--p-rounded-2)]' },
     { label: '0.75', value: '3', class: 'rounded-[var(--p-rounded-3)]' },
-    { label: '1', value: '4', class: 'rounded-[var(--p-rounded-4)]' },
 ];
 </script>
 

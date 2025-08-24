@@ -7,7 +7,7 @@ const surface = ref(localStorage.getItem('playground_surface') || 'blue');
 const rounded = ref(localStorage.getItem('playground_rounded') || '1');
 const primaryThemes = ['blue', 'purple', 'indigo', 'teal', 'pink', 'gray', 'green', 'orange'];
 const surfaceThemes = ['blue', 'gray', 'purple', 'pink', 'slate', 'zinc'];
-const roundedOptions = ['0', '1', '2', '3', '4'];
+const roundedOptions = ['0', '1', '2', '3'];
 
 watch(
   dark,
