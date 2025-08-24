@@ -127,8 +127,6 @@
     --p-surface-800: #1e293b;
     --p-surface-900: #0f172a;
     --p-surface-950: #020617;
-
-    --p-content-border-radius: 6px;
 }
 
 .theme-surface-gray {
@@ -204,6 +202,36 @@
     --p-surface-800: #27272a;
     --p-surface-900: #18181b;
     --p-surface-950: #09090b;
+}
+
+/* Rounding */
+:root {
+    --p-rounded-0: 0rem;
+    --p-rounded-1: 0.25rem;
+    --p-rounded-2: 0.5rem;
+    --p-rounded-3: 0.75rem;
+    --p-rounded-4: 1rem;
+    --p-content-border-radius: var(--p-rounded-1);
+}
+
+.theme-rounded-0 {
+    --p-content-border-radius: var(--p-rounded-0);
+}
+
+.theme-rounded-1 {
+    --p-content-border-radius: var(--p-rounded-1);
+}
+
+.theme-rounded-2 {
+    --p-content-border-radius: var(--p-rounded-2);
+}
+
+.theme-rounded-3 {
+    --p-content-border-radius: var(--p-rounded-3);
+}
+
+.theme-rounded-4 {
+    --p-content-border-radius: var(--p-rounded-4);
 }
 
 /* Light */
