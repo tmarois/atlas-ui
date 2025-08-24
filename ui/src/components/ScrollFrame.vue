@@ -34,6 +34,7 @@ const props = withDefaults(defineProps<Props>(), {
 const frame = ref<HTMLElement | null>(null);
 const dynamicHeight = ref('0px');
 let resizeObserver: ResizeObserver | null = null;
+let intersectionObserver: IntersectionObserver | null = null;
 
 const { bindScrollHandler, lockScroll, unlockScroll } = useScroll(
     props.scrollKey !== null ? props.scrollKey : props.page ? 'page' : Symbol()
@@ -67,6 +68,14 @@ onMounted(() => {
             const element = frame.value?.parentElement ?? document.body;
             resizeObserver.observe(element);
         }
+        if (typeof IntersectionObserver !== 'undefined') {
+            intersectionObserver = new IntersectionObserver((entries) => {
+                if (entries.some((entry) => entry.isIntersecting)) {
+                    updateHeight();
+                }
+            });
+            if (frame.value) intersectionObserver.observe(frame.value);
+        }
     }
 });
 
@@ -82,6 +91,7 @@ onBeforeUnmount(() => {
     if (typeof window !== 'undefined') {
         window.removeEventListener('resize', updateHeight);
         resizeObserver?.disconnect();
+        intersectionObserver?.disconnect();
     }
 });
 

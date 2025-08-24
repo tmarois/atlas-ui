@@ -96,5 +96,53 @@ describe('ScrollFrame', () => {
         getBoundingClientRect.mockRestore();
         (global as any).ResizeObserver = originalResizeObserver;
     });
+
+    it('recalculates height when becoming visible', async () => {
+        const originalIntersectionObserver = (global as any).IntersectionObserver;
+        let intersectionCb: (entries: any[]) => void = () => {};
+        const observe = vi.fn();
+        const disconnect = vi.fn();
+        (global as any).IntersectionObserver = vi.fn((cb) => {
+            intersectionCb = cb;
+            return { observe, disconnect } as any;
+        });
+
+        let top = 0;
+        const getBoundingClientRect = vi.spyOn(
+            HTMLElement.prototype,
+            'getBoundingClientRect'
+        );
+        getBoundingClientRect.mockImplementation(() => ({
+            top,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            width: 0,
+            height: 0,
+            x: 0,
+            y: top,
+            toJSON: () => {}
+        }));
+
+        const Parent = {
+            components: { ScrollFrame },
+            template: `<ScrollFrame />`
+        };
+
+        const wrapper = mount(Parent);
+        const frameComp = wrapper.findComponent(ScrollFrame);
+
+        await nextTick();
+        expect(frameComp.vm.dynamicHeight).toBe('0px');
+
+        top = 20;
+        intersectionCb([{ isIntersecting: true }]);
+
+        await nextTick();
+        expect(frameComp.vm.dynamicHeight).toBe('20px');
+
+        getBoundingClientRect.mockRestore();
+        (global as any).IntersectionObserver = originalIntersectionObserver;
+    });
 });
 
