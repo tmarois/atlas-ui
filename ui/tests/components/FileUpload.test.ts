@@ -30,4 +30,42 @@ describe('FileUpload', () => {
         const button = wrapper.find('button');
         expect(button.text()).toBe('Select');
     });
+
+    it('shows file name when one file selected', () => {
+        const file = new File(['a'], 'a.txt', { type: 'text/plain' });
+        const wrapper = mount(FileUpload, {
+            props: { multiple: true, modelValue: [file] },
+            global: { plugins: [PrimeVue] },
+        });
+        const label = wrapper.find('span.truncate');
+        expect(label.text()).toBe('a.txt');
+    });
+
+    it('shows file count when multiple files selected', () => {
+        const file1 = new File(['a'], 'a.txt', { type: 'text/plain' });
+        const file2 = new File(['b'], 'b.txt', { type: 'text/plain' });
+        const wrapper = mount(FileUpload, {
+            props: { multiple: true, modelValue: [file1, file2] },
+            global: { plugins: [PrimeVue] },
+        });
+        const label = wrapper.find('span.truncate');
+        expect(label.text()).toBe('2 files selected');
+    });
+
+    it('truncates long file names without shrinking choose button', () => {
+        const longName = 'a'.repeat(300) + '.txt';
+        const file = new File(['a'], longName, { type: 'text/plain' });
+        const wrapper = mount(FileUpload, {
+            props: { clearable: true, modelValue: file },
+            global: { plugins: [PrimeVue] },
+        });
+        const buttons = wrapper.findAll('button');
+        expect(buttons[0].classes()).toContain('flex-shrink-0');
+        const labelWrapper = wrapper.find('.relative.flex-1');
+        expect(labelWrapper.classes()).toContain('min-w-0');
+        const textDiv = labelWrapper.find('div');
+        expect(textDiv.classes()).toContain('pr-8');
+        const label = wrapper.find('span.truncate');
+        expect(label.text()).toBe(longName);
+    });
 });

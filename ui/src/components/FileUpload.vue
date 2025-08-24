@@ -22,12 +22,11 @@
                 :disabled="isDisabled"
                 size="small"
                 rounded
-                outlined
-                class="mr-2"
+                class="mr-2 flex-shrink-0"
             />
-            <div class="relative flex-1">
+            <div class="relative flex-1 min-w-0">
                 <div :class="[textBase, clearable && hasFile ? 'pr-8' : '', isDisabled ? 'text-surface-700 dark:text-surface-400 bg-surface-200' : hasFile ? 'text-surface-900 dark:text-surface-0' : 'text-surface-500 dark:text-surface-400']">
-                    <span class="truncate">{{ fileNames || 'No file selected' }}</span>
+                    <span class="block truncate">{{ fileNames || 'No file selected' }}</span>
                 </div>
                 <button
                     v-if="clearable && hasFile"
@@ -112,7 +111,10 @@ const model = computed(() => props.modelValue);
 const fileNames = computed(() => {
     const value = model.value;
     if (!value || (Array.isArray(value) && value.length === 0)) return '';
-    return Array.isArray(value) ? value.map((f) => f.name).join(', ') : value.name;
+    if (Array.isArray(value)) {
+        return value.length === 1 ? value[0].name : `${value.length} files selected`;
+    }
+    return value.name;
 });
 const hasFile = computed(() => !!fileNames.value);
 
