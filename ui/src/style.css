@@ -1,5 +1,13 @@
-.atlas-tooltip {
+
+/* Global tooltip styling */
+.p-tooltip {
+  @apply absolute shadow-md py-0 px-0 max-w-[260px];
+  z-index: 2100 !important;
   animation: atlas-tooltip-drop 100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.p-tooltip .p-tooltip-text {
+  @apply text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-700 dark:border-surface-800 rounded whitespace-pre-line;
 }
 
 @keyframes atlas-tooltip-drop {

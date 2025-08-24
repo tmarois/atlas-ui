@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { IconInfoSquareRoundedFilled } from '@tabler/icons-vue';
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { ptMerge } from '../utils';
 
 interface TooltipDirectivePassThroughOptions {
@@ -38,13 +38,8 @@ const theme = computed<TooltipIconPassThroughOptions>(() => ({
 
 const mergedPt = computed(() => ptMerge(theme.value, props.pt));
 
-const tooltipTheme = ref<TooltipDirectivePassThroughOptions>({
-    root: 'absolute shadow-md atlas-tooltip py-0 px-0 max-w-[260px]',
-    text: 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-700 dark:border-surface-800 rounded whitespace-pre-line'
-});
-
 const tooltip = computed(() => ({
     value: props.text,
-    pt: ptMerge(tooltipTheme.value, props.pt?.tooltip)
+    pt: props.pt?.tooltip
 }));
 </script>

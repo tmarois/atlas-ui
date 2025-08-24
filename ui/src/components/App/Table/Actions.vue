@@ -8,13 +8,7 @@
             <div
                 v-for="(menuItem, index) in menuItems"
                 :key="index"
-                v-tooltip.bottom="{
-                    value: menuItem?.tooltip ?? null,
-                    pt: {
-                        root: 'absolute shadow-md atlas-tooltip py-0 px-0 max-w-[260px] mt-1',
-                        text: 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-700 dark:border-surface-800 rounded whitespace-pre-line'
-                    }
-                }"
+                v-tooltip.bottom="{ value: menuItem?.tooltip ?? null, pt: { root: 'mt-1' } }"
                 class="pl-3"
             >
                 <div v-if="menuItem.children && menuItem.children.length" class="relative">
@@ -70,13 +64,7 @@
             </div>
             <div>
                 <button
-                    v-tooltip.bottom="{
-                        value: 'Clear selection',
-                        pt: {
-                            root: 'absolute shadow-md atlas-tooltip py-0 px-0 max-w-[260px] mt-1',
-                            text: 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-700 dark:border-surface-800 rounded whitespace-pre-line'
-                        }
-                    }"
+                    v-tooltip.bottom="{ value: 'Clear selection', pt: { root: 'mt-1' } }"
                     type="button"
                     class="flex items-center justify-center hover:bg-primary-600/50 transition px-3 py-2 cursor-pointer opacity-80 hover:opacity-100"
                     @click="$emit('action', 'clear')"
