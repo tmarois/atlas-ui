@@ -3,14 +3,18 @@
 Composes navigation, page chrome, and page content into a full application wrapper.
 
 ## Table of Contents
+
+### Navigation
 - [NavTopbar](application/nav-topbar.md)
 - [NavSidebar](application/nav-sidebar.md)
+- [PageSideNav](application/page-side-nav.md)
+
+### Layout
 - [AppTopbar](application/app-topbar.md)
 - [PageHeader](application/page-header.md)
 - [PageContent](application/page-content.md)
 - [PageFooter](application/page-footer.md)
 - [PageSideContent](application/page-side-content.md)
-- [PageSideNav](application/page-side-nav.md)
 
 ## Example
 ```ts
