@@ -39,7 +39,7 @@
               />
             </LabelField>
             <LabelField name="roles" label="Roles">
-              <MultiSelect v-model="form.roles" :options="roles" optionLabel="name" optionValue="id" fluid :size="item.size" />
+              <MultiSelect v-model="form.roles" :options="roles" optionLabel="name" optionValue="id" fluid filter :size="item.size" />
             </LabelField>
             <LabelField name="autorole" label="Auto Role">
               <AutoComplete
