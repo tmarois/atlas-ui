@@ -82,7 +82,7 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      '@atlas/ui': path.resolve(__dirname, 'node_modules/@atlas/ui'),
+      '@atlas/ui': path.resolve(__dirname, 'node_modules/@tmarois/atlas-ui'),
     },
   },
 });
