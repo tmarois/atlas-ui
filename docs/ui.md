@@ -101,12 +101,25 @@ import { Button } from '@atlas/ui';
 ```
 
 ```vue
+  <Button
+    label="Submit"
+    :pt="{
+      root: { class: 'bg-emerald-600 hover:bg-emerald-700 border-none' },
+      label: { class: 'text-white font-medium' }
+    }"
+  />
+```
+
+### Merging Props
+
+By default, passthrough attributes replace existing ones. To merge them with
+component defaults instead, pass `:pt-options="{ mergeProps: true }"`:
+
+```vue
 <Button
   label="Submit"
-  :pt="{
-    root: { class: 'bg-emerald-600 hover:bg-emerald-700 border-none' },
-    label: { class: 'text-white font-medium' }
-  }"
+  :pt="{ root: { class: 'bg-emerald-600 hover:bg-emerald-700 border-none' } }"
+  :pt-options="{ mergeProps: true }"
 />
 ```
 
