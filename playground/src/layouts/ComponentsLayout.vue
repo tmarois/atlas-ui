@@ -73,6 +73,12 @@ const pageNavItems = [
 ];
 
 const pageTabs = computed(() => {
+  if (route.path.startsWith('/components/tables')) {
+    return [
+      { title: 'General', href: '/components/tables' },
+      { title: 'Sorting', href: '/components/tables/sorting' },
+    ];
+  }
   if (route.path.startsWith('/components/forms')) {
     return [
       { title: 'General', href: '/components/forms' },
