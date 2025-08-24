@@ -1,3 +1,14 @@
+/* Design Tokens */
+:root {
+  /* Rounding */
+  --p-rounded-0: 0rem;
+  --p-rounded-1: 0.25rem;
+  --p-rounded-2: 0.5rem;
+  --p-rounded-3: 0.75rem;
+  --p-rounded-4: 1rem;
+  --p-content-border-radius: var(--p-rounded-1);
+}
+
 .atlas-tooltip {
   animation: atlas-tooltip-drop 100ms cubic-bezier(0.4, 0, 0.2, 1);
 }

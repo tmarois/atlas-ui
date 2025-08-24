@@ -22,7 +22,7 @@ const attrs = useAttrs();
 
 const theme = ref<ButtonPassThroughOptions>({
     root: `inline-flex align-middle cursor-pointer select-none items-center justify-center overflow-hidden relative
-        px-4 py-[9px] leading-5 gap-2 rounded disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
+        px-4 py-[9px] leading-5 gap-2 rounded-[var(--p-rounded-1)] disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
         bg-primary-500 enabled:hover:bg-primary-500/70 enabled:active:bg-primary-500/60 text-white text-md font-semibold p-text:!font-medium
         border border-primary-500 enabled:hover:border-primary-500/70 enabled:active:border-primary-500/60
         focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
@@ -33,7 +33,7 @@ const theme = ref<ButtonPassThroughOptions>({
         p-large:p-icon-only:w-[42px] p-large:p-icon-only:h-[42px] p-large:p-icon-only:p-0
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
         p-large:text-[1.125rem] p-large:px-[0.875rem] p-large:py-[0.625rem]
-        p-raised:shadow-sm p-rounded:rounded-[2rem]
+        p-raised:shadow-sm p-rounded:rounded-[var(--p-rounded-4)]
         p-outlined:bg-transparent enabled:hover:p-outlined:bg-primary-50 enabled:active:p-outlined:bg-primary-100
         p-outlined:border-primary-200 enabled:hover:p-outlined:border-primary-200 enabled:active:p-outlined:border-primary-200
         p-outlined:text-primary enabled:hover:p-outlined:text-primary enabled:active:p-outlined:text-primary
