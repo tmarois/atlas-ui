@@ -1,5 +1,7 @@
 # Frontend Guide
 
+This guide is written for developers consuming Atlas in their own Laravel applications. It outlines how to set up and structure an Inertia.js + Vue 3 frontend in a Laravel project and is not specific to this repository.
+
 This document defines the structure and rules for building Vue 3 components using Inertia.js and TailwindCSS. It mirrors the backend architecture and ensures clean separation of concerns, modular design, and long-term maintainability.
 
 ---
