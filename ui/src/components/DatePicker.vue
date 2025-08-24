@@ -111,7 +111,7 @@ const attrs = useAttrs();
 const theme = ref<DatePickerPassThroughOptions>({
     root: `inline-flex max-w-full relative p-fluid:flex`,
     pcInputText: {
-        root: `flex-auto w-[1%] appearance-none rounded-md outline-hidden
+        root: `flex-auto w-[1%] appearance-none rounded-[var(--p-content-border-radius)] outline-hidden
         p-has-dropdown:rounded-e-none p-has-e-icon:pe-10
         bg-surface-0 dark:bg-surface-950
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
@@ -129,7 +129,7 @@ const theme = ref<DatePickerPassThroughOptions>({
         p-large:text-lg p-large:px-[0.875rem] p-large:py-[0.625rem]
         transition-colors duration-200 shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]`
     },
-    dropdown: `cursor-pointer inline-flex items-center justify-center select-none overflow-hidden relative w-10 shrink-0 rounded-e-md
+    dropdown: `cursor-pointer inline-flex items-center justify-center select-none overflow-hidden relative w-10 shrink-0 rounded-e-[var(--p-content-border-radius)]
         border border-s-0 border-surface-300 dark:border-surface-700
         bg-surface-100 enabled:hover:bg-surface-200 enabled:active:bg-surface-300
         text-surface-600 enabled:hover:text-surface-700 enabled:hover:active:text-surface-800
@@ -138,7 +138,7 @@ const theme = ref<DatePickerPassThroughOptions>({
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
         transition-colors duration-200`,
     inputIconContainer: `cursor-pointer absolute top-1/2 end-3 -mt-2 text-surface-400 leading-none p-small:*:size-[0.875rem] p-large:*:size-[1.125rem]`,
-    panel: `p-portal-self:min-w-full w-auto p-3 rounded-md
+    panel: `p-portal-self:min-w-full w-auto p-3 rounded-[var(--p-content-border-radius)]
         p-inline:inline-block p-inline:overflow-x-auto p-inline:shadow-none
         border border-surface-200 dark:border-surface-700
         bg-surface-0 dark:bg-surface-900
@@ -153,12 +153,12 @@ const theme = ref<DatePickerPassThroughOptions>({
         border-b border-surface-200 dark:border-surface-700`,
     title: `flex items-center justify-between gap-2 font-medium`,
     selectMonth: `border-none bg-transparent m-0 cursor-pointer font-medium transition-colors duration-200
-        py-1 px-2 rounded-md text-surface-700 dark:text-surface-0
+        py-1 px-2 rounded-[var(--p-content-border-radius)] text-surface-700 dark:text-surface-0
         enabled:hover:bg-surface-100 enabled:hover:text-surface-800
         dark:enabled:hover:bg-surface-800 dark:enabled:hover:text-surface-0
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary`,
     selectYear: `border-none bg-transparent m-0 cursor-pointer font-medium transition-colors duration-200
-        py-1 px-2 rounded-md text-surface-700 dark:text-surface-0
+        py-1 px-2 rounded-[var(--p-content-border-radius)] text-surface-700 dark:text-surface-0
         enabled:hover:bg-surface-100 enabled:hover:text-surface-800
         dark:enabled:hover:bg-surface-800 dark:enabled:hover:text-surface-0
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary`,
@@ -187,13 +187,13 @@ const theme = ref<DatePickerPassThroughOptions>({
         p-today:p-selected:bg-primary p-today:p-selected:text-primary-contrast`,
     monthView: `mt-2 mb-0 mx-0`,
     month: `w-1/3 inline-flex items-center justify-center cursor-pointer overflow-hidden relative
-        p-[0.375rem] transition-colors duration-200 rounded-md text-surface-700 dark:text-surface-0
+        p-[0.375rem] transition-colors duration-200 rounded-[var(--p-content-border-radius)] text-surface-700 dark:text-surface-0
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
         hover:bg-surface-100 hover:text-surface-800 dark:hover:bg-surface-800 dark:hover:text-surface-0
         p-selected:bg-primary p-selected:text-primary-contrast`,
     yearView: `mt-2 mb-0 mx-0`,
     year: `w-1/2 inline-flex items-center justify-center cursor-pointer overflow-hidden relative
-        p-[0.375rem] transition-colors duration-200 rounded-md text-surface-700 dark:text-surface-0
+        p-[0.375rem] transition-colors duration-200 rounded-[var(--p-content-border-radius)] text-surface-700 dark:text-surface-0
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
         hover:bg-surface-100 hover:text-surface-800 dark:hover:bg-surface-800 dark:hover:text-surface-0
         p-selected:bg-primary p-selected:text-primary-contrast`,

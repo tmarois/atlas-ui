@@ -17,7 +17,7 @@ const props = defineProps<Props>();
 const attrs = useAttrs();
 
 const theme = ref<TextareaPassThroughOptions>({
-    root: `appearance-none rounded-md outline-hidden
+    root: `appearance-none rounded-[var(--p-content-border-radius)] outline-hidden
         bg-surface-0 dark:bg-surface-950
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
         text-surface-700 dark:text-surface-0
