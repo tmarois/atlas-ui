@@ -65,7 +65,7 @@ const theme = ref<MultiSelectPassThroughOptions>({
         p-large:text-lg p-large:px-[0.875rem] p-large:py-[0.625rem] p-disabled:opacity-50 p-disabled:pointer-events-none`,
     chipItem: ``,
     pcChip: {
-        root: `inline-flex items-center gap-2 px-3 py-[5px] rounded-sm
+        root: `inline-flex items-center gap-2 px-3 py-[5px] rounded-[var(--p-content-border-radius)]
             bg-primary-500 dark:bg-primary-500
             text-white dark:text-surface-0
             has-[img]:pt-1 has-[img]:pb-1
@@ -85,7 +85,7 @@ const theme = ref<MultiSelectPassThroughOptions>({
         input: `peer cursor-pointer disabled:cursor-default appearance-none
             absolute start-0 top-0 w-full h-full m-0 p-0 opacity-0 z-10
             border border-transparent rounded-xs`,
-        box: `flex justify-center items-center rounded-sm w-5 h-5
+        box: `flex justify-center items-center rounded-[var(--p-content-border-radius)] w-5 h-5
             border border-surface-300 dark:border-surface-700
             bg-surface-0 dark:bg-surface-950
             text-surface-700 dark:text-surface-0
@@ -121,7 +121,7 @@ const theme = ref<MultiSelectPassThroughOptions>({
     list: `m-0 p-1 list-none gap-[2px] flex flex-col`,
     optionGroup: `m-0 px-3 py-2 bg-transparent text-surface-500 dark:text-surface-400 font-semibold`,
     option: `cursor-pointer font-normal whitespace-nowrap relative overflow-hidden flex items-center gap-2 px-3 py-1.5
-        rounded-sm text-surface-700 dark:text-surface-0 bg-transparent border-none
+        rounded-[var(--p-content-border-radius)] text-surface-700 dark:text-surface-0 bg-transparent border-none
         p-focus:bg-surface-100 dark:p-focus:bg-surface-800 p-focus:text-surface-800 dark:p-focus:text-surface-0
         transition-colors duration-200 text-sm`,
     optionLabel: ``,
@@ -130,7 +130,7 @@ const theme = ref<MultiSelectPassThroughOptions>({
         input: `peer cursor-pointer disabled:cursor-default appearance-none
             absolute start-0 top-0 w-full h-full m-0 p-0 opacity-0 z-10
             border border-transparent rounded-xs`,
-        box: `flex justify-center items-center rounded-sm w-5 h-5
+        box: `flex justify-center items-center rounded-[var(--p-content-border-radius)] w-5 h-5
             border border-surface-300 dark:border-surface-700
             bg-surface-0 dark:bg-surface-950
             text-surface-700 dark:text-surface-0

@@ -32,7 +32,7 @@ const theme = ref<InputNumberPassThroughOptions>({
     root: `inline-flex relative
         p-vertical:flex-col p-fluid:w-full`,
     pcInputText: {
-        root: `appearance-none rounded-md outline-hidden flex-auto
+        root: `appearance-none rounded-[var(--p-content-border-radius)] outline-hidden flex-auto
         bg-surface-0 dark:bg-surface-950
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
         text-surface-700 dark:text-surface-0
@@ -64,9 +64,9 @@ const theme = ref<InputNumberPassThroughOptions>({
         dark:text-surface-400 dark:enabled:hover:text-surface-300 dark:enabled:active:text-surface-200
         transition-colors duration-200 disabled:pointer-events-none
         p-stacked:relative p-stacked:flex-auto p-stacked:border-none
-        p-stacked:p-0 p-stacked:rounded-tr-[5px]
-        p-horizontal:order-3 p-horizontal:rounded-e-md p-horizontal:border-s-0
-        p-vertical:py-2 p-vertical:order-1 p-vertical:rounded-ss-md p-vertical:rounded-se-md p-vertical:w-full p-vertical:border-b-0`,
+        p-stacked:p-0 p-stacked:rounded-tr-[var(--p-content-border-radius)]
+        p-horizontal:order-3 p-horizontal:rounded-e-[var(--p-content-border-radius)] p-horizontal:border-s-0
+        p-vertical:py-2 p-vertical:order-1 p-vertical:rounded-ss-[var(--p-content-border-radius)] p-vertical:rounded-se-[var(--p-content-border-radius)] p-vertical:w-full p-vertical:border-b-0`,
     incrementIcon: ``,
     decrementButton: `flex items-center justify-center grow-0 shrink-0 basis-auto cursor-pointer w-10
         bg-transparent enabled:hover:bg-surface-100 enabled:active:bg-surface-200
@@ -77,9 +77,9 @@ const theme = ref<InputNumberPassThroughOptions>({
         dark:text-surface-400 dark:enabled:hover:text-surface-300 dark:enabled:active:text-surface-200
         transition-colors duration-200 disabled:pointer-events-none
         p-stacked:relative p-stacked:flex-auto p-stacked:border-none
-        p-stacked:p-0 p-stacked:rounded-br-[5px]
-        p-horizontal:order-1 p-horizontal:rounded-s-md p-horizontal:border-e-0
-        p-vertical:py-2 p-vertical:order-3 p-vertical:rounded-ee-md p-vertical:rounded-es-md p-vertical:w-full p-vertical:border-t-0`,
+        p-stacked:p-0 p-stacked:rounded-br-[var(--p-content-border-radius)]
+        p-horizontal:order-1 p-horizontal:rounded-s-[var(--p-content-border-radius)] p-horizontal:border-e-0
+        p-vertical:py-2 p-vertical:order-3 p-vertical:rounded-ee-[var(--p-content-border-radius)] p-vertical:rounded-es-[var(--p-content-border-radius)] p-vertical:w-full p-vertical:border-t-0`,
     decrementIcon: ``
 });
 

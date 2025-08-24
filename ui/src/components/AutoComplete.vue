@@ -27,7 +27,7 @@ const attrs = useAttrs();
 const theme = ref<AutoCompletePassThroughOptions>({
     root: `inline-flex p-fluid:flex`,
     pcInputText: {
-        root: `appearance-none rounded-md outline-hidden
+        root: `appearance-none rounded-[var(--p-content-border-radius)] outline-hidden
             bg-surface-0 dark:bg-surface-950
             p-filled:bg-surface-50 dark:p-filled:bg-surface-800
             text-surface-700 dark:text-surface-0
@@ -47,7 +47,7 @@ const theme = ref<AutoCompletePassThroughOptions>({
     },
     inputMultiple: `m-0 list-none cursor-text overflow-hidden flex items-center flex-wrap
         px-3 py-1 not-p-empty:px-1 gap-1 text-surface-700 dark:text-surface-0 bg-surface-0 dark:bg-surface-950
-        border border-surface-300 dark:border-surface-700 rounded-md p-has-dropdown:rounded-e-none w-full
+        border border-surface-300 dark:border-surface-700 rounded-[var(--p-content-border-radius)] p-has-dropdown:rounded-e-none w-full
         hover:border-surface-400 dark:hover:border-surface-600 p-focus:border-primary
         p-invalid:border-red-400 dark:p-invalid:border-red-300
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
@@ -56,7 +56,7 @@ const theme = ref<AutoCompletePassThroughOptions>({
         transition-colors duration-200 outline-none`,
     chipItem: ``,
     pcChip: {
-        root: `inline-flex items-center rounded-sm gap-2 px-3 py-1
+        root: `inline-flex items-center rounded-[var(--p-content-border-radius)] gap-2 px-3 py-1
             bg-primary-500 dark:bg-primary-500
             text-white dark:text-surface-0
             has-[img]:pt-1 has-[img]:pb-1
@@ -74,7 +74,7 @@ const theme = ref<AutoCompletePassThroughOptions>({
     input: `border-none outline-none bg-transparent m-0 p-0 shadow-none rounded-none w-full text-inherit
         placeholder:text-surface-500 dark:placeholder:text-surface-400`,
     loader: `absolute top-1/2 -mt-2 end-3 p-has-dropdown:end-[3.25rem] animate-spin`,
-    dropdown: `cursor-pointer inline-flex items-center justify-center select-none overflow-hidden relative w-10 shrink-0 rounded-e-md
+    dropdown: `cursor-pointer inline-flex items-center justify-center select-none overflow-hidden relative w-10 shrink-0 rounded-e-[var(--p-content-border-radius)]
         border border-s-0 border-surface-300 dark:border-surface-700
         bg-surface-100 enabled:hover:bg-surface-200 enabled:active:bg-surface-300
         text-surface-600 enabled:hover:text-surface-700 enabled:hover:active:text-surface-800
@@ -83,7 +83,7 @@ const theme = ref<AutoCompletePassThroughOptions>({
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
         transition-colors duration-200`,
     dropdownIcon: ``,
-    overlay: `p-portal-self:min-w-full absolute top-0 left-0 rounded-md
+    overlay: `p-portal-self:min-w-full absolute top-0 left-0 rounded-[var(--p-content-border-radius)]
         bg-surface-0 dark:bg-surface-900
         border border-surface-200 dark:border-surface-700
         text-surface-700 dark:text-surface-0
@@ -93,7 +93,7 @@ const theme = ref<AutoCompletePassThroughOptions>({
     list: `m-0 p-1 list-none flex flex-col gap-[2px]`,
     optionGroup: `m-0 px-3 py-2 text-surface-500 dark:text-surface-400 font-semibold bg-transparent`,
     option: `cursor-pointer font-normal whitespace-nowrap relative overflow-hidden flex items-center
-    px-3 py-1.5 border-none text-surface-700 dark:text-surface-0 bg-transparent rounded-sm
+    px-3 py-1.5 border-none text-surface-700 dark:text-surface-0 bg-transparent rounded-[var(--p-content-border-radius)]
     p-focus:bg-surface-100 dark:p-focus:bg-surface-800 p-focus:text-surface-800 dark:p-focus:text-surface-0
     p-selected:bg-primary-500 p-focus:p-selected:bg-primary-500 p-selected:text-white p-focus:p-selected:text-white dark:p-selected:bg-primary-500 dark:p-focus:p-selected:bg-primary-500
     transition-colors duration-200 text-sm`,

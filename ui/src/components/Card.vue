@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
 const attrs = useAttrs();
 
 const theme = computed<CardPassThroughOptions>(() => ({
-    root: `flex flex-col rounded-lg
+    root: `flex flex-col rounded-[var(--p-content-border-radius)]
         bg-surface-0 dark:bg-surface-800
         text-surface-700 dark:text-surface-0
         border border-surface-300 dark:border-surface-700

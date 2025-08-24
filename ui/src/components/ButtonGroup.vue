@@ -21,7 +21,7 @@ const props = defineProps<Props>();
 const attrs = useAttrs();
 
 const theme = ref<ButtonGroupPassThroughOptions>({
-    root: `*:rounded-none *:first:rounded-s-md *:last:rounded-e-md
+    root: `*:rounded-none *:first:rounded-s-[var(--p-content-border-radius)] *:last:rounded-e-[var(--p-content-border-radius)]
         *:focus-visible:relative *:focus-visible:z-10 *:not-last:border-r-0
         *:p-outlined:border-surface-300 *:enabled:hover:p-outlined:border-surface-400 *:enabled:active:p-outlined:border-surface-300
         dark:*:p-outlined:border-surface-700 dark:*:enabled:hover:p-outlined:border-surface-600 dark:*:enabled:active:p-outlined:border-surface-600`
