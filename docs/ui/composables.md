@@ -16,7 +16,7 @@ The `useDataTableOptions` composable keeps datatable query options in sync with 
 
 ```vue
 <script setup>
-import { useDataTableOptions } from '@tmarois/atlas';
+import { useDataTableOptions } from '@atlas/ui';
 import { usePage } from '@inertiajs/vue3';
 
 const { props } = usePage();
@@ -38,7 +38,7 @@ The `useModal` composable provides a flexible modal management system for Vue ap
 ### Basic Usage
 
 ```typescript
-import { useModal } from '@tmarois/atlas';
+import { useModal } from '@atlas/ui';
 
 const modal = useModal();
 
@@ -80,7 +80,7 @@ const modalData = modal.data('confirmDialog');
 </template>
 
 <script setup>
-import { useModal } from '@tmarois/atlas';
+import { useModal } from '@atlas/ui';
 
 const modal = useModal();
 const isActive = modal.activeState('confirmDialog');
@@ -91,7 +91,7 @@ const isActive = modal.activeState('confirmDialog');
 
 ```js
 <script setup>
-import { useModal } from '@tmarois/atlas';
+import { useModal } from '@atlas/ui';
 
 const modal = useModal();
 
@@ -115,7 +115,7 @@ The `useScroll` composable provides utilities for scroll management and detectio
 
 ```js
 <script setup>
-import { useScroll } from '@tmarois/atlas';
+import { useScroll } from '@atlas/ui';
 import { ref } from 'vue';
 
 const elementRef = ref(null);
@@ -162,7 +162,7 @@ onUnmounted(() => {
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import { useScroll } from '@tmarois/atlas';
+import { useScroll } from '@atlas/ui';
 
 const containerRef = ref(null);
 const scroll = useScroll('container');
@@ -184,7 +184,7 @@ onUnmounted(() => {
 
 ```js
 <script setup>
-import { useModal, useScroll } from '@tmarois/atlas';
+import { useModal, useScroll } from '@atlas/ui';
 
 const modal = useModal();
 const scroll = useScroll('modal');

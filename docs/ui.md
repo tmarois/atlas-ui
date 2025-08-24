@@ -2,9 +2,11 @@
 
 Reusable Vue 3 components styled with Tailwind CSS and built on top of PrimeVue.
 
+See the [App Layout](ui/app.md) for a ready-to-use application wrapper.
+
 ## Table of Contents
+- [Setup](#setup)
 - [Component Guide](ui/component-guide.md)
-- [Application](#application)
 - [Override Themes with Passthrough](#override-themes-with-passthrough)
 - [Components](#components)
   - [Actions](#actions)
@@ -61,16 +63,42 @@ Reusable Vue 3 components styled with Tailwind CSS and built on top of PrimeVue.
     - [Paginator](#paginator)
     - [Pagination](#pagination)
   - [Feedback](#feedback)
-    - [Alert](#alert)
-    - [Errors](#errors)
-    - [Toast](#toast)
-    - [ProgressBar](#progressbar)
+  - [Alert](#alert)
+  - [Errors](#errors)
+  - [Toast](#toast)
+  - [ProgressBar](#progressbar)
+
+## Setup
+
+Configure your build tool to resolve the `@atlas/ui` alias to the package. With Vite:
+
+```js
+// vite.config.js
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import path from 'path';
+
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      '@atlas/ui': path.resolve(__dirname, 'node_modules/@tmarois/atlas-ui'),
+    },
+  },
+});
+```
+
+If you're using another bundler, configure an equivalent alias so `@atlas/ui` points to the package.
 
 ## Override Themes with Passthrough
 
 PrimeVue components support a [passthrough (pt) API](https://primevue.org/passthrough/) that lets you customize internal elements and classes. Atlas forwards this API so you can tweak component styles or structure when needed.
 
 ### Example: Button
+
+```ts
+import { Button } from '@atlas/ui';
+```
 
 ```vue
 <Button
@@ -81,10 +109,6 @@ PrimeVue components support a [passthrough (pt) API](https://primevue.org/passth
   }"
 />
 ```
-
-## Application
-
-See the [Application UI guide](ui/application.md) for the app's page structure and layout and the [App Layout](ui/app.md) component for a ready-to-use page wrapper.
 
 ## Components
 

@@ -39,7 +39,7 @@ Converts a number of bytes into a human-readable file size string.
 
 **Example:**
 ```typescript
-import { formatBytes } from '@tmarois/atlas';
+import { formatBytes } from '@atlas/ui';
 
 formatBytes(1024);        // '1.00 KB'
 formatBytes(1536, 1);     // '1.5 KB'
@@ -60,7 +60,7 @@ Formats a date string or Date object into a localized date string.
 
 **Example:**
 ```typescript
-import { formatDate } from '@tmarois/atlas';
+import { formatDate } from '@atlas/ui';
 
 formatDate('2023-01-15T12:00:00');                  // '1/15/2023'
 formatDate('2023-01-15T12:00:00', 'America/New_York'); // '1/15/2023'
@@ -80,7 +80,7 @@ Formats a date string or Date object into a localized date and time string.
 
 **Example:**
 ```typescript
-import { formatDatetime } from '@tmarois/atlas';
+import { formatDatetime } from '@atlas/ui';
 
 formatDatetime('2023-01-15T12:00:00');                  // '1/15/2023, 12:00 PM'
 formatDatetime('2023-01-15T12:00:00', 'America/New_York'); // '1/15/2023, 7:00 AM'
@@ -98,7 +98,7 @@ Converts a `YYYY-MM-DD` date string into `MM/DD/YYYY` format.
 
 **Example:**
 ```typescript
-import { formatYmdDate } from '@tmarois/atlas';
+import { formatYmdDate } from '@atlas/ui';
 
 formatYmdDate('2023-12-05'); // '12/05/2023'
 formatYmdDate('2023-01-01'); // '01/01/2023'
@@ -116,7 +116,7 @@ Formats a number with thousands separators and optional decimal places.
 
 **Example:**
 ```typescript
-import { formatNumber } from '@tmarois/atlas';
+import { formatNumber } from '@atlas/ui';
 
 formatNumber(1000);      // '1,000'
 formatNumber(1234.56, 2); // '1,234.56'
@@ -136,7 +136,7 @@ Formats a numeric decimal into a percentage string.
 
 **Example:**
 ```typescript
-import { formatPercentage } from '@tmarois/atlas';
+import { formatPercentage } from '@atlas/ui';
 
 formatPercentage(0.25);     // '25%'
 formatPercentage(0.3333, 2); // '33.33%'
@@ -155,7 +155,7 @@ Converts a string into a safe, lowercase slug.
 
 **Example:**
 ```typescript
-import { formatSlug } from '@tmarois/atlas';
+import { formatSlug } from '@atlas/ui';
 
 formatSlug('Hello World');      // 'hello-world'
 formatSlug('My Blog Post!');    // 'my-blog-post'
@@ -175,7 +175,7 @@ Normalizes and ensures a URL includes a valid protocol.
 
 **Example:**
 ```typescript
-import { formatValidURL } from '@tmarois/atlas';
+import { formatValidURL } from '@atlas/ui';
 
 formatValidURL('google.com');                // 'http://google.com'
 formatValidURL('google.com', true);         // 'https://google.com'
@@ -197,7 +197,7 @@ optional flag can prefix the result with `+1`.
 
 **Example:**
 ```typescript
-import { formatUSPhoneNumber } from '@tmarois/atlas';
+import { formatUSPhoneNumber } from '@atlas/ui';
 
 formatUSPhoneNumber('1234567890'); // '(123) 456-7890'
 formatUSPhoneNumber(9876543210, true); // '+1 (987) 654-3210'
@@ -219,7 +219,7 @@ Checks if a value is empty (null, undefined, empty string, empty array, or empty
 
 **Example:**
 ```typescript
-import { isEmpty } from '@tmarois/atlas';
+import { isEmpty } from '@atlas/ui';
 
 isEmpty('');        // true
 isEmpty(null);       // true
@@ -242,7 +242,7 @@ Checks if a value is a valid number or numeric string.
 
 **Example:**
 ```typescript
-import { isNumeric } from '@tmarois/atlas';
+import { isNumeric } from '@atlas/ui';
 
 isNumeric(123);        // true
 isNumeric('123');       // true
@@ -264,7 +264,7 @@ Checks if a string is a valid email address format.
 
 **Example:**
 ```typescript
-import { isValidEmail } from '@tmarois/atlas';
+import { isValidEmail } from '@atlas/ui';
 
 isValidEmail('user@example.com');      // true
 isValidEmail('name.surname@domain.co'); // true
@@ -285,7 +285,7 @@ Checks if a string is a valid URL format.
 
 **Example:**
 ```typescript
-import { isValidURL } from '@tmarois/atlas';
+import { isValidURL } from '@atlas/ui';
 
 isValidURL('https://google.com');         // true
 isValidURL('http://subdomain.domain.co.uk'); // true
@@ -307,7 +307,7 @@ Detects if the code is running in a client/browser environment (as opposed to se
 
 **Example:**
 ```typescript
-import { isClient } from '@tmarois/atlas';
+import { isClient } from '@atlas/ui';
 
 // Only execute browser-specific code when in the browser
 if (isClient) {
@@ -326,7 +326,7 @@ Returns a random element from an array.
 
 **Example:**
 ```typescript
-import { getRandomItem } from '@tmarois/atlas';
+import { getRandomItem } from '@atlas/ui';
 
 const numbers = [1, 2, 3, 4];
 getRandomItem(numbers); // 1 | 2 | 3 | 4
@@ -344,7 +344,7 @@ Rounds a number to a specified number of decimal places.
 
 **Example:**
 ```typescript
-import { roundTo } from '@tmarois/atlas';
+import { roundTo } from '@atlas/ui';
 
 roundTo(1.005, 2); // 1.01
 roundTo(123.456, 1); // 123.5
@@ -363,7 +363,7 @@ Determines whether the current Inertia page URL matches a given path.
 
 **Example:**
 ```typescript
-import { isPageActive } from '@tmarois/atlas';
+import { isPageActive } from '@atlas/ui';
 
 isPageActive('/users'); // true when current URL begins with '/users'
 isPageActive('/users', undefined, true); // true only when URL is exactly '/users'
