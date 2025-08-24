@@ -1,32 +1,38 @@
 <template>
-  <section class="space-y-4">
-    <Card noPadding>
-      <template #content>
-        <Tabs value="general">
-          <TabList>
-            <Tab value="general">General</Tab>
-            <Tab value="sorting">Sorting</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel value="general">
+  <Tabs value="general">
+    <TabList>
+      <Tab value="general">General</Tab>
+      <Tab value="sorting">Sorting</Tab>
+    </TabList>
+    <TabPanels>
+      <TabPanel value="general">
+        <section class="space-y-4">
+          <Card noPadding>
+            <template #content>
               <DataTable :value="users" paginator :rows="25">
                 <Column field="name" header="Name" />
                 <Column field="email" header="Email" />
                 <Column field="country" header="Country" />
               </DataTable>
-            </TabPanel>
-            <TabPanel value="sorting">
+            </template>
+          </Card>
+        </section>
+      </TabPanel>
+      <TabPanel value="sorting">
+        <section class="space-y-4">
+          <Card noPadding>
+            <template #content>
               <DataTable :value="users" paginator :rows="25">
                 <Column field="name" header="Name" sortable />
                 <Column field="email" header="Email" sortable />
                 <Column field="country" header="Country" sortable />
               </DataTable>
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-      </template>
-    </Card>
-  </section>
+            </template>
+          </Card>
+        </section>
+      </TabPanel>
+    </TabPanels>
+  </Tabs>
 </template>
 
 <script setup>
