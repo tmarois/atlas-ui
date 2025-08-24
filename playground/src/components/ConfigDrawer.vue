@@ -6,45 +6,51 @@
     >
       <span class="pi pi-cog"></span>
     </button>
-      <UiDrawer v-model:visible="visible" position="right" :modal="false">
-        <div class="p-4 space-y-4">
-          <h2 class="text-xl font-semibold">Settings</h2>
-          <div class="flex items-center justify-between">
-            <span>Dark mode</span>
-            <ToggleSwitch v-model="dark" />
-          </div>
-          <div class="flex items-center justify-between">
-            <span>Top navigation</span>
-            <ToggleSwitch v-model="topNav" />
-          </div>
-          <div>
-            <span class="block mb-2">Primary</span>
-            <div class="flex gap-2">
-              <button
-                v-for="option in primaryOptions"
-                :key="option.value"
-                :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, primary === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : '']"
-                @click="primary = option.value"
-                :aria-label="option.label"
-              ></button>
-            </div>
-          </div>
-          <div>
-            <span class="block mb-2">Surface</span>
-            <div class="flex gap-2">
-              <button
-                v-for="option in surfaceOptions"
-                :key="option.value"
-                :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, surface === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : '']"
-                @click="surface = option.value"
-                :aria-label="option.label"
-              ></button>
-            </div>
+    <UiDrawer
+      v-model:visible="visible"
+      position="right"
+      :modal="false"
+      header="Customize"
+    >
+      <div class="p-4 space-y-6">
+        <div class="flex items-center justify-between">
+          <span class="font-medium">Dark mode</span>
+          <ToggleSwitch v-model="dark" />
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="font-medium">Top navigation</span>
+          <ToggleSwitch v-model="topNav" />
+        </div>
+        <div>
+          <span class="block mb-2 font-medium">Primary</span>
+          <div class="flex gap-2">
+            <button
+              v-for="option in primaryOptions"
+              :key="option.value"
+              :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, primary === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : '']"
+              @click="primary = option.value"
+              :aria-label="option.label"
+              v-tooltip.bottom="{ value: option.label }"
+            ></button>
           </div>
         </div>
-      </UiDrawer>
-    </div>
-  </template>
+        <div>
+          <span class="block mb-2 font-medium">Surface</span>
+          <div class="flex gap-2">
+            <button
+              v-for="option in surfaceOptions"
+              :key="option.value"
+              :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, surface === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : '']"
+              @click="surface = option.value"
+              :aria-label="option.label"
+              v-tooltip.bottom="{ value: option.label }"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </UiDrawer>
+  </div>
+</template>
 
 <script setup>
 import { ref } from 'vue';
@@ -60,17 +66,17 @@ const primaryOptions = [
     { label: 'Indigo', value: 'indigo', class: 'bg-indigo-500' },
     { label: 'Teal', value: 'teal', class: 'bg-teal-500' },
     { label: 'Pink', value: 'pink', class: 'bg-pink-500' },
-    { label: 'Black', value: 'gray', class: 'bg-black' },
+    { label: 'Gray', value: 'gray', class: 'bg-gray-500' },
     { label: 'Green', value: 'green', class: 'bg-green-500' },
     { label: 'Orange', value: 'orange', class: 'bg-orange-500' },
 ];
 const surfaceOptions = [
-    { label: 'Blue', value: 'blue', class: 'bg-blue-200' },
-    { label: 'Gray', value: 'gray', class: 'bg-gray-200' },
-    { label: 'Purple', value: 'purple', class: 'bg-purple-200' },
-    { label: 'Pink', value: 'pink', class: 'bg-pink-200' },
-    { label: 'Slate', value: 'slate', class: 'bg-slate-200' },
-    { label: 'Zinc', value: 'zinc', class: 'bg-zinc-200' },
+    { label: 'Blue', value: 'blue', class: 'bg-blue-50 dark:bg-blue-900' },
+    { label: 'Gray', value: 'gray', class: 'bg-gray-50 dark:bg-gray-900' },
+    { label: 'Purple', value: 'purple', class: 'bg-purple-50 dark:bg-purple-900' },
+    { label: 'Pink', value: 'pink', class: 'bg-pink-50 dark:bg-pink-900' },
+    { label: 'Slate', value: 'slate', class: 'bg-slate-50 dark:bg-slate-900' },
+    { label: 'Zinc', value: 'zinc', class: 'bg-zinc-50 dark:bg-zinc-900' },
 ];
 </script>
 
