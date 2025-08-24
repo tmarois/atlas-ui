@@ -7,6 +7,7 @@ Composes navigation, page chrome, and page content into a full application wrapp
 - App Navigation
   - [NavTopbar](application/nav-topbar.md)
   - [NavSidebar](application/nav-sidebar.md)
+  - [ProfileMenu](application/profile-menu.md)
 - App Layout
   - [App](#app)
   - [AppTopbar](application/app-topbar.md)

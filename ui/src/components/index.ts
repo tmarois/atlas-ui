@@ -60,6 +60,7 @@ export { default as PageSideContent } from './App/Page/SideContent.vue';
 export { default as PageSideNav } from './App/Page/SideNav.vue';
 export { default as NavSidebar } from './App/Nav/Sidebar.vue';
 export { default as NavTopbar } from './App/Nav/Topbar.vue';
+export { default as ProfileMenu } from './App/Nav/ProfileMenu.vue';
 export { default as Table } from './App/Table/Table.vue';
 export { default as TableActions } from './App/Table/Actions.vue';
 export { default as TableCustomizeColumns } from './App/Table/CustomizeColumns.vue';
