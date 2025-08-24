@@ -122,15 +122,12 @@ const containerClass = computed(() => {
 });
 
 const linkClass = (item) => {
+    const activeCls = props.activeClass || 'bg-white text-primary-900';
     if (props.autoDark) {
-        const activeCls =
-            props.activeClass ||
-            'bg-surface-200 dark:bg-primary-700 text-surface-900 dark:text-white';
         const baseCls =
             'text-surface-600 dark:text-surface-300 hover:bg-surface-200 dark:hover:bg-primary-800';
         return isActive(item) ? activeCls : baseCls;
     }
-    const activeCls = props.activeClass || 'bg-primary-700 text-white';
     const baseCls = 'text-white hover:bg-primary-800';
     return isActive(item) ? activeCls : baseCls;
 };

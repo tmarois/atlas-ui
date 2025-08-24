@@ -138,17 +138,15 @@ const containerClass = computed(() => {
 });
 
 const menuActiveClass = computed(() => {
-    return props.activeClass || 'bg-surface-200 dark:bg-primary-700 dark:text-white';
+    return props.activeClass || 'bg-white text-primary-900';
 });
 
 const linkClass = (item) => {
+    const activeCls = props.activeClass || 'bg-white text-primary-900';
     if (props.autoDark) {
-        const activeCls = props.activeClass ||
-            'bg-surface-200 dark:bg-primary-700 text-surface-900 dark:text-white';
         const baseCls = 'text-surface-700 dark:text-surface-300 hover:bg-surface-200 dark:hover:bg-primary-800 hover:text-surface-900 dark:hover:text-white';
         return isActive(item) ? activeCls : baseCls;
     }
-    const activeCls = props.activeClass || 'bg-primary-700 text-white';
     const baseCls = 'text-gray-300 hover:bg-primary-800 hover:text-white';
     return isActive(item) ? activeCls : baseCls;
 };
