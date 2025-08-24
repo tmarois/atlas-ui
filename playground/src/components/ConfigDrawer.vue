@@ -30,7 +30,7 @@
                 :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, primary === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : 'hover:ring-2 hover:ring-offset-2 hover:ring-primary-500']"
                 @click="primary = option.value"
                 :aria-label="option.label"
-                v-tooltip.bottom="{ value: option.label }"
+                v-tooltip.bottom="{ value: option.label, pt: tooltipPt }"
               ></button>
           </div>
         </div>
@@ -43,7 +43,7 @@
                 :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, surface === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : 'hover:ring-2 hover:ring-offset-2 hover:ring-primary-500']"
                 @click="surface = option.value"
                 :aria-label="option.label"
-                v-tooltip.bottom="{ value: option.label }"
+                v-tooltip.bottom="{ value: option.label, pt: tooltipPt }"
               ></button>
           </div>
         </div>
@@ -56,7 +56,7 @@
                 :class="['w-6 h-6 border cursor-pointer bg-surface-0 dark:bg-surface-900', option.class, rounded === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : 'hover:ring-2 hover:ring-offset-2 hover:ring-primary-500']"
                 @click="rounded = option.value"
                 :aria-label="option.label"
-                v-tooltip.bottom="{ value: option.label }"
+                v-tooltip.bottom="{ value: option.label, pt: tooltipPt }"
               ></button>
           </div>
         </div>
@@ -73,6 +73,7 @@ import { useSettings } from '../composables/useSettings';
 
 const visible = ref(false);
 const { dark, topNav, primary, surface, rounded } = useSettings();
+const tooltipPt = { root: 'absolute shadow-md atlas-tooltip py-0 px-0 max-w-[260px] mt-1' };
 const primaryOptions = [
     { label: 'Blue', value: 'blue', class: 'bg-blue-500' },
     { label: 'Purple', value: 'purple', class: 'bg-purple-500' },
