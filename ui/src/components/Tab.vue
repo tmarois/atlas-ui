@@ -24,7 +24,7 @@ const theme = ref<TabPassThroughOptions>({
         text-surface-500 dark:text-surface-400
         transition-colors duration-200 -mb-[2px]
         not-p-active:enabled:hover:text-surface-700 dark:not-p-active:enabled:hover:text-surface-0
-        p-active:border-primary p-active:text-primary
+        p-active:border-primary-500 p-active:text-primary-500 dark:p-active:border-primary-400 dark:p-active:text-primary-400
         hover:bg-surface-100 dark:hover:bg-surface-800
         disabled:pointer-events-none disabled:opacity-60
         focus-visible:z-10 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-[-1px] focus-visible:outline-primary`
