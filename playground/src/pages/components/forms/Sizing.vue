@@ -69,6 +69,11 @@
               <DatePicker v-model="form.time" timeOnly fluid :size="item.size" />
             </LabelField>
           </div>
+          <div class="w-full">
+            <LabelField name="file" label="File">
+              <FileUpload v-model="form.file" clearable :size="item.size" />
+            </LabelField>
+          </div>
         </div>
       </template>
       <template #footer>
@@ -92,6 +97,7 @@ import AutoComplete from '@atlas/ui/components/AutoComplete.vue';
 import DatePicker from '@atlas/ui/components/DatePicker.vue';
 import InputNumber from '@atlas/ui/components/InputNumber.vue';
 import Button from '@atlas/ui/components/Button.vue';
+import FileUpload from '@atlas/ui/components/FileUpload.vue';
 
 const form = reactive({
   first_name: 'John',
@@ -108,6 +114,7 @@ const form = reactive({
   date: null,
   month: null,
   time: null,
+  file: null,
   query: null,
 });
 

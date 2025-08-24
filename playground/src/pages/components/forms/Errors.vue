@@ -53,6 +53,11 @@
                 <Textarea id="description_invalid" v-model="form.description" fluid autoResize :invalid="true" />
               </LabelField>
             </div>
+            <div class="w-full">
+              <LabelField name="file" label="File" :error="errors.file">
+                <FileUpload v-model="form.file" clearable invalid />
+              </LabelField>
+            </div>
           </div>
         </template>
         <template #footer>
@@ -82,6 +87,7 @@ import DatePicker from '@atlas/ui/components/DatePicker.vue';
 import Textarea from '@atlas/ui/components/Textarea.vue';
 import { useModal } from '@atlas/ui/composables';
 import Errors from '@atlas/ui/components/Errors.vue';
+import FileUpload from '@atlas/ui/components/FileUpload.vue';
 
 const { open } = useModal();
 
@@ -95,6 +101,7 @@ const form = reactive({
   month: null,
   time: null,
   description: null,
+  file: null,
 });
 
 const errors = reactive({
@@ -107,6 +114,7 @@ const errors = reactive({
   month: 'Month is required',
   time: 'Time is required',
   description: 'Description is required',
+  file: 'File is required',
 });
 
 const roles = ref([
