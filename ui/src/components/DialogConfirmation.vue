@@ -1,6 +1,11 @@
 <template>
     <Dialog
-        v-bind="dialogBindProps"
+        modal
+        closable
+        :visible="props.modelValue"
+        :header="props.title"
+        :dissmissible="false"
+        :dismissable-mask="false"
         @update:visible="close"
     >
         <div :class="mergedPt.root.class">
@@ -88,19 +93,6 @@ const passThroughProps = computed(() => {
     const { pt, modelValue, title, icon, message, loading, ...rest } = props as any;
     return rest;
 });
-
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
-
-const dialogBindProps = computed(() => ({
-    modal: true,
-    dismissableMask: false,
-    closable: false,
-    style: { width: '25rem' },
-    ...bindProps.value,
-    header: props.title,
-    visible: props.modelValue,
-}));
-
 const close = () => emit('update:modelValue', false);
 const confirm = () => emit('confirm');
 </script>
