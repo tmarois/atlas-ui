@@ -6,50 +6,66 @@
     >
       <span class="pi pi-cog"></span>
     </button>
-    <UiDrawer v-model:visible="visible" position="right" :modal="false">
-      <div class="p-4 space-y-4">
-        <h2 class="text-xl font-semibold">Settings</h2>
-        <div class="flex items-center justify-between">
-          <span>Dark mode</span>
-          <ToggleSwitch v-model="dark" />
+      <UiDrawer v-model:visible="visible" position="right" :modal="false">
+        <div class="p-4 space-y-4">
+          <h2 class="text-xl font-semibold">Settings</h2>
+          <div class="flex items-center justify-between">
+            <span>Dark mode</span>
+            <ToggleSwitch v-model="dark" />
+          </div>
+          <div class="flex items-center justify-between">
+            <span>Top navigation</span>
+            <ToggleSwitch v-model="topNav" />
+          </div>
+          <div>
+            <span class="block mb-2">Primary</span>
+            <div class="flex gap-2">
+              <button
+                v-for="option in primaryOptions"
+                :key="option.value"
+                :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, primary === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : '']"
+                @click="primary = option.value"
+                :aria-label="option.label"
+              ></button>
+            </div>
+          </div>
+          <div>
+            <span class="block mb-2">Surface</span>
+            <div class="flex gap-2">
+              <button
+                v-for="option in surfaceOptions"
+                :key="option.value"
+                :class="['w-6 h-6 rounded-full border cursor-pointer', option.class, surface === option.value ? 'ring-2 ring-offset-2 ring-primary-500' : '']"
+                @click="surface = option.value"
+                :aria-label="option.label"
+              ></button>
+            </div>
+          </div>
         </div>
-        <div class="flex items-center justify-between">
-          <span>Top navigation</span>
-          <ToggleSwitch v-model="topNav" />
-        </div>
-        <div class="flex items-center justify-between">
-          <span>Theme</span>
-          <Select
-            v-model="theme"
-            :options="themeOptions"
-            option-label="label"
-            option-value="value"
-            class="w-40"
-            size="small"
-          />
-        </div>
-      </div>
-    </UiDrawer>
-  </div>
-</template>
+      </UiDrawer>
+    </div>
+  </template>
 
 <script setup>
 import { ref } from 'vue';
 import UiDrawer from '@atlas/ui/components/Drawer.vue';
 import ToggleSwitch from '@atlas/ui/components/ToggleSwitch.vue';
-import Select from '@atlas/ui/components/Select.vue';
 import { useSettings } from '../composables/useSettings';
 
 const visible = ref(false);
-const { dark, topNav, theme } = useSettings();
-const themeOptions = [
-  { label: 'Blue', value: 'blue' },
-  { label: 'Purple', value: 'purple' },
-  { label: 'Teal', value: 'teal' },
-  { label: 'Pink', value: 'pink' },
-  { label: 'Gray', value: 'gray' },
-  { label: 'Green', value: 'green' },
-  { label: 'Orange', value: 'orange' },
+const { dark, topNav, primary, surface } = useSettings();
+const primaryOptions = [
+    { label: 'Blue', value: 'blue', class: 'bg-blue-500' },
+    { label: 'Purple', value: 'purple', class: 'bg-purple-500' },
+    { label: 'Teal', value: 'teal', class: 'bg-teal-500' },
+    { label: 'Pink', value: 'pink', class: 'bg-pink-500' },
+    { label: 'Gray', value: 'gray', class: 'bg-gray-500' },
+    { label: 'Green', value: 'green', class: 'bg-green-500' },
+    { label: 'Orange', value: 'orange', class: 'bg-orange-500' },
+];
+const surfaceOptions = [
+    { label: 'Blue', value: 'blue', class: 'bg-blue-200' },
+    { label: 'Gray', value: 'gray', class: 'bg-gray-200' },
 ];
 </script>
 
