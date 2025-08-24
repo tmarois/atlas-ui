@@ -1,7 +1,6 @@
 <template>
     <Dialog
         v-bind="dialogBindProps"
-        :pt="mergedPt.dialog"
         @update:visible="close"
     >
         <div :class="mergedPt.root.class">
@@ -20,13 +19,11 @@
                         raised
                         :disabled="loading"
                         :loading="loading"
-                        :pt="mergedPt.confirmButton"
                         @click="confirm"
                     />
                     <Button
                         text
                         label="Cancel"
-                        :pt="mergedPt.cancelButton"
                         @click="close"
                     />
                 </slot>
