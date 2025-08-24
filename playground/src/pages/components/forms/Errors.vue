@@ -48,6 +48,11 @@
                 <DatePicker id="time" v-model="form.time" timeOnly fluid :invalid="true" />
               </LabelField>
             </div>
+            <div class="w-full">
+              <LabelField name="description" label="Description" :error="errors.description">
+                <Textarea id="description_invalid" v-model="form.description" fluid autoResize :invalid="true" />
+              </LabelField>
+            </div>
           </div>
         </template>
         <template #footer>
@@ -74,6 +79,7 @@ import Select from '@atlas/ui/components/Select.vue';
 import MultiSelect from '@atlas/ui/components/MultiSelect.vue';
 import AutoComplete from '@atlas/ui/components/AutoComplete.vue';
 import DatePicker from '@atlas/ui/components/DatePicker.vue';
+import Textarea from '@atlas/ui/components/Textarea.vue';
 import { useModal } from '@atlas/ui/composables';
 import Errors from '@atlas/ui/components/Errors.vue';
 
@@ -88,6 +94,7 @@ const form = reactive({
   date: null,
   month: null,
   time: null,
+  description: null,
 });
 
 const errors = reactive({
@@ -99,6 +106,7 @@ const errors = reactive({
   date: 'Date is required',
   month: 'Month is required',
   time: 'Time is required',
+  description: 'Description is required',
 });
 
 const roles = ref([
