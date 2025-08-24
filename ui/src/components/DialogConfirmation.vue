@@ -22,6 +22,7 @@
                     <Button
                         label="Confirm"
                         raised
+                        pt:root:class="text-white bg-red-600 enabled:hover:bg-red-700 border-red-600 enabled:active:border-red-400 enabled:active:bg-red-600 enabled:hover:border-red-emphasis"
                         :disabled="loading"
                         :loading="loading"
                         @click="confirm"
