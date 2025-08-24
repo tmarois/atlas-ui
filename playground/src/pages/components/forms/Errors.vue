@@ -37,6 +37,17 @@
                 <AutoComplete v-model="form.autorole" :suggestions="filteredRoles" @complete="search" optionLabel="label" optionValue="id" fluid dropdown showClear forceSelection :invalid="true" />
               </LabelField>
             </div>
+            <div class="w-full flex items-center space-x-4">
+              <LabelField name="date" label="Date" :error="errors.date">
+                <DatePicker id="date" v-model="form.date" fluid :invalid="true" />
+              </LabelField>
+              <LabelField name="month" label="Month" :error="errors.month">
+                <DatePicker id="month" v-model="form.month" view="month" dateFormat="mm/yy" fluid :invalid="true" />
+              </LabelField>
+              <LabelField name="time" label="Time" :error="errors.time">
+                <DatePicker id="time" v-model="form.time" timeOnly fluid :invalid="true" />
+              </LabelField>
+            </div>
           </div>
         </template>
         <template #footer>
@@ -62,6 +73,7 @@ import InputText from '@atlas/ui/components/InputText.vue';
 import Select from '@atlas/ui/components/Select.vue';
 import MultiSelect from '@atlas/ui/components/MultiSelect.vue';
 import AutoComplete from '@atlas/ui/components/AutoComplete.vue';
+import DatePicker from '@atlas/ui/components/DatePicker.vue';
 import { useModal } from '@atlas/ui/composables';
 import Errors from '@atlas/ui/components/Errors.vue';
 
@@ -73,6 +85,9 @@ const form = reactive({
   roles: [],
   gender: null,
   autorole: null,
+  date: null,
+  month: null,
+  time: null,
 });
 
 const errors = reactive({
@@ -81,6 +96,9 @@ const errors = reactive({
   gender: 'Gender is required',
   roles: 'Roles are required',
   autorole: 'Role is required',
+  date: 'Date is required',
+  month: 'Month is required',
+  time: 'Time is required',
 });
 
 const roles = ref([

@@ -58,6 +58,17 @@
               <Select v-model="form.gender" :options="genders" optionLabel="gender" optionValue="id" fluid :size="item.size" />
             </LabelField>
           </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <LabelField name="date" label="Date">
+              <DatePicker v-model="form.date" fluid :size="item.size" />
+            </LabelField>
+            <LabelField name="month" label="Month">
+              <DatePicker v-model="form.month" view="month" dateFormat="mm/yy" fluid :size="item.size" />
+            </LabelField>
+            <LabelField name="time" label="Time">
+              <DatePicker v-model="form.time" timeOnly fluid :size="item.size" />
+            </LabelField>
+          </div>
         </div>
       </template>
       <template #footer>
@@ -78,6 +89,7 @@ import InputText from '@atlas/ui/components/InputText.vue';
 import Select from '@atlas/ui/components/Select.vue';
 import MultiSelect from '@atlas/ui/components/MultiSelect.vue';
 import AutoComplete from '@atlas/ui/components/AutoComplete.vue';
+import DatePicker from '@atlas/ui/components/DatePicker.vue';
 import InputNumber from '@atlas/ui/components/InputNumber.vue';
 import Button from '@atlas/ui/components/Button.vue';
 
@@ -93,6 +105,9 @@ const form = reactive({
   checked: 'on',
   gender: null,
   autorole: null,
+  date: null,
+  month: null,
+  time: null,
   query: null,
 });
 
