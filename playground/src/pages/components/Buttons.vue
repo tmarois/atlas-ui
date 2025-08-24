@@ -13,6 +13,15 @@
             :label="state.label"
           />
         </div>
+        <div class="flex flex-wrap gap-4 mb-4">
+          <Button
+            v-for="state in states"
+            :key="`${state.label}-icon`"
+            v-bind="{ ...group.attrs, ...state.attrs }"
+            :label="state.label"
+            icon="pi pi-check"
+          />
+        </div>
         <div class="flex flex-wrap gap-4">
           <Button
             v-for="state in iconStates"
