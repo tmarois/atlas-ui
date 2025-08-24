@@ -3,8 +3,9 @@
     :pageUrl="route.fullPath"
     :pageTitle="pageTitle"
     :sideBarItems="sideBarItems"
+    :topBarItems="topBarItems"
     :linkComponent="RouterLink"
-    :isSideNav="true"
+    :isSideNav="!topNav"
     :widthClass="'w-full'"
   >
     <template #navLogo>
@@ -20,7 +21,10 @@ import { useRoute, RouterView } from 'vue-router';
 import UiApp from '@atlas/ui/components/App/Index.vue';
 import RouterLink from '../components/RouterLink.vue';
 import { sideBarItems } from '../sideBarItems';
+import { useSettings } from '../composables/useSettings';
 
 const route = useRoute();
 const pageTitle = computed(() => route.meta.title || '');
+const { topNav } = useSettings();
+const topBarItems = computed(() => sideBarItems.flatMap((section) => section.children));
 </script>
