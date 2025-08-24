@@ -3,9 +3,10 @@
         <div
             :class="[
                 baseClass,
+                heightClass,
                 paddingClass,
                 sizeClass,
-                invalidClass,
+                borderColorClass,
                 isDisabled
                     ? 'bg-surface-200 text-surface-700 dark:bg-surface-700 dark:text-surface-400 opacity-70 shadow-none cursor-not-allowed'
                     : 'bg-surface-0 dark:bg-surface-950 text-surface-900 dark:text-surface-0 hover:border-surface-400 dark:hover:border-surface-600 cursor-pointer',
@@ -19,9 +20,10 @@
                 :label="chooseLabel"
                 @click.stop="choose"
                 :disabled="isDisabled"
-                :size="props.size"
+                size="small"
+                rounded
+                outlined
                 class="mr-2"
-                :class="buttonPaddingClass"
             />
             <div class="relative flex-1">
                 <div :class="[textBase, clearable && hasFile ? 'pr-8' : '', isDisabled ? 'text-surface-700 dark:text-surface-400 bg-surface-200' : hasFile ? 'text-surface-900 dark:text-surface-0' : 'text-surface-500 dark:text-surface-400']">
@@ -75,22 +77,13 @@ const rootClass = computed(() => (attrs as any).class);
 const rootStyle = computed(() => (attrs as any).style);
 
 const sizeClass = computed(() => (props.size ? `p-${props.size}` : ''));
-const invalidClass = computed(() => (props.invalid ? 'p-invalid' : ''));
-const paddingClass = computed(() =>
-    props.size === 'small' ? 'px-px py-0' : 'px-1 py-0'
+const borderColorClass = computed(() =>
+    props.invalid ? 'border-red-400 dark:border-red-500' : 'border-surface-300 dark:border-surface-700'
 );
+const heightClass = 'h-10 p-small:h-[34px] p-large:h-[42px]';
+const paddingClass = 'px-3 p-small:px-[0.625rem] p-large:px-[0.875rem]';
 const baseClass =
-    'flex items-center rounded-md border border-surface-300 dark:border-surface-700 focus-within:border-primary p-invalid:border-red-400 dark:p-invalid:border-red-500 transition-colors duration-200 overflow-hidden shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]';
-const buttonPaddingClass = computed(() => {
-    switch (props.size) {
-        case 'small':
-            return '!py-1';
-        case 'large':
-            return '!py-2';
-        default:
-            return '!py-1.5';
-    }
-});
+    'flex items-center rounded-md border focus-within:border-primary transition-colors duration-200 overflow-hidden shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]';
 const inputAttrs = computed(() => {
     const { class: _c, style: _s, ...rest } = attrs as any;
     return rest;
@@ -123,11 +116,11 @@ const fileNames = computed(() => {
 });
 const hasFile = computed(() => !!fileNames.value);
 
-const textBase = `flex items-center w-full
+const textBase = `flex items-center w-full h-full
     bg-surface-0 dark:bg-surface-950
-    px-3 py-[9px] leading-[1.25rem] text-sm
-    p-small:text-xs p-small:px-[0.625rem] p-small:py-[0.375rem]
-    p-large:text-base p-large:px-[0.875rem] p-large:py-[0.625rem]
+    leading-[1.25rem] text-sm
+    p-small:text-xs
+    p-large:text-base
     transition-colors duration-200`;
 </script>
 
