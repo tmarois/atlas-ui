@@ -8,6 +8,7 @@ See the [App Layout](ui/app.md) for a ready-to-use application wrapper.
 - [Setup](#setup)
 - [Override Themes with Passthrough](#override-themes-with-passthrough)
 - [Components](#components)
+  - [Application](ui/app.md)
   - [Actions](#actions)
     - [Button](#button)
     - [ButtonGroup](#buttongroup)
@@ -61,11 +62,11 @@ See the [App Layout](ui/app.md) for a ready-to-use application wrapper.
     - [Menu](#menu)
     - [Paginator](#paginator)
     - [Pagination](#pagination)
-    - [Feedback](#feedback)
-      - [Alert](#alert)
-      - [Errors](#errors)
-      - [Toast](#toast)
-      - [ProgressBar](#progressbar)
+  - [Feedback](#feedback)
+    - [Alert](#alert)
+    - [Errors](#errors)
+    - [Toast](#toast)
+    - [ProgressBar](#progressbar)
 
 ## Setup
 
