@@ -3,12 +3,8 @@
     <div class="flex space-x-4">
       <Card>
         <template #header>
-          <div class="font-semibold text-gray-900 dark:text-gray-100 text-md flex items-center justify-between">
-            <div>Edit (errors)</div>
-            <div class="flex items-center space-x-2">
-              <ToggleSwitch v-model="form.checked" true-value="on" false-value="off" />
-              <ButtonMenu :items="manageItems" />
-            </div>
+          <div class="font-semibold text-gray-900 dark:text-gray-100 text-md">
+            Edit (errors)
           </div>
         </template>
         <template #content>
@@ -60,9 +56,7 @@
 <script setup>
 import { ref, reactive } from 'vue';
 import Card from '@atlas/ui/components/Card.vue';
-import ToggleSwitch from '@atlas/ui/components/ToggleSwitch.vue';
 import Button from '@atlas/ui/components/Button.vue';
-import ButtonMenu from '@atlas/ui/components/ButtonMenu.vue';
 import LabelField from '@atlas/ui/components/LabelField.vue';
 import InputText from '@atlas/ui/components/InputText.vue';
 import Select from '@atlas/ui/components/Select.vue';
@@ -79,7 +73,6 @@ const form = reactive({
   roles: [],
   gender: null,
   autorole: null,
-  checked: 'on',
 });
 
 const errors = reactive({
@@ -119,29 +112,6 @@ const autoRoles = ref([
   { id: 'blacklisted', label: 'Blacklisted' },
   { id: 'archived', label: 'Archived' },
 ]);
-
-const manageItems = [
-  {
-    label: 'Edit',
-    icon: 'text-sm pi pi-pencil',
-    action: 'edit',
-  },
-  {
-    label: 'Download',
-    icon: 'text-sm pi pi-download',
-    action: 'download',
-    disabled: true,
-  },
-  {
-    separator: true,
-  },
-  {
-    label: 'Archive',
-    icon: 'text-sm pi pi-trash',
-    action: 'delete',
-  },
-];
-
 const filteredRoles = ref([...autoRoles.value]);
 
 const search = (event) => {
