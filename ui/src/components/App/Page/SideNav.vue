@@ -15,7 +15,7 @@
                                 <component
                                     :is="linkComponent"
                                     :href="child.href"
-                                    class="block rounded px-4 py-2 text-sm font-medium"
+                                    class="block rounded-[var(--p-content-border-radius)] px-4 py-2 text-sm font-medium"
                                     :class="[
                                         isActive(child)
                                             ? 'bg-surface-100 dark:bg-surface-700 text-primary-800 dark:text-white font-semibold'
@@ -41,7 +41,7 @@
                         v-else
                         :is="linkComponent"
                         :href="item.href"
-                        class="block rounded px-4 py-2 text-sm font-medium"
+                        class="block rounded-[var(--p-content-border-radius)] px-4 py-2 text-sm font-medium"
                         :class="[
                             isActive(item)
                                 ? 'bg-surface-100 dark:bg-surface-700 text-primary-800 dark:text-white font-semibold'
