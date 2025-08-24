@@ -13,6 +13,7 @@ import InputNumber from '@ui/components/InputNumber.vue';
 import Alert from '@ui/components/Alert.vue';
 import LabelCheckbox from '@ui/components/LabelCheckbox.vue';
 import LabelRadioButton from '@ui/components/LabelRadioButton.vue';
+import TooltipInfo from '@ui/components/TooltipInfo.vue';
 import { useModal } from '@ui/composables';
 
 const { open } = useModal();
@@ -112,7 +113,10 @@ const search = (event) => {
         <Card>
           <template #header>
             <div class="font-semibold text-gray-900 dark:text-gray-100 text-md flex items-center justify-between">
-              <div>Edit</div>
+              <div class="flex items-center space-x-2">
+                <div>Edit</div>
+                <TooltipInfo>This is where you edit your form data</TooltipInfo>
+              </div>
               <div class="flex items-center space-x-2">
                 <ToggleSwitch v-model="form.checked" true-value="on" false-value="off" />
                 <ButtonMenu :items="manageItems" />
