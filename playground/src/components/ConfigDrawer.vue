@@ -17,6 +17,17 @@
           <span>Top navigation</span>
           <ToggleSwitch v-model="topNav" />
         </div>
+        <div class="flex items-center justify-between">
+          <span>Theme</span>
+          <Select
+            v-model="theme"
+            :options="themeOptions"
+            option-label="label"
+            option-value="value"
+            class="w-40"
+            size="small"
+          />
+        </div>
       </div>
     </UiDrawer>
   </div>
@@ -26,10 +37,20 @@
 import { ref } from 'vue';
 import UiDrawer from '@atlas/ui/components/Drawer.vue';
 import ToggleSwitch from '@atlas/ui/components/ToggleSwitch.vue';
+import Select from '@atlas/ui/components/Select.vue';
 import { useSettings } from '../composables/useSettings';
 
 const visible = ref(false);
-const { dark, topNav } = useSettings();
+const { dark, topNav, theme } = useSettings();
+const themeOptions = [
+  { label: 'Blue', value: 'blue' },
+  { label: 'Purple', value: 'purple' },
+  { label: 'Teal', value: 'teal' },
+  { label: 'Pink', value: 'pink' },
+  { label: 'Gray', value: 'gray' },
+  { label: 'Green', value: 'green' },
+  { label: 'Orange', value: 'orange' },
+];
 </script>
 
 <style scoped>
