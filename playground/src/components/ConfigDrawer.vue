@@ -13,6 +13,10 @@
           <span>Dark mode</span>
           <ToggleSwitch v-model="dark" />
         </div>
+        <div class="flex items-center justify-between">
+          <span>Top navigation</span>
+          <ToggleSwitch v-model="topNav" />
+        </div>
       </div>
     </UiDrawer>
   </div>
@@ -25,7 +29,7 @@ import ToggleSwitch from '@atlas/ui/components/ToggleSwitch.vue';
 import { useSettings } from '../composables/useSettings';
 
 const visible = ref(false);
-const { dark } = useSettings();
+const { dark, topNav } = useSettings();
 </script>
 
 <style scoped>

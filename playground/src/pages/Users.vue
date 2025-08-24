@@ -5,8 +5,9 @@
         containerClass="p-0"
         :noScroll="true"
         :sideBarItems="sideBarItems"
+        :topBarItems="topBarItems"
         :linkComponent="Link"
-        :isSideNav="true"
+        :isSideNav="!topNav"
         :widthClass="'w-full'"
     >
         <template #navLogo>
@@ -97,8 +98,11 @@ import UserModals from '../components/UserModals.vue';
 import Link from '../components/RouterLink.vue';
 import LinkPaginator from '../components/LinkPaginator.vue';
 import { sideBarItems } from '../sideBarItems';
+import { useSettings } from '../composables/useSettings';
 
 const { open } = useModal();
+const { topNav } = useSettings();
+const topBarItems = computed(() => sideBarItems.flatMap((section) => section.children));
 
 const tableActionMenuItems = ref([
     { label: 'Edit', action: 'edit' },

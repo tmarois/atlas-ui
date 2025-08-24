@@ -3,8 +3,9 @@
     :pageUrl="route.fullPath"
     :pageTitle="pageTitle"
     :sideBarItems="sideBarItems"
+    :topBarItems="topBarItems"
     :linkComponent="RouterLink"
-    :isSideNav="true"
+    :isSideNav="!topNav"
     :widthClass="'w-full'"
   >
     <template #navLogo>
@@ -30,6 +31,7 @@ import UiApp from '@atlas/ui/components/App/Index.vue';
 import ProfileMenu from '@atlas/ui/components/App/Nav/ProfileMenu.vue';
 import RouterLink from '../components/RouterLink.vue';
 import { sideBarItems } from '../sideBarItems';
+import { useSettings } from '../composables/useSettings';
 
 const route = useRoute();
 const pageTitle = computed(() => route.meta.title || '');
@@ -52,4 +54,6 @@ const profileMenuItems = computed(() => [
   { separator: true },
   { label: 'Logout', icon: 'pi pi-sign-out', href: '/logout' }
 ]);
+const { topNav } = useSettings();
+const topBarItems = computed(() => sideBarItems.flatMap((section) => section.children));
 </script>

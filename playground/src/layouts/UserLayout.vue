@@ -4,9 +4,10 @@
         :pageUrl="route.fullPath"
         :pageTitle="'User'"
         :sideBarItems="sideBarItems"
+        :topBarItems="topBarItems"
         :linkComponent="Link"
         :widthClass="'w-full'"
-        :isSideNav="true"
+        :isSideNav="!topNav"
     >
         <template #navLogo>
             <img src="/atlas.png" alt="Atlas" class="h-8 w-8 rounded-full" />
@@ -49,12 +50,14 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import LayoutApp from '@atlas/ui/components/App/Index.vue';
 import { Button, useModal } from '@atlas/ui';
 import UserModals from '../components/UserModals.vue';
 import Link from '../components/RouterLink.vue';
 import { sideBarItems } from '../sideBarItems';
+import { useSettings } from '../composables/useSettings';
 
 const props = defineProps({
     item: {
@@ -65,4 +68,6 @@ const props = defineProps({
 
 const { open } = useModal();
 const route = useRoute();
+const { topNav } = useSettings();
+const topBarItems = computed(() => sideBarItems.flatMap((section) => section.children));
 </script>
