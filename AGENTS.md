@@ -27,6 +27,7 @@ coding conventions and expectations for contributors.
 - PascalCase components, camelCase composables and utils.
 - Run `npm test` for any changes affecting the UI package.
 - UI docs:
+  - [Components](docs/ui.md)
   - [Composables](docs/ui/composables.md)
   - [Utils](docs/ui/utils.md)
 - When updating UI documentation that covers a component API, link to the
