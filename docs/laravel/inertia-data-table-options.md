@@ -56,7 +56,7 @@ Pass the resolved `$options` to your Inertia view. On the client side, the [`use
 
 ```vue
 <script setup>
-import { useDataTableOptions } from '@tmarois/atlas';
+import { useDataTableOptions } from '@atlas/ui';
 import { usePage } from '@inertiajs/vue3';
 
 const { props } = usePage();
@@ -82,7 +82,7 @@ new requests whenever a filter changes.
 </template>
 
 <script setup>
-import { useDataTableOptions } from '@tmarois/atlas';
+import { useDataTableOptions } from '@atlas/ui';
 import { usePage } from '@inertiajs/vue3';
 
 const { props } = usePage();
