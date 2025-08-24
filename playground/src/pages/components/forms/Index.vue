@@ -61,6 +61,11 @@
                   <DatePicker id="time" v-model="form.time" timeOnly fluid />
                 </LabelField>
               </div>
+              <div class="w-full">
+                <LabelField name="description" label="Description">
+                  <Textarea id="description" v-model="form.description" fluid autoResize />
+                </LabelField>
+              </div>
             </div>
           </template>
         </Card>
@@ -115,6 +120,11 @@
                 </LabelField>
                 <LabelField name="time" label="Time">
                   <DatePicker id="time" v-model="form.time" timeOnly fluid :disabled="true" />
+                </LabelField>
+              </div>
+              <div class="w-full">
+                <LabelField name="description" label="Description">
+                  <Textarea id="description_disabled" v-model="form.description" fluid :disabled="true" autoResize />
                 </LabelField>
               </div>
             </div>
@@ -230,6 +240,7 @@ import Select from '@atlas/ui/components/Select.vue';
 import MultiSelect from '@atlas/ui/components/MultiSelect.vue';
 import AutoComplete from '@atlas/ui/components/AutoComplete.vue';
 import DatePicker from '@atlas/ui/components/DatePicker.vue';
+import Textarea from '@atlas/ui/components/Textarea.vue';
 import InputNumber from '@atlas/ui/components/InputNumber.vue';
 import Alert from '@atlas/ui/components/Alert.vue';
 import LabelCheckbox from '@atlas/ui/components/LabelCheckbox.vue';
@@ -254,6 +265,7 @@ const form = reactive({
     date: null,
     month: null,
     time: null,
+    description: null,
 });
 
 const roles = ref([
