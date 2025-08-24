@@ -10,27 +10,27 @@
     >
         <template #paginatorcontainer="{ page, pageCount, pageLinks, changePageCallback, firstPageCallback, lastPageCallback, prevPageCallback, nextPageCallback }">
             <div class="flex flex-wrap gap-2 items-center justify-center">
-                <Button text rounded size="small" @click="firstPageCallback" :disabled="page === 0">
+                <Button text size="small" @click="firstPageCallback" :disabled="page === 0">
                     <template #icon>
                         <AngleDoubleLeftIcon />
                     </template>
                 </Button>
-                <Button text rounded size="small" @click="prevPageCallback" :disabled="page === 0">
+                <Button text size="small" @click="prevPageCallback" :disabled="page === 0">
                     <template #icon>
                         <AngleLeftIcon />
                     </template>
                 </Button>
                 <div class="items-center justify-center gap-2 hidden sm:flex">
-                    <Button outlined v-for="pageLink of pageLinks" :key="pageLink" :text="page + 1 !== pageLink" rounded size="small" @click="() => changePageCallback(pageLink - 1)" :class="['shrink-0 min-w-10 h-10']"
+                    <Button outlined v-for="pageLink of pageLinks" :key="pageLink" :text="page + 1 !== pageLink" size="small" @click="() => changePageCallback(pageLink - 1)" :class="['shrink-0 min-w-10 h-10']"
                         >{{ pageLink }}
                     </Button>
                 </div>
-                <Button text rounded size="small" @click="nextPageCallback" :disabled="page === pageCount! - 1">
+                <Button text size="small" @click="nextPageCallback" :disabled="page === pageCount! - 1">
                     <template #icon>
                         <AngleRightIcon />
                     </template>
                 </Button>
-                <Button text rounded size="small" @click="lastPageCallback" :disabled="page === pageCount! - 1">
+                <Button text size="small" @click="lastPageCallback" :disabled="page === pageCount! - 1">
                     <template #icon>
                         <AngleDoubleRightIcon />
                     </template>
@@ -103,7 +103,7 @@ const theme = ref<DataTablePassThroughOptions>({
     loadingIcon: ``,
     pcPaginator: {
         paginatorContainer: `p-bottom:border-t border-surface-200 dark:border-surface-700`,
-        root: `flex items-center justify-center flex-wrap py-2 px-4 rounded-md gap-1 bg-surface-0 dark:bg-surface-900 text-surface-700 dark:text-surface-0`
+        root: `flex items-center justify-center flex-wrap py-2 px-4 rounded-[var(--p-content-border-radius)] gap-1 bg-surface-0 dark:bg-surface-900 text-surface-700 dark:text-surface-0`
     },
     columnResizeIndicator: `w-px absolute z-10 hidden bg-primary dark:bg-primary`,
     rowReorderIndicatorUp: `absolute hidden`,
