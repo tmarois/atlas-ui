@@ -479,6 +479,27 @@ const submit = async () => {
 
 Use `v-model` to bind the selected file or files. Submit them with `FormData` to upload to your server. When `multiple` is true, `modelValue` becomes an array and each file should be appended separately.
 
+```vue
+<script setup lang="ts">
+import { ref } from 'vue';
+
+const files = ref<File[]>([]);
+
+const submit = async () => {
+    const form = new FormData();
+    files.value.forEach((file, i) => form.append(`files[${i}]`, file));
+    await fetch('/upload', { method: 'POST', body: form });
+};
+</script>
+
+<template>
+  <form @submit.prevent="submit">
+    <FileUpload v-model="files" multiple clearable />
+    <button type="submit">Upload</button>
+  </form>
+</template>
+```
+
 ##### Props
 
 - `modelValue` – selected `File` or `File[]`.

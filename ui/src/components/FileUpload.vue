@@ -3,6 +3,7 @@
         <div
             :class="[
                 baseClass,
+                heightClass,
                 paddingClass,
                 sizeClass,
                 borderColorClass,
@@ -77,7 +78,8 @@ const sizeClass = computed(() => (props.size ? `p-${props.size}` : ''));
 const borderColorClass = computed(() =>
     props.invalid ? 'border-red-400 dark:border-red-500' : 'border-surface-300 dark:border-surface-700'
 );
-const paddingClass = 'p-2';
+const heightClass = 'h-10 p-small:h-8 p-large:h-12';
+const paddingClass = 'px-3 p-small:px-[0.625rem] p-large:px-[0.875rem]';
 const baseClass =
     'flex items-center rounded-md border focus-within:border-primary transition-colors duration-200 overflow-hidden shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]';
 const inputAttrs = computed(() => {
@@ -112,11 +114,11 @@ const fileNames = computed(() => {
 });
 const hasFile = computed(() => !!fileNames.value);
 
-const textBase = `flex items-center w-full
+const textBase = `flex items-center w-full h-full
     bg-surface-0 dark:bg-surface-950
-    px-3 py-[9px] leading-[1.25rem] text-sm
-    p-small:text-xs p-small:px-[0.625rem] p-small:py-[0.375rem]
-    p-large:text-base p-large:px-[0.875rem] p-large:py-[0.625rem]
+    leading-[1.25rem] text-sm
+    p-small:text-xs
+    p-large:text-base
     transition-colors duration-200`;
 </script>
 
