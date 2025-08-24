@@ -66,17 +66,17 @@ const primaryOptions = [
     { label: 'Indigo', value: 'indigo', class: 'bg-indigo-500' },
     { label: 'Teal', value: 'teal', class: 'bg-teal-500' },
     { label: 'Pink', value: 'pink', class: 'bg-pink-500' },
-    { label: 'Black', value: 'gray', class: 'bg-black' },
+    { label: 'Gray', value: 'gray', class: 'bg-gray-500' },
     { label: 'Green', value: 'green', class: 'bg-green-500' },
     { label: 'Orange', value: 'orange', class: 'bg-orange-500' },
 ];
 const surfaceOptions = [
-    { label: 'Blue', value: 'blue', class: 'bg-blue-200' },
-    { label: 'Gray', value: 'gray', class: 'bg-gray-200' },
-    { label: 'Purple', value: 'purple', class: 'bg-purple-200' },
-    { label: 'Pink', value: 'pink', class: 'bg-pink-200' },
-    { label: 'Slate', value: 'slate', class: 'bg-slate-200' },
-    { label: 'Zinc', value: 'zinc', class: 'bg-zinc-200' },
+    { label: 'Blue', value: 'blue', class: 'bg-blue-50 dark:bg-blue-900' },
+    { label: 'Gray', value: 'gray', class: 'bg-gray-50 dark:bg-gray-900' },
+    { label: 'Purple', value: 'purple', class: 'bg-purple-50 dark:bg-purple-900' },
+    { label: 'Pink', value: 'pink', class: 'bg-pink-50 dark:bg-pink-900' },
+    { label: 'Slate', value: 'slate', class: 'bg-slate-50 dark:bg-slate-900' },
+    { label: 'Zinc', value: 'zinc', class: 'bg-zinc-50 dark:bg-zinc-900' },
 ];
 </script>
 
