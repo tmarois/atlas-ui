@@ -5,7 +5,7 @@
                 baseClass,
                 paddingClass,
                 sizeClass,
-                invalidClass,
+                borderColorClass,
                 isDisabled
                     ? 'bg-surface-200 text-surface-700 dark:bg-surface-700 dark:text-surface-400 opacity-70 shadow-none cursor-not-allowed'
                     : 'bg-surface-0 dark:bg-surface-950 text-surface-900 dark:text-surface-0 hover:border-surface-400 dark:hover:border-surface-600 cursor-pointer',
@@ -16,6 +16,7 @@
         >
             <Button
                 type="button"
+                outlined
                 :label="chooseLabel"
                 @click.stop="choose"
                 :disabled="isDisabled"
@@ -75,12 +76,14 @@ const rootClass = computed(() => (attrs as any).class);
 const rootStyle = computed(() => (attrs as any).style);
 
 const sizeClass = computed(() => (props.size ? `p-${props.size}` : ''));
-const invalidClass = computed(() => (props.invalid ? 'p-invalid' : ''));
+const borderColorClass = computed(() =>
+    props.invalid ? 'border-red-400 dark:border-red-500' : 'border-surface-300 dark:border-surface-700'
+);
 const paddingClass = computed(() =>
     props.size === 'small' ? 'px-px py-0' : 'px-1 py-0'
 );
 const baseClass =
-    'flex items-center rounded-md border border-surface-300 dark:border-surface-700 focus-within:border-primary p-invalid:border-red-400 dark:p-invalid:border-red-500 transition-colors duration-200 overflow-hidden shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]';
+    'flex items-center rounded-md border focus-within:border-primary transition-colors duration-200 overflow-hidden shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]';
 const buttonPaddingClass = computed(() => {
     switch (props.size) {
         case 'small':
