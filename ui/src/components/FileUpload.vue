@@ -16,13 +16,11 @@
         >
             <Button
                 type="button"
-                outlined
                 :label="chooseLabel"
                 @click.stop="choose"
                 :disabled="isDisabled"
-                :size="props.size"
-                class="mr-2"
-                :class="buttonPaddingClass"
+                size="small"
+                class="mr-2 bg-black text-white border-black hover:bg-black/80 hover:border-black/80 !px-2 !py-1 text-xs"
             />
             <div class="relative flex-1">
                 <div :class="[textBase, clearable && hasFile ? 'pr-8' : '', isDisabled ? 'text-surface-700 dark:text-surface-400 bg-surface-200' : hasFile ? 'text-surface-900 dark:text-surface-0' : 'text-surface-500 dark:text-surface-400']">
@@ -79,21 +77,9 @@ const sizeClass = computed(() => (props.size ? `p-${props.size}` : ''));
 const borderColorClass = computed(() =>
     props.invalid ? 'border-red-400 dark:border-red-500' : 'border-surface-300 dark:border-surface-700'
 );
-const paddingClass = computed(() =>
-    props.size === 'small' ? 'px-px py-0' : 'px-1 py-0'
-);
+const paddingClass = 'p-2';
 const baseClass =
     'flex items-center rounded-md border focus-within:border-primary transition-colors duration-200 overflow-hidden shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]';
-const buttonPaddingClass = computed(() => {
-    switch (props.size) {
-        case 'small':
-            return '!py-1';
-        case 'large':
-            return '!py-2';
-        default:
-            return '!py-1.5';
-    }
-});
 const inputAttrs = computed(() => {
     const { class: _c, style: _s, ...rest } = attrs as any;
     return rest;
