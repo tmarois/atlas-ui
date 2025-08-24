@@ -1,5 +1,12 @@
 <template>
-    <div class="relative flex flex-col items-center w-16 h-full overflow-hidden text-surface-700 dark:text-white/80 bg-surface-100 dark:bg-surface-800 border-r border-surface-200 dark:border-surface-700 z-[99]">
+    <div
+        class="relative flex flex-col items-center w-16 h-full overflow-hidden border-r z-[99]"
+        :class="
+            autoDark
+                ? 'text-surface-700 dark:text-white/80 bg-surface-100 dark:bg-surface-800 border-surface-200 dark:border-surface-700'
+                : 'dark text-white/80 bg-surface-800 border-surface-700'
+        "
+    >
         <component :is="linkComponent" class="flex items-center justify-center h-14" :href="logoLinkPath">
             <div class="flex-shrink-0">
                 <slot name="logo">
@@ -27,19 +34,22 @@
                                 :is="linkComponent"
                                 v-tooltip.right="{
                                     value: child.label,
-                                    pt: {
-                                        root: 'absolute shadow-md p-fadein py-0 px-0 max-w-[260px] ml-3',
-                                        text: 'text-sm p-2 border border-surface-300 bg-white text-surface-700 dark:bg-surface-700 dark:border-surface-800 dark:text-white rounded whitespace-pre-line'
-                                    }
+                                        pt: {
+                                            root: 'absolute shadow-md p-fadein py-0 px-0 max-w-[260px] ml-3',
+                                            text: autoDark
+                                                ? 'text-sm p-2 border border-surface-300 bg-white text-surface-700 dark:bg-surface-700 dark:border-surface-800 dark:text-white rounded whitespace-pre-line'
+                                                : 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-700 dark:border-surface-800 rounded whitespace-pre-line'
+                                        }
                                 }"
-                                class="relative flex items-center justify-center w-full h-12 mt-2 rounded text-surface-600 dark:text-surface-300 hover:bg-surface-200 dark:hover:bg-surface-700"
+                                class="relative flex items-center justify-center w-full h-12 mt-2 rounded"
                                 :href="child.href"
-                                :class="{ 'bg-surface-200 dark:bg-surface-700 text-surface-900 dark:text-white': isActive(child) }"
+                                :class="linkClass(child)"
                             >
                                 <component :is="getIcon(child)" />
                                 <div
                                     v-if="child?.count > 0"
-                                    class="absolute top-2 right-2 flex items-center justify-center text-xs font-semibold text-white bg-red-500 rounded-full transform translate-x-1/4 -translate-y-1/2 min-w-[26px] px-1 h-[20px] border-2 border-surface-100 dark:border-surface-800 z-[99]"
+                                    class="absolute top-2 right-2 flex items-center justify-center text-xs font-semibold text-white bg-red-500 rounded-full transform translate-x-1/4 -translate-y-1/2 min-w-[26px] px-1 h-[20px] border-2 z-[99]"
+                                    :class="autoDark ? 'border-surface-100 dark:border-surface-800' : 'border-surface-800'"
                                 >
                                     <span v-if="child.count > 99">99+</span>
                                     <span v-else>{{ child.count }}</span>
@@ -74,6 +84,10 @@ const props = defineProps({
     linkComponent: {
         type: [String, Object],
         default: 'a'
+    },
+    autoDark: {
+        type: Boolean,
+        default: false
     }
 });
 
@@ -92,4 +106,19 @@ const getIcon = (item) => {
 };
 
 const hasActions = computed(() => hasSlotContent(slots.actions));
+
+const linkClass = (item) => {
+    if (props.autoDark) {
+        return [
+            'text-surface-600 dark:text-surface-300 hover:bg-surface-200 dark:hover:bg-surface-700',
+            isActive(item)
+                ? 'bg-surface-200 dark:bg-surface-700 text-surface-900 dark:text-white'
+                : ''
+        ].join(' ');
+    }
+    return [
+        'hover:bg-surface-600 text-white',
+        isActive(item) ? 'bg-surface-500/80' : ''
+    ].join(' ');
+};
 </script>

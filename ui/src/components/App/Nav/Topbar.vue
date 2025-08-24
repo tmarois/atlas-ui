@@ -1,5 +1,12 @@
 <template>
-    <nav class="w-full bg-surface-100 dark:bg-surface-800 border-b border-surface-200 dark:border-surface-700 shadow-lg">
+    <nav
+        class="w-full border-b shadow-lg"
+        :class="
+            autoDark
+                ? 'bg-surface-100 dark:bg-surface-800 border-surface-200 dark:border-surface-700'
+                : 'dark bg-surface-800 border-surface-700'
+        "
+    >
         <div class="mx-auto px-4" :class="widthClass">
             <div class="flex h-16 items-center justify-between">
                 <div class="flex items-center">
@@ -24,18 +31,14 @@
                                 :is="linkComponent"
                                 :href="item.href"
                                 class="rounded-md px-3 py-2 text-sm font-medium"
-                                :class="[
-                                    isActive(item)
-                                        ? 'bg-surface-200 dark:bg-surface-700 text-surface-900 dark:text-white'
-                                        : 'text-surface-700 dark:text-surface-300 hover:bg-surface-200 dark:hover:bg-surface-700 hover:text-surface-900 dark:hover:text-white'
-                                ]"
+                                :class="linkClass(item)"
                             >
                                 {{ item.label }}
                             </component>
                             <div
                                 v-else
-                                class="rounded-md px-3 py-2 text-sm font-medium text-surface-700 dark:text-surface-300 hover:bg-surface-200 dark:hover:bg-surface-700 hover:text-surface-900 dark:hover:text-white cursor-pointer"
-                                :class="{ 'bg-surface-200 dark:bg-surface-700 text-surface-900 dark:text-white': isActive(item) }"
+                                class="rounded-md px-3 py-2 text-sm font-medium cursor-pointer"
+                                :class="linkClass(item)"
                                 @click="toggleMenu(item.href, $event)"
                             >
                                 {{ item.label }}
@@ -95,7 +98,11 @@ const props = defineProps({
     widthClass: {
         type: String,
         default: 'max-w-screen-2xl',
-    }
+    },
+    autoDark: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const menuRefs = reactive({});
@@ -120,4 +127,15 @@ const isActive = (item) => {
 };
 
 const hasActions = computed(() => hasSlotContent(slots.actions));
+
+const linkClass = (item) => {
+    if (props.autoDark) {
+        return isActive(item)
+            ? 'bg-surface-200 dark:bg-surface-700 text-surface-900 dark:text-white'
+            : 'text-surface-700 dark:text-surface-300 hover:bg-surface-200 dark:hover:bg-surface-700 hover:text-surface-900 dark:hover:text-white';
+    }
+    return isActive(item)
+        ? 'bg-surface-900 text-white'
+        : 'text-gray-300 hover:bg-gray-700 hover:text-white';
+};
 </script>
