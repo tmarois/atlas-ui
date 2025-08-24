@@ -4,7 +4,7 @@
             <div class="text-sm font-semibold px-3 py-2" :class="{ 'pr-6': menuItems?.length }">
                 Selected: <span class="font-bold">{{ formatNumber(selectedCount) }}</span>
             </div>
-            <div v-if="menuItems?.length" class="flex relative justify-center items-center mx-2 py-3 min-h-full before:block before:absolute before:left-1/2 before:top-0 before:transform before:-translate-x-1/2 before:min-h-full before:border-solid before:border-l before:border-surface-400" />
+            <div v-if="menuItems?.length" class="flex relative justify-center items-center mx-2 py-3 min-h-full before:block before:absolute before:left-1/2 before:top-0 before:transform before:-translate-x-1/2 before:min-h-full before:border-solid before:border-l before:border-white" />
             <div
                 v-for="(menuItem, index) in menuItems"
                 :key="index"
