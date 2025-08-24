@@ -11,8 +11,8 @@ import './style.css';
 // Create and mount the Vue application
 const app = createApp(App);
 app.use(router);
-app.use(ToastService);
 app.use(PrimeVue, { unstyled: true });
+app.use(ToastService);
 app.directive('tooltip', Tooltip);
 app.directive('styleclass', StyleClass);
 app.mount('#app');
