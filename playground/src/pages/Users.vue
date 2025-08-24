@@ -34,44 +34,42 @@
             </div>
         </template>
         <template #default>
-            <div class="bg-white dark:bg-surface-800">
-                <Table
-                    :items="users.data"
-                    :itemTotal="userTotal"
-                    :columns="columns"
-                    :sortField="sortField"
-                    :sortOrder="sortOrder"
-                    :selected="selected"
-                    :selectAll="selectAll"
-                    :defaultColumnList="defaultColumnList"
-                    :activeColumnList="viewFields"
-                    hasSelection
-                    hasCustomizeColumns
-                    :scrollOffset="53"
-                    scrollable
-                    @update:selected="selected = $event"
-                    @update:selectAll="selectAll = $event"
-                    @update:activeColumnList="viewFields = $event"
-                    @sort="onSort"
-                >
-                    <template #edit="{ data }">
-                        <div class="w-full flex items-center justify-center">
-                            <ButtonMenu
-                                :items="[
-                                    { label: 'Edit', icon: 'pi pi-pencil', click: () => open('ADD_EDIT_USER', data) },
-                                    { separator: true },
-                                    { label: 'Archive', icon: 'pi pi-trash', click: () => open('DELETE_USER', data) },
-                                ]"
-                            />
-                        </div>
-                    </template>
-                    <template #name="{ data }">
-                        <Link class="hover:underline text-black font-medium" :href="`/users/${data.id}`">
-                            {{ data.name }}
-                        </Link>
-                    </template>
-                </Table>
-            </div>
+            <Table
+                :items="users.data"
+                :itemTotal="userTotal"
+                :columns="columns"
+                :sortField="sortField"
+                :sortOrder="sortOrder"
+                :selected="selected"
+                :selectAll="selectAll"
+                :defaultColumnList="defaultColumnList"
+                :activeColumnList="viewFields"
+                hasSelection
+                hasCustomizeColumns
+                :scrollOffset="46"
+                scrollable
+                @update:selected="selected = $event"
+                @update:selectAll="selectAll = $event"
+                @update:activeColumnList="viewFields = $event"
+                @sort="onSort"
+            >
+                <template #edit="{ data }">
+                    <div class="w-full flex items-center justify-center">
+                        <ButtonMenu
+                            :items="[
+                                { label: 'Edit', icon: 'pi pi-pencil', click: () => open('ADD_EDIT_USER', data) },
+                                { separator: true },
+                                { label: 'Archive', icon: 'pi pi-trash', click: () => open('DELETE_USER', data) },
+                            ]"
+                        />
+                    </div>
+                </template>
+                <template #name="{ data }">
+                    <Link class="hover:underline text-black font-medium" :href="`/users/${data.id}`">
+                        {{ data.name }}
+                    </Link>
+                </template>
+            </Table>
         </template>
         <template #footer>
             <Select
@@ -83,7 +81,7 @@
             />
         </template>
         <template #footerAction>
-            [placeholder]
+            
         </template>
         <template #modals>
             <UserModals />
