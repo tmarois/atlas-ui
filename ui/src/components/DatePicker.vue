@@ -181,22 +181,22 @@ const theme = ref<DatePickerPassThroughOptions>({
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
         p-disabled:opacity-60 p-disabled:pointer-events-none
         hover:bg-surface-100 hover:text-surface-800 dark:hover:bg-surface-800 dark:hover:text-surface-0
-        p-selected:bg-primary p-selected:text-primary-contrast
+        p-selected:bg-primary p-selected:text-white p-focus:p-selected:bg-primary p-focus:p-selected:text-white
         p-today:bg-surface-200 p-today:text-surface-900 dark:p-today:bg-surface-700 dark:p-today:text-surface-0
         p-today:hover:bg-surface-100 p-today:hover:text-surface-800 dark:p-today:hover:bg-surface-800 dark:p-today:hover:text-surface-0
-        p-today:p-selected:bg-primary p-today:p-selected:text-primary-contrast`,
+        p-today:p-selected:bg-primary p-today:p-selected:text-white`,
     monthView: `mt-2 mb-0 mx-0`,
     month: `w-1/3 inline-flex items-center justify-center cursor-pointer overflow-hidden relative
         p-[0.375rem] transition-colors duration-200 rounded-[var(--p-content-border-radius)] text-surface-700 dark:text-surface-0
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
         hover:bg-surface-100 hover:text-surface-800 dark:hover:bg-surface-800 dark:hover:text-surface-0
-        p-selected:bg-primary p-selected:text-primary-contrast`,
+        p-selected:bg-primary p-selected:text-white p-focus:p-selected:bg-primary p-focus:p-selected:text-white`,
     yearView: `mt-2 mb-0 mx-0`,
     year: `w-1/2 inline-flex items-center justify-center cursor-pointer overflow-hidden relative
         p-[0.375rem] transition-colors duration-200 rounded-[var(--p-content-border-radius)] text-surface-700 dark:text-surface-0
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
         hover:bg-surface-100 hover:text-surface-800 dark:hover:bg-surface-800 dark:hover:text-surface-0
-        p-selected:bg-primary p-selected:text-primary-contrast`,
+        p-selected:bg-primary p-selected:text-white p-focus:p-selected:bg-primary p-focus:p-selected:text-white`,
     timePicker: `flex items-center justify-center border-t border-surface-200 dark:border-surface-700 p-0 gap-2
         not-p-time-only:pt-2 not-p-time-only:pb-0 not-p-time-only:px-0`,
     hourPicker: `flex items-center flex-col gap-1`,

@@ -97,7 +97,7 @@ const theme = ref<SelectPassThroughOptions>({
     option: `cursor-pointer font-normal whitespace-nowrap relative overflow-hidden flex items-center
         px-3 py-1.5 border-none text-surface-700 dark:text-surface-0 bg-transparent rounded-[var(--p-content-border-radius)]
         p-focus:bg-surface-100 dark:p-focus:bg-surface-800 p-focus:text-surface-800 dark:p-focus:text-surface-0
-        p-selected:bg-primary-400 p-focus:p-selected:bg-primary-400 p-selected:text-white p-focus:p-selected:text-white dark:p-selected:bg-primary-600 dark:p-focus:p-selected:bg-primary-600
+        p-selected:bg-primary p-focus:p-selected:bg-primary p-selected:text-white p-focus:p-selected:text-white
         transition-colors duration-200 text-sm`,
     optionLabel: ``,
     optionCheckIcon: `relative -ms-[0.375rem] me-[0.375rem] text-surface-700 dark:text-surface-0`,
