@@ -39,11 +39,11 @@
       </template>
       <template #content>
         <div class="flex flex-wrap gap-4">
-          <ButtonGroup v-for="size in buttonGroupSizes" :key="size.key">
+          <ButtonGroup v-for="config in buttonGroupConfigs" :key="config.key">
             <Button
               v-for="state in states"
-              :key="`${size.key}-${state.label}`"
-              v-bind="{ ...size.attrs, ...state.attrs }"
+              :key="`${config.key}-${state.label}`"
+              v-bind="{ ...config.attrs, ...state.attrs }"
               :label="state.label"
             />
           </ButtonGroup>
@@ -73,7 +73,6 @@ const groups = [
 const states = [
   { label: 'Default', attrs: {} },
   { label: 'Raised', attrs: { raised: true } },
-  { label: 'Rounded', attrs: { rounded: true } },
   { label: 'Loading', attrs: { loading: true } },
   { label: 'Disabled', attrs: { disabled: true } },
 ];
@@ -81,14 +80,16 @@ const states = [
 const iconStates = [
   { icon: 'pi pi-check', attrs: {}, ariaLabel: 'Check' },
   { icon: 'pi pi-search', attrs: { raised: true }, ariaLabel: 'Search' },
-  { icon: 'pi pi-times', attrs: { rounded: true }, ariaLabel: 'Close' },
   { icon: 'pi pi-refresh', attrs: { loading: true }, ariaLabel: 'Refresh' },
   { icon: 'pi pi-trash', attrs: { disabled: true }, ariaLabel: 'Delete' },
 ];
 
-const buttonGroupSizes = [
+const buttonGroupConfigs = [
   { key: 'regular', attrs: {} },
+  { key: 'regular-outlined', attrs: { outlined: true } },
   { key: 'small', attrs: { size: 'small' } },
+  { key: 'small-outlined', attrs: { size: 'small', outlined: true } },
   { key: 'large', attrs: { size: 'large' } },
+  { key: 'large-outlined', attrs: { size: 'large', outlined: true } },
 ];
 </script>
