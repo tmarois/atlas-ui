@@ -15,4 +15,9 @@ describe('DialogConfirmation', () => {
         const wrapper = mountWithPrime({ modelValue: true, style: { height: '100px' } });
         expect(wrapper.vm.dialogBindProps.style).toMatchObject({ width: '25rem', height: '100px' });
     });
+
+    it('merges style string with default style', () => {
+        const wrapper = mountWithPrime({ modelValue: true, style: 'height: 100px;' });
+        expect(wrapper.vm.dialogBindProps.style).toMatchObject({ width: '25rem', height: '100px' });
+    });
 });

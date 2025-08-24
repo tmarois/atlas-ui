@@ -97,11 +97,23 @@ const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
 const dialogBindProps = computed(() => {
     const { style, ...rest } = bindProps.value as any;
 
+    const parsedStyle =
+        typeof style === 'string'
+            ? style
+                  .split(';')
+                  .filter(Boolean)
+                  .reduce((acc: Record<string, string>, item) => {
+                      const [prop, val] = item.split(':');
+                      if (prop && val) acc[prop.trim()] = val.trim();
+                      return acc;
+                  }, {})
+            : style;
+
     return {
         modal: true,
         dismissableMask: false,
         closable: false,
-        style: { width: '25rem', ...style },
+        style: { width: '25rem', ...parsedStyle },
         ...rest,
         header: props.title,
         visible: props.modelValue,
