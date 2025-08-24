@@ -1,4 +1,20 @@
+<template>
+  <ComponentLayout title="Tables">
+    <section class="space-y-4">
+      <Card noPadding>
+        <template #content>
+          <DataTable :value="users" paginator :rows="5">
+            <Column field="name" header="Name" />
+            <Column field="email" header="Email" />
+            <Column field="country" header="Country" />
+          </DataTable>
+        </template>
+      </Card>
+    </section>
+  </ComponentLayout>
+</template>
 <script setup>
+import ComponentLayout from '../../layouts/ComponentLayout.vue';
 import { ref } from 'vue';
 import DataTable from '@ui/components/DataTable.vue';
 import Column from 'primevue/column';
@@ -15,17 +31,3 @@ const users = ref([
   { name: 'Hank', email: 'hank@example.com', country: 'Japan' },
 ]);
 </script>
-
-<template>
-  <section class="space-y-4">
-    <Card noPadding>
-      <template #content>
-        <DataTable :value="users" paginator :rows="5">
-          <Column field="name" header="Name" />
-          <Column field="email" header="Email" />
-          <Column field="country" header="Country" />
-        </DataTable>
-      </template>
-    </Card>
-  </section>
-</template>

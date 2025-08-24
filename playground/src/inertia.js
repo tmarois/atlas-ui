@@ -1,4 +1,4 @@
-import { reactive, computed } from 'vue';
+import { reactive, computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 // Minimal stub of Inertia's usePage for the playground environment.
@@ -12,4 +12,16 @@ export function usePage() {
   });
 }
 
-export default { usePage };
+export const Head = {
+  props: { title: String },
+  setup(props) {
+    watch(() => props.title, (t) => {
+      if (typeof document !== 'undefined' && t) {
+        document.title = t;
+      }
+    }, { immediate: true });
+    return () => null;
+  },
+};
+
+export default { usePage, Head };

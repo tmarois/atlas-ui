@@ -1,35 +1,9 @@
-<script setup>
-import { useRoute } from 'vue-router';
-import LayoutApp from '@ui/components/App/Index.vue';
-import { Button, useModal } from '@atlas/ui';
-import UserModals from '../components/UserModals.vue';
-import Link from '../components/RouterLink.vue';
-import { sideBarItems } from '../sideBarItems';
-
-const props = defineProps({
-    item: {
-        type: Object,
-        default: () => ({}),
-    },
-});
-
-const { open } = useModal();
-const route = useRoute();
-</script>
-
 <template>
-    <LayoutApp
+    <AppLayout
         title="User"
         :pageUrl="route.fullPath"
         :pageTitle="'User'"
-        :sideBarItems="sideBarItems"
-        :linkComponent="Link"
-        :widthClass="'w-full'"
-        :isSideNav="true"
     >
-        <template #navLogo>
-            <img src="/atlas.png" alt="Atlas" class="h-8 w-8 rounded-full" />
-        </template>
         <template #headerTitle>
             <div class="pr-2">
                 <Button
@@ -63,6 +37,24 @@ const route = useRoute();
                 <div>{{ item }}</div>
             </div>
         </template>
-    </LayoutApp>
-    <UserModals />
+        <template #modals>
+            <UserModals />
+        </template>
+    </AppLayout>
 </template>
+<script setup>
+import { useRoute } from 'vue-router';
+import AppLayout from '../layouts/AppLayout.vue';
+import { Button, useModal } from '@atlas/ui';
+import UserModals from '../components/UserModals.vue';
+
+const props = defineProps({
+    item: {
+        type: Object,
+        default: () => ({}),
+    },
+});
+
+const { open } = useModal();
+const route = useRoute();
+</script>
