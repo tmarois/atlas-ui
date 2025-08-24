@@ -22,7 +22,7 @@ const attrs = useAttrs();
 
 const theme = ref<ProgressBarPassThroughOptions>({
     root: `relative overflow-hidden h-5 bg-surface-200 dark:bg-surface-700 rounded-md`,
-    value: `m-0 bg-primary
+    value: `m-0 bg-primary-500
         p-determinate:h-full p-determinate:w-0 p-determinate:absolute p-determinate:flex p-determinate:items-center p-determinate:justify-center
         p-determinate:overflow-hidden p-determinate:transition-[width] p-determinate:duration-1000 p-determinate:ease-in-out
         p-indeterminate:before:content-[''] p-indeterminate:before:absolute p-indeterminate:before:bg-inherit p-indeterminate:before:top-0 p-indeterminate:before:start-0 p-indeterminate:before:bottom-0 p-indeterminate:before:will-change-[inset-inline-start,inset-inline-end]
@@ -30,7 +30,7 @@ const theme = ref<ProgressBarPassThroughOptions>({
         p-indeterminate:after:content-[''] p-indeterminate:after:absolute p-indeterminate:after:bg-inherit p-indeterminate:after:top-0 p-indeterminate:after:start-0 p-indeterminate:after:bottom-0 p-indeterminate:after:will-change-[inset-inline-start,inset-inline-end]
         p-indeterminate:after:animate-[p-progressbar-indeterminate-anim-short_2.1s_cubic-bezier(0.165,0.84,0.44,1)_infinite]
         p-indeterminate:after:animate-delay-[1.15s]`,
-    label: `text-primary-contrast text-xs font-semibold
+    label: `text-white text-xs font-bold
         p-determinate:inline-flex`
 });
 

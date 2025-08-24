@@ -6,18 +6,18 @@
         <ProgressBar
           class="mb-4"
           :value="30"
-          :pt="{ value: { class: 'bg-green-500' } }"
+          :pt="{ value: 'bg-green-500' }"
           :pt-options="{ mergeProps: true }"
         />
         <ProgressBar
           class="mb-4"
           :value="70"
-          :pt="{ value: { class: 'bg-orange-500' } }"
+          :pt="{ value: 'bg-orange-500' }"
           :pt-options="{ mergeProps: true }"
         />
         <ProgressBar
           :value="85"
-          :pt="{ value: { class: 'bg-purple-500' } }"
+          :pt="{ value: 'bg-purple-500' }"
           :pt-options="{ mergeProps: true }"
         />
       </template>
