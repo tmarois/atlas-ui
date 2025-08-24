@@ -104,6 +104,7 @@ Atlas exposes rounding tokens for consistent border radius:
 | `--p-rounded-1` | `0.25rem` |
 | `--p-rounded-2` | `0.5rem` |
 | `--p-rounded-3` | `0.75rem` |
+| `--p-rounded-4` | `1rem` |
 
 Use them with Tailwind's arbitrary values, for example:
 
