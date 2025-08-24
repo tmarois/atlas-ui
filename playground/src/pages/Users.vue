@@ -13,6 +13,15 @@
         <template #navLogo>
             <img src="/atlas.png" alt="Atlas" class="h-8 w-8 rounded-full" />
         </template>
+        <template #navActions>
+            <ProfileMenu
+                :user="user"
+                :items="profileMenuItems"
+                :avatar-only="true"
+                headerLink="/"
+                :linkComponent="Link"
+            />
+        </template>
         <template v-if="(selectAll ? userTotal : selected?.length) > 0" #headerTitle>
             <TableActions
                 :selectedCount="selectAll ? userTotal : selected?.length"
@@ -93,16 +102,19 @@
 <script setup>
 import { ref, computed } from 'vue';
 import LayoutApp from '@atlas/ui/components/App/Index.vue';
+import ProfileMenu from '@atlas/ui/components/App/Nav/ProfileMenu.vue';
 import { Table, ButtonMenu, TableActions, InputText, Button, Select, useModal } from '@atlas/ui';
 import UserModals from '../components/UserModals.vue';
 import Link from '../components/RouterLink.vue';
 import LinkPaginator from '../components/LinkPaginator.vue';
 import { sideBarItems } from '../sideBarItems';
 import { useSettings } from '../composables/useSettings';
+import { useProfileMenu } from '../composables/useProfileMenu';
 
 const { open } = useModal();
 const { topNav } = useSettings();
 const topBarItems = computed(() => sideBarItems.flatMap((section) => section.children));
+const { user, profileMenuItems } = useProfileMenu();
 
 const tableActionMenuItems = ref([
     { label: 'Edit', action: 'edit' },
