@@ -24,6 +24,13 @@ describe('Button', () => {
         expect(classes).toContain('p-small:py-[0.375rem]');
     });
 
+    it('uses square dimensions for small icon-only', () => {
+        const wrapper = mountWithPrime({ size: 'small', icon: 'pi pi-check', rounded: true });
+        const classes = wrapper.find('button').attributes('class');
+        expect(classes).toContain('p-small:p-icon-only:w-8');
+        expect(classes).toContain('p-small:p-icon-only:p-rounded:h-8');
+    });
+
     it('uses 40px default height', () => {
         const wrapper = mountWithPrime({ label: 'Test' });
         const classes = wrapper.find('button').attributes('class');
