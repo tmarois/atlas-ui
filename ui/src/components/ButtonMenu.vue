@@ -22,6 +22,7 @@
                 v-else
                 ref="trigger"
                 text
+                size="small"
                 pt:root:class="!p-0 !w-[20px]"
                 @click="toggleMenu"
             >

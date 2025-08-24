@@ -66,6 +66,7 @@
                 <template #edit="{ data }">
                     <div class="w-full flex items-center justify-center">
                         <ButtonMenu
+                            size="small"
                             :items="[
                                 { label: 'Edit', icon: 'pi pi-pencil', click: () => open('ADD_EDIT_USER', data) },
                                 { separator: true },
