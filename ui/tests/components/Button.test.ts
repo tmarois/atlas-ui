@@ -24,6 +24,33 @@ describe('Button', () => {
         expect(classes).toContain('p-small:py-[0.375rem]');
     });
 
+    it('ensures icon-only buttons are square across sizes', () => {
+        const cases = [
+            {
+                props: { icon: 'pi pi-check' },
+                classes: ['p-icon-only:w-10', 'p-icon-only:h-10', 'p-icon-only:p-0'],
+            },
+            {
+                props: { size: 'small', icon: 'pi pi-check' },
+                classes: ['p-small:p-icon-only:w-[34px]', 'p-small:p-icon-only:h-[34px]', 'p-icon-only:p-0'],
+            },
+            {
+                props: { size: 'large', icon: 'pi pi-check' },
+                classes: [
+                    'p-large:p-icon-only:w-[42px]',
+                    'p-large:p-icon-only:h-[42px]',
+                    'p-icon-only:p-0',
+                ],
+            },
+        ];
+
+        cases.forEach(({ props, classes: expected }) => {
+            const wrapper = mountWithPrime(props);
+            const classes = wrapper.find('button').attributes('class');
+            expected.forEach((c) => expect(classes).toContain(c));
+        });
+    });
+
     it('uses 40px default height', () => {
         const wrapper = mountWithPrime({ label: 'Test' });
         const classes = wrapper.find('button').attributes('class');
