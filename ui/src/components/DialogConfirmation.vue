@@ -94,15 +94,19 @@ const passThroughProps = computed(() => {
 
 const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
 
-const dialogBindProps = computed(() => ({
-    modal: true,
-    dismissableMask: false,
-    closable: false,
-    style: { width: '25rem' },
-    ...bindProps.value,
-    header: props.title,
-    visible: props.modelValue,
-}));
+const dialogBindProps = computed(() => {
+    const { style, ...rest } = bindProps.value as any;
+
+    return {
+        modal: true,
+        dismissableMask: false,
+        closable: false,
+        style: { width: '25rem', ...style },
+        ...rest,
+        header: props.title,
+        visible: props.modelValue,
+    };
+});
 
 const close = () => emit('update:modelValue', false);
 const confirm = () => emit('confirm');
