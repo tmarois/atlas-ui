@@ -22,11 +22,11 @@
                 :disabled="isDisabled"
                 size="small"
                 rounded
-                class="mr-2"
+                class="mr-2 flex-shrink-0"
             />
-            <div class="relative flex-1">
+            <div class="relative flex-1 min-w-0">
                 <div :class="[textBase, clearable && hasFile ? 'pr-8' : '', isDisabled ? 'text-surface-700 dark:text-surface-400 bg-surface-200' : hasFile ? 'text-surface-900 dark:text-surface-0' : 'text-surface-500 dark:text-surface-400']">
-                    <span class="truncate">{{ fileNames || 'No file selected' }}</span>
+                    <span class="block truncate">{{ fileNames || 'No file selected' }}</span>
                 </div>
                 <button
                     v-if="clearable && hasFile"

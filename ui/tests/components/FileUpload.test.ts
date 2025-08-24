@@ -51,4 +51,21 @@ describe('FileUpload', () => {
         const label = wrapper.find('span.truncate');
         expect(label.text()).toBe('2 files selected');
     });
+
+    it('truncates long file names without shrinking choose button', () => {
+        const longName = 'a'.repeat(300) + '.txt';
+        const file = new File(['a'], longName, { type: 'text/plain' });
+        const wrapper = mount(FileUpload, {
+            props: { clearable: true, modelValue: file },
+            global: { plugins: [PrimeVue] },
+        });
+        const buttons = wrapper.findAll('button');
+        expect(buttons[0].classes()).toContain('flex-shrink-0');
+        const labelWrapper = wrapper.find('.relative.flex-1');
+        expect(labelWrapper.classes()).toContain('min-w-0');
+        const textDiv = labelWrapper.find('div');
+        expect(textDiv.classes()).toContain('pr-8');
+        const label = wrapper.find('span.truncate');
+        expect(label.text()).toBe(longName);
+    });
 });
