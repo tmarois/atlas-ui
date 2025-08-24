@@ -33,7 +33,7 @@ const theme = ref<ButtonPassThroughOptions>({
         p-large:p-icon-only:w-[42px] p-large:p-icon-only:h-[42px] p-large:p-icon-only:p-0
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
         p-large:text-[1.125rem] p-large:px-[0.875rem] p-large:py-[0.625rem]
-        p-raised:shadow-sm p-rounded:rounded-[var(--p-rounded-4)]
+        p-raised:shadow-sm p-rounded:rounded-full
         p-outlined:bg-transparent enabled:hover:p-outlined:bg-gray-100 enabled:active:p-outlined:bg-gray-200
         p-outlined:border-surface-300 enabled:hover:p-outlined:border-surface-400 enabled:active:p-outlined:border-surface-300
         p-outlined:text-gray-700 enabled:hover:p-outlined:text-gray-700 enabled:active:p-outlined:text-gray-700
