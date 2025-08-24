@@ -44,7 +44,7 @@ const props = defineProps<Props>();
 const attrs = useAttrs();
 
 const theme = ref<SelectPassThroughOptions>({
-    root: `inline-flex cursor-pointer relative select-none rounded-md p-fluid:flex
+    root: `inline-flex cursor-pointer relative select-none rounded-[var(--p-content-border-radius)] p-fluid:flex
         items-center
         bg-surface-0 dark:bg-surface-950
         border border-surface-300 hover:border-surface-400 dark:border-surface-700 dark:hover:border-surface-600
@@ -64,8 +64,8 @@ const theme = ref<SelectPassThroughOptions>({
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
         p-large:text-lg p-large:px-[0.875rem] p-large:py-[0.625rem]`,
     dropdown: `flex items-center justify-center shrink-0 bg-transparent
-        text-surface-400 w-10 rounded-e`,
-    overlay: `absolute top-0 left-0 rounded-md p-portal-self:min-w-full
+        text-surface-400 w-10 rounded-e-[var(--p-content-border-radius)]`,
+    overlay: `absolute top-0 left-0 rounded-[var(--p-content-border-radius)] p-portal-self:min-w-full
         bg-surface-0 dark:bg-surface-900
         border border-surface-200 dark:border-surface-700
         text-surface-700 dark:text-surface-0
@@ -75,7 +75,7 @@ const theme = ref<SelectPassThroughOptions>({
         root: `relative flex-auto`
     },
     pcFilter: {
-        root: `w-full appearance-none rounded-md outline-hidden
+        root: `w-full appearance-none rounded-[var(--p-content-border-radius)] outline-hidden
             bg-surface-0 dark:bg-surface-950
             text-surface-700 dark:text-surface-0
             placeholder:text-surface-500 dark:placeholder:text-surface-400

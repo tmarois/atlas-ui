@@ -45,7 +45,7 @@ interface Props extends /* @vue-ignore */ MultiSelectProps {}
 const props = defineProps<Props>();
 
 const theme = ref<MultiSelectPassThroughOptions>({
-    root: `inline-flex cursor-pointer relative select-none rounded-md p-fluid:flex
+    root: `inline-flex cursor-pointer relative select-none rounded-[var(--p-content-border-radius)] p-fluid:flex
         bg-surface-0 dark:bg-surface-950
         border border-surface-300 hover:border-surface-400 dark:border-surface-600 dark:hover:border-surface-500
         p-focus:border-primary
@@ -73,8 +73,8 @@ const theme = ref<MultiSelectPassThroughOptions>({
         removeIcon: `cursor-pointer text-base w-4 h-4 rounded-full text-white dark:text-surface-0`
     },
     dropdown: `flex items-center justify-center shrink-0 bg-transparent
-        text-surface-400 w-10 rounded-e-md`,
-    overlay: `absolute top-0 left-0 rounded-md p-portal-self:min-w-full
+        text-surface-400 w-10 rounded-e-[var(--p-content-border-radius)]`,
+    overlay: `absolute top-0 left-0 rounded-[var(--p-content-border-radius)] p-portal-self:min-w-full
         bg-surface-0 dark:bg-surface-900
         border border-surface-200 dark:border-surface-700
         text-surface-700 dark:text-surface-0
@@ -101,7 +101,7 @@ const theme = ref<MultiSelectPassThroughOptions>({
         root: `relative flex-auto`
     },
     pcFilter: {
-        root: `w-full appearance-none rounded-md outline-hidden
+        root: `w-full appearance-none rounded-[var(--p-content-border-radius)] outline-hidden
             bg-surface-0 dark:bg-surface-950
             text-surface-700 dark:text-surface-0
             placeholder:text-surface-500 dark:placeholder:text-surface-400
