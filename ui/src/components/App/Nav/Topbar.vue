@@ -1,5 +1,5 @@
 <template>
-    <nav class="w-full dark bg-surface-800 border-b border-surface-700 shadow-lg">
+    <nav class="w-full bg-surface-100 dark:bg-surface-800 border-b border-surface-200 dark:border-surface-700 shadow-lg">
         <div class="mx-auto px-4" :class="widthClass">
             <div class="flex h-16 items-center justify-between">
                 <div class="flex items-center">
@@ -26,16 +26,16 @@
                                 class="rounded-md px-3 py-2 text-sm font-medium"
                                 :class="[
                                     isActive(item)
-                                        ? 'bg-surface-900 text-white'
-                                        : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                                        ? 'bg-surface-200 dark:bg-surface-700 text-surface-900 dark:text-white'
+                                        : 'text-surface-700 dark:text-surface-300 hover:bg-surface-200 dark:hover:bg-surface-700 hover:text-surface-900 dark:hover:text-white'
                                 ]"
                             >
                                 {{ item.label }}
                             </component>
                             <div
                                 v-else
-                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white cursor-pointer"
-                                :class="{ 'bg-surface-900 text-white': isActive(item) }"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-surface-700 dark:text-surface-300 hover:bg-surface-200 dark:hover:bg-surface-700 hover:text-surface-900 dark:hover:text-white cursor-pointer"
+                                :class="{ 'bg-surface-200 dark:bg-surface-700 text-surface-900 dark:text-white': isActive(item) }"
                                 @click="toggleMenu(item.href, $event)"
                             >
                                 {{ item.label }}
