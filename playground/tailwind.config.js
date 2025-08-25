@@ -8,7 +8,7 @@ export default {
   content: [
       './index.html',
       './src/**/*.{vue,js,ts,jsx,tsx}',
-      '../ui/src/**/*.{vue,js,ts,jsx,tsx}',
+      '../src/**/*.{vue,js,ts,jsx,tsx}',
   ],
   plugins: [
       containerQueries,
