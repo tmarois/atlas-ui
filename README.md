@@ -13,6 +13,14 @@ For backend helpers like server-driven datatable options, see the companion [Atl
 - [Composables](docs/composables.md)
 - [Utils](docs/utils.md)
 
+## Atlas Laravel
+
+[Atlas Laravel](https://github.com/tmarois/atlas-laravel) is a backend toolkit for Inertia.js applications built with Laravel. It removes the repetitive setup that comes with new projects so you can ship faster.
+
+## Laravel Template
+
+[Laravel Template](https://github.com/timothymarois/template-laravel-app) – example usage and boilerplate scaffolding is set up in this template.
+
 ## Contributing
 
 See [AGENTS.md](AGENTS.md) for repository conventions, testing instructions, and pull request guidelines.
