@@ -10,7 +10,7 @@ This documentation covers the usage of three Vue composables: `useDataTableOptio
 
 ## useDataTableOptions
 
-The `useDataTableOptions` composable keeps datatable query options in sync with the backend via Inertia. It accepts a route configuration and initial options—typically the `options` array returned by the Laravel [Inertia DataTable Options trait](../laravel/inertia-data-table-options.md)—and returns reactive refs for those options along with helpers to fetch new data.
+The `useDataTableOptions` composable keeps datatable query options in sync with the backend via Inertia. It accepts a route configuration and initial options—typically the `options` array returned by the [Atlas Laravel Inertia DataTable Options trait](https://github.com/tmarois/atlas-laravel/blob/master/docs/inertia-data-table-options.md)—and returns reactive refs for those options along with helpers to fetch new data.
 
 ### Basic Usage
 
