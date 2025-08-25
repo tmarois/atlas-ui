@@ -8,7 +8,10 @@ export default defineConfig({
   plugins: [vue(), tailwindcss()],
   resolve: {
     alias: {
-      '@atlas/ui': path.resolve(__dirname, '../ui/src'),
+      // Map the playground's @atlas/ui alias directly to the package source.
+      // The previous path pointed to a non-existent ../ui/src directory,
+      // breaking component imports within the playground.
+      '@atlas/ui': path.resolve(__dirname, '../src'),
       '@inertiajs/vue3': path.resolve(__dirname, './src/inertia.js')
     }
   },
