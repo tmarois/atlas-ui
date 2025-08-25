@@ -46,10 +46,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-/ui/components.d.ts
-/ui/auto-imports.d.ts
-/ui/package-lock.json
-/laravel/vendor
-/laravel/composer.lock
+components.d.ts
+auto-imports.d.ts
+package-lock.json
 /playground/node_modules
 /playground/package-lock.json
