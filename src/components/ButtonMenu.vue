@@ -121,7 +121,7 @@ const onTriggerEnter = async () => {
 };
 
 const onTriggerLeave = (e: MouseEvent) => {
-    if (!isMenuOpen.value) return;
+    if (!props.onHover || !isMenuOpen.value) return;
     const toEl = e.relatedTarget as Node | null;
     if (menu.value?.$el?.contains(toEl)) return;
     closeTimeout.value = setTimeout(() => {
@@ -138,7 +138,7 @@ const onMenuShow = () => (isMenuOpen.value = true);
 const onMenuHide = () => (isMenuOpen.value = false);
 const onMenuEnter = () => clearTimeout(closeTimeout.value);
 const onMenuLeave = (e: MouseEvent) => {
-    if (!isMenuOpen.value) return;
+    if (!props.onHover || !isMenuOpen.value) return;
     const toEl = e.relatedTarget as Node | null;
     const triggerEl = getTriggerEl();
     if (triggerEl?.contains(toEl)) return;
