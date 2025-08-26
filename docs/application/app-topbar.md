@@ -2,10 +2,11 @@
 
 Simple bar displayed above page content.
 
-## Example
 ```ts
 import { Topbar as AppTopbar } from '@atlas/ui';
 ```
+
+## Usage
 
 ```vue
 <AppTopbar>
@@ -13,11 +14,15 @@ import { Topbar as AppTopbar } from '@atlas/ui';
 </AppTopbar>
 ```
 
-## Props
-- `pt?: object` – passthrough options for internal elements.
+## API
 
-## Slots
+### Props
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `pt` | `object` | `undefined` | Passthrough options for internal elements. |
+
+### Slots
 - `default` – bar content.
 
-## Events
-- None
+### Events
+- None.
