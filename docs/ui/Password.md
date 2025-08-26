@@ -15,16 +15,24 @@ import { Password } from '@atlas/ui';
 ## API
 
 ### Props
-
-None.
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `modelValue` | `string` | — | Bound password value. |
+| `feedback` | `boolean` | `true` | Displays a strength indicator panel. |
+| `toggleMask` | `boolean` | `false` | Shows an icon to reveal the password. |
+| `pt` | `PasswordPassThroughOptions` | — | Pass-through options to customize internal elements. |
 
 ### Slots
-
-None.
+- `header` – Content displayed above the feedback panel.
+- `footer` – Content displayed below the feedback panel.
+- `content` – Custom content inside the feedback panel.
 
 ### Events
+| Name | Payload | Description |
+| ---- | ------- | ----------- |
+| `update:modelValue` | `string` | Emitted when the value changes. |
+| `focus` | `{ originalEvent: FocusEvent }` | Fired when the input receives focus. |
+| `blur` | `{ originalEvent: FocusEvent }` | Fired when the input loses focus. |
 
-None.
-
-See the [PrimeVue Password API](https://primevue.org/password/#api).
+Refer to the [PrimeVue Password API](https://primevue.org/password/#api).
 
