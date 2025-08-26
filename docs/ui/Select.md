@@ -19,9 +19,11 @@ import { Select } from '@atlas/ui';
 | ---- | ---- | ------- | ----------- |
 | `modelValue` | `any` | — | Selected option value. |
 | `options` | `any[]` | `[]` | List of available options. |
-| `optionLabel` | `string` | — | Property name to use as the displayed label. |
+| `optionLabel` | `string` | `undefined` | Property name to use as the displayed label. |
+| `optionValue` | `string` | `undefined` | Property name to use as the value. |
+| `placeholder` | `string` | `''` | Placeholder text to show when no selection exists. |
 | `filter` | `boolean` | `false` | Enables client-side filtering. |
-| `pt` | `SelectPassThroughOptions` | — | Pass-through options to customize internal elements. |
+| `pt` | `SelectPassThroughOptions` | `undefined` | Pass-through options to customize internal elements. |
 
 ### Slots
 - `value` – Template for the selected value display.
