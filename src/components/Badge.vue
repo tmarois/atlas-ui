@@ -13,8 +13,9 @@
 
 <script setup lang="ts">
 import Badge, { type BadgePassThroughOptions, type BadgeProps } from 'primevue/badge';
-import { ref, useAttrs, computed } from 'vue';
-import { ptViewMerge, ptMerge } from '../utils';
+import { ref, useAttrs } from 'vue';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface Props extends /* @vue-ignore */ BadgeProps {}
 const props = defineProps<Props>();
@@ -37,10 +38,6 @@ const theme = ref<BadgePassThroughOptions>({
         p-xlarge:text-base p-xlarge:min-w-8 p-xlarge:h-8`
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 </script>

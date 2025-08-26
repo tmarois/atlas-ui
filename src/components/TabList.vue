@@ -11,8 +11,9 @@
 
 <script setup lang="ts">
 import TabList, { type TabListPassThroughOptions, type TabListProps } from 'primevue/tablist';
-import { ref, useAttrs, computed } from 'vue';
-import { ptMerge, ptViewMerge } from '../utils';
+import { ref, useAttrs } from 'vue';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface Props extends /* @vue-ignore */ TabListProps {}
 const props = defineProps<Props>();
@@ -36,10 +37,6 @@ const theme = ref<TabListPassThroughOptions>({
     activeBar: `z-10 block absolute -bottom-px h-px bg-primary transition-[left] duration-200 ease-[cubic-bezier(0.35,0,0.25,1)]`
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 </script>

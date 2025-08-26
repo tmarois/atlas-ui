@@ -13,8 +13,9 @@
 
 <script setup lang="ts">
 import InputOtp, { type InputOtpPassThroughOptions, type InputOtpProps } from 'primevue/inputotp';
-import { ref, useAttrs, computed } from 'vue';
-import { ptViewMerge, ptMerge } from '../utils';
+import { ref, useAttrs } from 'vue';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface Props extends /* @vue-ignore */ InputOtpProps {}
 const props = defineProps<Props>();
@@ -43,10 +44,6 @@ const theme = ref<InputOtpPassThroughOptions>({
     }
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 </script>

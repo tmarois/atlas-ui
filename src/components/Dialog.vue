@@ -31,9 +31,10 @@ import TimesIcon from '@primevue/icons/times';
 import WindowMaximizeIcon from '@primevue/icons/windowmaximize';
 import WindowMinimizeIcon from '@primevue/icons/windowminimize';
 import Dialog, { type DialogPassThroughOptions, type DialogProps } from 'primevue/dialog';
-import { ref, useAttrs, computed } from 'vue';
+import { ref, useAttrs } from 'vue';
 import Button from './Button.vue';
-import { ptViewMerge, ptMerge } from '../utils';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface Props extends /* @vue-ignore */ DialogProps {}
 const props = defineProps<Props>();
@@ -59,11 +60,7 @@ const theme = ref<DialogPassThroughOptions>({
     }
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 </script>
 

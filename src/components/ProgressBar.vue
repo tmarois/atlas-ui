@@ -13,8 +13,9 @@
 
 <script setup lang="ts">
 import ProgressBar, { type ProgressBarPassThroughOptions, type ProgressBarProps } from 'primevue/progressbar';
-import { ref, useAttrs, computed } from 'vue';
-import { ptViewMerge, ptMerge } from '../utils';
+import { ref, useAttrs } from 'vue';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface Props extends /* @vue-ignore */ ProgressBarProps {}
 const props = defineProps<Props>();
@@ -34,12 +35,8 @@ const theme = ref<ProgressBarPassThroughOptions>({
         p-determinate:inline-flex`
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, (props as any).pt));
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 </script>
 
 <style>

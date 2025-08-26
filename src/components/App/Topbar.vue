@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
-import { ptMerge } from '../../utils';
+import { usePrimeBindings } from '../../composables';
 
 interface TopbarPassThroughOptions {
     root?: any;
@@ -23,12 +23,8 @@ const theme = computed<TopbarPassThroughOptions>(() => ({
     root: 'h-[56px] bg-white border-b border-surface-300 dark:bg-surface-800 dark:border-surface-700 flex items-center w-full'
 }));
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
 
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
 
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+
 </script>

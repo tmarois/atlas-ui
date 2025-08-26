@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import Checkbox from './Checkbox.vue';
 import { computed, useAttrs } from 'vue';
-import { ptMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface LabelCheckboxPassThroughOptions {
     root?: any;
@@ -60,10 +60,5 @@ const theme = computed<LabelCheckboxPassThroughOptions>(() => ({
     }`
 }));
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-
-const inputAttrs = computed(() => {
-    const { pt, ...rest } = attrs as any;
-    return rest;
-});
+const { bindProps: inputAttrs, mergedPt } = usePrimeBindings(props, attrs, theme, ['label'] as const);
 </script>

@@ -36,9 +36,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, useAttrs, computed } from 'vue';
-import { ptMerge } from '../utils';
+import { ref, useAttrs } from 'vue';
+
 import Popover from './Popover.vue';
+import { usePrimeBindings } from '../composables';
 
 interface TooltipInfoPassThroughOptions {
     root?: any;
@@ -57,13 +58,9 @@ const theme = ref<TooltipInfoPassThroughOptions>({
     icon: 'size-5'
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
 
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+
 
 const emit = defineEmits<{ (e: 'toggle', value: boolean): void }>();
 

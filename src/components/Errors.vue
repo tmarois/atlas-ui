@@ -45,7 +45,8 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, useAttrs } from 'vue';
 import { IconAlertCircle, IconChevronDown } from '@tabler/icons-vue';
-import { isEmpty, ptMerge } from '../utils';
+import { isEmpty } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface ErrorsPassThroughOptions {
     root?: any;
@@ -97,7 +98,8 @@ const theme = ref<ErrorsPassThroughOptions>({
     defaultError: 'pl-[26px] text-left',
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 
 const hasErrors = computed(() => !isEmpty(props.errors));
 
@@ -115,12 +117,7 @@ function expandLeave(el: HTMLElement) {
     el.style.height = '0';
 }
 
-const passThroughProps = computed(() => {
-    const { pt, errors, failed, title, expandDefault, ...rest } = props as any;
-    return rest;
-});
 
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
 </script>
 
 <style scoped>

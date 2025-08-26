@@ -36,8 +36,9 @@ import SearchIcon from '@primevue/icons/search';
 import SpinnerIcon from '@primevue/icons/spinner';
 import TimesIcon from '@primevue/icons/times';
 import MultiSelect, { type MultiSelectPassThroughOptions, type MultiSelectProps } from 'primevue/multiselect';
-import { ref, useAttrs, computed } from 'vue';
-import { ptViewMerge, ptMerge } from '../utils';
+import { ref, useAttrs } from 'vue';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 const attrs = useAttrs();
 
@@ -151,10 +152,6 @@ const theme = ref<MultiSelectPassThroughOptions>({
     }
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 </script>

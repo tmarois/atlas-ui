@@ -14,7 +14,8 @@
 <script setup lang="ts">
 import Card, { type CardPassThroughOptions, type CardProps } from 'primevue/card';
 import { useAttrs, computed } from 'vue';
-import { ptViewMerge, ptMerge } from '../utils';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface Props extends /* @vue-ignore */ CardProps {
     noPadding?: boolean;
@@ -40,10 +41,6 @@ const theme = computed<CardPassThroughOptions>(() => ({
     footer: `p-6 py-4 border-t border-surface-300 dark:border-surface-700`
 }));
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, noPadding, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 </script>

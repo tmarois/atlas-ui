@@ -1,13 +1,14 @@
 <template>
-    <span v-tooltip.top="tooltip" :class="mergedPt.root.class">
+<span v-tooltip.top="tooltip" v-bind="bindProps" :class="mergedPt.root.class">
         <IconInfoSquareRoundedFilled :class="mergedPt.icon.class" />
     </span>
 </template>
 
 <script setup lang="ts">
 import { IconInfoSquareRoundedFilled } from '@tabler/icons-vue';
-import { ref, computed } from 'vue';
+import { ref, computed, useAttrs } from 'vue';
 import { ptMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface TooltipDirectivePassThroughOptions {
     root?: any;
@@ -31,12 +32,14 @@ const props = withDefaults(defineProps<Props>(), {
     iconClass: 'size-5'
 });
 
+const attrs = useAttrs();
+
 const theme = computed<TooltipIconPassThroughOptions>(() => ({
     root: 'cursor-help inline text-surface-500 dark:text-surface-400 hover:text-surface-800 dark:hover:text-surface-300',
     icon: props.iconClass
 }));
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme, ['text', 'iconClass'] as const);
 
 const tooltipTheme = ref<TooltipDirectivePassThroughOptions>({
     root: 'absolute shadow-md py-0 px-0 max-w-[260px]',

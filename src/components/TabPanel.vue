@@ -11,8 +11,9 @@
 
 <script setup lang="ts">
 import TabPanel, { type TabPanelPassThroughOptions, type TabPanelProps } from 'primevue/tabpanel';
-import { ref, useAttrs, computed } from 'vue';
-import { ptMerge, ptViewMerge } from '../utils';
+import { ref, useAttrs } from 'vue';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface Props extends /* @vue-ignore */ TabPanelProps {}
 const props = defineProps<Props>();
@@ -22,10 +23,6 @@ const theme = ref<TabPanelPassThroughOptions>({
     root: ``
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 </script>

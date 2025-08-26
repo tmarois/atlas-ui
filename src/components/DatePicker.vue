@@ -100,9 +100,10 @@ import ChevronLeftIcon from '@primevue/icons/chevronleft';
 import ChevronRightIcon from '@primevue/icons/chevronright';
 import ChevronUpIcon from '@primevue/icons/chevronup';
 import DatePicker, { type DatePickerPassThroughOptions, type DatePickerProps } from 'primevue/datepicker';
-import { ref, useAttrs, computed } from 'vue';
+import { ref, useAttrs } from 'vue';
 import Button from './Button.vue';
-import { ptViewMerge, ptMerge } from '../utils';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface Props extends /* @vue-ignore */ DatePickerProps {}
 const props = defineProps<Props>();
@@ -218,10 +219,6 @@ const theme = ref<DatePickerPassThroughOptions>({
     }
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 </script>
