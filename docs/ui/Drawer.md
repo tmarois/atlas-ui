@@ -1,7 +1,12 @@
 # Drawer
+
+Panel that slides in from the edge of the screen.
+
 ```ts
 import { Drawer } from '@atlas/ui';
 ```
+
+## Usage
 
 ```vue
 <Drawer v-model:visible="visible">
@@ -9,7 +14,13 @@ import { Drawer } from '@atlas/ui';
 </Drawer>
 ```
 
-##### API
+## API
 
-Refer to the [PrimeVue Drawer API](https://primevue.org/drawer/#api).
+### Props
+See the [PrimeVue Drawer API](https://primevue.org/drawer/#api) for a full list of props.
 
+### Slots
+See the [PrimeVue Drawer API](https://primevue.org/drawer/#api) for available slots.
+
+### Events
+See the [PrimeVue Drawer API](https://primevue.org/drawer/#api) for emitted events.

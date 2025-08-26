@@ -1,7 +1,12 @@
 # Topbar
+
+Simple bar displayed above page content.
+
 ```ts
 import { Topbar } from '@atlas/ui';
 ```
+
+## Usage
 
 ```vue
 <Topbar>
@@ -9,15 +14,15 @@ import { Topbar } from '@atlas/ui';
 </Topbar>
 ```
 
-##### Props
+## API
 
-- `pt: object` – passthrough options for internal elements.
+### Props
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `pt` | `TopbarPassThroughOptions` | `undefined` | Passthrough options for internal elements. |
 
-##### Slots
+### Slots
+- `default` – bar content.
 
-- `default` – content rendered inside the bar.
-
-##### Events
-
-- None
-
+### Events
+- None.
