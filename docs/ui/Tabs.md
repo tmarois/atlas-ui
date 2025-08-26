@@ -1,7 +1,12 @@
 # Tabs
+
+Container for managing multiple tabbed panels.
+
 ```ts
 import { Tabs, Tab, TabList, TabPanel, TabPanels } from '@atlas/ui';
 ```
+
+## Usage
 
 ```vue
 <Tabs value="0">
@@ -16,8 +21,13 @@ import { Tabs, Tab, TabList, TabPanel, TabPanels } from '@atlas/ui';
 </Tabs>
 ```
 
-##### API
+## API
 
-Refer to the [PrimeVue Tabs API](https://primevue.org/tabs/#api).
+### Props
+See the [PrimeVue Tabs API](https://primevue.org/tabs/#api) for a full list of props.
 
+### Slots
+See the [PrimeVue Tabs API](https://primevue.org/tabs/#api) for available slots.
 
+### Events
+See the [PrimeVue Tabs API](https://primevue.org/tabs/#api) for emitted events.

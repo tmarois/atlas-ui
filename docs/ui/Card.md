@@ -1,17 +1,26 @@
 # Card
+
+Container for grouping related content.
+
 ```ts
 import { Card } from '@atlas/ui';
 ```
+
+## Usage
 
 ```vue
 <Card title="Title">Content</Card>
 ```
 
-##### Props
+## API
 
-- `noPadding` – removes padding from the card's content section.
+### Props
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `noPadding` | `boolean` | `false` | Removes padding from the card's content section. |
 
-##### API
+### Slots
+See the [PrimeVue Card API](https://primevue.org/card/#api) for available slots.
 
-Refer to the [PrimeVue Card API](https://primevue.org/card/#api).
-
+### Events
+See the [PrimeVue Card API](https://primevue.org/card/#api) for emitted events.

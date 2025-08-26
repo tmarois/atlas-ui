@@ -1,7 +1,12 @@
 # ScrollFrame
+
+Provides a scrollable container sized to the viewport. When `page` is set it locks body scrolling and uses `scroll-key` to preserve position.
+
 ```ts
 import { ScrollFrame } from '@atlas/ui';
 ```
+
+## Usage
 
 ```vue
 <ScrollFrame
@@ -14,14 +19,20 @@ import { ScrollFrame } from '@atlas/ui';
 </ScrollFrame>
 ```
 
-Provides a scrollable container sized to the viewport. When `page` is set it locks body scrolling and uses `scroll-key` to preserve position.
+## API
 
-##### Props
+### Props
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `scrollKey` | `string \| null` | `null` | Identifier used to persist scroll position. |
+| `page` | `boolean` | `false` | Lock body scroll and treat the frame as a full page. |
+| `allowBodyScroll` | `boolean` | `false` | Allow body scroll even when `page` is `true`. |
+| `offset` | `number \| null` | `null` | Explicit pixel offset for height calculation. |
+| `addOffset` | `number` | `0` | Extra pixels subtracted from height. |
+| `rootClass` | `string` | `overflow-y-auto` | Additional classes for the frame element. |
 
-- `scrollKey` (string | null) – identifier used by the scroll composable to persist position. Defaults to `null`.
-- `page` (boolean) – lock body scroll and treat the frame as a full page. Defaults to `false`.
-- `allowBodyScroll` (boolean) – allow body scroll even when `page` is `true`. Defaults to `false`.
-- `offset` (number | null) – explicit pixel offset for height calculation. Defaults to element top position.
-- `addOffset` (number) – extra pixels subtracted from height. Defaults to `0`.
-- `rootClass` (string) – additional classes for the frame element. Defaults to `overflow-y-auto`.
+### Slots
+- `default` – scrollable content.
 
+### Events
+- None.

@@ -1,23 +1,33 @@
 # DialogConfirmation
+
+Preconfigured dialog for confirming destructive actions.
+
 ```ts
 import { DialogConfirmation } from '@atlas/ui';
 ```
+
+## Usage
 
 ```vue
 <DialogConfirmation v-model="open" title="Delete item" @confirm="remove" />
 ```
 
-##### Props
+## API
 
-- `modelValue: boolean` – controls visibility.
-- `title: string` – header text. Default `'Delete Item'`.
-- `icon: string` – icon class for the dialog. Default `'pi pi-trash'`.
-- `message: string` – confirmation message.
-- `loading: boolean` – disable buttons and show loading state.
-- `pt: object` – passthrough options for internal elements.
+### Props
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `modelValue` | `boolean` | `false` | Controls visibility. |
+| `title` | `string` | `'Delete Item'` | Header text. |
+| `icon` | `string` | `'pi pi-trash'` | Icon class for the dialog. |
+| `message` | `string` | `'Are you sure you want to delete this item?'` | Confirmation message. |
+| `loading` | `boolean` | `false` | Disables buttons and shows loading state. |
+| `pt` | `DialogConfirmationPassThroughOptions` | `undefined` | Passthrough options for internal elements. |
 
-##### Events
+### Slots
+- `message` – custom confirmation message and icon.
+- `actions` – replace the default action buttons.
 
+### Events
 - `update:modelValue` – emitted when visibility changes.
-- `confirm` – emitted when the confirm button is clicked.
-
+- `confirm` – emitted when the confirm action is triggered.
