@@ -25,4 +25,5 @@ import { Topbar } from '@atlas/ui';
 - `default` – bar content.
 
 ### Events
-- None.
+
+None.
