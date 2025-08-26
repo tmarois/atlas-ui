@@ -19,7 +19,7 @@ import { TableActions } from '@atlas/ui';
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | selectedCount | `number \| null` | `null` | Number of selected rows displayed next to actions. |
-| menuItems | `MenuItem[]` | `[]` | Action definitions. Each item supports `label`, `action`, optional `tooltip`, `disabled`, and nested `children` arrays for submenus. |
+| menuItems | `MenuItem[]` | `[]` | Defines available actions. Each item supports `label`, `action`, optional `tooltip`, `disabled`, and nested `children` arrays for submenus. |
 
 ### Slots
 
