@@ -1,4 +1,4 @@
-# Application Layout
+# Application components
 
 Composes navigation, page chrome, and page content into a full application wrapper.
 
