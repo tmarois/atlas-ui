@@ -1,18 +1,29 @@
 # TableActions
+
+Toolbar for batch table actions.
+
 ```ts
 import { TableActions } from '@atlas/ui';
 ```
+
+## Usage
 
 ```vue
 <TableActions :selectedCount="selected.length" :menuItems="actions" @action="onAction" />
 ```
 
-##### Props
+## API
 
-- `selectedCount: number` – number of selected rows.
-- `menuItems: any[]` – action definitions. Child items may provide nested menus.
+### Props
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `selectedCount` | `number` | Number of selected rows. Displayed next to actions. |
+| `menuItems` | `MenuItem[]` | Action definitions. Each item supports `label`, `action`, optional `tooltip`, `disabled`, and nested `children` arrays for submenus. |
 
-##### Events
+### Slots
+- None.
 
-- `action` – emitted with the action identifier. `'clear'` is emitted when the clear button is pressed.
+### Events
+- `action` – Emitted when an action is chosen. Arguments: `(action: string)`; `'clear'` is emitted when the clear button is pressed.
 
+Refer to the [PrimeVue Menu API](https://primevue.org/menu/#api) for menu item options.
