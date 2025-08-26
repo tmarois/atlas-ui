@@ -1,23 +1,37 @@
 # TooltipInfo
+
+TooltipInfo shows a clickable info icon that reveals a popover.
+
 ```ts
 import { TooltipInfo } from '@atlas/ui';
 ```
 
+## Usage
+
 ```vue
 <TooltipInfo>
-    Details here
+  Details here
 </TooltipInfo>
 ```
 
-##### Props
+## API
 
-- `iconClass` – class for the info icon. Defaults to 'size-5'.
+### Props
 
-##### Events
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| pt | `object` | `undefined` | Pass-through options to customize internal elements. |
 
-- `toggle` – emitted with the visibility state when the popover is toggled.
+### Slots
 
-##### Slots
+| Name | Description |
+| ---- | ----------- |
+| default | Content displayed inside the popover. |
 
-- `default` – content displayed inside the popover.
+### Events
 
+| Name | Payload | Description |
+| ---- | ------- | ----------- |
+| toggle | `boolean` | Emitted with visibility state when the popover is toggled. |
+
+Refer to the [PrimeVue Popover API](https://primevue.org/popover/#api).

@@ -1,7 +1,12 @@
 # TableCustomizeColumns
+
+TableCustomizeColumns displays a popover to show and reorder table columns.
+
 ```ts
 import { TableCustomizeColumns } from '@atlas/ui';
 ```
+
+## Usage
 
 ```vue
 <TableCustomizeColumns
@@ -16,17 +21,26 @@ import { TableCustomizeColumns } from '@atlas/ui';
 </TableCustomizeColumns>
 ```
 
-##### Props
+## API
 
-- `columns: any[]` – column definitions.
-- `activeColumnList: any[]` – visible column keys.
-- `defaultColumnList: any[]` – default visible column keys.
+### Props
 
-##### Events
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| columns | `any[]` | — | Column definitions. |
+| activeColumnList | `any[]` | — | Visible column keys. |
+| defaultColumnList | `any[]` | — | Default visible column keys. |
 
-- `update` – emitted with new array of active column keys.
+### Slots
 
-##### Slots
+| Name | Description |
+| ---- | ----------- |
+| trigger | Custom element that toggles the popover. |
 
-- `trigger` – custom element that toggles the popover.
+### Events
 
+| Name | Payload | Description |
+| ---- | ------- | ----------- |
+| update | `string[]` | Emitted with new array of active column keys. |
+
+Refer to the [PrimeVue Popover API](https://primevue.org/popover/#api).

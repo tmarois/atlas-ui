@@ -15,15 +15,20 @@ import { TableActions } from '@atlas/ui';
 ## API
 
 ### Props
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| `selectedCount` | `number` | Number of selected rows. Displayed next to actions. |
-| `menuItems` | `MenuItem[]` | Action definitions. Each item supports `label`, `action`, optional `tooltip`, `disabled`, and nested `children` arrays for submenus. |
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| selectedCount | `number \| null` | `null` | Number of selected rows displayed next to actions. |
+| menuItems | `MenuItem[]` | `[]` | Action definitions. Each item supports `label`, `action`, optional `tooltip`, `disabled`, and nested `children` arrays for submenus. |
 
 ### Slots
-- None.
+
+None.
 
 ### Events
-- `action` – Emitted when an action is chosen. Arguments: `(action: string)`; `'clear'` is emitted when the clear button is pressed.
+
+| Name | Payload | Description |
+| ---- | ------- | ----------- |
+| action | `string` | Emitted when an action is chosen. `'clear'` is emitted when the clear button is pressed. |
 
 Refer to the [PrimeVue Menu API](https://primevue.org/menu/#api) for menu item options.
