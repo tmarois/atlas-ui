@@ -27,15 +27,13 @@ Every UI component must have its own markdown file under `docs/ui/` using the fo
 
 1. **Title & Description**
     - Start with `# ComponentName`
-    - Add a one-sentence description of the component’s purpose.
+    - Add a one-sentence description of the component’s purpose. 
+    - Include a minimal code snippet showing how to import this component.
 
-2. **Import**
-    - Add a `## Import` section with a minimal code snippet showing how to import this component.
-
-3. **Usage**
+2. **Usage**
     - Provide a `## Usage` section with the most common example of the component in action.
 
-4. **API**
+3. **API**
     - Create a `## API` section with these required subsections:
         - **### Props** — table listing each prop’s **Name**, **Type**, **Default**, and **Description**.
         - **### Slots** — table or list describing available slots and their purposes.
@@ -43,7 +41,7 @@ Every UI component must have its own markdown file under `docs/ui/` using the fo
     - If none exist, explicitly state **“None.”**
     - End this section with a reference link to the corresponding **PrimeVue docs** if available.
 
-5. **Consistency**
+4. **Consistency**
     - Always include **Props**, **Slots**, and **Events** subsections in that order.
     - Use consistent section names, formatting, and ordering across all component guides.
 
