@@ -62,12 +62,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick, useAttrs, computed } from 'vue';
+import { ref, nextTick, useAttrs } from 'vue';
 import Button from './Button.vue';
 import Menu from './Menu.vue';
 import { IconChevronDown } from '@tabler/icons-vue';
 import type { MenuItem } from 'primevue/menuitem';
-import { ptMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
+
 
 interface ButtonMenuPassThroughOptions {
     root?: any;
@@ -94,12 +95,8 @@ const theme = ref<ButtonMenuPassThroughOptions>({
     menu: {}
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, items, icon, ptData, onHover, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 
 const trigger = ref<any>(null);
 const menu = ref<any>(null);

@@ -23,9 +23,10 @@
 <script setup lang="ts">
 import TimesIcon from '@primevue/icons/times';
 import Drawer, { type DrawerPassThroughOptions, type DrawerProps } from 'primevue/drawer';
-import { ref, useAttrs, computed } from 'vue';
+import { ref, useAttrs } from 'vue';
 import Button from './Button.vue';
-import { ptViewMerge, ptMerge } from '../utils';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface Props extends /* @vue-ignore */ DrawerProps {}
 const props = defineProps<Props>();
@@ -54,12 +55,8 @@ const theme = ref<DrawerPassThroughOptions>({
     }
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, (props as any).pt));
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 </script>
 
 <style>

@@ -47,8 +47,9 @@ import AngleLeftIcon from '@primevue/icons/angleleft';
 import AngleRightIcon from '@primevue/icons/angleright';
 import Paginator, { type PaginatorPassThroughOptions, type PaginatorProps } from 'primevue/paginator';
 import Button from './Button.vue';
-import { ref, computed, useAttrs } from 'vue';
-import { ptViewMerge, ptMerge } from '../utils';
+import { ref, useAttrs } from 'vue';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface Props extends /* @vue-ignore */ PaginatorProps {}
 const props = defineProps<Props>();
@@ -59,10 +60,6 @@ const theme = ref<PaginatorPassThroughOptions>({
         bg-surface-0 dark:bg-surface-900 text-surface-700 dark:text-surface-0`
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 </script>

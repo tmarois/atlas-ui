@@ -53,9 +53,10 @@ import AngleLeftIcon from '@primevue/icons/angleleft';
 import AngleRightIcon from '@primevue/icons/angleright';
 import SpinnerIcon from '@primevue/icons/spinner';
 import DataTable, { type DataTablePassThroughOptions, type DataTableProps } from 'primevue/datatable';
-import { ref, useAttrs, computed } from 'vue';
+import { ref, useAttrs } from 'vue';
 import Button from './Button.vue';
-import { ptViewMerge, ptMerge } from '../utils';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface Props extends /* @vue-ignore */ DataTableProps {}
 const props = defineProps<Props>();
@@ -110,12 +111,8 @@ const theme = ref<DataTablePassThroughOptions>({
     rowReorderIndicatorDown: `absolute hidden`
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 
 const el = ref();
 defineExpose({

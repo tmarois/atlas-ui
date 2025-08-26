@@ -17,8 +17,9 @@
 import ChevronDownIcon from '@primevue/icons/chevrondown';
 import ChevronUpIcon from '@primevue/icons/chevronup';
 import AccordionHeader, { type AccordionHeaderPassThroughOptions, type AccordionHeaderProps } from 'primevue/accordionheader';
-import { ref, useAttrs, computed } from 'vue';
-import { ptMerge, ptViewMerge } from '../utils';
+import { ref, useAttrs } from 'vue';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface Props extends /* @vue-ignore */ AccordionHeaderProps {}
 const props = defineProps<Props>();
@@ -34,10 +35,6 @@ const theme = ref<AccordionHeaderPassThroughOptions>({
         focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-[-1px] focus-visible:outline-primary`
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 </script>

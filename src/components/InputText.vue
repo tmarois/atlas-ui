@@ -26,7 +26,8 @@
 import InputText, { type InputTextProps, type InputTextPassThroughOptions } from 'primevue/inputtext';
 import TimesIcon from '@primevue/icons/times';
 import { ref, useAttrs, computed } from 'vue';
-import { ptViewMerge, ptMerge } from '../utils';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface Props extends /* @vue-ignore */ InputTextProps {
     modelValue?: string;
@@ -66,12 +67,7 @@ const theme = ref<InputTextPassThroughOptions>({
         disabled:opacity-70 disabled:shadow-none disabled:placeholder:text-surface-400 disabled:dark:placeholder:text-surface-500`
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, modelValue, clearable, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme, ['modelValue', 'clearable'] as const);
 const isDisabled = computed(() => !!bindProps.value.disabled);
 </script>
 

@@ -19,8 +19,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, useAttrs, ref } from 'vue';
-import { ptMerge } from '../utils';
+import { useAttrs, ref } from 'vue';
+import { usePrimeBindings } from '../composables';
+
 
 interface PaginationLink {
     label: string;
@@ -49,10 +50,6 @@ const theme = ref<PaginationPassThroughOptions>({
     link: 'flex items-center justify-center px-3 py-2 text-sm rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700',
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, links, linkComponent, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 </script>

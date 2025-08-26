@@ -1,5 +1,5 @@
 <template>
-    <div :class="mergedPt.root.class">
+    <div v-bind="bindProps" :class="mergedPt.root.class">
         <label
             v-if="label"
             :for="name"
@@ -20,8 +20,8 @@
 
 <script setup lang="ts">
 import TooltipIcon from './TooltipIcon.vue';
-import { computed } from 'vue';
-import { ptMerge } from '../utils';
+import { computed, useAttrs } from 'vue';
+import { usePrimeBindings } from '../composables';
 
 interface LabelFieldPassThroughOptions {
     root?: any;
@@ -50,6 +50,8 @@ const props = withDefaults(defineProps<Props>(), {
     error: ''
 });
 
+const attrs = useAttrs();
+
 const theme = computed<LabelFieldPassThroughOptions>(() => ({
     root: 'w-full',
     label: 'flex items-center text-sm font-medium leading-6 text-gray-900 dark:text-gray-100 mb-2',
@@ -60,5 +62,5 @@ const theme = computed<LabelFieldPassThroughOptions>(() => ({
     error: 'text-sm text-red-500'
 }));
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme, ['label', 'tooltip', 'name', 'required', 'error'] as const);
 </script>

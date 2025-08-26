@@ -1,5 +1,6 @@
 <template>
     <Dialog
+        v-bind="dialogAttrs"
         modal
         closable
         :visible="props.modelValue"
@@ -44,7 +45,7 @@ import Button from './Button.vue';
 import { useAttrs, computed } from 'vue';
 import type { DialogProps, DialogPassThroughOptions } from 'primevue/dialog';
 import type { ButtonPassThroughOptions } from 'primevue/button';
-import { ptMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface DialogConfirmationPassThroughOptions {
     dialog?: DialogPassThroughOptions;
@@ -88,12 +89,12 @@ const theme = computed<DialogConfirmationPassThroughOptions>(() => ({
     cancelButton: {},
 }));
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-
-const passThroughProps = computed(() => {
-    const { pt, modelValue, title, icon, message, loading, ...rest } = props as any;
-    return rest;
-});
+const { bindProps: dialogAttrs, mergedPt } = usePrimeBindings(
+    props,
+    attrs,
+    theme,
+    ['modelValue', 'title', 'icon', 'message', 'loading'] as const
+);
 const close = () => emit('update:modelValue', false);
 const confirm = () => emit('confirm');
 </script>

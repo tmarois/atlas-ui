@@ -11,8 +11,9 @@
 
 <script setup lang="ts">
 import InputGroup, { type InputGroupPassThroughOptions, type InputGroupProps } from 'primevue/inputgroup';
-import { ref, useAttrs, computed } from 'vue';
-import { ptViewMerge, ptMerge } from '../utils';
+import { ref, useAttrs } from 'vue';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface Props extends /* @vue-ignore */ InputGroupProps {}
 const props = defineProps<Props>();
@@ -31,10 +32,6 @@ const theme = ref<InputGroupPassThroughOptions>({
         border-surface-300 dark:border-surface-700`,
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 </script>

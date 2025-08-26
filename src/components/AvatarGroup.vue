@@ -13,8 +13,9 @@
 
 <script setup lang="ts">
 import AvatarGroup, { type AvatarGroupPassThroughOptions, type AvatarGroupProps } from 'primevue/avatargroup';
-import { ref, useAttrs, computed } from 'vue';
-import { ptViewMerge, ptMerge } from '../utils';
+import { ref, useAttrs } from 'vue';
+import { ptViewMerge } from '../utils';
+import { usePrimeBindings } from '../composables';
 
 interface Props extends /* @vue-ignore */ AvatarGroupProps {}
 const props = defineProps<Props>();
@@ -24,10 +25,6 @@ const theme = ref<AvatarGroupPassThroughOptions>({
     root: `flex items-center *:border-2 *:border-surface-200 dark:*:border-surface-700 *:-ms-3`
 });
 
-const mergedPt = computed(() => ptMerge(theme.value, props.pt));
-const passThroughProps = computed(() => {
-    const { pt, ...rest } = props as any;
-    return rest;
-});
-const bindProps = computed(() => ({ ...attrs, ...passThroughProps.value }));
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+
 </script>
