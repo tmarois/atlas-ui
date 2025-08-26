@@ -6,10 +6,8 @@ For backend helpers like server-driven datatable options, see the companion [Atl
 
 ## Documentation
 
-- [Application Layout](docs/application.md)
-- [Components](docs/ui.md)
-- [Table](docs/table.md)
-- [Editor](docs/editor.md)
+- [Application components](docs/application.md)
+- [Components](docs/components.md)
 - [Composables](docs/composables.md)
 - [Utils](docs/utils.md)
 

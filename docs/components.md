@@ -2,7 +2,7 @@
 
 Reusable Vue 3 components built on PrimeVue.
 
-See [Application](application.md) for layout guidance and [Theming](theming.md) for customization options.
+See [Application components](application.md) for layout guidance and [Theming](theming.md) for customization options.
 
 ## Components
 
