@@ -15,18 +15,25 @@ import { ButtonMenu } from '@atlas/ui';
 ## API
 
 ### Props
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| `items` | `MenuItem[]` | Menu items with `label`, `icon`, `action`, `disabled`, optional `children` for submenus, and `tooltip`. |
-| `icon` | `string` | Icon class for the default trigger. Defaults to `'pi pi-ellipsis-v'`. |
-| `ptData` | `Record<string, any>` | Additional data forwarded with the `action` event. |
-| `onHover` | `boolean` | Show menu on hover instead of click. Defaults to `false`. |
-| `pt` | `ButtonMenuPassThroughOptions` | Pass-through styling options. |
- 
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `items` | `MenuItem[]` | — | Menu items with `label`, `icon`, `action`, `disabled`, optional `children`, and `tooltip`. |
+| `icon` | `string` | `'pi pi-ellipsis-v'` | Icon class for the default trigger. |
+| `ptData` | `Record<string, any>` | `{}` | Additional data forwarded with the `action` event. |
+| `onHover` | `boolean` | `false` | Show menu on hover instead of click. |
+| `pt` | `ButtonMenuPassThroughOptions` | — | Pass-through styling options. |
+
 ### Slots
-- `trigger` – Custom trigger element. Slot props: `{ toggleMenu, triggerRef }`.
+
+| Name | Description |
+| ---- | ----------- |
+| `trigger` | Custom trigger element. Slot props: `{ toggleMenu, triggerRef }`. |
 
 ### Events
-- `action` – Emitted when an item is selected. Arguments: `(action: any, ptData: Record<string, any>)`.
+
+| Name | Payload | Description |
+| ---- | ------- | ----------- |
+| `action` | `(action: any, ptData: Record<string, any>)` | Emitted when an item is selected. |
 
 Refer to the [PrimeVue Menu API](https://primevue.org/menu/#api) for menu item options.

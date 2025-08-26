@@ -1,16 +1,33 @@
 # Pagination
+
+Simple pagination component rendering link elements.
+
 ```ts
 import { Pagination } from '@atlas/ui';
 ```
+
+## Usage
 
 ```vue
 <Pagination :links="links" />
 ```
 
-##### Props
+## API
 
-- `links` – array of pagination link objects.
-- `linkComponent` – component used for each link. Defaults to 'a'.
+### Props
 
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `links` | `PaginationLink[]` | — | Array of pagination link objects. |
+| `linkComponent` | `string \| object` | `'a'` | Component used for each link. |
+| `pt` | `PaginationPassThroughOptions` | — | Pass-through styling options. |
 
+### Slots
 
+None.
+
+### Events
+
+None.
+
+No PrimeVue equivalent.
