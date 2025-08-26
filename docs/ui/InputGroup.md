@@ -1,7 +1,12 @@
 # InputGroup
+
+InputGroup groups multiple components as a single input with shared borders.
+
 ```ts
 import { InputGroup, InputText, Button } from '@atlas/ui';
 ```
+
+## Usage
 
 ```vue
 <InputGroup>
@@ -10,7 +15,19 @@ import { InputGroup, InputText, Button } from '@atlas/ui';
 </InputGroup>
 ```
 
-##### API
+## API
+
+### Props
+
+None.
+
+### Slots
+
+None.
+
+### Events
+
+None.
 
 Refer to the [PrimeVue InputGroup API](https://primevue.org/inputgroup/#api).
 
