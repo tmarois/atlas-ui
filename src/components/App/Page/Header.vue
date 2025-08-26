@@ -95,7 +95,8 @@
 import { computed, useSlots, toRefs } from 'vue';
 import { IconLock } from '@tabler/icons-vue';
 import { useScroll } from '../../../composables/useScroll';
-import { hasSlotContent, isPageActive } from '../../../utils';
+import { hasSlotContent } from '../../../utils';
+import { isPageActive } from '../../../utils/vue/inertia';
 
 interface Breadcrumb {
     href: string;

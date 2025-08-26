@@ -69,7 +69,7 @@
 <script setup lang="ts">
 import ScrollFrame from '../../ScrollFrame.vue';
 import { IconLock } from '@tabler/icons-vue';
-import { isPageActive } from '../../../utils';
+import { isPageActive } from '../../../utils/vue/inertia';
 
 interface NavItem {
     label: string;

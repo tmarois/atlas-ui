@@ -71,7 +71,8 @@
 
 <script setup>
 import { reactive, useSlots, computed } from 'vue';
-import { hasSlotContent, isPageActive } from '../../../utils';
+import { hasSlotContent } from '../../../utils';
+import { isPageActive } from '../../../utils/vue/inertia';
 import Menu from '../../Menu.vue';
 
 const slots = useSlots();

@@ -64,7 +64,8 @@
 
 <script setup>
 import { computed, useSlots } from 'vue';
-import { hasSlotContent, isPageActive } from '../../../utils';
+import { hasSlotContent } from '../../../utils';
+import { isPageActive } from '../../../utils/vue/inertia';
 
 const slots = useSlots();
 
