@@ -1,5 +1,7 @@
 <template>
     <Drawer
+        v-bind="bindProps"
+        :pt="mergedPt"
         :visible="modelValue"
         position="right"
         blockScroll
@@ -78,7 +80,8 @@ import Errors from './Errors.vue';
 import Drawer from './Drawer.vue';
 import Button from './Button.vue';
 import { IconLock } from '@tabler/icons-vue';
-import { ref, watch } from 'vue';
+import { ref, watch, useAttrs } from 'vue';
+import { usePrimeBindings } from '../composables';
 
 type Tab = { title: string; disabled?: boolean; lockTooltipText?: string };
 
@@ -99,6 +102,8 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['update:modelValue', 'submit', 'update:modelActiveTab']);
+const attrs = useAttrs();
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs);
 const activeTab = ref(props.modelActiveTab);
 
 watch(activeTab, val => emit('update:modelActiveTab', val));
