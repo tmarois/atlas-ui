@@ -18,10 +18,24 @@ import { Popover, Button } from '@atlas/ui';
 ## API
 
 ### Props
-See the [PrimeVue Popover API](https://primevue.org/popover/#api) for a full list of props.
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `dismissable` | `boolean` | `true` | Hide when outside is clicked. |
+| `appendTo` | `'body' \| 'self' \| HTMLElement` | `'body'` | Where the overlay is attached. |
+| `baseZIndex` | `number` | `0` | Base z-index for layering. |
+| `autoZIndex` | `boolean` | `true` | Automatically manage layering. |
+| `breakpoints` | `PopoverBreakpoints` | `undefined` | Responsive width options. |
+| `dt` | `DesignToken` | `undefined` | CSS design tokens. |
+| `pt` | `PopoverPassThroughOptions` | `undefined` | Pass-through attributes for DOM elements. |
+| `ptOptions` | `PassThroughOptions` | `undefined` | Configure pass-through options. |
+| `unstyled` | `boolean` | `false` | Removes component styles. |
+| `closeOnEscape` | `boolean` | `true` | Hide when escape key is pressed. |
 
 ### Slots
-See the [PrimeVue Popover API](https://primevue.org/popover/#api) for available slots.
+- `default` – Target element that triggers the popover.
+- `content` – Content displayed inside the popover.
 
 ### Events
-See the [PrimeVue Popover API](https://primevue.org/popover/#api) for emitted events.
+None.
+
+Refer to the [PrimeVue Popover API](https://primevue.org/popover/#api).

@@ -18,9 +18,19 @@ import { Card } from '@atlas/ui';
 | Prop | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | `noPadding` | `boolean` | `false` | Removes padding from the card's content section. |
+| `dt` | `DesignToken` | `undefined` | Design tokens for CSS variables. |
+| `pt` | `CardPassThroughOptions` | `undefined` | Pass-through attributes for DOM elements. |
+| `ptOptions` | `PassThroughOptions` | `undefined` | Configures pass-through options. |
+| `unstyled` | `boolean` | `false` | Removes component styles. |
 
 ### Slots
-See the [PrimeVue Card API](https://primevue.org/card/#api) for available slots.
+- `default` – Card content.
+- `header` – Custom header section.
+- `title` – Replaces the card title.
+- `subtitle` – Adds a subtitle below the title.
+- `footer` – Footer content.
 
 ### Events
-See the [PrimeVue Card API](https://primevue.org/card/#api) for emitted events.
+None.
+
+Refer to the [PrimeVue Card API](https://primevue.org/card/#api).

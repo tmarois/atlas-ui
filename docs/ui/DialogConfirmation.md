@@ -24,10 +24,14 @@ import { DialogConfirmation } from '@atlas/ui';
 | `loading` | `boolean` | `false` | Disables buttons and shows loading state. |
 | `pt` | `DialogConfirmationPassThroughOptions` | `undefined` | Passthrough options for internal elements. |
 
+Also supports all PrimeVue Dialog props except `visible`, `header`, and `pt`.
+
 ### Slots
-- `message` – custom confirmation message and icon.
-- `actions` – replace the default action buttons.
+- `message` – Custom confirmation message and icon.
+- `actions` – Replace the default action buttons.
 
 ### Events
-- `update:modelValue` – emitted when visibility changes.
-- `confirm` – emitted when the confirm action is triggered.
+- `update:modelValue` – Emitted when visibility changes.
+- `confirm` – Emitted when the confirm action is triggered.
+
+Refer to the [PrimeVue Dialog API](https://primevue.org/dialog/#api).

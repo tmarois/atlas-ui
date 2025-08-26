@@ -35,4 +35,5 @@ import { ScrollFrame } from '@atlas/ui';
 - `default` – scrollable content.
 
 ### Events
-- None.
+
+None.

@@ -28,14 +28,16 @@ import { DrawerForm } from '@atlas/ui';
 | `modelActiveTab` | `number` | `0` | Index of the active tab. |
 
 ### Slots
-- `header` – custom header content.
-- `default` – form content or first tab panel.
-- `tab-{index}` – content for the tab at the specified index.
-- `footer` – custom footer content.
-- `message` – message above footer actions.
-- `actions` – replace default footer actions.
+- `header` – Custom header content.
+- `default` – Form content or first tab panel.
+- `tab-{index}` – Content for the tab at the specified index.
+- `footer` – Custom footer content.
+- `message` – Message above footer actions.
+- `actions` – Replace default footer actions.
 
 ### Events
-- `update:modelValue` – emitted when visibility changes.
-- `submit` – emitted when the save action is triggered.
-- `update:modelActiveTab` – emitted when active tab changes.
+- `update:modelValue` – Emitted when visibility changes.
+- `submit` – Emitted when the save action is triggered.
+- `update:modelActiveTab` – Emitted when active tab changes.
+
+Refer to the [PrimeVue Drawer API](https://primevue.org/drawer/#api).

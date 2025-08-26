@@ -24,10 +24,23 @@ import { Tabs, Tab, TabList, TabPanel, TabPanels } from '@atlas/ui';
 ## API
 
 ### Props
-See the [PrimeVue Tabs API](https://primevue.org/tabs/#api) for a full list of props.
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `value` | `string \| number` | `undefined` | Value of the active tab. |
+| `lazy` | `boolean` | `false` | Whether hidden tabs are not rendered. |
+| `scrollable` | `boolean` | `false` | Enable scrollable tab headers. |
+| `showNavigators` | `boolean` | `true` | Show navigation buttons when scrollable. |
+| `tabindex` | `number` | `0` | Tab order of the container. |
+| `selectOnFocus` | `boolean` | `false` | Activate tab on focus. |
+| `dt` | `DesignToken` | `undefined` | Design tokens for CSS variables. |
+| `pt` | `TabsPassThroughOptions` | `undefined` | Pass-through attributes for DOM elements. |
+| `ptOptions` | `PassThroughOptions` | `undefined` | Configures pass-through options. |
+| `unstyled` | `boolean` | `false` | Removes component styles. |
 
 ### Slots
-See the [PrimeVue Tabs API](https://primevue.org/tabs/#api) for available slots.
+- `default` – Contains `TabList` and `TabPanels` components.
 
 ### Events
-See the [PrimeVue Tabs API](https://primevue.org/tabs/#api) for emitted events.
+None.
+
+Refer to the [PrimeVue Tabs API](https://primevue.org/tabs/#api).
