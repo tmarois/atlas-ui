@@ -1,6 +1,6 @@
 {
     "name": "@tmarois/atlas-ui",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "main": "src/index.ts",
     "exports": {
         ".": "./src/index.ts",
