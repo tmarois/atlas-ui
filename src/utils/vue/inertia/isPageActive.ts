@@ -1,4 +1,5 @@
 import { usePage } from '@inertiajs/vue3';
+import { isClient } from '../../browser';
 
 /**
  * Determine whether the current Inertia page is active.
@@ -13,6 +14,8 @@ export const isPageActive = (
     itemParent?: string,
     eq = false
 ): boolean => {
+    if (!isClient) return false;
+
     const page = usePage();
     const path = itemParent ?? itemPath;
     const currentPath = new URL(page.url, document.baseURI).pathname;
