@@ -33,7 +33,7 @@
                                         pt: {
                                             root: 'absolute shadow-md py-0 px-0 max-w-[260px] ml-3',
                                             text: autoDark
-                                                ? 'text-sm p-2 border border-surface-300 bg-white text-surface-700 dark:bg-surface-0 dark:border-surface-300 dark:text-black rounded-[var(--p-content-border-radius)] whitespace-pre-line'
+                                                ? 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-0 dark:border-surface-300 dark:text-black rounded-[var(--p-content-border-radius)] whitespace-pre-line'
                                                 : 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-0 dark:border-surface-300 dark:text-black rounded-[var(--p-content-border-radius)] whitespace-pre-line'
                                         }
                                 }"
