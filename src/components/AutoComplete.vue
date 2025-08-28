@@ -97,7 +97,8 @@ const theme = ref<AutoCompletePassThroughOptions>({
     px-3 py-1.5 border-none text-surface-700 dark:text-surface-0 bg-transparent rounded-[var(--p-content-border-radius)]
     hover:bg-surface-100 dark:hover:bg-surface-700 hover:text-surface-800 dark:hover:text-surface-0
     p-focus:bg-surface-100 dark:p-focus:bg-surface-700 p-focus:text-surface-800 dark:p-focus:text-surface-0
-    p-selected:bg-primary-500 p-focus:p-selected:bg-primary-500 p-selected:text-white p-focus:p-selected:text-white dark:p-selected:bg-primary-500 dark:p-focus:p-selected:bg-primary-500
+    p-selected:bg-primary-500 p-focus:p-selected:bg-primary-500 p-selected:text-white p-focus:p-selected:text-white
+    dark:p-selected:bg-surface-0 dark:p-focus:p-selected:bg-surface-0 dark:p-selected:text-black dark:p-focus:p-selected:text-black
     transition-colors duration-200 text-sm`,
     emptyMessage: `px-3 py-2.5`,
     searchResultMessage: ``,

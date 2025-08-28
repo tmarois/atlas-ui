@@ -40,15 +40,15 @@ const theme = ref<ButtonPassThroughOptions>({
         p-outlined:bg-transparent enabled:hover:p-outlined:bg-gray-100 enabled:active:p-outlined:bg-gray-200
         p-outlined:border-surface-300 enabled:hover:p-outlined:border-surface-400 enabled:active:p-outlined:border-surface-300
         p-outlined:text-gray-700 enabled:hover:p-outlined:text-gray-700 enabled:active:p-outlined:text-gray-700
-        dark:p-outlined:bg-transparent dark:enabled:hover:p-outlined:bg-surface-700 dark:enabled:active:p-outlined:bg-surface-600
-        dark:p-outlined:border-surface-700 dark:enabled:hover:p-outlined:border-surface-600 dark:enabled:active:p-outlined:border-surface-600
+        dark:p-outlined:bg-transparent dark:enabled:hover:p-outlined:bg-primary-600 dark:enabled:active:p-outlined:bg-primary-700
+        dark:p-outlined:border-primary-500 dark:enabled:hover:p-outlined:border-primary-600 dark:enabled:active:p-outlined:border-primary-700
         dark:p-outlined:text-white dark:enabled:hover:p-outlined:text-white dark:enabled:active:p-outlined:text-white
         p-text:bg-transparent enabled:hover:p-text:bg-gray-100 enabled:active:p-text:bg-primary-100
         p-text:border-transparent enabled:hover:p-text:border-transparent enabled:active:p-text:border-transparent
         p-text:text-gray-700 enabled:hover:p-text:text-gray-700 enabled:active:p-text:text-gray-700
-        dark:p-text:bg-transparent dark:enabled:hover:p-text:bg-primary/5 dark:enabled:active:p-text:bg-primary/15
+        dark:p-text:bg-transparent dark:enabled:hover:p-text:bg-primary-600 dark:enabled:active:p-text:bg-primary-700
         dark:p-text:border-transparent dark:enabled:hover:p-text:border-transparent dark:enabled:active:p-text:border-transparent
-        dark:p-text:text-white dark:enabled:hover:p-text:text-primary dark:enabled:active:p-text:text-primary
+        dark:p-text:text-white dark:enabled:hover:p-text:text-white dark:enabled:active:p-text:text-white
     `,
     loadingIcon: `animate-spin`,
     icon: `p-right:order-1 p-bottom:order-2`,

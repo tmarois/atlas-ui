@@ -67,11 +67,11 @@ const theme = ref<MultiSelectPassThroughOptions>({
     chipItem: ``,
     pcChip: {
         root: `inline-flex items-center gap-2 px-3 py-[5px] rounded-[var(--p-content-border-radius)]
-            bg-primary-500 dark:bg-primary-500
-            text-white dark:text-surface-0
+            bg-primary-500 dark:bg-surface-0 dark:border dark:border-surface-300
+            text-white dark:text-black
             has-[img]:pt-1 has-[img]:pb-1
             p-removable:pe-2`,
-        removeIcon: `cursor-pointer text-base w-4 h-4 rounded-full text-white dark:text-surface-0`
+        removeIcon: `cursor-pointer text-base w-4 h-4 rounded-full text-white dark:text-black`
     },
     dropdown: `flex items-center justify-center shrink-0 bg-transparent
         text-surface-400 w-10 rounded-e-[var(--p-content-border-radius)]`,
@@ -127,6 +127,8 @@ const theme = ref<MultiSelectPassThroughOptions>({
         rounded-[var(--p-content-border-radius)] text-surface-700 dark:text-surface-0 bg-transparent border-none
         hover:bg-surface-100 dark:hover:bg-surface-700 hover:text-surface-800 dark:hover:text-surface-0
         p-focus:bg-surface-100 dark:p-focus:bg-surface-700 p-focus:text-surface-800 dark:p-focus:text-surface-0
+        p-selected:bg-primary-500 p-focus:p-selected:bg-primary-500 p-selected:text-white p-focus:p-selected:text-white
+        dark:p-selected:bg-surface-0 dark:p-focus:p-selected:bg-surface-0 dark:p-selected:text-black dark:p-focus:p-selected:text-black
         transition-colors duration-200 text-sm`,
     optionLabel: ``,
     pcOptionCheckbox: {

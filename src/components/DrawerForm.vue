@@ -8,7 +8,7 @@
         pt:mask:class="p-modal:bg-black/30"
         pt:header:class="p-0 border-b border-surface-300 dark:border-surface-700 dark:bg-surface-800 shadow"
         pt:content:class="p-0 bg-surface-100 dark:bg-surface-900"
-        pt:footer:class="py-4 px-6 flex items-center space-x-4 border-t border-surface-300 dark:border-surface-700 bg-white dark:bg-surface-700 shadow-[0_-2px_4px_1px_rgba(0,0,0,0.05)] dark:shadow-[0_-2px_6px_rgba(0,0,0,0.3)]"
+        pt:footer:class="py-4 px-6 flex items-center space-x-4 border-t border-surface-300 dark:border-surface-700 bg-white dark:bg-surface-900 shadow-[0_-2px_4px_1px_rgba(0,0,0,0.05)] dark:shadow-[0_-2px_6px_rgba(0,0,0,0.3)]"
         @update:visible="close"
     >
         <template #header>
