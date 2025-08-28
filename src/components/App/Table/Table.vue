@@ -16,7 +16,7 @@
                                 text: 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-0 dark:border-surface-300 dark:text-black rounded-[var(--p-content-border-radius)] whitespace-pre-line'
                             }
                         }"
-                        class="bg-white border border-gray-300 cursor-pointer text-surface-600 dark:text-surface-400 hover:text-surface-800 dark:hover:text-surface-300 h-[38px] w-[38px] flex items-center justify-center rounded-bl-lg rounded-br-lg"
+                        class="bg-surface-0 dark:bg-surface-900 border border-surface-300 dark:border-surface-700 cursor-pointer text-surface-600 dark:text-surface-300 hover:text-surface-800 dark:hover:text-surface-200 hover:bg-surface-100 dark:hover:bg-surface-700 hover:border-surface-400 dark:hover:border-surface-600 transition-colors duration-200 h-[38px] w-[38px] flex items-center justify-center rounded-bl-lg rounded-br-lg"
                         @click="toggle"
                     >
                         <IconSettings class="size-5" />

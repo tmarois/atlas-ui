@@ -1,7 +1,7 @@
 <template>
   <div>
     <button
-      class="fixed z-50 top-1/2 -right-2 transform -translate-y-1/2 bg-primary-500 text-white p-3 rounded-l shadow flex items-center justify-center cursor-pointer"
+      class="fixed z-50 top-1/2 -right-2 transform -translate-y-1/2 bg-primary-500 text-white p-3 rounded-l shadow flex items-center justify-center cursor-pointer border border-surface-300 dark:border-surface-600 hover:bg-primary-600 dark:hover:bg-primary-600 transition-colors duration-200"
       @click="visible = true"
     >
       <span class="pi pi-cog"></span>
