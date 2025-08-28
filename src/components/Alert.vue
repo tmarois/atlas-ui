@@ -48,10 +48,10 @@ const props = withDefaults(defineProps<Props>(), {
 const attrs = useAttrs();
 
 const theme = computed<AlertPassThroughOptions>(() => ({
-    root: `w-full p-4 flex border items-center space-x-4 rounded-[var(--p-content-border-radius)] text-gray-900 dark:text-surface-100 ${
+    root: `w-full p-4 flex border items-center space-x-4 rounded-[var(--p-content-border-radius)] ${
         props.warning
-            ? 'bg-yellow-100 border-yellow-300 dark:bg-yellow-700 dark:border-yellow-600'
-            : 'bg-surface-50 border-surface-300 dark:bg-surface-700 dark:border-surface-600'
+            ? 'bg-yellow-100 border-yellow-300 text-yellow-900 dark:bg-yellow-500/10 dark:border-yellow-600 dark:text-yellow-200'
+            : 'bg-surface-50 border-surface-300 text-surface-800 dark:bg-surface-900 dark:border-surface-700 dark:text-surface-0'
     }`,
     iconContainer: '',
     icon: `${
