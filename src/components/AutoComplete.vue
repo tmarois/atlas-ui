@@ -38,7 +38,7 @@ const theme = ref<AutoCompletePassThroughOptions>({
             enabled:focus:border-primary
             disabled:bg-surface-200 disabled:text-surface-500
             dark:disabled:bg-surface-700 dark:disabled:text-surface-400
-            p-invalid:border-red-400 dark:p-invalid:border-red-300
+            p-invalid:border-red-400 dark:p-invalid:border-red-600
             p-invalid:placeholder:text-red-600 dark:p-invalid:placeholder:text-red-400
             px-3 py-[9px] leading-[1.25rem] p-fluid:w-full
             p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
@@ -50,7 +50,7 @@ const theme = ref<AutoCompletePassThroughOptions>({
         px-3 py-1 not-p-empty:px-1 gap-1 text-surface-700 dark:text-surface-0 bg-surface-0 dark:bg-surface-950
         border border-surface-300 dark:border-surface-700 rounded-[var(--p-content-border-radius)] p-has-dropdown:rounded-e-none w-full
         hover:border-surface-400 dark:hover:border-surface-600 p-focus:border-primary
-        p-invalid:border-red-400 dark:p-invalid:border-red-300
+        p-invalid:border-red-400 dark:p-invalid:border-red-600
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
         p-disabled:pointer-events-none p-disabled:bg-surface-200 p-disabled:text-surface-500 dark:p-disabled:bg-surface-700 dark:p-disabled:text-surface-400
         shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]

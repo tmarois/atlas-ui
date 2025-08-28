@@ -32,7 +32,7 @@ const theme = ref<ToggleSwitchPassThroughOptions>({
         p-checked:bg-surface-0 dark:p-checked:bg-surface-0
         peer-enabled:peer-hover:p-checked:bg-surface-50 dark:peer-enabled:peer-hover:p-checked:bg-surface-50
         peer-enabled:peer-active:p-checked:bg-surface-100 dark:peer-enabled:peer-active:p-checked:bg-surface-100
-        p-invalid:border-red-400 dark:p-invalid:border-red-300
+        p-invalid:border-red-400 dark:p-invalid:border-red-600
         p-disabled:bg-surface-200 dark:p-disabled:bg-surface-600
         peer-focus-visible:outline peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary`,
     handle: `absolute top-1/2 flex justify-center items-center

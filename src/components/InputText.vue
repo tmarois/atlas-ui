@@ -57,7 +57,7 @@ const theme = ref<InputTextPassThroughOptions>({
         enabled:hover:border-surface-400 dark:enabled:hover:border-surface-600
         enabled:focus:border-primary
         dark:disabled:bg-surface-700 dark:disabled:text-surface-400
-        p-invalid:border-red-400 dark:p-invalid:border-red-500
+        p-invalid:border-red-400 dark:p-invalid:border-red-600
         p-invalid:placeholder:text-red-600 dark:p-invalid:placeholder:text-red-400
         px-3 py-[9px] leading-[1.25rem] w-full
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
@@ -70,4 +70,3 @@ const theme = ref<InputTextPassThroughOptions>({
 const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme, ['modelValue', 'clearable'] as const);
 const isDisabled = computed(() => !!bindProps.value.disabled);
 </script>
-
