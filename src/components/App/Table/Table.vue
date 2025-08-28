@@ -13,7 +13,7 @@
                             value: 'Customize columns',
                             pt: {
                                 root: 'absolute shadow-md py-0 px-0 max-w-[260px]',
-                                text: 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-700 dark:border-surface-800 rounded-[var(--p-content-border-radius)] whitespace-pre-line'
+                                text: 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-0 dark:border-surface-300 dark:text-black rounded-[var(--p-content-border-radius)] whitespace-pre-line'
                             }
                         }"
                         class="bg-white border border-gray-300 cursor-pointer text-surface-600 dark:text-surface-400 hover:text-surface-800 dark:hover:text-surface-300 h-[38px] w-[38px] flex items-center justify-center rounded-bl-lg rounded-br-lg"
