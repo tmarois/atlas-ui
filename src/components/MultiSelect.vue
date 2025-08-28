@@ -48,7 +48,7 @@ const props = defineProps<Props>();
 const theme = ref<MultiSelectPassThroughOptions>({
     root: `inline-flex cursor-pointer relative select-none rounded-[var(--p-content-border-radius)] p-fluid:flex
         bg-surface-0 dark:bg-surface-950
-        border border-surface-300 hover:border-surface-400 dark:border-surface-600 dark:hover:border-surface-500
+        border border-surface-300 hover:border-surface-400 dark:border-surface-700 dark:hover:border-surface-600
         p-focus:border-primary
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
         p-invalid:border-red-400 dark:p-invalid:border-red-600
@@ -127,8 +127,6 @@ const theme = ref<MultiSelectPassThroughOptions>({
         rounded-[var(--p-content-border-radius)] text-surface-700 dark:text-surface-0 bg-transparent border-none
         hover:bg-surface-100 dark:hover:bg-surface-700 hover:text-surface-800 dark:hover:text-surface-0
         p-focus:bg-surface-100 dark:p-focus:bg-surface-700 p-focus:text-surface-800 dark:p-focus:text-surface-0
-        p-selected:bg-primary-500 p-focus:p-selected:bg-primary-500 p-selected:text-white p-focus:p-selected:text-white
-        dark:p-selected:bg-surface-0 dark:p-focus:p-selected:bg-surface-0 dark:p-selected:text-black dark:p-focus:p-selected:text-black
         transition-colors duration-200 text-sm`,
     optionLabel: ``,
     pcOptionCheckbox: {
