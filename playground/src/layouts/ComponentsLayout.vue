@@ -93,6 +93,7 @@ const pageTabs = computed(() => {
     return [
       { title: 'General', href: '/components/tables' },
       { title: 'Sorting', href: '/components/tables/sorting' },
+      { title: 'Multiple tables', href: '/components/tables/multiple' },
     ];
   }
   if (route.path.startsWith('/components/forms')) {

@@ -7,6 +7,7 @@ import FormsSizing from './pages/components/forms/Sizing.vue';
 import FormsErrors from './pages/components/forms/Errors.vue';
 import Tables from './pages/components/tables/Index.vue';
 import TablesSorting from './pages/components/tables/Sorting.vue';
+import TablesMultiple from './pages/components/tables/Multiple.vue';
 import Tabs from './pages/components/Tabs.vue';
 import Overlays from './pages/components/Overlays.vue';
 import Feedback from './pages/components/feedback/Index.vue';
@@ -56,6 +57,7 @@ const routes = [
       { path: 'forms/errors', component: FormsErrors, meta: { title: 'Forms' } },
       { path: 'tables', component: Tables, meta: { title: 'Tables' } },
       { path: 'tables/sorting', component: TablesSorting, meta: { title: 'Tables' } },
+      { path: 'tables/multiple', component: TablesMultiple, meta: { title: 'Tables' } },
       { path: 'tabs', component: Tabs, meta: { title: 'Tabs' } },
       { path: 'overlays', component: Overlays, meta: { title: 'Overlays' } },
       { path: 'feedback', component: Feedback, meta: { title: 'Feedback' } },

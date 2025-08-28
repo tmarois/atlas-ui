@@ -3,7 +3,7 @@
         ref="frame"
         class="frame-scroll"
         :class="rootClass"
-        :style="{ height: `calc(100vh - ${dynamicHeight} - ${addOffset}px)` }"
+        :style="scrollable ? { height: `calc(100vh - ${dynamicHeight} - ${addOffset}px)` } : undefined"
     >
         <slot />
     </div>
@@ -20,6 +20,7 @@ interface Props {
     offset?: number | null;
     addOffset?: number;
     rootClass?: string;
+    scrollable?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -29,6 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
     offset: null,
     addOffset: 0,
     rootClass: 'overflow-y-auto',
+    scrollable: true,
 });
 
 const frame = ref<HTMLElement | null>(null);
@@ -59,46 +61,51 @@ const calculateOffsets = () => {
 onMounted(() => {
     add();
     if (props.page && !props.allowBodyScroll) lockScroll();
-    nextTick(() => {
-        updateHeight();
-    });
-    if (typeof window !== 'undefined') {
-        window.addEventListener('resize', updateHeight);
-        if (typeof ResizeObserver !== 'undefined') {
-            resizeObserver = new ResizeObserver(() => updateHeight());
-            const element = frame.value?.parentElement ?? document.body;
-            resizeObserver.observe(element);
-        }
-        if (typeof IntersectionObserver !== 'undefined') {
-            intersectionObserver = new IntersectionObserver((entries) => {
-                if (entries.some((entry) => entry.isIntersecting)) {
-                    updateHeight();
-                }
-            });
-            if (frame.value) intersectionObserver.observe(frame.value);
-        }
-        if (typeof MutationObserver !== 'undefined') {
-            mutationObserver = new MutationObserver((mutations) => {
-                const frameEl = frame.value;
-                if (!frameEl) return;
-                const shouldUpdate = mutations.some(
-                    (m) => !frameEl.contains(m.target as Node)
-                );
-                if (shouldUpdate) updateHeight();
-            });
-            mutationObserver.observe(document.body, {
-                attributes: true,
-                childList: true,
-                subtree: true,
-            });
+    // Only compute and observe dynamic height when scrollable
+    if (props.scrollable) {
+        nextTick(() => {
+            updateHeight();
+        });
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', updateHeight);
+            if (typeof ResizeObserver !== 'undefined') {
+                resizeObserver = new ResizeObserver(() => updateHeight());
+                const element = frame.value?.parentElement ?? document.body;
+                resizeObserver.observe(element);
+            }
+            if (typeof IntersectionObserver !== 'undefined') {
+                intersectionObserver = new IntersectionObserver((entries) => {
+                    if (entries.some((entry) => entry.isIntersecting)) {
+                        updateHeight();
+                    }
+                });
+                if (frame.value) intersectionObserver.observe(frame.value);
+            }
+            if (typeof MutationObserver !== 'undefined') {
+                mutationObserver = new MutationObserver((mutations) => {
+                    const frameEl = frame.value;
+                    if (!frameEl) return;
+                    const shouldUpdate = mutations.some(
+                        (m) => !frameEl.contains(m.target as Node)
+                    );
+                    if (shouldUpdate) updateHeight();
+                });
+                mutationObserver.observe(document.body, {
+                    attributes: true,
+                    childList: true,
+                    subtree: true,
+                });
+            }
         }
     }
 });
 
 onUpdated(() => {
-    nextTick(() => {
-        updateHeight();
-    });
+    if (props.scrollable) {
+        nextTick(() => {
+            updateHeight();
+        });
+    }
 });
 
 onBeforeUnmount(() => {
@@ -112,8 +119,8 @@ onBeforeUnmount(() => {
     }
 });
 
-watch(() => props.offset, updateHeight);
-watch(() => props.addOffset, updateHeight);
+watch(() => props.offset, () => props.scrollable && updateHeight());
+watch(() => props.addOffset, () => props.scrollable && updateHeight());
 
 watch(
     () => props.allowBodyScroll,
@@ -123,4 +130,3 @@ watch(
     }
 );
 </script>
-

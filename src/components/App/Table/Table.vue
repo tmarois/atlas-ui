@@ -1,5 +1,5 @@
 <template>
-    <ScrollFrame rootClass="overflow-hidden relative" :addOffset="scrollOffset">
+    <ScrollFrame rootClass="overflow-hidden relative" :addOffset="scrollOffset" :scrollable="scrollable">
         <div v-if="hasCustomizeColumns" class="flex items-center absolute -top-1 z-[99] right-[10px]">
             <CustomizeColumns
                 :columns="columns"
@@ -32,7 +32,7 @@
                 dataKey: hasSelection ? dataKey : undefined,
                 rowHover: true,
                 showGridlines: true,
-                scrollHeight: 'flex',
+                scrollHeight: scrollable ? 'flex' : undefined,
                 scrollable: scrollable,
                 size,
                 tableStyle,
