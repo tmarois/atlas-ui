@@ -1,6 +1,6 @@
 <template>
     <div
-        class="w-full bg-white dark:bg-surface-700 border-b border-surface-300 dark:border-surface-600 z-20 sticky top-0"
+        class="w-full bg-white dark:bg-surface-900 border-b border-surface-300 dark:border-surface-700 z-20 sticky top-0"
         :class="{
             'shadow-[2px_0px_6px_-2px_rgba(0,0,0,0.5)] dark:shadow-[2px_0px_6px_-2px_rgba(0,0,0,0.5)]': !isTop
         }"

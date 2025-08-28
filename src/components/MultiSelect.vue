@@ -125,7 +125,8 @@ const theme = ref<MultiSelectPassThroughOptions>({
     optionGroup: `m-0 px-3 py-2 bg-transparent text-surface-500 dark:text-surface-400 font-semibold`,
     option: `cursor-pointer font-normal whitespace-nowrap relative overflow-hidden flex items-center gap-2 px-3 py-1.5
         rounded-[var(--p-content-border-radius)] text-surface-700 dark:text-surface-0 bg-transparent border-none
-        p-focus:bg-surface-100 dark:p-focus:bg-surface-800 p-focus:text-surface-800 dark:p-focus:text-surface-0
+        hover:bg-surface-100 dark:hover:bg-surface-700 hover:text-surface-800 dark:hover:text-surface-0
+        p-focus:bg-surface-100 dark:p-focus:bg-surface-700 p-focus:text-surface-800 dark:p-focus:text-surface-0
         transition-colors duration-200 text-sm`,
     optionLabel: ``,
     pcOptionCheckbox: {
