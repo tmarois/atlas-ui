@@ -1,6 +1,6 @@
 <template>
     <div :class="mergedPt.root.class">
-        <RadioButton v-model="model" v-bind="inputAttrs" :pt="mergedPt.input" />
+        <RadioButton v-model="model" v-bind="inputAttrs" />
         <label
             v-if="label"
             :for="inputAttrs.inputId"
