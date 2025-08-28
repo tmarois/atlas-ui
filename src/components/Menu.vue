@@ -31,8 +31,8 @@ const theme = ref<MenuPassThroughOptions>({
     list: `m-0 p-1 list-none outline-none flex flex-col gap-[2px]`,
     item: `p-disabled:opacity-60 p-disabled:pointer-events-none`,
     itemContent: `group transition-colors duration-200 rounded-[var(--p-content-border-radius)] text-surface-700 dark:text-surface-0
-        p-focus:bg-surface-100 dark:p-focus:bg-surface-800 p-focus:text-surface-800 dark:p-focus:text-surface-0
-        hover:bg-surface-100 dark:hover:bg-surface-800 hover:text-surface-800 dark:hover:text-surface-0`,
+        p-focus:bg-surface-100 dark:p-focus:bg-surface-700 p-focus:text-surface-800 dark:p-focus:text-surface-0
+        hover:bg-surface-100 dark:hover:bg-surface-700 hover:text-surface-800 dark:hover:text-surface-0`,
     itemLink: `cursor-pointer flex items-center no-underline overflow-hidden relative text-inherit
         px-3 py-2 gap-2 select-none outline-none`,
     itemIcon: `text-surface-400 dark:text-surface-500

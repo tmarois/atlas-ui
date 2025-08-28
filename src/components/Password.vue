@@ -42,7 +42,7 @@ const theme = ref<PasswordPassThroughOptions>({
         enabled:focus:border-primary
         disabled:bg-surface-200 disabled:text-surface-500
         dark:disabled:bg-surface-700 dark:disabled:text-surface-400
-        p-invalid:border-red-400 dark:p-invalid:border-red-300
+        p-invalid:border-red-400 dark:p-invalid:border-red-600
         p-invalid:placeholder:text-red-600 dark:p-invalid:placeholder:text-red-400
         px-3 py-2 p-fluid:w-full p-has-e-icon:pe-10
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]

@@ -49,7 +49,7 @@
                         'flex items-center px-3 py-2 text-sm',
                         item.disabled
                             ? 'opacity-50 cursor-not-allowed'
-                            : 'cursor-pointer hover:bg-surface-100 dark:hover:bg-surface-800',
+                            : 'cursor-pointer hover:bg-surface-100 dark:hover:bg-surface-700',
                         'text-surface-900 dark:text-surface-0 rounded-md'
                     ]"
                 >

@@ -32,7 +32,7 @@ const theme = ref<ToggleButtonPassThroughOptions>({
         disabled:cursor-default
         disabled:bg-surface-200 disabled:border-surface-200 disabled:text-surface-500
         disabled:dark:bg-surface-700 disabled:dark:border-surface-700 disabled:dark:text-surface-400
-        p-invalid:border-red-400 dark:p-invalid:border-red-300
+        p-invalid:border-red-400 dark:p-invalid:border-red-600
         transition-colors duration-200
         p-1 p-small:text-sm p-large:text-lg
     `,

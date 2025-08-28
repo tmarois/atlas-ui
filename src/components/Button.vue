@@ -25,7 +25,9 @@ const theme = ref<ButtonPassThroughOptions>({
     root: `inline-flex align-middle cursor-pointer select-none items-center justify-center overflow-hidden relative
         px-4 py-[9px] leading-5 gap-2 rounded-[var(--p-content-border-radius)] disabled:pointer-events-none disabled:opacity-60 transition-colors duration-200
         bg-primary-500 enabled:hover:bg-primary-500/70 enabled:active:bg-primary-500/60 text-white text-md font-semibold p-text:!font-medium
+        dark:bg-primary-500 dark:enabled:hover:bg-primary-600 dark:enabled:active:bg-primary-700
         border border-primary-500 enabled:hover:border-primary-500/70 enabled:active:border-primary-500/60
+        dark:border-primary-500 dark:enabled:hover:border-primary-600 dark:enabled:active:border-primary-700
         focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-primary
         p-vertical:flex-col p-fluid:w-full p-fluid:p-icon-only:w-10 p-fluid:p-icon-only:h-10
         p-icon-only:w-10 p-icon-only:h-10 p-icon-only:p-0 p-icon-only:gap-0
@@ -38,15 +40,15 @@ const theme = ref<ButtonPassThroughOptions>({
         p-outlined:bg-transparent enabled:hover:p-outlined:bg-gray-100 enabled:active:p-outlined:bg-gray-200
         p-outlined:border-surface-300 enabled:hover:p-outlined:border-surface-400 enabled:active:p-outlined:border-surface-300
         p-outlined:text-gray-700 enabled:hover:p-outlined:text-gray-700 enabled:active:p-outlined:text-gray-700
-        dark:p-outlined:bg-transparent dark:enabled:hover:p-outlined:bg-surface-700 dark:enabled:active:p-outlined:bg-surface-600
-        dark:p-outlined:border-surface-700 dark:enabled:hover:p-outlined:border-surface-600 dark:enabled:active:p-outlined:border-surface-600
+        dark:p-outlined:bg-transparent dark:enabled:hover:p-outlined:bg-primary-600 dark:enabled:active:p-outlined:bg-primary-700
+        dark:p-outlined:border-primary-500 dark:enabled:hover:p-outlined:border-primary-600 dark:enabled:active:p-outlined:border-primary-700
         dark:p-outlined:text-white dark:enabled:hover:p-outlined:text-white dark:enabled:active:p-outlined:text-white
         p-text:bg-transparent enabled:hover:p-text:bg-gray-100 enabled:active:p-text:bg-primary-100
         p-text:border-transparent enabled:hover:p-text:border-transparent enabled:active:p-text:border-transparent
         p-text:text-gray-700 enabled:hover:p-text:text-gray-700 enabled:active:p-text:text-gray-700
-        dark:p-text:bg-transparent dark:enabled:hover:p-text:bg-primary/5 dark:enabled:active:p-text:bg-primary/15
+        dark:p-text:bg-transparent dark:enabled:hover:p-text:bg-primary-600 dark:enabled:active:p-text:bg-primary-700
         dark:p-text:border-transparent dark:enabled:hover:p-text:border-transparent dark:enabled:active:p-text:border-transparent
-        dark:p-text:text-white dark:enabled:hover:p-text:text-primary dark:enabled:active:p-text:text-primary
+        dark:p-text:text-white dark:enabled:hover:p-text:text-white dark:enabled:active:p-text:text-white
     `,
     loadingIcon: `animate-spin`,
     icon: `p-right:order-1 p-bottom:order-2`,

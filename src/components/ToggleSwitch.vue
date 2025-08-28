@@ -26,11 +26,13 @@ const theme = ref<ToggleSwitchPassThroughOptions>({
     input: `peer cursor-pointer disabled:cursor-default appearance-none absolute top-0 start-0 w-full h-full m-0 p-0 opacity-0 z-10 rounded-[30px]`,
     slider: `inline-block w-full h-full rounded-[30px] shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]
         bg-surface-300 dark:bg-surface-700
-        border border-transparent
+        border border-surface-300 dark:border-surface-700
         transition-colors duration-200
         peer-enabled:peer-hover:bg-surface-400 dark:peer-enabled:peer-hover:bg-surface-600
-        p-checked:bg-primary-500 peer-enabled:peer-hover:p-checked:bg-primary-500/70 peer-enabled:peer-active:p-checked:bg-primary-500/60
-        p-invalid:border-red-400 dark:p-invalid:border-red-300
+        p-checked:bg-surface-0 dark:p-checked:bg-surface-0
+        peer-enabled:peer-hover:p-checked:bg-surface-50 dark:peer-enabled:peer-hover:p-checked:bg-surface-50
+        peer-enabled:peer-active:p-checked:bg-surface-100 dark:peer-enabled:peer-active:p-checked:bg-surface-100
+        p-invalid:border-red-400 dark:p-invalid:border-red-600
         p-disabled:bg-surface-200 dark:p-disabled:bg-surface-600
         peer-focus-visible:outline peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary`,
     handle: `absolute top-1/2 flex justify-center items-center
@@ -38,7 +40,7 @@ const theme = ref<ToggleSwitchPassThroughOptions>({
         text-surface-500 dark:text-surface-900
         w-4 h-4 start-1 -mt-2 rounded-full
         transition-[background,color,left] duration-200
-        p-checked:bg-surface-0 dark:p-checked:bg-surface-900 p-checked:text-primary-500 p-checked:start-5
+        p-checked:bg-surface-900 dark:p-checked:bg-surface-900 p-checked:text-primary-500 p-checked:start-5
         p-disabled:bg-surface-700 dark:p-disabled:bg-surface-900`
 });
 

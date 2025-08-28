@@ -48,10 +48,10 @@ const props = defineProps<Props>();
 const theme = ref<MultiSelectPassThroughOptions>({
     root: `inline-flex cursor-pointer relative select-none rounded-[var(--p-content-border-radius)] p-fluid:flex
         bg-surface-0 dark:bg-surface-950
-        border border-surface-300 hover:border-surface-400 dark:border-surface-600 dark:hover:border-surface-500
+        border border-surface-300 hover:border-surface-400 dark:border-surface-700 dark:hover:border-surface-600
         p-focus:border-primary
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
-        p-invalid:border-red-400 dark:p-invalid:border-red-500
+        p-invalid:border-red-400 dark:p-invalid:border-red-600
         p-disabled:bg-surface-200 p-disabled:text-surface-500 dark:p-disabled:bg-surface-700 dark:p-disabled:text-surface-400 p-disabled:pointer-events-none
         transition-colors duration-200 shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]`,
     labelContainer: `overflow-hidden flex-auto`,
@@ -67,11 +67,11 @@ const theme = ref<MultiSelectPassThroughOptions>({
     chipItem: ``,
     pcChip: {
         root: `inline-flex items-center gap-2 px-3 py-[5px] rounded-[var(--p-content-border-radius)]
-            bg-primary-500 dark:bg-primary-500
-            text-white dark:text-surface-0
+            bg-primary-500 dark:bg-surface-0 dark:border dark:border-surface-300
+            text-white dark:text-black
             has-[img]:pt-1 has-[img]:pb-1
             p-removable:pe-2`,
-        removeIcon: `cursor-pointer text-base w-4 h-4 rounded-full text-white dark:text-surface-0`
+        removeIcon: `cursor-pointer text-base w-4 h-4 rounded-full text-white dark:text-black`
     },
     dropdown: `flex items-center justify-center shrink-0 bg-transparent
         text-surface-400 w-10 rounded-e-[var(--p-content-border-radius)]`,
@@ -92,11 +92,13 @@ const theme = ref<MultiSelectPassThroughOptions>({
             text-surface-700 dark:text-surface-0
             peer-enabled:peer-hover:border-surface-400 dark:peer-enabled:peer-hover:border-surface-600
             p-checked:border-primary-500 p-checked:bg-primary-500 p-checked:text-primary-contrast
+            dark:p-checked:bg-surface-0 dark:p-checked:border-surface-900
             peer-enabled:peer-hover:p-checked:bg-primary-emphasis peer-enabled:peer-hover:p-checked:border-primary-emphasis
+            dark:peer-enabled:peer-hover:p-checked:bg-surface-50
             peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary peer-focus-visible:outline
             p-disabled:bg-surface-200 dark:p-disabled:bg-surface-400 p-disabled:border-surface-300 dark:p-disabled:border-surface-700 p-disabled:text-surface-700 dark:p-disabled:text-surface-400
             shadow-[0_1px_2px_0_rgba(18,18,23,0.05)] transition-colors duration-200`,
-        icon: `text-sm w-[0.875rem] h-[0.875rem] transition-none text-white`
+        icon: `text-sm w-[1rem] h-[1rem] transition-none text-white dark:text-black`
     },
     pcFilterContainer: {
         root: `relative flex-auto`
@@ -123,7 +125,8 @@ const theme = ref<MultiSelectPassThroughOptions>({
     optionGroup: `m-0 px-3 py-2 bg-transparent text-surface-500 dark:text-surface-400 font-semibold`,
     option: `cursor-pointer font-normal whitespace-nowrap relative overflow-hidden flex items-center gap-2 px-3 py-1.5
         rounded-[var(--p-content-border-radius)] text-surface-700 dark:text-surface-0 bg-transparent border-none
-        p-focus:bg-surface-100 dark:p-focus:bg-surface-800 p-focus:text-surface-800 dark:p-focus:text-surface-0
+        hover:bg-surface-100 dark:hover:bg-surface-700 hover:text-surface-800 dark:hover:text-surface-0
+        p-focus:bg-surface-100 dark:p-focus:bg-surface-700 p-focus:text-surface-800 dark:p-focus:text-surface-0
         transition-colors duration-200 text-sm`,
     optionLabel: ``,
     pcOptionCheckbox: {
@@ -137,11 +140,13 @@ const theme = ref<MultiSelectPassThroughOptions>({
             text-surface-700 dark:text-surface-0
             peer-enabled:peer-hover:border-surface-400 dark:peer-enabled:peer-hover:border-surface-600
             p-checked:border-primary-500 p-checked:bg-primary-500 p-checked:text-primary-contrast
+            dark:p-checked:bg-surface-0 dark:p-checked:border-surface-900
             peer-enabled:peer-hover:p-checked:bg-primary-emphasis peer-enabled:peer-hover:p-checked:border-primary-emphasis
+            dark:peer-enabled:peer-hover:p-checked:bg-surface-50
             peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary peer-focus-visible:outline
             p-disabled:bg-surface-200 dark:p-disabled:bg-surface-400 p-disabled:border-surface-300 dark:p-disabled:border-surface-700 p-disabled:text-surface-700 dark:p-disabled:text-surface-400
             shadow-[0_1px_2px_0_rgba(18,18,23,0.05)] transition-colors duration-200`,
-        icon: `text-sm w-[0.875rem] h-[0.875rem] transition-none text-white`
+        icon: `text-sm w-[1rem] h-[1rem] transition-none text-white dark:text-black`
     },
     emptyMessage: `px-3 py-2.5`,
     transition: {

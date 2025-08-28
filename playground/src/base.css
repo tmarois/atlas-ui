@@ -113,20 +113,23 @@
 }
 
 /* Surface Palettes */
+/*
+ * Default surfaces: switch to neutral zinc for a sleeker, less blue-tinted base.
+ */
 :root,
-.theme-surface-blue {
+.theme-surface-zinc {
     --p-surface-0: #ffffff;
-    --p-surface-50: #f8fafc;
-    --p-surface-100: #f1f5f9;
-    --p-surface-200: #e2e8f0;
-    --p-surface-300: #cbd5e1;
-    --p-surface-400: #94a3b8;
-    --p-surface-500: #64748b;
-    --p-surface-600: #475569;
-    --p-surface-700: #334155;
-    --p-surface-800: #1e293b;
-    --p-surface-900: #0f172a;
-    --p-surface-950: #020617;
+    --p-surface-50: #fafafa;
+    --p-surface-100: #f4f4f5;
+    --p-surface-200: #e4e4e7;
+    --p-surface-300: #d4d4d8;
+    --p-surface-400: #a1a1aa;
+    --p-surface-500: #71717a;
+    --p-surface-600: #52525b;
+    --p-surface-700: #3f3f46;
+    --p-surface-800: #27272a;
+    --p-surface-900: #18181b;
+    --p-surface-950: #09090b;
 }
 
 .theme-surface-gray {
@@ -280,6 +283,15 @@
         --p-text-hover-color: var(--p-surface-0);
         --p-text-muted-color: var(--p-surface-400);
         --p-text-hover-muted-color: var(--p-surface-300);
+
+        /*
+         * Dark surfaces: make base surfaces essentially black and unify layers.
+         * Keep border at a subtle, visible gray for a sleek separation.
+         */
+        --p-surface-800: #0a0a0b;
+        --p-surface-900: #0a0a0b;
+        --p-surface-950: #0a0a0b;
+        --p-surface-700: #2a2a2f;
     }
 }
 

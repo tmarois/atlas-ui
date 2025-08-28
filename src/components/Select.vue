@@ -51,7 +51,7 @@ const theme = ref<SelectPassThroughOptions>({
         border border-surface-300 hover:border-surface-400 dark:border-surface-700 dark:hover:border-surface-600
         p-focus:border-primary
         p-filled:bg-surface-50 dark:p-filled:bg-surface-800
-        p-invalid:border-red-400 dark:p-invalid:border-red-500
+        p-invalid:border-red-400 dark:p-invalid:border-red-600
         p-disabled:bg-surface-200 p-disabled:text-surface-500 dark:p-disabled:bg-surface-700 dark:p-disabled:text-surface-400 p-disabled:pointer-events-none p-disabled:opacity-70
         transition-colors duration-200 shadow-[0_1px_2px_0_rgba(18,18,23,0.05)]`,
     label: `flex items-center px-3 py-[9px]
@@ -97,8 +97,10 @@ const theme = ref<SelectPassThroughOptions>({
     optionGroupLabel: ``,
     option: `cursor-pointer font-normal whitespace-nowrap relative overflow-hidden flex items-center
         px-3 py-1.5 border-none text-surface-700 dark:text-surface-0 bg-transparent rounded-[var(--p-content-border-radius)]
-        p-focus:bg-surface-100 dark:p-focus:bg-surface-800 p-focus:text-surface-800 dark:p-focus:text-surface-0
-        p-selected:bg-primary p-focus:p-selected:bg-primary p-selected:text-white p-focus:p-selected:text-white
+        hover:bg-surface-100 dark:hover:bg-surface-700 hover:text-surface-800 dark:hover:text-surface-0
+        p-focus:bg-surface-100 dark:p-focus:bg-surface-700 p-focus:text-surface-800 dark:p-focus:text-surface-0
+        p-selected:bg-primary-500 p-focus:p-selected:bg-primary-500 p-selected:text-white p-focus:p-selected:text-white
+        dark:p-selected:bg-surface-0 dark:p-focus:p-selected:bg-surface-0 dark:p-selected:text-black dark:p-focus:p-selected:text-black
         transition-colors duration-200 text-sm`,
     optionLabel: ``,
     optionCheckIcon: `relative -ms-[0.375rem] me-[0.375rem] text-surface-700 dark:text-surface-0`,

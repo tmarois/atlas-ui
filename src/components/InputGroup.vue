@@ -24,7 +24,7 @@ const theme = ref<InputGroupPassThroughOptions>({
         shadow-sm overflow-hidden
         focus-within:border-primary
         dark:focus-within:border-primary
-        p-invalid:border-red-500 dark:p-invalid:border-red-500
+        p-invalid:border-red-500 dark:p-invalid:border-red-600
         transition-colors duration-200`,
     addon: `flex items-center px-3 text-sm text-surface-600 dark:text-surface-300
         bg-surface-100 dark:bg-surface-800

@@ -33,8 +33,8 @@
                                         pt: {
                                             root: 'absolute shadow-md py-0 px-0 max-w-[260px] ml-3',
                                             text: autoDark
-                                                ? 'text-sm p-2 border border-surface-300 bg-white text-surface-700 dark:bg-surface-700 dark:border-surface-800 dark:text-white rounded-[var(--p-content-border-radius)] whitespace-pre-line'
-                                                : 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-700 dark:border-surface-800 rounded-[var(--p-content-border-radius)] whitespace-pre-line'
+                                                ? 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-0 dark:border-surface-300 dark:text-black rounded-[var(--p-content-border-radius)] whitespace-pre-line'
+                                                : 'text-sm p-2 border border-surface-700 bg-surface-900 text-white dark:bg-surface-0 dark:border-surface-300 dark:text-black rounded-[var(--p-content-border-radius)] whitespace-pre-line'
                                         }
                                 }"
                                 class="relative flex items-center justify-center w-full h-12 mt-2 rounded-[var(--p-content-border-radius)]"
@@ -117,8 +117,8 @@ const containerClass = computed(() => {
         ? 'text-surface-700 dark:text-white/80'
         : 'dark text-white/80';
     const bg = props.backgroundClass || (props.autoDark
-        ? 'bg-surface-100 dark:bg-primary-950 border-surface-200 dark:border-primary-950'
-        : 'bg-primary-950 border-primary-950');
+        ? 'bg-surface-100 dark:bg-primary-950 border-surface-200 dark:border-surface-600'
+        : 'bg-primary-950 border-surface-600');
     return `${base} ${bg}`;
 });
 

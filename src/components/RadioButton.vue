@@ -29,16 +29,19 @@ const theme = ref<RadioButtonPassThroughOptions>({
         text-surface-700 dark:text-surface-0
         peer-enabled:peer-hover:border-surface-500 dark:peer-enabled:peer-hover:border-surface-600
         p-checked:border-primary-400 p-checked:bg-primary-500
+        dark:p-checked:bg-surface-0 dark:p-checked:border-surface-900
         peer-enabled:peer-hover:p-checked:bg-primary-500/70 peer-enabled:peer-hover:p-checked:border-primary-emphasis
+        dark:peer-enabled:peer-hover:p-checked:bg-surface-50
         peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary
-        p-invalid:border-red-400 dark:p-invalid:border-red-500
+        p-invalid:border-red-400 dark:p-invalid:border-red-600
         p-disabled:bg-surface-200 dark:p-disabled:bg-surface-400 p-disabled:border-surface-300 dark:p-disabled:border-surface-500
         p-disabled:text-surface-700 dark:p-disabled:text-surface-400
         shadow-[0_1px_2px_0_rgba(18,18,23,0.05)] transition-colors duration-200
         p-small:w-4 p-small:h-4
         p-large:w-6 p-large:h-6`,
-    icon: `w-2 h-2 rounded-full bg-primary-contrast transition-transform duration-200
+    icon: `w-[0.75rem] h-[0.75rem] rounded-full bg-surface-0 transition-transform duration-200
         transform scale-0 p-checked:scale-100
+        dark:p-checked:bg-black
         p-disabled:bg-surface-400 dark:p-disabled:bg-surface-600`
 });
 
