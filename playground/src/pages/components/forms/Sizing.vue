@@ -41,6 +41,20 @@
             <LabelField name="roles" label="Roles">
               <MultiSelect v-model="form.roles" :options="roles" optionLabel="name" optionValue="id" fluid filter :size="item.size" />
             </LabelField>
+            <LabelField name="roles_chips" label="Roles (chips)">
+              <MultiSelect
+                v-model="form.rolesChips"
+                display="chip"
+                :options="roles"
+                optionLabel="name"
+                optionValue="id"
+                :maxSelectedLabels="6"
+                showClear
+                fluid
+                filter
+                :size="item.size"
+              />
+            </LabelField>
             <LabelField name="autorole" label="Auto Role">
               <AutoComplete
                 v-model="form.autorole"
@@ -105,6 +119,7 @@ const form = reactive({
   amount: null,
   email: 'example@example.com',
   roles: [],
+  rolesChips: [],
   type: 'credit',
   payment: 'disabled',
   agree: false,

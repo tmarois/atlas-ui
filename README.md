@@ -4,6 +4,20 @@ Atlas UI is a Vue 3 component library built with **PrimeVue 4** and **Tailwind C
 
 For backend helpers like server-driven datatable options, see the companion [Atlas Laravel](https://github.com/tmarois/atlas-laravel) package.
 
+## Installation
+
+- Install the package: `npm install @tmarois/atlas-ui`
+- Import the CSS in your app entry (e.g., `main.ts` or `main.js`):
+
+  ```ts
+  // main.ts
+  import { createApp } from 'vue'
+  import App from './App.vue'
+  import '@tmarois/atlas-ui/style.css'
+
+  createApp(App).mount('#app')
+  ```
+
 ## Documentation
 
 - [Application components](docs/application.md)

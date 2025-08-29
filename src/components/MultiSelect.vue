@@ -46,7 +46,7 @@ interface Props extends /* @vue-ignore */ MultiSelectProps {}
 const props = defineProps<Props>();
 
 const theme = ref<MultiSelectPassThroughOptions>({
-    root: `inline-flex cursor-pointer relative select-none rounded-[var(--p-content-border-radius)] p-fluid:flex
+    root: `inline-flex items-center cursor-pointer relative select-none rounded-[var(--p-content-border-radius)] p-fluid:flex
         bg-surface-0 dark:bg-surface-950
         border border-surface-300 hover:border-surface-400 dark:border-surface-700 dark:hover:border-surface-600
         p-focus:border-primary
@@ -61,17 +61,20 @@ const theme = ref<MultiSelectPassThroughOptions>({
         p-placeholder:text-surface-500 dark:p-placeholder:text-surface-400
         p-disabled:text-surface-500 dark:p-disabled:text-surface-400
         p-empty:overflow-hidden p-empty:opacity-0
-        p-has-chip:px-1 p-has-chip:py-[4px] p-has-chip:gap-1
         p-small:text-sm p-small:px-[0.625rem] p-small:py-[0.375rem]
-        p-large:text-lg p-large:px-[0.875rem] p-large:py-[0.625rem] p-disabled:opacity-50 p-disabled:pointer-events-none`,
-    chipItem: ``,
+        p-large:text-lg p-large:px-[0.875rem] p-large:py-[0.625rem]
+        p-has-chip:px-1 p-has-chip:py-[4px] p-has-chip:gap-1
+        p-disabled:opacity-50 p-disabled:pointer-events-none`,
+    chipItem: `my-0 p-small:-my-[2px]`,
     pcChip: {
         root: `inline-flex items-center gap-2 px-3 py-[5px] rounded-[var(--p-content-border-radius)]
             bg-primary-500 dark:bg-surface-0 dark:border dark:border-surface-300
             text-white dark:text-black
             has-[img]:pt-1 has-[img]:pb-1
-            p-removable:pe-2`,
-        removeIcon: `cursor-pointer text-base w-4 h-4 rounded-full text-white dark:text-black`
+            p-removable:pe-2
+            p-small:text-xs p-small:gap-1 p-small:px-2 p-small:py-0 p-small:h-[24px] p-small:leading-none`,
+        removeIcon: `cursor-pointer text-base w-4 h-4 rounded-full text-white dark:text-black
+            p-small:w-3 p-small:h-3`
     },
     dropdown: `flex items-center justify-center shrink-0 bg-transparent
         text-surface-400 w-10 rounded-e-[var(--p-content-border-radius)]`,

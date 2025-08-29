@@ -95,7 +95,7 @@ const theme = ref<ButtonMenuPassThroughOptions>({
     menu: {}
 });
 
-const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
+const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme, ['onHover'] as const);
 
 
 const trigger = ref<any>(null);
