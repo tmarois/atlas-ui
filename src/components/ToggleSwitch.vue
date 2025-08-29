@@ -29,19 +29,24 @@ const theme = ref<ToggleSwitchPassThroughOptions>({
         border border-surface-300 dark:border-surface-700
         transition-colors duration-200
         peer-enabled:peer-hover:bg-surface-400 dark:peer-enabled:peer-hover:bg-surface-600
-        p-checked:bg-surface-0 dark:p-checked:bg-surface-0
-        peer-enabled:peer-hover:p-checked:bg-surface-50 dark:peer-enabled:peer-hover:p-checked:bg-surface-50
-        peer-enabled:peer-active:p-checked:bg-surface-100 dark:peer-enabled:peer-active:p-checked:bg-surface-100
+        p-checked:bg-primary-500 dark:p-checked:bg-surface-0
+        p-checked:border-primary-500 dark:p-checked:border-surface-0
+        peer-enabled:peer-hover:p-checked:bg-primary-600 dark:peer-enabled:peer-hover:p-checked:bg-surface-50
+        peer-enabled:peer-hover:p-checked:border-primary-600 dark:peer-enabled:peer-hover:p-checked:border-surface-50
+        peer-enabled:peer-active:p-checked:bg-primary-700 dark:peer-enabled:peer-active:p-checked:bg-surface-100
+        peer-enabled:peer-active:p-checked:border-primary-700 dark:peer-enabled:peer-active:p-checked:border-surface-100
         p-invalid:border-red-400 dark:p-invalid:border-red-600
-        p-disabled:bg-surface-200 dark:p-disabled:bg-surface-600
+        p-disabled:border-surface-200 p-disabled:p-checked:border-surface-100
+        p-disabled:bg-surface-200 dark:p-disabled:bg-surface-600 dark:p-disabled:border-surface-800 dark:p-disabled:p-checked:border-surface-400
+        p-disabled:p-checked:bg-primary-300 dark:p-disabled:p-checked:bg-surface-300
         peer-focus-visible:outline peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary`,
     handle: `absolute top-1/2 flex justify-center items-center
         bg-surface-0 dark:bg-surface-400
         text-surface-500 dark:text-surface-900
         w-4 h-4 start-1 -mt-2 rounded-full
         transition-[background,color,left] duration-200
-        p-checked:bg-surface-900 dark:p-checked:bg-surface-900 p-checked:text-primary-500 p-checked:start-5
-        p-disabled:bg-surface-700 dark:p-disabled:bg-surface-900`
+        p-checked:bg-surface-0 dark:p-checked:bg-surface-900 p-checked:start-5
+        p-disabled:p-checked:bg-primary-100 p-disabled:bg-surface-400 dark:p-disabled:bg-surface-400 dark:p-disabled:p-checked:bg-surface-500`
 });
 
 const { bindProps, mergedPt } = usePrimeBindings(props, attrs, theme);
