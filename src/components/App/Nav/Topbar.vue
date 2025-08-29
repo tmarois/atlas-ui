@@ -143,12 +143,12 @@ const menuActiveClass = computed(() => {
 });
 
 const linkClass = (item) => {
-    const activeCls = props.activeClass || 'bg-white text-primary-900';
+    const activeCls = props.activeClass || 'bg-white text-black';
     if (props.autoDark) {
         const baseCls = 'text-surface-700 dark:text-surface-300 hover:bg-surface-200 dark:hover:bg-primary-800 hover:text-surface-900 dark:hover:text-white';
         return isActive(item) ? activeCls : baseCls;
     }
-    const baseCls = 'text-gray-300 hover:bg-primary-800 hover:text-white';
+    const baseCls = 'text-gray-300 hover:bg-surface-600/50 hover:text-white';
     return isActive(item) ? activeCls : baseCls;
 };
 </script>
