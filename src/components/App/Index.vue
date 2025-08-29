@@ -52,9 +52,9 @@
                     :linkComponent="linkComponent"
                 />
                 <div class="flex-1 min-w-0">
-                    <PageHeader
+    <PageHeader
                         v-if="hasPageHeader"
-                        :title="pageTitle"
+                        :title="resolvedPageTitle"
                         :tabs="pageTabs"
                         :linkComponent="linkComponent"
                         :breadcrumbs="breadcrumbs"
@@ -130,9 +130,10 @@ import AppTopbar from './Topbar.vue';
 import Toast from '../Toast.vue';
 
 interface Props {
-    pageUrl: string;
+    pageUrl?: string;
     isSideNav?: boolean;
     hasToast?: boolean;
+    title?: string;
     pageTitle?: string;
     pageTabs?: any[];
     pageNavItems?: any[];
@@ -193,8 +194,10 @@ const calculateFooterMetrics = () => {
 const hasAppTopBar = computed(() => hasSlotContent(slots.appTopBar));
 const hasPageSideContent = computed(() => hasSlotContent(slots.pageSideContent));
 
+const resolvedPageTitle = computed(() => props.title ?? props.pageTitle);
+
 const hasPageHeader = computed(() =>
-    !!props.pageTitle || (Array.isArray(props.pageTabs) && props.pageTabs.length > 0) || hasSlotContent(slots.headerAction)
+    !!resolvedPageTitle.value || (Array.isArray(props.pageTabs) && props.pageTabs.length > 0) || hasSlotContent(slots.headerAction)
 );
 
 const hasPageFooter = computed(() => hasSlotContent(slots.footer) || hasSlotContent(slots.footerAction));
@@ -252,4 +255,3 @@ onBeforeUnmount(() => {
     resizeObserver?.disconnect();
 });
 </script>
-
