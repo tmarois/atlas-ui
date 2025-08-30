@@ -55,6 +55,33 @@
                 :size="item.size"
               />
             </LabelField>
+            <LabelField name="roles_chips_create" label="Roles (chips + create)">
+              <MultiSelect
+                v-model="form.rolesChipsCreate"
+                display="chip"
+                :options="roles"
+                optionLabel="name"
+                optionValue="id"
+                :maxSelectedLabels="6"
+                showClear
+                fluid
+                filter
+                :size="item.size"
+                @filter="onRolesFilter"
+              >
+                <template #emptyfilter>
+                  <div class="px-3 py-2.5 text-sm text-surface-600 dark:text-surface-300 flex flex-col space-y-4">
+                      <div class="truncate">No results for "<span class="font-semibold">{{ roleFilter }}</span>"</div>
+                    <Button
+                      :label="createRoleLabel"
+                      size="small"
+                      raised
+                      @click.stop.prevent="createRoleFromQuery()"
+                    />
+                  </div>
+                </template>
+              </MultiSelect>
+            </LabelField>
             <LabelField name="autorole" label="Auto Role">
               <AutoComplete
                 v-model="form.autorole"
@@ -101,7 +128,7 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
 import Card from '@atlas/ui/components/Card.vue';
 import LabelField from '@atlas/ui/components/LabelField.vue';
 import InputText from '@atlas/ui/components/InputText.vue';
@@ -120,6 +147,7 @@ const form = reactive({
   email: 'example@example.com',
   roles: [],
   rolesChips: [],
+  rolesChipsCreate: [],
   type: 'credit',
   payment: 'disabled',
   agree: false,
@@ -177,6 +205,39 @@ const types = ref([
 ]);
 
 const filteredRoles = ref([...autoRoles.value]);
+
+// Track the active MultiSelect filter text to support "Create new" actions
+const roleFilter = ref('');
+const onRolesFilter = (event) => {
+  roleFilter.value = (event?.value || '').trim();
+};
+
+const createRoleLabel = computed(() => (roleFilter.value ? `Create "${roleFilter.value}"` : 'Create'));
+
+const slugify = (text) =>
+  (text || '')
+    .toString()
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+
+const createRoleFromQuery = () => {
+  const label = roleFilter.value;
+  if (!label) return;
+  let id = slugify(label);
+  if (!id) return;
+  // Ensure unique id
+  const existing = roles.value.find((r) => r.id === id);
+  if (existing) {
+    // If exists, just select it
+    if (!form.rolesChipsCreate.includes(id)) form.rolesChipsCreate.push(id);
+    return;
+  }
+  const newRole = { id, name: label };
+  roles.value.push(newRole);
+  if (!form.rolesChipsCreate.includes(id)) form.rolesChipsCreate.push(id);
+};
 
 const search = (event) => {
   setTimeout(() => {
