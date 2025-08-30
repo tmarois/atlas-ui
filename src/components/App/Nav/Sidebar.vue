@@ -3,7 +3,7 @@
         class="relative flex flex-col items-center w-16 h-full overflow-hidden border-r z-[99]"
         :class="containerClass"
     >
-        <component :is="linkComponent" class="flex items-center justify-center h-14" :href="logoLinkPath">
+        <component :is="linkComponent" :href="logoLinkPath">
             <div class="flex-shrink-0">
                 <slot name="logo">
                     <svg

@@ -167,6 +167,9 @@
                 <LabelField name="amount" label="Amount" required>
                   <InputNumber id="amount" v-model="form.amount" mode="currency" currency="USD" locale="en-US" fluid placeholder="$0.00" />
                 </LabelField>
+                <LabelField name="quantity" label="Quantity">
+                  <InputNumber id="quantity" v-model="form.quantity" fluid placeholder="0" />
+                </LabelField>
                 <LabelField name="roles" label="Roles">
                   <Select v-model="form.type" showClear :options="types" optionLabel="name" optionValue="id" fluid />
                 </LabelField>
@@ -213,6 +216,9 @@
               <div class="w-full flex items-center space-x-4">
                 <LabelField name="amount" label="Amount" required>
                   <InputNumber id="amount" v-model="form.amount" mode="currency" currency="USD" locale="en-US" fluid placeholder="$0.00" :disabled="true" />
+                </LabelField>
+                <LabelField name="quantity" label="Quantity">
+                  <InputNumber id="quantity" v-model="form.quantity" fluid placeholder="0" :disabled="true" />
                 </LabelField>
                 <LabelField name="roles" label="Roles">
                   <Select v-model="form.type" showClear :options="types" optionLabel="name" optionValue="id" fluid :disabled="true" />
@@ -275,6 +281,7 @@ const form = reactive({
     first_name: 'John',
     last_name: 'Doe',
     amount: 100,
+    quantity: 5,
     email: 'example@example.com',
     roles: ['admin', 'user'],
     type: 'credit',
