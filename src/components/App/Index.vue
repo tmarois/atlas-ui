@@ -14,6 +14,7 @@
                     :linkComponent="linkComponent"
                     :backgroundClass="sideBarBackgroundClass"
                     :activeClass="sideBarActiveClass"
+                    :logoLinkPath="logoLinkPath"
                 >
                     <template #logo>
                         <slot name="navLogo" />
@@ -28,6 +29,7 @@
                     :widthClass="widthClass"
                     :backgroundClass="topBarBackgroundClass"
                     :activeClass="topBarActiveClass"
+                    :logoLinkPath="logoLinkPath"
                 >
                     <template #logo>
                         <slot name="navLogo" />
@@ -130,6 +132,7 @@ import AppTopbar from './Topbar.vue';
 import Toast from '../Toast.vue';
 
 interface Props {
+    logoLinkPath?: string;
     pageUrl?: string;
     isSideNav?: boolean;
     hasToast?: boolean;
@@ -151,6 +154,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+    logoLinkPath: '/',
     isSideNav: true,
     hasToast: true,
     pageTitle: 'Home',
