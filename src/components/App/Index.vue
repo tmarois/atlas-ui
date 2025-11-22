@@ -1,6 +1,7 @@
 <template>
+    <!--bg-surface-100 dark:bg-surface-900-->
     <div
-        class="min-h-screen w-full bg-surface-100 dark:bg-surface-900"
+        class="min-h-screen w-full"
         :class="{
             'relative h-screen flex w-full overflow-hidden': isSideNav === true
         }"
@@ -258,4 +259,7 @@ watch(
 onBeforeUnmount(() => {
     resizeObserver?.disconnect();
 });
+</script>
+
+<script setup lang="ts">
 </script>
